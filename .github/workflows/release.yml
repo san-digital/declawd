@@ -90,7 +90,8 @@ jobs:
           python scripts/generate-release-manifest.py --release $env:RELEASE_NAME --source-revision $sourceRevision --output stage/release-manifest-v1.json
           $archive = "declawd-$env:RELEASE_NAME-$env:TARGET.zip"
           Compress-Archive stage/* $archive
-          (Get-FileHash $archive -Algorithm SHA256).Hash.ToLower() + "  $archive" | Out-File -Encoding ascii "$archive.sha256"
+          $digest = (Get-FileHash $archive -Algorithm SHA256).Hash.ToLower()
+          [IO.File]::WriteAllText("$archive.sha256", "$digest  $archive`n", [Text.Encoding]::ASCII)
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: ${{ matrix.target }}
