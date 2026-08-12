@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/san-digital/declawd/blob/v0.1.0/spec/report-v1.schema.json",
+  "title": "Declawd report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "tool_version",
+    "operation",
+    "changed",
+    "input",
+    "findings",
+    "requested_actions",
+    "completed_actions",
+    "verification",
+    "untested_channels",
+    "warnings"
+  ],
+  "properties": {
+    "schema": { "const": "declawd.report/v1" },
+    "tool_version": { "type": "string" },
+    "operation": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "changed": { "type": "boolean" },
+    "input": { "$ref": "#/$defs/artifact" },
+    "output": { "$ref": "#/$defs/artifact" },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "requested_actions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/action" }
+    },
+    "completed_actions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/action" }
+    },
+    "verification": { "$ref": "#/$defs/verification" },
+    "untested_channels": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["media_type", "byte_length", "sha256"],
+      "properties": {
+        "media_type": { "type": "string" },
+        "byte_length": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "character", "after"],
+      "properties": {
+        "before": { "type": "string" },
+        "character": { "type": "string", "minLength": 1 },
+        "after": { "type": "string" }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["carrier", "class", "disposition"],
+      "properties": {
+        "carrier": { "enum": ["unicode", "embedded-c2pa"] },
+        "class": { "type": "string" },
+        "code_point": { "type": "string", "pattern": "^U\\+[0-9A-F]{4,6}$" },
+        "name": { "type": "string" },
+        "scalar_offset": { "type": "integer", "minimum": 0 },
+        "line": { "type": "integer", "minimum": 1 },
+        "column": { "type": "integer", "minimum": 1 },
+        "byte_length": { "type": "integer", "minimum": 0 },
+        "disposition": { "enum": ["reported", "removed", "replaced"] },
+        "context": { "$ref": "#/$defs/context" }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "selector", "matches"],
+      "properties": {
+        "action": { "enum": ["remove-code-point", "remove-class", "replace-code-point", "remove-embedded-c2pa"] },
+        "selector": { "type": "string" },
+        "replacement": { "type": "string", "pattern": "^U\\+[0-9A-F]{4,6}$" },
+        "matches": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "supported_carriers_remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Output scalars still matching any selector requested for this operation; this is not a count of every registry finding."
+        },
+        "embedded_c2pa_absent": { "type": "boolean" },
+        "non_c2pa_bytes_unchanged": { "type": "boolean" },
+        "compressed_image_data_unchanged": { "type": "boolean" },
+        "byte_identical_copy": { "type": "boolean" }
+      }
+    }
+  }
+}

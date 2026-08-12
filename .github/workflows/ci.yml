@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  reference:
+    name: Python reference
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s reference -p 'test_*.py' -v
+
+  rust:
+    name: Rust (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: cargo test --all-targets --locked
+
+  quality:
+    name: Format, lint, pins and licences
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: cargo fmt -- --check
+      - run: cargo clippy --all-targets --all-features --locked -- -D warnings
+      - run: cargo package --locked
+      - run: ./scripts/check-c2pa-pin.sh
+      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+        with:
+          tool: cargo-audit@0.22.0
+      - run: ./scripts/check-security-advisories.sh
+      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+        with:
+          tool: cargo-about@0.8.4
+      - run: ./scripts/check-third-party-licences.sh
+
+  c2patool-oracle:
+    name: Linux c2patool oracle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: cargo build --locked
+      - name: Install pinned oracle
+        run: cargo install c2patool --version 0.27.12 --locked
+      - name: Validate test-signed fixtures and cleaned outputs
+        run: ./scripts/check-c2patool-fixtures.sh

@@ -1,0 +1,343 @@
+{
+  "schema": "declawd.unicode-vectors/v1",
+  "registry_id": "declawd-unicode-v1",
+  "cases": [
+    {
+      "id": "bom-positional",
+      "text": "﻿A​B﻿",
+      "expected_findings": [
+        {
+          "code_point": "U+FEFF",
+          "name": "ZERO WIDTH NO-BREAK SPACE",
+          "class": "bom",
+          "scalar_offset": 0,
+          "line": 1,
+          "column": 1
+        },
+        {
+          "code_point": "U+200B",
+          "name": "ZERO WIDTH SPACE",
+          "class": "zero-width",
+          "scalar_offset": 2,
+          "line": 1,
+          "column": 3
+        },
+        {
+          "code_point": "U+FEFF",
+          "name": "ZERO WIDTH NO-BREAK SPACE",
+          "class": "zero-width",
+          "scalar_offset": 4,
+          "line": 1,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "astral-crlf-cr-lf",
+      "text": "😀‌\r\nx‍\ry؜\nz⁦",
+      "expected_findings": [
+        {
+          "code_point": "U+200C",
+          "name": "ZERO WIDTH NON-JOINER",
+          "class": "join-control",
+          "scalar_offset": 1,
+          "line": 1,
+          "column": 2
+        },
+        {
+          "code_point": "U+200D",
+          "name": "ZERO WIDTH JOINER",
+          "class": "join-control",
+          "scalar_offset": 5,
+          "line": 2,
+          "column": 2
+        },
+        {
+          "code_point": "U+061C",
+          "name": "ARABIC LETTER MARK",
+          "class": "bidi-control",
+          "scalar_offset": 8,
+          "line": 3,
+          "column": 2
+        },
+        {
+          "code_point": "U+2066",
+          "name": "LEFT-TO-RIGHT ISOLATE",
+          "class": "bidi-control",
+          "scalar_offset": 11,
+          "line": 4,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "tag-scalars",
+      "text": "a󠀁b󠀠󠁿",
+      "expected_findings": [
+        {
+          "code_point": "U+E0001",
+          "name": "LANGUAGE TAG",
+          "class": "tag-character",
+          "scalar_offset": 1,
+          "line": 1,
+          "column": 2
+        },
+        {
+          "code_point": "U+E0020",
+          "name": "TAG SPACE",
+          "class": "tag-character",
+          "scalar_offset": 3,
+          "line": 1,
+          "column": 4
+        },
+        {
+          "code_point": "U+E007F",
+          "name": "CANCEL TAG",
+          "class": "tag-character",
+          "scalar_offset": 4,
+          "line": 1,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "variation-selectors",
+      "text": "x᠋ y️ z󠄀",
+      "expected_findings": [
+        {
+          "code_point": "U+180B",
+          "name": "MONGOLIAN FREE VARIATION SELECTOR ONE",
+          "class": "variation-selector",
+          "scalar_offset": 1,
+          "line": 1,
+          "column": 2
+        },
+        {
+          "code_point": "U+FE0F",
+          "name": "VARIATION SELECTOR-16",
+          "class": "variation-selector",
+          "scalar_offset": 4,
+          "line": 1,
+          "column": 5
+        },
+        {
+          "code_point": "U+E0100",
+          "name": "VARIATION SELECTOR-17",
+          "class": "variation-selector",
+          "scalar_offset": 7,
+          "line": 1,
+          "column": 8
+        }
+      ]
+    },
+    {
+      "id": "all-zero-width",
+      "text": "­᠎​⁠⁡⁢⁣⁤﻿",
+      "expected_findings": [
+        {
+          "code_point": "U+00AD",
+          "name": "SOFT HYPHEN",
+          "class": "zero-width",
+          "scalar_offset": 0,
+          "line": 1,
+          "column": 1
+        },
+        {
+          "code_point": "U+180E",
+          "name": "MONGOLIAN VOWEL SEPARATOR",
+          "class": "zero-width",
+          "scalar_offset": 1,
+          "line": 1,
+          "column": 2
+        },
+        {
+          "code_point": "U+200B",
+          "name": "ZERO WIDTH SPACE",
+          "class": "zero-width",
+          "scalar_offset": 2,
+          "line": 1,
+          "column": 3
+        },
+        {
+          "code_point": "U+2060",
+          "name": "WORD JOINER",
+          "class": "zero-width",
+          "scalar_offset": 3,
+          "line": 1,
+          "column": 4
+        },
+        {
+          "code_point": "U+2061",
+          "name": "FUNCTION APPLICATION",
+          "class": "zero-width",
+          "scalar_offset": 4,
+          "line": 1,
+          "column": 5
+        },
+        {
+          "code_point": "U+2062",
+          "name": "INVISIBLE TIMES",
+          "class": "zero-width",
+          "scalar_offset": 5,
+          "line": 1,
+          "column": 6
+        },
+        {
+          "code_point": "U+2063",
+          "name": "INVISIBLE SEPARATOR",
+          "class": "zero-width",
+          "scalar_offset": 6,
+          "line": 1,
+          "column": 7
+        },
+        {
+          "code_point": "U+2064",
+          "name": "INVISIBLE PLUS",
+          "class": "zero-width",
+          "scalar_offset": 7,
+          "line": 1,
+          "column": 8
+        },
+        {
+          "code_point": "U+FEFF",
+          "name": "ZERO WIDTH NO-BREAK SPACE",
+          "class": "zero-width",
+          "scalar_offset": 8,
+          "line": 1,
+          "column": 9
+        }
+      ]
+    },
+    {
+      "id": "bidi-boundaries",
+      "text": "‎‏‪‮⁦⁯",
+      "expected_findings": [
+        {
+          "code_point": "U+200E",
+          "name": "LEFT-TO-RIGHT MARK",
+          "class": "bidi-control",
+          "scalar_offset": 0,
+          "line": 1,
+          "column": 1
+        },
+        {
+          "code_point": "U+200F",
+          "name": "RIGHT-TO-LEFT MARK",
+          "class": "bidi-control",
+          "scalar_offset": 1,
+          "line": 1,
+          "column": 2
+        },
+        {
+          "code_point": "U+202A",
+          "name": "LEFT-TO-RIGHT EMBEDDING",
+          "class": "bidi-control",
+          "scalar_offset": 2,
+          "line": 1,
+          "column": 3
+        },
+        {
+          "code_point": "U+202E",
+          "name": "RIGHT-TO-LEFT OVERRIDE",
+          "class": "bidi-control",
+          "scalar_offset": 3,
+          "line": 1,
+          "column": 4
+        },
+        {
+          "code_point": "U+2066",
+          "name": "LEFT-TO-RIGHT ISOLATE",
+          "class": "bidi-control",
+          "scalar_offset": 4,
+          "line": 1,
+          "column": 5
+        },
+        {
+          "code_point": "U+206F",
+          "name": "NOMINAL DIGIT SHAPES",
+          "class": "bidi-control",
+          "scalar_offset": 5,
+          "line": 1,
+          "column": 6
+        }
+      ]
+    }
+  ],
+  "transform_cases": [
+    {
+      "id": "class-removal-preserves-leading-bom",
+      "text": "﻿A​B﻿",
+      "operations": {
+        "remove_classes": [
+          "zero-width"
+        ],
+        "remove": [],
+        "replace": []
+      },
+      "expected_text": "﻿AB",
+      "expected_changed": true
+    },
+    {
+      "id": "explicit-bom-removal",
+      "text": "﻿A﻿",
+      "operations": {
+        "remove_classes": [],
+        "remove": [
+          "U+FEFF"
+        ],
+        "replace": []
+      },
+      "expected_text": "A",
+      "expected_changed": true
+    },
+    {
+      "id": "replace-space-with-ordinary-space",
+      "text": "a b",
+      "operations": {
+        "remove_classes": [],
+        "remove": [],
+        "replace": [
+          "U+202F=U+0020"
+        ]
+      },
+      "expected_text": "a b",
+      "expected_changed": true
+    },
+    {
+      "id": "no-match-no-op",
+      "text": "plain text",
+      "operations": {
+        "remove_classes": [
+          "zero-width"
+        ],
+        "remove": [],
+        "replace": []
+      },
+      "expected_text": "plain text",
+      "expected_changed": false
+    },
+    {
+      "id": "explicit-lf-in-crlf",
+      "text": "a\r\nb",
+      "operations": {
+        "remove_classes": [],
+        "remove": [
+          "U+000A"
+        ],
+        "replace": []
+      },
+      "expected_text": "a\rb",
+      "expected_changed": true,
+      "expected_findings": [
+        {
+          "code_point": "U+000A",
+          "class": "explicit-code-point",
+          "scalar_offset": 2,
+          "line": 1,
+          "column": 3,
+          "disposition": "removed"
+        }
+      ]
+    }
+  ]
+}

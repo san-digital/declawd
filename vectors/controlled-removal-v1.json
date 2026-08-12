@@ -1,0 +1,148 @@
+{
+  "schema": "declawd.controlled-removal/v1",
+  "profile_id": "declawd-v1",
+  "fixture_id": "fx-04",
+  "position_model": "zero-based Unicode scalar offsets in the original marked passage",
+  "source_text": "Set the reference flow to 40 litres per minute before you record the first sample. Hold the line at that rate for two minutes so the pressure can steady. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same holding time at each step. If a value shifts by more than 2 per cent across passes, stop the run and inspect the coupling for leaks before you restart. A slight leak at the union will skew every later total, so the check is due the delay. Give the serial number of the reference meter and the date of its last calibration. If that date falls outside the twelve month window, the run does not qualify and a current reference must be obtained first. Keep the raw sheet even when a run is spoiled, because a rejected run still proves what the instrument was doing that morning. When the three rates are complete, work out the mean gap at each point and plot it against the permitted band. A meter that lies inside the band at every point passes the verification. A meter that misses at any single point loses the whole verification, and no average across the three rates can save it. Sign the sheet, state the ambient conditions, and hand the result to the quality file. Where a run is aborted early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be handled without a search. If the meter is shifted to another bay, note the new position and the date of the move, because a meter that has travelled may need a fresh check before its next use. Report any damage to the reference equipment on the same day, and do not carry with a run on equipment you question. A doubtful reference makes every number after it doubtful too, and the cost of repeating a run is far less than the cost of defending a bad one. When the file is closed for the month, check that every sheet has a name and that no run is missing from the sequence. A gap in the file is harder to explain later than a poor result recorded honestly at the time.",
+  "substitutions": [
+    {
+      "scalar_offset": 75,
+      "before": "sample",
+      "after": "measure"
+    },
+    {
+      "scalar_offset": 175,
+      "before": "value",
+      "after": "figure"
+    },
+    {
+      "scalar_offset": 295,
+      "before": "holding",
+      "after": "resting"
+    },
+    {
+      "scalar_offset": 371,
+      "before": "passes",
+      "after": "repeats"
+    },
+    {
+      "scalar_offset": 631,
+      "before": "falls",
+      "after": "comes"
+    },
+    {
+      "scalar_offset": 994,
+      "before": "lies",
+      "after": "sits"
+    }
+  ],
+  "steps": [
+    {
+      "applied": 1,
+      "substitution": {
+        "scalar_offset": 75,
+        "before": "sample",
+        "after": "measure"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 112,
+        "z": 2.7462518896380903,
+        "verdict": "above threshold"
+      }
+    },
+    {
+      "applied": 2,
+      "substitution": {
+        "scalar_offset": 175,
+        "before": "value",
+        "after": "figure"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 110,
+        "z": 2.502140610559149,
+        "verdict": "above threshold"
+      }
+    },
+    {
+      "applied": 3,
+      "substitution": {
+        "scalar_offset": 295,
+        "before": "holding",
+        "after": "resting"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 108,
+        "z": 2.2580293314802073,
+        "verdict": "above threshold"
+      }
+    },
+    {
+      "applied": 4,
+      "substitution": {
+        "scalar_offset": 371,
+        "before": "passes",
+        "after": "repeats"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 106,
+        "z": 2.013918052401266,
+        "verdict": "above threshold"
+      }
+    },
+    {
+      "applied": 5,
+      "substitution": {
+        "scalar_offset": 631,
+        "before": "falls",
+        "after": "comes"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 104,
+        "z": 1.7698067733223248,
+        "verdict": "below threshold"
+      }
+    },
+    {
+      "applied": 6,
+      "substitution": {
+        "scalar_offset": 994,
+        "before": "lies",
+        "after": "sits"
+      },
+      "score": {
+        "raw": 398,
+        "effective": 358,
+        "green": 102,
+        "z": 1.5256954942433834,
+        "verdict": "below threshold"
+      }
+    }
+  ],
+  "expected_text": "Set the reference flow to 40 litres per minute before you record the first measure. Hold the line at that rate for two minutes so the pressure can steady. Write down the meter figure, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same resting time at each step. If a value shifts by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you restart. A slight leak at the union will skew every later total, so the check is due the delay. Give the serial number of the reference meter and the date of its last calibration. If that date comes outside the twelve month window, the run does not qualify and a current reference must be obtained first. Keep the raw sheet even when a run is spoiled, because a rejected run still proves what the instrument was doing that morning. When the three rates are complete, work out the mean gap at each point and plot it against the permitted band. A meter that sits inside the band at every point passes the verification. A meter that misses at any single point loses the whole verification, and no average across the three rates can save it. Sign the sheet, state the ambient conditions, and hand the result to the quality file. Where a run is aborted early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be handled without a search. If the meter is shifted to another bay, note the new position and the date of the move, because a meter that has travelled may need a fresh check before its next use. Report any damage to the reference equipment on the same day, and do not carry with a run on equipment you question. A doubtful reference makes every number after it doubtful too, and the cost of repeating a run is far less than the cost of defending a bad one. When the file is closed for the month, check that every sheet has a name and that no run is missing from the sequence. A gap in the file is harder to explain later than a poor result recorded honestly at the time.",
+  "source_score": {
+    "raw": 398,
+    "effective": 358,
+    "green": 114,
+    "z": 2.9903631687170313,
+    "verdict": "above threshold"
+  },
+  "expected_score": {
+    "raw": 398,
+    "effective": 358,
+    "green": 102,
+    "z": 1.5256954942433834,
+    "verdict": "below threshold"
+  },
+  "one_green_context_z_step": 0.12205563953947074,
+  "note": "All six replacements come from their original authored candidate slots. Every step applies its cumulative prefix against source_text; offsets never shift."
+}

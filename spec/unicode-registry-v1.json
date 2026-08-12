@@ -1,0 +1,2377 @@
+{
+  "schema": "declawd.unicode-registry/v1",
+  "registry_id": "declawd-unicode-v1",
+  "unicode_names_from": "Unicode 13.0.0, with the Unicode 14.0 name for U+180F; membership is explicit and does not vary with runtime Unicode properties",
+  "classes": [
+    {
+      "id": "bom",
+      "selectable": false,
+      "description": "A leading UTF-8 byte-order mark.",
+      "warning": "Preserved by class operations; remove U+FEFF explicitly only when its loss is intended."
+    },
+    {
+      "id": "zero-width",
+      "selectable": true,
+      "description": "Invisible spacing, joining or mathematical format characters not assigned to another class.",
+      "warning": "These characters can control line breaking, Mongolian text or mathematical notation."
+    },
+    {
+      "id": "join-control",
+      "selectable": true,
+      "description": "Zero-width non-joiner and zero-width joiner.",
+      "warning": "Join controls carry meaning in Persian, Arabic, Urdu, Indic scripts and emoji sequences."
+    },
+    {
+      "id": "bidi-control",
+      "selectable": true,
+      "description": "Bidirectional marks, embeddings, overrides, isolates and deprecated directional controls.",
+      "warning": "Direction controls can be required for correct Hebrew, Arabic and mixed-direction rendering."
+    },
+    {
+      "id": "tag-character",
+      "selectable": true,
+      "description": "Unicode tag characters.",
+      "warning": "Tag characters can participate in valid emoji and language-tag sequences."
+    },
+    {
+      "id": "variation-selector",
+      "selectable": true,
+      "description": "Mongolian, standard and supplementary variation selectors.",
+      "warning": "Variation selectors can change glyph identity or emoji presentation."
+    }
+  ],
+  "positional_rules": [
+    {
+      "code_point": "U+FEFF",
+      "when": {
+        "scalar_offset": 0
+      },
+      "class": "bom",
+      "otherwise_class": "zero-width"
+    }
+  ],
+  "position_model": {
+    "scalar_offset": "zero-based Unicode scalar offset",
+    "line": "one-based; CRLF, lone CR and lone LF each advance one line",
+    "column": "one-based Unicode scalar column; astral scalars count once",
+    "newline_position": "a CR or LF occupies its pre-break column; the LF in CRLF is part of the same break"
+  },
+  "entries": [
+    {
+      "code_point": "U+00AD",
+      "scalar": 173,
+      "name": "SOFT HYPHEN",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+061C",
+      "scalar": 1564,
+      "name": "ARABIC LETTER MARK",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+180B",
+      "scalar": 6155,
+      "name": "MONGOLIAN FREE VARIATION SELECTOR ONE",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+180C",
+      "scalar": 6156,
+      "name": "MONGOLIAN FREE VARIATION SELECTOR TWO",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+180D",
+      "scalar": 6157,
+      "name": "MONGOLIAN FREE VARIATION SELECTOR THREE",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+180E",
+      "scalar": 6158,
+      "name": "MONGOLIAN VOWEL SEPARATOR",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+180F",
+      "scalar": 6159,
+      "name": "MONGOLIAN FREE VARIATION SELECTOR FOUR",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+200B",
+      "scalar": 8203,
+      "name": "ZERO WIDTH SPACE",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+200C",
+      "scalar": 8204,
+      "name": "ZERO WIDTH NON-JOINER",
+      "class": "join-control"
+    },
+    {
+      "code_point": "U+200D",
+      "scalar": 8205,
+      "name": "ZERO WIDTH JOINER",
+      "class": "join-control"
+    },
+    {
+      "code_point": "U+200E",
+      "scalar": 8206,
+      "name": "LEFT-TO-RIGHT MARK",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+200F",
+      "scalar": 8207,
+      "name": "RIGHT-TO-LEFT MARK",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+202A",
+      "scalar": 8234,
+      "name": "LEFT-TO-RIGHT EMBEDDING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+202B",
+      "scalar": 8235,
+      "name": "RIGHT-TO-LEFT EMBEDDING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+202C",
+      "scalar": 8236,
+      "name": "POP DIRECTIONAL FORMATTING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+202D",
+      "scalar": 8237,
+      "name": "LEFT-TO-RIGHT OVERRIDE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+202E",
+      "scalar": 8238,
+      "name": "RIGHT-TO-LEFT OVERRIDE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+2060",
+      "scalar": 8288,
+      "name": "WORD JOINER",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+2061",
+      "scalar": 8289,
+      "name": "FUNCTION APPLICATION",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+2062",
+      "scalar": 8290,
+      "name": "INVISIBLE TIMES",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+2063",
+      "scalar": 8291,
+      "name": "INVISIBLE SEPARATOR",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+2064",
+      "scalar": 8292,
+      "name": "INVISIBLE PLUS",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+2066",
+      "scalar": 8294,
+      "name": "LEFT-TO-RIGHT ISOLATE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+2067",
+      "scalar": 8295,
+      "name": "RIGHT-TO-LEFT ISOLATE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+2068",
+      "scalar": 8296,
+      "name": "FIRST STRONG ISOLATE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+2069",
+      "scalar": 8297,
+      "name": "POP DIRECTIONAL ISOLATE",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206A",
+      "scalar": 8298,
+      "name": "INHIBIT SYMMETRIC SWAPPING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206B",
+      "scalar": 8299,
+      "name": "ACTIVATE SYMMETRIC SWAPPING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206C",
+      "scalar": 8300,
+      "name": "INHIBIT ARABIC FORM SHAPING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206D",
+      "scalar": 8301,
+      "name": "ACTIVATE ARABIC FORM SHAPING",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206E",
+      "scalar": 8302,
+      "name": "NATIONAL DIGIT SHAPES",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+206F",
+      "scalar": 8303,
+      "name": "NOMINAL DIGIT SHAPES",
+      "class": "bidi-control"
+    },
+    {
+      "code_point": "U+FE00",
+      "scalar": 65024,
+      "name": "VARIATION SELECTOR-1",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE01",
+      "scalar": 65025,
+      "name": "VARIATION SELECTOR-2",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE02",
+      "scalar": 65026,
+      "name": "VARIATION SELECTOR-3",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE03",
+      "scalar": 65027,
+      "name": "VARIATION SELECTOR-4",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE04",
+      "scalar": 65028,
+      "name": "VARIATION SELECTOR-5",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE05",
+      "scalar": 65029,
+      "name": "VARIATION SELECTOR-6",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE06",
+      "scalar": 65030,
+      "name": "VARIATION SELECTOR-7",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE07",
+      "scalar": 65031,
+      "name": "VARIATION SELECTOR-8",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE08",
+      "scalar": 65032,
+      "name": "VARIATION SELECTOR-9",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE09",
+      "scalar": 65033,
+      "name": "VARIATION SELECTOR-10",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0A",
+      "scalar": 65034,
+      "name": "VARIATION SELECTOR-11",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0B",
+      "scalar": 65035,
+      "name": "VARIATION SELECTOR-12",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0C",
+      "scalar": 65036,
+      "name": "VARIATION SELECTOR-13",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0D",
+      "scalar": 65037,
+      "name": "VARIATION SELECTOR-14",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0E",
+      "scalar": 65038,
+      "name": "VARIATION SELECTOR-15",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FE0F",
+      "scalar": 65039,
+      "name": "VARIATION SELECTOR-16",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+FEFF",
+      "scalar": 65279,
+      "name": "ZERO WIDTH NO-BREAK SPACE",
+      "class": "zero-width"
+    },
+    {
+      "code_point": "U+E0001",
+      "scalar": 917505,
+      "name": "LANGUAGE TAG",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0020",
+      "scalar": 917536,
+      "name": "TAG SPACE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0021",
+      "scalar": 917537,
+      "name": "TAG EXCLAMATION MARK",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0022",
+      "scalar": 917538,
+      "name": "TAG QUOTATION MARK",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0023",
+      "scalar": 917539,
+      "name": "TAG NUMBER SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0024",
+      "scalar": 917540,
+      "name": "TAG DOLLAR SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0025",
+      "scalar": 917541,
+      "name": "TAG PERCENT SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0026",
+      "scalar": 917542,
+      "name": "TAG AMPERSAND",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0027",
+      "scalar": 917543,
+      "name": "TAG APOSTROPHE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0028",
+      "scalar": 917544,
+      "name": "TAG LEFT PARENTHESIS",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0029",
+      "scalar": 917545,
+      "name": "TAG RIGHT PARENTHESIS",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002A",
+      "scalar": 917546,
+      "name": "TAG ASTERISK",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002B",
+      "scalar": 917547,
+      "name": "TAG PLUS SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002C",
+      "scalar": 917548,
+      "name": "TAG COMMA",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002D",
+      "scalar": 917549,
+      "name": "TAG HYPHEN-MINUS",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002E",
+      "scalar": 917550,
+      "name": "TAG FULL STOP",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E002F",
+      "scalar": 917551,
+      "name": "TAG SOLIDUS",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0030",
+      "scalar": 917552,
+      "name": "TAG DIGIT ZERO",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0031",
+      "scalar": 917553,
+      "name": "TAG DIGIT ONE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0032",
+      "scalar": 917554,
+      "name": "TAG DIGIT TWO",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0033",
+      "scalar": 917555,
+      "name": "TAG DIGIT THREE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0034",
+      "scalar": 917556,
+      "name": "TAG DIGIT FOUR",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0035",
+      "scalar": 917557,
+      "name": "TAG DIGIT FIVE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0036",
+      "scalar": 917558,
+      "name": "TAG DIGIT SIX",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0037",
+      "scalar": 917559,
+      "name": "TAG DIGIT SEVEN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0038",
+      "scalar": 917560,
+      "name": "TAG DIGIT EIGHT",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0039",
+      "scalar": 917561,
+      "name": "TAG DIGIT NINE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003A",
+      "scalar": 917562,
+      "name": "TAG COLON",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003B",
+      "scalar": 917563,
+      "name": "TAG SEMICOLON",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003C",
+      "scalar": 917564,
+      "name": "TAG LESS-THAN SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003D",
+      "scalar": 917565,
+      "name": "TAG EQUALS SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003E",
+      "scalar": 917566,
+      "name": "TAG GREATER-THAN SIGN",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E003F",
+      "scalar": 917567,
+      "name": "TAG QUESTION MARK",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0040",
+      "scalar": 917568,
+      "name": "TAG COMMERCIAL AT",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0041",
+      "scalar": 917569,
+      "name": "TAG LATIN CAPITAL LETTER A",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0042",
+      "scalar": 917570,
+      "name": "TAG LATIN CAPITAL LETTER B",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0043",
+      "scalar": 917571,
+      "name": "TAG LATIN CAPITAL LETTER C",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0044",
+      "scalar": 917572,
+      "name": "TAG LATIN CAPITAL LETTER D",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0045",
+      "scalar": 917573,
+      "name": "TAG LATIN CAPITAL LETTER E",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0046",
+      "scalar": 917574,
+      "name": "TAG LATIN CAPITAL LETTER F",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0047",
+      "scalar": 917575,
+      "name": "TAG LATIN CAPITAL LETTER G",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0048",
+      "scalar": 917576,
+      "name": "TAG LATIN CAPITAL LETTER H",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0049",
+      "scalar": 917577,
+      "name": "TAG LATIN CAPITAL LETTER I",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004A",
+      "scalar": 917578,
+      "name": "TAG LATIN CAPITAL LETTER J",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004B",
+      "scalar": 917579,
+      "name": "TAG LATIN CAPITAL LETTER K",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004C",
+      "scalar": 917580,
+      "name": "TAG LATIN CAPITAL LETTER L",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004D",
+      "scalar": 917581,
+      "name": "TAG LATIN CAPITAL LETTER M",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004E",
+      "scalar": 917582,
+      "name": "TAG LATIN CAPITAL LETTER N",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E004F",
+      "scalar": 917583,
+      "name": "TAG LATIN CAPITAL LETTER O",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0050",
+      "scalar": 917584,
+      "name": "TAG LATIN CAPITAL LETTER P",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0051",
+      "scalar": 917585,
+      "name": "TAG LATIN CAPITAL LETTER Q",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0052",
+      "scalar": 917586,
+      "name": "TAG LATIN CAPITAL LETTER R",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0053",
+      "scalar": 917587,
+      "name": "TAG LATIN CAPITAL LETTER S",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0054",
+      "scalar": 917588,
+      "name": "TAG LATIN CAPITAL LETTER T",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0055",
+      "scalar": 917589,
+      "name": "TAG LATIN CAPITAL LETTER U",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0056",
+      "scalar": 917590,
+      "name": "TAG LATIN CAPITAL LETTER V",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0057",
+      "scalar": 917591,
+      "name": "TAG LATIN CAPITAL LETTER W",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0058",
+      "scalar": 917592,
+      "name": "TAG LATIN CAPITAL LETTER X",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0059",
+      "scalar": 917593,
+      "name": "TAG LATIN CAPITAL LETTER Y",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005A",
+      "scalar": 917594,
+      "name": "TAG LATIN CAPITAL LETTER Z",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005B",
+      "scalar": 917595,
+      "name": "TAG LEFT SQUARE BRACKET",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005C",
+      "scalar": 917596,
+      "name": "TAG REVERSE SOLIDUS",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005D",
+      "scalar": 917597,
+      "name": "TAG RIGHT SQUARE BRACKET",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005E",
+      "scalar": 917598,
+      "name": "TAG CIRCUMFLEX ACCENT",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E005F",
+      "scalar": 917599,
+      "name": "TAG LOW LINE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0060",
+      "scalar": 917600,
+      "name": "TAG GRAVE ACCENT",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0061",
+      "scalar": 917601,
+      "name": "TAG LATIN SMALL LETTER A",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0062",
+      "scalar": 917602,
+      "name": "TAG LATIN SMALL LETTER B",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0063",
+      "scalar": 917603,
+      "name": "TAG LATIN SMALL LETTER C",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0064",
+      "scalar": 917604,
+      "name": "TAG LATIN SMALL LETTER D",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0065",
+      "scalar": 917605,
+      "name": "TAG LATIN SMALL LETTER E",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0066",
+      "scalar": 917606,
+      "name": "TAG LATIN SMALL LETTER F",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0067",
+      "scalar": 917607,
+      "name": "TAG LATIN SMALL LETTER G",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0068",
+      "scalar": 917608,
+      "name": "TAG LATIN SMALL LETTER H",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0069",
+      "scalar": 917609,
+      "name": "TAG LATIN SMALL LETTER I",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006A",
+      "scalar": 917610,
+      "name": "TAG LATIN SMALL LETTER J",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006B",
+      "scalar": 917611,
+      "name": "TAG LATIN SMALL LETTER K",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006C",
+      "scalar": 917612,
+      "name": "TAG LATIN SMALL LETTER L",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006D",
+      "scalar": 917613,
+      "name": "TAG LATIN SMALL LETTER M",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006E",
+      "scalar": 917614,
+      "name": "TAG LATIN SMALL LETTER N",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E006F",
+      "scalar": 917615,
+      "name": "TAG LATIN SMALL LETTER O",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0070",
+      "scalar": 917616,
+      "name": "TAG LATIN SMALL LETTER P",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0071",
+      "scalar": 917617,
+      "name": "TAG LATIN SMALL LETTER Q",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0072",
+      "scalar": 917618,
+      "name": "TAG LATIN SMALL LETTER R",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0073",
+      "scalar": 917619,
+      "name": "TAG LATIN SMALL LETTER S",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0074",
+      "scalar": 917620,
+      "name": "TAG LATIN SMALL LETTER T",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0075",
+      "scalar": 917621,
+      "name": "TAG LATIN SMALL LETTER U",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0076",
+      "scalar": 917622,
+      "name": "TAG LATIN SMALL LETTER V",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0077",
+      "scalar": 917623,
+      "name": "TAG LATIN SMALL LETTER W",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0078",
+      "scalar": 917624,
+      "name": "TAG LATIN SMALL LETTER X",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0079",
+      "scalar": 917625,
+      "name": "TAG LATIN SMALL LETTER Y",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007A",
+      "scalar": 917626,
+      "name": "TAG LATIN SMALL LETTER Z",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007B",
+      "scalar": 917627,
+      "name": "TAG LEFT CURLY BRACKET",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007C",
+      "scalar": 917628,
+      "name": "TAG VERTICAL LINE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007D",
+      "scalar": 917629,
+      "name": "TAG RIGHT CURLY BRACKET",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007E",
+      "scalar": 917630,
+      "name": "TAG TILDE",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E007F",
+      "scalar": 917631,
+      "name": "CANCEL TAG",
+      "class": "tag-character"
+    },
+    {
+      "code_point": "U+E0100",
+      "scalar": 917760,
+      "name": "VARIATION SELECTOR-17",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0101",
+      "scalar": 917761,
+      "name": "VARIATION SELECTOR-18",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0102",
+      "scalar": 917762,
+      "name": "VARIATION SELECTOR-19",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0103",
+      "scalar": 917763,
+      "name": "VARIATION SELECTOR-20",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0104",
+      "scalar": 917764,
+      "name": "VARIATION SELECTOR-21",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0105",
+      "scalar": 917765,
+      "name": "VARIATION SELECTOR-22",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0106",
+      "scalar": 917766,
+      "name": "VARIATION SELECTOR-23",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0107",
+      "scalar": 917767,
+      "name": "VARIATION SELECTOR-24",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0108",
+      "scalar": 917768,
+      "name": "VARIATION SELECTOR-25",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0109",
+      "scalar": 917769,
+      "name": "VARIATION SELECTOR-26",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010A",
+      "scalar": 917770,
+      "name": "VARIATION SELECTOR-27",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010B",
+      "scalar": 917771,
+      "name": "VARIATION SELECTOR-28",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010C",
+      "scalar": 917772,
+      "name": "VARIATION SELECTOR-29",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010D",
+      "scalar": 917773,
+      "name": "VARIATION SELECTOR-30",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010E",
+      "scalar": 917774,
+      "name": "VARIATION SELECTOR-31",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E010F",
+      "scalar": 917775,
+      "name": "VARIATION SELECTOR-32",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0110",
+      "scalar": 917776,
+      "name": "VARIATION SELECTOR-33",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0111",
+      "scalar": 917777,
+      "name": "VARIATION SELECTOR-34",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0112",
+      "scalar": 917778,
+      "name": "VARIATION SELECTOR-35",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0113",
+      "scalar": 917779,
+      "name": "VARIATION SELECTOR-36",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0114",
+      "scalar": 917780,
+      "name": "VARIATION SELECTOR-37",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0115",
+      "scalar": 917781,
+      "name": "VARIATION SELECTOR-38",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0116",
+      "scalar": 917782,
+      "name": "VARIATION SELECTOR-39",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0117",
+      "scalar": 917783,
+      "name": "VARIATION SELECTOR-40",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0118",
+      "scalar": 917784,
+      "name": "VARIATION SELECTOR-41",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0119",
+      "scalar": 917785,
+      "name": "VARIATION SELECTOR-42",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011A",
+      "scalar": 917786,
+      "name": "VARIATION SELECTOR-43",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011B",
+      "scalar": 917787,
+      "name": "VARIATION SELECTOR-44",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011C",
+      "scalar": 917788,
+      "name": "VARIATION SELECTOR-45",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011D",
+      "scalar": 917789,
+      "name": "VARIATION SELECTOR-46",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011E",
+      "scalar": 917790,
+      "name": "VARIATION SELECTOR-47",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E011F",
+      "scalar": 917791,
+      "name": "VARIATION SELECTOR-48",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0120",
+      "scalar": 917792,
+      "name": "VARIATION SELECTOR-49",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0121",
+      "scalar": 917793,
+      "name": "VARIATION SELECTOR-50",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0122",
+      "scalar": 917794,
+      "name": "VARIATION SELECTOR-51",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0123",
+      "scalar": 917795,
+      "name": "VARIATION SELECTOR-52",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0124",
+      "scalar": 917796,
+      "name": "VARIATION SELECTOR-53",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0125",
+      "scalar": 917797,
+      "name": "VARIATION SELECTOR-54",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0126",
+      "scalar": 917798,
+      "name": "VARIATION SELECTOR-55",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0127",
+      "scalar": 917799,
+      "name": "VARIATION SELECTOR-56",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0128",
+      "scalar": 917800,
+      "name": "VARIATION SELECTOR-57",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0129",
+      "scalar": 917801,
+      "name": "VARIATION SELECTOR-58",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012A",
+      "scalar": 917802,
+      "name": "VARIATION SELECTOR-59",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012B",
+      "scalar": 917803,
+      "name": "VARIATION SELECTOR-60",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012C",
+      "scalar": 917804,
+      "name": "VARIATION SELECTOR-61",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012D",
+      "scalar": 917805,
+      "name": "VARIATION SELECTOR-62",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012E",
+      "scalar": 917806,
+      "name": "VARIATION SELECTOR-63",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E012F",
+      "scalar": 917807,
+      "name": "VARIATION SELECTOR-64",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0130",
+      "scalar": 917808,
+      "name": "VARIATION SELECTOR-65",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0131",
+      "scalar": 917809,
+      "name": "VARIATION SELECTOR-66",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0132",
+      "scalar": 917810,
+      "name": "VARIATION SELECTOR-67",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0133",
+      "scalar": 917811,
+      "name": "VARIATION SELECTOR-68",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0134",
+      "scalar": 917812,
+      "name": "VARIATION SELECTOR-69",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0135",
+      "scalar": 917813,
+      "name": "VARIATION SELECTOR-70",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0136",
+      "scalar": 917814,
+      "name": "VARIATION SELECTOR-71",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0137",
+      "scalar": 917815,
+      "name": "VARIATION SELECTOR-72",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0138",
+      "scalar": 917816,
+      "name": "VARIATION SELECTOR-73",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0139",
+      "scalar": 917817,
+      "name": "VARIATION SELECTOR-74",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013A",
+      "scalar": 917818,
+      "name": "VARIATION SELECTOR-75",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013B",
+      "scalar": 917819,
+      "name": "VARIATION SELECTOR-76",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013C",
+      "scalar": 917820,
+      "name": "VARIATION SELECTOR-77",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013D",
+      "scalar": 917821,
+      "name": "VARIATION SELECTOR-78",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013E",
+      "scalar": 917822,
+      "name": "VARIATION SELECTOR-79",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E013F",
+      "scalar": 917823,
+      "name": "VARIATION SELECTOR-80",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0140",
+      "scalar": 917824,
+      "name": "VARIATION SELECTOR-81",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0141",
+      "scalar": 917825,
+      "name": "VARIATION SELECTOR-82",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0142",
+      "scalar": 917826,
+      "name": "VARIATION SELECTOR-83",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0143",
+      "scalar": 917827,
+      "name": "VARIATION SELECTOR-84",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0144",
+      "scalar": 917828,
+      "name": "VARIATION SELECTOR-85",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0145",
+      "scalar": 917829,
+      "name": "VARIATION SELECTOR-86",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0146",
+      "scalar": 917830,
+      "name": "VARIATION SELECTOR-87",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0147",
+      "scalar": 917831,
+      "name": "VARIATION SELECTOR-88",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0148",
+      "scalar": 917832,
+      "name": "VARIATION SELECTOR-89",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0149",
+      "scalar": 917833,
+      "name": "VARIATION SELECTOR-90",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014A",
+      "scalar": 917834,
+      "name": "VARIATION SELECTOR-91",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014B",
+      "scalar": 917835,
+      "name": "VARIATION SELECTOR-92",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014C",
+      "scalar": 917836,
+      "name": "VARIATION SELECTOR-93",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014D",
+      "scalar": 917837,
+      "name": "VARIATION SELECTOR-94",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014E",
+      "scalar": 917838,
+      "name": "VARIATION SELECTOR-95",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E014F",
+      "scalar": 917839,
+      "name": "VARIATION SELECTOR-96",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0150",
+      "scalar": 917840,
+      "name": "VARIATION SELECTOR-97",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0151",
+      "scalar": 917841,
+      "name": "VARIATION SELECTOR-98",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0152",
+      "scalar": 917842,
+      "name": "VARIATION SELECTOR-99",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0153",
+      "scalar": 917843,
+      "name": "VARIATION SELECTOR-100",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0154",
+      "scalar": 917844,
+      "name": "VARIATION SELECTOR-101",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0155",
+      "scalar": 917845,
+      "name": "VARIATION SELECTOR-102",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0156",
+      "scalar": 917846,
+      "name": "VARIATION SELECTOR-103",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0157",
+      "scalar": 917847,
+      "name": "VARIATION SELECTOR-104",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0158",
+      "scalar": 917848,
+      "name": "VARIATION SELECTOR-105",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0159",
+      "scalar": 917849,
+      "name": "VARIATION SELECTOR-106",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015A",
+      "scalar": 917850,
+      "name": "VARIATION SELECTOR-107",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015B",
+      "scalar": 917851,
+      "name": "VARIATION SELECTOR-108",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015C",
+      "scalar": 917852,
+      "name": "VARIATION SELECTOR-109",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015D",
+      "scalar": 917853,
+      "name": "VARIATION SELECTOR-110",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015E",
+      "scalar": 917854,
+      "name": "VARIATION SELECTOR-111",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E015F",
+      "scalar": 917855,
+      "name": "VARIATION SELECTOR-112",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0160",
+      "scalar": 917856,
+      "name": "VARIATION SELECTOR-113",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0161",
+      "scalar": 917857,
+      "name": "VARIATION SELECTOR-114",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0162",
+      "scalar": 917858,
+      "name": "VARIATION SELECTOR-115",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0163",
+      "scalar": 917859,
+      "name": "VARIATION SELECTOR-116",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0164",
+      "scalar": 917860,
+      "name": "VARIATION SELECTOR-117",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0165",
+      "scalar": 917861,
+      "name": "VARIATION SELECTOR-118",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0166",
+      "scalar": 917862,
+      "name": "VARIATION SELECTOR-119",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0167",
+      "scalar": 917863,
+      "name": "VARIATION SELECTOR-120",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0168",
+      "scalar": 917864,
+      "name": "VARIATION SELECTOR-121",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0169",
+      "scalar": 917865,
+      "name": "VARIATION SELECTOR-122",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016A",
+      "scalar": 917866,
+      "name": "VARIATION SELECTOR-123",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016B",
+      "scalar": 917867,
+      "name": "VARIATION SELECTOR-124",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016C",
+      "scalar": 917868,
+      "name": "VARIATION SELECTOR-125",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016D",
+      "scalar": 917869,
+      "name": "VARIATION SELECTOR-126",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016E",
+      "scalar": 917870,
+      "name": "VARIATION SELECTOR-127",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E016F",
+      "scalar": 917871,
+      "name": "VARIATION SELECTOR-128",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0170",
+      "scalar": 917872,
+      "name": "VARIATION SELECTOR-129",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0171",
+      "scalar": 917873,
+      "name": "VARIATION SELECTOR-130",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0172",
+      "scalar": 917874,
+      "name": "VARIATION SELECTOR-131",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0173",
+      "scalar": 917875,
+      "name": "VARIATION SELECTOR-132",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0174",
+      "scalar": 917876,
+      "name": "VARIATION SELECTOR-133",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0175",
+      "scalar": 917877,
+      "name": "VARIATION SELECTOR-134",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0176",
+      "scalar": 917878,
+      "name": "VARIATION SELECTOR-135",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0177",
+      "scalar": 917879,
+      "name": "VARIATION SELECTOR-136",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0178",
+      "scalar": 917880,
+      "name": "VARIATION SELECTOR-137",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0179",
+      "scalar": 917881,
+      "name": "VARIATION SELECTOR-138",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017A",
+      "scalar": 917882,
+      "name": "VARIATION SELECTOR-139",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017B",
+      "scalar": 917883,
+      "name": "VARIATION SELECTOR-140",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017C",
+      "scalar": 917884,
+      "name": "VARIATION SELECTOR-141",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017D",
+      "scalar": 917885,
+      "name": "VARIATION SELECTOR-142",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017E",
+      "scalar": 917886,
+      "name": "VARIATION SELECTOR-143",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E017F",
+      "scalar": 917887,
+      "name": "VARIATION SELECTOR-144",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0180",
+      "scalar": 917888,
+      "name": "VARIATION SELECTOR-145",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0181",
+      "scalar": 917889,
+      "name": "VARIATION SELECTOR-146",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0182",
+      "scalar": 917890,
+      "name": "VARIATION SELECTOR-147",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0183",
+      "scalar": 917891,
+      "name": "VARIATION SELECTOR-148",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0184",
+      "scalar": 917892,
+      "name": "VARIATION SELECTOR-149",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0185",
+      "scalar": 917893,
+      "name": "VARIATION SELECTOR-150",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0186",
+      "scalar": 917894,
+      "name": "VARIATION SELECTOR-151",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0187",
+      "scalar": 917895,
+      "name": "VARIATION SELECTOR-152",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0188",
+      "scalar": 917896,
+      "name": "VARIATION SELECTOR-153",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0189",
+      "scalar": 917897,
+      "name": "VARIATION SELECTOR-154",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018A",
+      "scalar": 917898,
+      "name": "VARIATION SELECTOR-155",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018B",
+      "scalar": 917899,
+      "name": "VARIATION SELECTOR-156",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018C",
+      "scalar": 917900,
+      "name": "VARIATION SELECTOR-157",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018D",
+      "scalar": 917901,
+      "name": "VARIATION SELECTOR-158",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018E",
+      "scalar": 917902,
+      "name": "VARIATION SELECTOR-159",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E018F",
+      "scalar": 917903,
+      "name": "VARIATION SELECTOR-160",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0190",
+      "scalar": 917904,
+      "name": "VARIATION SELECTOR-161",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0191",
+      "scalar": 917905,
+      "name": "VARIATION SELECTOR-162",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0192",
+      "scalar": 917906,
+      "name": "VARIATION SELECTOR-163",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0193",
+      "scalar": 917907,
+      "name": "VARIATION SELECTOR-164",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0194",
+      "scalar": 917908,
+      "name": "VARIATION SELECTOR-165",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0195",
+      "scalar": 917909,
+      "name": "VARIATION SELECTOR-166",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0196",
+      "scalar": 917910,
+      "name": "VARIATION SELECTOR-167",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0197",
+      "scalar": 917911,
+      "name": "VARIATION SELECTOR-168",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0198",
+      "scalar": 917912,
+      "name": "VARIATION SELECTOR-169",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E0199",
+      "scalar": 917913,
+      "name": "VARIATION SELECTOR-170",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019A",
+      "scalar": 917914,
+      "name": "VARIATION SELECTOR-171",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019B",
+      "scalar": 917915,
+      "name": "VARIATION SELECTOR-172",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019C",
+      "scalar": 917916,
+      "name": "VARIATION SELECTOR-173",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019D",
+      "scalar": 917917,
+      "name": "VARIATION SELECTOR-174",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019E",
+      "scalar": 917918,
+      "name": "VARIATION SELECTOR-175",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E019F",
+      "scalar": 917919,
+      "name": "VARIATION SELECTOR-176",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A0",
+      "scalar": 917920,
+      "name": "VARIATION SELECTOR-177",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A1",
+      "scalar": 917921,
+      "name": "VARIATION SELECTOR-178",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A2",
+      "scalar": 917922,
+      "name": "VARIATION SELECTOR-179",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A3",
+      "scalar": 917923,
+      "name": "VARIATION SELECTOR-180",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A4",
+      "scalar": 917924,
+      "name": "VARIATION SELECTOR-181",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A5",
+      "scalar": 917925,
+      "name": "VARIATION SELECTOR-182",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A6",
+      "scalar": 917926,
+      "name": "VARIATION SELECTOR-183",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A7",
+      "scalar": 917927,
+      "name": "VARIATION SELECTOR-184",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A8",
+      "scalar": 917928,
+      "name": "VARIATION SELECTOR-185",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01A9",
+      "scalar": 917929,
+      "name": "VARIATION SELECTOR-186",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AA",
+      "scalar": 917930,
+      "name": "VARIATION SELECTOR-187",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AB",
+      "scalar": 917931,
+      "name": "VARIATION SELECTOR-188",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AC",
+      "scalar": 917932,
+      "name": "VARIATION SELECTOR-189",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AD",
+      "scalar": 917933,
+      "name": "VARIATION SELECTOR-190",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AE",
+      "scalar": 917934,
+      "name": "VARIATION SELECTOR-191",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01AF",
+      "scalar": 917935,
+      "name": "VARIATION SELECTOR-192",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B0",
+      "scalar": 917936,
+      "name": "VARIATION SELECTOR-193",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B1",
+      "scalar": 917937,
+      "name": "VARIATION SELECTOR-194",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B2",
+      "scalar": 917938,
+      "name": "VARIATION SELECTOR-195",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B3",
+      "scalar": 917939,
+      "name": "VARIATION SELECTOR-196",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B4",
+      "scalar": 917940,
+      "name": "VARIATION SELECTOR-197",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B5",
+      "scalar": 917941,
+      "name": "VARIATION SELECTOR-198",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B6",
+      "scalar": 917942,
+      "name": "VARIATION SELECTOR-199",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B7",
+      "scalar": 917943,
+      "name": "VARIATION SELECTOR-200",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B8",
+      "scalar": 917944,
+      "name": "VARIATION SELECTOR-201",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01B9",
+      "scalar": 917945,
+      "name": "VARIATION SELECTOR-202",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BA",
+      "scalar": 917946,
+      "name": "VARIATION SELECTOR-203",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BB",
+      "scalar": 917947,
+      "name": "VARIATION SELECTOR-204",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BC",
+      "scalar": 917948,
+      "name": "VARIATION SELECTOR-205",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BD",
+      "scalar": 917949,
+      "name": "VARIATION SELECTOR-206",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BE",
+      "scalar": 917950,
+      "name": "VARIATION SELECTOR-207",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01BF",
+      "scalar": 917951,
+      "name": "VARIATION SELECTOR-208",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C0",
+      "scalar": 917952,
+      "name": "VARIATION SELECTOR-209",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C1",
+      "scalar": 917953,
+      "name": "VARIATION SELECTOR-210",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C2",
+      "scalar": 917954,
+      "name": "VARIATION SELECTOR-211",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C3",
+      "scalar": 917955,
+      "name": "VARIATION SELECTOR-212",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C4",
+      "scalar": 917956,
+      "name": "VARIATION SELECTOR-213",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C5",
+      "scalar": 917957,
+      "name": "VARIATION SELECTOR-214",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C6",
+      "scalar": 917958,
+      "name": "VARIATION SELECTOR-215",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C7",
+      "scalar": 917959,
+      "name": "VARIATION SELECTOR-216",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C8",
+      "scalar": 917960,
+      "name": "VARIATION SELECTOR-217",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01C9",
+      "scalar": 917961,
+      "name": "VARIATION SELECTOR-218",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CA",
+      "scalar": 917962,
+      "name": "VARIATION SELECTOR-219",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CB",
+      "scalar": 917963,
+      "name": "VARIATION SELECTOR-220",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CC",
+      "scalar": 917964,
+      "name": "VARIATION SELECTOR-221",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CD",
+      "scalar": 917965,
+      "name": "VARIATION SELECTOR-222",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CE",
+      "scalar": 917966,
+      "name": "VARIATION SELECTOR-223",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01CF",
+      "scalar": 917967,
+      "name": "VARIATION SELECTOR-224",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D0",
+      "scalar": 917968,
+      "name": "VARIATION SELECTOR-225",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D1",
+      "scalar": 917969,
+      "name": "VARIATION SELECTOR-226",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D2",
+      "scalar": 917970,
+      "name": "VARIATION SELECTOR-227",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D3",
+      "scalar": 917971,
+      "name": "VARIATION SELECTOR-228",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D4",
+      "scalar": 917972,
+      "name": "VARIATION SELECTOR-229",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D5",
+      "scalar": 917973,
+      "name": "VARIATION SELECTOR-230",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D6",
+      "scalar": 917974,
+      "name": "VARIATION SELECTOR-231",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D7",
+      "scalar": 917975,
+      "name": "VARIATION SELECTOR-232",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D8",
+      "scalar": 917976,
+      "name": "VARIATION SELECTOR-233",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01D9",
+      "scalar": 917977,
+      "name": "VARIATION SELECTOR-234",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DA",
+      "scalar": 917978,
+      "name": "VARIATION SELECTOR-235",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DB",
+      "scalar": 917979,
+      "name": "VARIATION SELECTOR-236",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DC",
+      "scalar": 917980,
+      "name": "VARIATION SELECTOR-237",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DD",
+      "scalar": 917981,
+      "name": "VARIATION SELECTOR-238",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DE",
+      "scalar": 917982,
+      "name": "VARIATION SELECTOR-239",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01DF",
+      "scalar": 917983,
+      "name": "VARIATION SELECTOR-240",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E0",
+      "scalar": 917984,
+      "name": "VARIATION SELECTOR-241",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E1",
+      "scalar": 917985,
+      "name": "VARIATION SELECTOR-242",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E2",
+      "scalar": 917986,
+      "name": "VARIATION SELECTOR-243",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E3",
+      "scalar": 917987,
+      "name": "VARIATION SELECTOR-244",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E4",
+      "scalar": 917988,
+      "name": "VARIATION SELECTOR-245",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E5",
+      "scalar": 917989,
+      "name": "VARIATION SELECTOR-246",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E6",
+      "scalar": 917990,
+      "name": "VARIATION SELECTOR-247",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E7",
+      "scalar": 917991,
+      "name": "VARIATION SELECTOR-248",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E8",
+      "scalar": 917992,
+      "name": "VARIATION SELECTOR-249",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01E9",
+      "scalar": 917993,
+      "name": "VARIATION SELECTOR-250",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01EA",
+      "scalar": 917994,
+      "name": "VARIATION SELECTOR-251",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01EB",
+      "scalar": 917995,
+      "name": "VARIATION SELECTOR-252",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01EC",
+      "scalar": 917996,
+      "name": "VARIATION SELECTOR-253",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01ED",
+      "scalar": 917997,
+      "name": "VARIATION SELECTOR-254",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01EE",
+      "scalar": 917998,
+      "name": "VARIATION SELECTOR-255",
+      "class": "variation-selector"
+    },
+    {
+      "code_point": "U+E01EF",
+      "scalar": 917999,
+      "name": "VARIATION SELECTOR-256",
+      "class": "variation-selector"
+    }
+  ]
+}

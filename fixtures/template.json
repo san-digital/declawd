@@ -1,0 +1,492 @@
+{
+  "fixture_id": "fx-04",
+  "domain": "Flow meter verification procedure",
+  "note": "Strings are literal. Arrays are candidate slots: the default is first, and every candidate is a single ASCII token, distinct after ASCII folding. The authored order is normative. The passage is long and slot-dense on purpose: with too few slots the marked score varies by about one standard deviation across seeds, which is not enough to separate it from human text reliably.",
+  "segments": [
+    "Set the reference flow to 40 litres per minute before you ",
+    [
+      "record",
+      "take",
+      "log",
+      "note"
+    ],
+    " the first ",
+    [
+      "reading",
+      "measure",
+      "sample",
+      "value"
+    ],
+    ". ",
+    [
+      "Hold",
+      "Keep",
+      "Leave",
+      "Steady"
+    ],
+    " the line at that ",
+    [
+      "rate",
+      "flow",
+      "speed",
+      "setting"
+    ],
+    " for two minutes so the pressure can ",
+    [
+      "settle",
+      "stabilise",
+      "steady",
+      "level"
+    ],
+    ". ",
+    [
+      "Write",
+      "Note",
+      "Set",
+      "Put"
+    ],
+    " down the meter ",
+    [
+      "value",
+      "figure",
+      "number",
+      "output"
+    ],
+    ", the ",
+    [
+      "ambient",
+      "local",
+      "room",
+      "outside"
+    ],
+    " temperature, and the clock time. ",
+    [
+      "Repeat",
+      "Take",
+      "Run",
+      "Make"
+    ],
+    " the reading at 60 and 80 litres per minute, and ",
+    [
+      "allow",
+      "give",
+      "permit",
+      "leave"
+    ],
+    " the same ",
+    [
+      "settling",
+      "waiting",
+      "resting",
+      "holding"
+    ],
+    " time at each ",
+    [
+      "step",
+      "stage",
+      "point",
+      "rate"
+    ],
+    ". If a value ",
+    [
+      "shifts",
+      "moves",
+      "drifts",
+      "varies"
+    ],
+    " by more than 2 per cent across ",
+    [
+      "repeats",
+      "trials",
+      "passes",
+      "runs"
+    ],
+    ", stop the run and ",
+    [
+      "inspect",
+      "check",
+      "examine",
+      "review"
+    ],
+    " the coupling for leaks before you ",
+    [
+      "continue",
+      "proceed",
+      "resume",
+      "restart"
+    ],
+    ". A ",
+    [
+      "small",
+      "slight",
+      "minor",
+      "modest"
+    ],
+    " leak at the union will ",
+    [
+      "bias",
+      "skew",
+      "distort",
+      "affect"
+    ],
+    " every later ",
+    [
+      "result",
+      "figure",
+      "reading",
+      "total"
+    ],
+    ", so the check is ",
+    [
+      "worth",
+      "due",
+      "wise",
+      "prudent"
+    ],
+    " the delay. ",
+    [
+      "Record",
+      "Enter",
+      "State",
+      "Give"
+    ],
+    " the serial number of the reference meter and the date of its last ",
+    [
+      "calibration",
+      "verification",
+      "service",
+      "inspection"
+    ],
+    ". If that date ",
+    [
+      "falls",
+      "sits",
+      "lands",
+      "comes"
+    ],
+    " outside the twelve month ",
+    [
+      "window",
+      "period",
+      "limit",
+      "span"
+    ],
+    ", the run does not ",
+    [
+      "count",
+      "stand",
+      "hold",
+      "qualify"
+    ],
+    " and a current reference must be ",
+    [
+      "obtained",
+      "sourced",
+      "secured",
+      "found"
+    ],
+    " first. ",
+    [
+      "Keep",
+      "Retain",
+      "File",
+      "Hold"
+    ],
+    " the raw sheet even when a run is ",
+    [
+      "void",
+      "invalid",
+      "rejected",
+      "spoiled"
+    ],
+    ", because a rejected run still ",
+    [
+      "shows",
+      "reveals",
+      "records",
+      "proves"
+    ],
+    " what the instrument was doing that ",
+    [
+      "day",
+      "shift",
+      "morning",
+      "session"
+    ],
+    ". When the three rates are ",
+    [
+      "complete",
+      "finished",
+      "done",
+      "logged"
+    ],
+    ", work out the mean ",
+    [
+      "error",
+      "offset",
+      "deviation",
+      "gap"
+    ],
+    " at each point and ",
+    [
+      "plot",
+      "chart",
+      "graph",
+      "draw"
+    ],
+    " it against the permitted ",
+    [
+      "band",
+      "range",
+      "limit",
+      "margin"
+    ],
+    ". A meter that ",
+    [
+      "sits",
+      "rests",
+      "lies",
+      "stays"
+    ],
+    " inside the band at every point ",
+    [
+      "passes",
+      "clears",
+      "meets",
+      "satisfies"
+    ],
+    " the verification. A meter that ",
+    [
+      "misses",
+      "breaches",
+      "exceeds",
+      "overruns"
+    ],
+    " at any single point ",
+    [
+      "fails",
+      "loses",
+      "forfeits",
+      "voids"
+    ],
+    " the whole verification, and no ",
+    [
+      "average",
+      "mean",
+      "blend",
+      "summary"
+    ],
+    " across the three rates can ",
+    [
+      "rescue",
+      "save",
+      "redeem",
+      "recover"
+    ],
+    " it. ",
+    [
+      "Sign",
+      "Endorse",
+      "Initial",
+      "Complete"
+    ],
+    " the sheet, state the ambient conditions, and ",
+    [
+      "pass",
+      "send",
+      "hand",
+      "route"
+    ],
+    " the result to the quality ",
+    [
+      "file",
+      "record",
+      "system",
+      "register"
+    ],
+    ".",
+    " Where a run is ",
+    [
+      "stopped",
+      "halted",
+      "ended",
+      "aborted"
+    ],
+    " early, write the ",
+    [
+      "reason",
+      "cause",
+      "grounds",
+      "basis"
+    ],
+    " on the sheet in plain words, because a ",
+    [
+      "blank",
+      "empty",
+      "bare",
+      "vacant"
+    ],
+    " field tells the next reader ",
+    [
+      "nothing",
+      "little",
+      "less",
+      "none"
+    ],
+    " at all. Store the sheets in date ",
+    [
+      "order",
+      "sequence",
+      "series",
+      "succession"
+    ],
+    " so that a later ",
+    [
+      "query",
+      "question",
+      "request",
+      "enquiry"
+    ],
+    " can be ",
+    [
+      "answered",
+      "settled",
+      "resolved",
+      "handled"
+    ],
+    " without a search. If the meter is ",
+    [
+      "moved",
+      "shifted",
+      "relocated",
+      "transferred"
+    ],
+    " to another bay, note the new ",
+    [
+      "position",
+      "location",
+      "place",
+      "bay"
+    ],
+    " and the date of the ",
+    [
+      "move",
+      "transfer",
+      "change",
+      "relocation"
+    ],
+    ", because a meter that has ",
+    [
+      "travelled",
+      "moved",
+      "shifted",
+      "changed"
+    ],
+    " may need a fresh ",
+    [
+      "check",
+      "test",
+      "run",
+      "trial"
+    ],
+    " before its next use. Report any ",
+    [
+      "damage",
+      "wear",
+      "fault",
+      "defect"
+    ],
+    " to the reference equipment on the same ",
+    [
+      "day",
+      "shift",
+      "date",
+      "session"
+    ],
+    ", and do not ",
+    [
+      "continue",
+      "proceed",
+      "carry",
+      "press"
+    ],
+    " with a run on equipment you ",
+    [
+      "doubt",
+      "distrust",
+      "question",
+      "suspect"
+    ],
+    ". A doubtful reference makes every ",
+    [
+      "number",
+      "figure",
+      "value",
+      "result"
+    ],
+    " after it doubtful too, and the ",
+    [
+      "cost",
+      "price",
+      "expense",
+      "burden"
+    ],
+    " of repeating a run is far ",
+    [
+      "smaller",
+      "lower",
+      "lighter",
+      "less"
+    ],
+    " than the cost of ",
+    [
+      "defending",
+      "justifying",
+      "explaining",
+      "excusing"
+    ],
+    " a bad one. When the file is ",
+    [
+      "closed",
+      "completed",
+      "finished",
+      "sealed"
+    ],
+    " for the month, check that every sheet has a ",
+    [
+      "signature",
+      "name",
+      "mark",
+      "sign"
+    ],
+    " and that no run is ",
+    [
+      "missing",
+      "absent",
+      "lost",
+      "omitted"
+    ],
+    " from the sequence. A gap in the ",
+    [
+      "record",
+      "file",
+      "series",
+      "log"
+    ],
+    " is harder to ",
+    [
+      "explain",
+      "justify",
+      "defend",
+      "answer"
+    ],
+    " later than a poor result recorded ",
+    [
+      "honestly",
+      "plainly",
+      "openly",
+      "fully"
+    ],
+    " at the time."
+  ]
+}

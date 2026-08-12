@@ -1,0 +1,77 @@
+{
+  "schema": "declawd.release-manifest/v1",
+  "release": "v0.1.0-source-contract",
+  "source_revision": null,
+  "files": [
+    {
+      "path": "fixtures/c2pa/signed-fixture-manifest.json",
+      "byte_length": 1347,
+      "sha256": "c1cdcc3f675f0b9c5f0af536f4c1d26901bd697945cc82c1a5505a2a26e56472"
+    },
+    {
+      "path": "fixtures/c2pa/signed.jpg",
+      "byte_length": 43807,
+      "sha256": "5541aa5f2c528672384f21dcc58572b7b08b9ad3ac4f74ff725f5e39030f88b4"
+    },
+    {
+      "path": "fixtures/c2pa/signed.png",
+      "byte_length": 43254,
+      "sha256": "196608707415c78efa3f7a6aabfd3a13ea665ea339d4ad8287966cecac71499f"
+    },
+    {
+      "path": "fixtures/c2pa/source.jpg",
+      "byte_length": 773,
+      "sha256": "63efd85489e566b63c72f4e4981f324ad357af4e06457c7f3a7341ebb03b7e88"
+    },
+    {
+      "path": "fixtures/c2pa/source.png",
+      "byte_length": 221,
+      "sha256": "336ae39e925ef4c8fcfb2ec60e3b55bf654e1d1a185865c58538432651599913"
+    },
+    {
+      "path": "fixtures/profile-v1.json",
+      "byte_length": 555,
+      "sha256": "4dde7f057b7d29a8846cd75043321126f92c1662a90d8a039d2696b6b28fba39"
+    },
+    {
+      "path": "reports/calibration-report-v1.json",
+      "byte_length": 937,
+      "sha256": "702a3a98677ed98c2f41b020305e52d49771698610657a9b204057cc4be72d4a"
+    },
+    {
+      "path": "reports/evaluation-report-v1.json",
+      "byte_length": 2472,
+      "sha256": "926fcb9c5351a504e225f8d1208b8833909550c0e086564677e62856ac399cfc"
+    },
+    {
+      "path": "spec/report-v1.schema.json",
+      "byte_length": 3774,
+      "sha256": "2da8f8b5e84dad644df6802b42855502d8f1db2dc020e171d7977168081bd944"
+    },
+    {
+      "path": "spec/unicode-registry-v1.json",
+      "byte_length": 56852,
+      "sha256": "0ebb640cf163805a5b47ff040fe1b569126522a027e4ee92fba105c132dc63d3"
+    },
+    {
+      "path": "vectors/controlled-removal-v1.json",
+      "byte_length": 7455,
+      "sha256": "5b3c2bd2d477479a73c182b30a2db228a4a7b6a3e435eff28679d5d085dbfc73"
+    },
+    {
+      "path": "vectors/report-v1.json",
+      "byte_length": 867,
+      "sha256": "4faf06dadfd8893bca4964d425169f29aafa7aae0d98cbf8e9f59a209a0ba51d"
+    },
+    {
+      "path": "vectors/scoring-v1.json",
+      "byte_length": 6378,
+      "sha256": "239532206448f41e04a136949e2b23391c764c0d9e60dfc5ae06af54bda09456"
+    },
+    {
+      "path": "vectors/unicode-v1.json",
+      "byte_length": 8164,
+      "sha256": "543aa68bc703f0a7bf104791c401b6d16154c1dc1e2d3c51df32b457d40efb77"
+    }
+  ]
+}

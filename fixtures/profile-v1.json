@@ -1,0 +1,17 @@
+{
+  "calibration_report_sha256": "702a3a98677ed98c2f41b020305e52d49771698610657a9b204057cc4be72d4a",
+  "domain_separator": "declawd/v1/green",
+  "gamma": {
+    "denominator": 4,
+    "numerator": 1
+  },
+  "min_effective_tokens": 120,
+  "profile_id": "declawd-v1",
+  "registration_sha256": "82dfb1128450d73970e812637a7be307901d7cdd66b53660c6eef83cb8e63d97",
+  "seed_hex": "3af0a69fbe7c97fb6c73d2c96d7824d26782d36b6e5b6379eb0886382ce39164",
+  "threshold": {
+    "denominator": 1,
+    "numerator": 1.8
+  },
+  "tokeniser_pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+}

@@ -1,0 +1,37 @@
+{
+  "calibration_corpus": {
+    "authors": [
+      "Adam Smith",
+      "Benjamin Franklin",
+      "Charles Darwin",
+      "David Hume",
+      "Henry David Thoreau",
+      "John Stuart Mill",
+      "Michael Faraday",
+      "Thorstein Veblen"
+    ],
+    "crossings": 1,
+    "max_z": 2.25,
+    "passages": 96,
+    "rate": 0.0104,
+    "usable": 96,
+    "wilson_95": [
+      0.0018,
+      0.0567
+    ]
+  },
+  "control_fixture": {
+    "effective_tokens": 359,
+    "z": -0.21
+  },
+  "marked_fixture": {
+    "detected": true,
+    "effective_tokens": 358,
+    "z": 2.99
+  },
+  "min_effective_tokens": 120,
+  "note_on_threshold": "Chosen from the human calibration corpus alone. Whether the marked fixture clears it is an outcome, not a constraint.",
+  "registration_sha256": "82dfb1128450d73970e812637a7be307901d7cdd66b53660c6eef83cb8e63d97",
+  "seed_hex": "3af0a69fbe7c97fb6c73d2c96d7824d26782d36b6e5b6379eb0886382ce39164",
+  "threshold": 1.8
+}

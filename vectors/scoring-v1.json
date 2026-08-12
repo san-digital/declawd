@@ -1,0 +1,99 @@
+{
+  "profile": {
+    "profile_id": "declawd-v1",
+    "seed_hex": "3af0a69fbe7c97fb6c73d2c96d7824d26782d36b6e5b6379eb0886382ce39164",
+    "domain_separator": "declawd/v1/green",
+    "gamma": {
+      "denominator": 4,
+      "numerator": 1
+    },
+    "threshold": {
+      "denominator": 1,
+      "numerator": 1.8
+    },
+    "min_effective_tokens": 120,
+    "tokeniser_pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  },
+  "vectors": [
+    {
+      "text": "",
+      "raw": 0,
+      "effective": 0,
+      "green": 0,
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "text": "a",
+      "raw": 1,
+      "effective": 1,
+      "green": 1,
+      "verdict": "insufficient text",
+      "z": 1.7320508075688774
+    },
+    {
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "raw": 9,
+      "effective": 9,
+      "green": 3,
+      "verdict": "insufficient text",
+      "z": 0.5773502691896257
+    },
+    {
+      "text": "spam spam spam spam spam",
+      "raw": 5,
+      "effective": 2,
+      "green": 0,
+      "verdict": "insufficient text",
+      "z": -0.8164965809277261
+    },
+    {
+      "text": "can't can’t naive naïve co-operate",
+      "raw": 8,
+      "effective": 8,
+      "green": 1,
+      "verdict": "insufficient text",
+      "z": -0.8164965809277261
+    },
+    {
+      "text": "ab​cd",
+      "raw": 2,
+      "effective": 2,
+      "green": 0,
+      "verdict": "insufficient text",
+      "z": -0.8164965809277261
+    },
+    {
+      "text": "a😀b",
+      "raw": 2,
+      "effective": 2,
+      "green": 1,
+      "verdict": "insufficient text",
+      "z": 0.8164965809277261
+    },
+    {
+      "text": "one\r\ntwo\tthree",
+      "raw": 3,
+      "effective": 3,
+      "green": 1,
+      "verdict": "insufficient text",
+      "z": 0.3333333333333333
+    },
+    {
+      "text": "Set the reference flow to 40 litres per minute before you record the first sample. Hold the line at that rate for two minutes so the pressure can steady. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same holding time at each step. If a value shifts by more than 2 per cent across passes, stop the run and inspect the coupling for leaks before you restart. A slight leak at the union will skew every later total, so the check is due the delay. Give the serial number of the reference meter and the date of its last calibration. If that date falls outside the twelve month window, the run does not qualify and a current reference must be obtained first. Keep the raw sheet even when a run is spoiled, because a rejected run still proves what the instrument was doing that morning. When the three rates are complete, work out the mean gap at each point and plot it against the permitted band. A meter that lies inside the band at every point passes the verification. A meter that misses at any single point loses the whole verification, and no average across the three rates can save it. Sign the sheet, state the ambient conditions, and hand the result to the quality file. Where a run is aborted early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be handled without a search. If the meter is shifted to another bay, note the new position and the date of the move, because a meter that has travelled may need a fresh check before its next use. Report any damage to the reference equipment on the same day, and do not carry with a run on equipment you question. A doubtful reference makes every number after it doubtful too, and the cost of repeating a run is far less than the cost of defending a bad one. When the file is closed for the month, check that every sheet has a name and that no run is missing from the sequence. A gap in the file is harder to explain later than a poor result recorded honestly at the time.",
+      "raw": 398,
+      "effective": 358,
+      "green": 114,
+      "verdict": "above threshold",
+      "z": 2.9903631687170313
+    },
+    {
+      "text": "Set the reference flow to 40 litres per minute before you record the first reading. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Repeat the reading at 60 and 80 litres per minute, and allow the same settling time at each step. If a value shifts by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A small leak at the union will bias every later result, so the check is worth the delay. Record the serial number of the reference meter and the date of its last calibration. If that date falls outside the twelve month window, the run does not count and a current reference must be obtained first. Keep the raw sheet even when a run is void, because a rejected run still shows what the instrument was doing that day. When the three rates are complete, work out the mean error at each point and plot it against the permitted band. A meter that sits inside the band at every point passes the verification. A meter that misses at any single point fails the whole verification, and no average across the three rates can rescue it. Sign the sheet, state the ambient conditions, and pass the result to the quality file. Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be answered without a search. If the meter is moved to another bay, note the new position and the date of the move, because a meter that has travelled may need a fresh check before its next use. Report any damage to the reference equipment on the same day, and do not continue with a run on equipment you doubt. A doubtful reference makes every number after it doubtful too, and the cost of repeating a run is far smaller than the cost of defending a bad one. When the file is closed for the month, check that every sheet has a signature and that no run is missing from the sequence. A gap in the record is harder to explain later than a poor result recorded honestly at the time.",
+      "raw": 398,
+      "effective": 359,
+      "green": 88,
+      "verdict": "below threshold",
+      "z": -0.21329967236760183
+    }
+  ]
+}

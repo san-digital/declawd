@@ -1,0 +1,61 @@
+[package]
+name = "declawd"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Inspect and selectively remove known text and C2PA carriers for education"
+license = "Apache-2.0"
+repository = "https://github.com/san-digital/declawd"
+readme = "README.md"
+keywords = ["c2pa", "unicode", "provenance", "watermark"]
+categories = ["command-line-utilities", "multimedia::images"]
+include = [
+  "/src/**",
+  "/tests/**",
+  "/reference/**",
+  "/fixtures/**",
+  "/reports/**",
+  "/spec/**",
+  "/vectors/**",
+  "/scripts/**",
+  "/Cargo.toml",
+  "/Cargo.lock",
+  "/about.toml",
+  "/rust-toolchain.toml",
+  "/README.md",
+  "/LICENSE",
+  "/NOTICE",
+  "/ETHICS.md",
+  "/SECURITY.md",
+  "/CONTRIBUTING.md",
+  "/THIRD_PARTY_LICENSES.txt",
+  "/release-manifest-v1.json",
+]
+
+[dependencies]
+clap = { version = "4.5.45", features = ["derive"] }
+c2pa = { version = "=0.90.12", default-features = false, features = ["file_io", "rust_native_crypto"] }
+crc32fast = "1.5.0"
+hex = "0.4.3"
+img-parts = "0.4.0"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.142"
+sha2 = "0.10.9"
+tempfile = "3.20.0"
+thiserror = "2.0.14"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.189"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61.2", features = ["Win32_Storage_FileSystem"] }
+
+[dev-dependencies]
+assert_cmd = "2.0.17"
+base64 = "0.22.1"
+jsonschema = { version = "0.49.9", default-features = false }
+predicates = "3.1.3"
+
+[profile.release]
+lto = "thin"
+strip = "symbols"

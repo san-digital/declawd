@@ -1,0 +1,34 @@
+{
+  "schema": "declawd.report/v1",
+  "tool_version": "0.1.0",
+  "operation": "inspect",
+  "changed": false,
+  "input": {
+    "media_type": "text/plain; charset=utf-8",
+    "byte_length": 5,
+    "sha256": "3909b52c71edaa90ac1f6c969aafba799abf9a85e15c12e8c11a53ae43641cc3"
+  },
+  "findings": [
+    {
+      "carrier": "unicode",
+      "class": "zero-width",
+      "code_point": "U+200B",
+      "name": "ZERO WIDTH SPACE",
+      "scalar_offset": 1,
+      "line": 1,
+      "column": 2,
+      "disposition": "reported"
+    }
+  ],
+  "requested_actions": [],
+  "completed_actions": [],
+  "verification": {},
+  "untested_channels": [
+    "statistical token-choice watermarks",
+    "pixel-level or perceptual watermarks"
+  ],
+  "warnings": [
+    "A finding is not evidence that AI was involved.",
+    "This tool does not detect or certify removal of Claude's watermark."
+  ]
+}

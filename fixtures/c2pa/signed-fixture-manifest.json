@@ -1,0 +1,40 @@
+{
+  "schema": "declawd.c2pa-fixtures/v1",
+  "generated_at": "2026-08-12T20:01:00+01:00",
+  "generator": {
+    "name": "c2patool",
+    "version": "0.27.11",
+    "signer": "built-in development test certificate",
+    "trust_scope": "The signature and hard binding validate, but the test certificate is deliberately not on a public trust list."
+  },
+  "oracle": {
+    "name": "c2patool",
+    "version": "0.27.12"
+  },
+  "cases": [
+    {
+      "id": "test-signed-jpeg",
+      "media_type": "image/jpeg",
+      "source_path": "fixtures/c2pa/source.jpg",
+      "source_sha256": "63efd85489e566b63c72f4e4981f324ad357af4e06457c7f3a7341ebb03b7e88",
+      "path": "fixtures/c2pa/signed.jpg",
+      "sha256": "5541aa5f2c528672384f21dcc58572b7b08b9ad3ac4f74ff725f5e39030f88b4",
+      "required_binding_codes": [
+        "claimSignature.validated",
+        "assertion.dataHash.match"
+      ]
+    },
+    {
+      "id": "test-signed-png",
+      "media_type": "image/png",
+      "source_path": "fixtures/c2pa/source.png",
+      "source_sha256": "336ae39e925ef4c8fcfb2ec60e3b55bf654e1d1a185865c58538432651599913",
+      "path": "fixtures/c2pa/signed.png",
+      "sha256": "196608707415c78efa3f7a6aabfd3a13ea665ea339d4ad8287966cecac71499f",
+      "required_binding_codes": [
+        "claimSignature.validated",
+        "assertion.dataHash.match"
+      ]
+    }
+  ]
+}

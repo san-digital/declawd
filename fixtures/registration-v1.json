@@ -1,0 +1,59 @@
+{
+  "analysis": {
+    "corpus_split": "by author; no evaluation author appears in calibration",
+    "interval": "Wilson, 95 per cent",
+    "selection": "all results reported; no example selected",
+    "unit": "one verdict per passage"
+  },
+  "canonicaliser": {
+    "confusables": {
+      "а": "a",
+      "е": "e",
+      "о": "o",
+      "р": "p",
+      "с": "c"
+    },
+    "zero_width": "U+200B"
+  },
+  "corpus_sha256": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+  "domain_separator": "declawd/v1/green",
+  "gamma": {
+    "denominator": 4,
+    "numerator": 1
+  },
+  "note": "Committed before the seed was sampled. Targets are not revised after scoring.",
+  "perturbations": {
+    "del": {
+      "offset": 0,
+      "word": "clock"
+    },
+    "look": {
+      "offset": 2,
+      "replace_with": "а",
+      "word": "quality"
+    },
+    "many": {
+      "every_nth_token": 10,
+      "method": "confusable substitution of the first eligible character in every tenth scored token",
+      "rationale": "A token editing rate of about 0.1, which is the rate the NDSS 2026 character-level attack paper uses. One character changes almost nothing; this is what an actual attack looks like."
+    },
+    "zw": {
+      "insert": "​",
+      "offset": 4,
+      "word": "pressure"
+    }
+  },
+  "perturbations_sha256": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+  "registration_id": "declawd-v1",
+  "rewrite_sha256": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+  "targets": {
+    "false_positive_rate_at_or_below": 0.02,
+    "marked_fixture_must_be_detected": true,
+    "min_effective_tokens": 120
+  },
+  "template_sha256": "9b84e2d6325188017017d07fdfed50b74515931093771f823492c34b23fc4316",
+  "tokeniser": {
+    "folding": "ASCII A-Z to a-z",
+    "pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  }
+}
