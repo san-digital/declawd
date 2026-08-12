@@ -55,7 +55,11 @@ def main() -> int:
     destination.write_text(
         render(args.release, args.source_revision), encoding="utf-8"
     )
-    print(f"wrote {destination.relative_to(ROOT)}")
+    try:
+        label = destination.relative_to(ROOT)
+    except ValueError:
+        label = destination
+    print(f"wrote {label}")
     return 0
 
 
