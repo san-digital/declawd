@@ -34,6 +34,11 @@ jobs:
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
+      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+        with:
+          tool: cargo-cyclonedx@0.5.9
+      - name: Generate and validate the reproducible SBOM
+        run: ./scripts/check-sbom.sh
       - run: cargo build --locked
       - run: cargo install c2patool --version 0.27.12 --locked
       - run: ./scripts/check-c2patool-fixtures.sh
@@ -111,6 +116,9 @@ jobs:
         with:
           path: dist
           merge-multiple: true
+      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+        with:
+          tool: cargo-cyclonedx@0.5.9
       - name: Add immutable source-contract manifest
         shell: bash
         run: |
@@ -120,6 +128,12 @@ jobs:
             --source-revision "$(git rev-parse HEAD)" \
             --output "dist/${contract}"
           (cd dist && shasum -a 256 "$contract" > "${contract}.sha256")
+      - name: Add reproducible CycloneDX SBOM
+        shell: bash
+        run: |
+          sbom="declawd-${GITHUB_REF_NAME}.cdx.json"
+          python3 scripts/generate-sbom.py --output "dist/${sbom}"
+          (cd dist && shasum -a 256 "$sbom" > "${sbom}.sha256")
       - name: Verify every release checksum
         shell: bash
         run: |

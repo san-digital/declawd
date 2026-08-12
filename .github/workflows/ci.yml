@@ -2,6 +2,7 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
@@ -46,6 +47,11 @@ jobs:
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
+      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+        with:
+          tool: cargo-cyclonedx@0.5.9
+      - name: Generate and validate the reproducible SBOM
+        run: ./scripts/check-sbom.sh
 
   c2patool-oracle:
     name: Linux c2patool oracle

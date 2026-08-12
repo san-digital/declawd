@@ -1,6 +1,6 @@
 {
   "schema": "declawd.release-manifest/v1",
-  "release": "v0.1.0-source-contract",
+  "release": "v0.1.1-source-contract",
   "source_revision": null,
   "files": [
     {

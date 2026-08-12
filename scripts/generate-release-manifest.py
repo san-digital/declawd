@@ -47,7 +47,7 @@ def render(release: str, source_revision: str | None) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--release", default="v0.1.0-source-contract")
+    parser.add_argument("--release", default="v0.1.1-source-contract")
     parser.add_argument("--source-revision")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()

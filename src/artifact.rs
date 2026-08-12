@@ -186,7 +186,7 @@ fn read_input(path: &Path) -> Result<InputData, ToolError> {
     if kind == MediaKind::Text {
         std::str::from_utf8(&bytes).map_err(|error| {
             ToolError::Input(format!(
-                "{} is not valid UTF-8 (UTF-16 is not supported): {error}",
+                "{} is not valid UTF-8 (UTF-16 with a BOM is not supported): {error}",
                 path.display()
             ))
         })?;
@@ -424,8 +424,7 @@ fn ensure_distinct_paths(input: &Path, output: &Path) -> Result<(), ToolError> {
         ));
     }
     if let Ok(canonical_input) = input.canonicalize()
-        && let Some(parent) = output.parent()
-        && let Ok(canonical_parent) = parent.canonicalize()
+        && let Ok(canonical_parent) = output_parent(output).canonicalize()
         && output.file_name().is_some()
         && canonical_input == canonical_parent.join(output.file_name().expect("checked"))
     {
@@ -443,7 +442,7 @@ fn ensure_output_available(output: &Path) -> Result<(), ToolError> {
             output.display()
         )));
     }
-    let parent = output.parent().unwrap_or_else(|| Path::new("."));
+    let parent = output_parent(output);
     if !parent.is_dir() {
         return Err(ToolError::Input(format!(
             "output directory does not exist: {}",
@@ -454,7 +453,7 @@ fn ensure_output_available(output: &Path) -> Result<(), ToolError> {
 }
 
 fn write_temporary(output: &Path, kind: MediaKind, bytes: &[u8]) -> Result<TempPath, ToolError> {
-    let parent = output.parent().unwrap_or_else(|| Path::new("."));
+    let parent = output_parent(output);
     let mut file = TempBuilder::new()
         .prefix(".declawd-")
         .suffix(kind.suffix())
@@ -475,10 +474,15 @@ fn persist(temporary: TempPath, output: &Path) -> Result<(), ToolError> {
             error.error
         ))
     })?;
-    if let Some(parent) = output.parent() {
-        sync_directory(parent)?;
-    }
+    sync_directory(output_parent(output))?;
     Ok(())
+}
+
+fn output_parent(output: &Path) -> &Path {
+    match output.parent() {
+        Some(parent) if !parent.as_os_str().is_empty() => parent,
+        _ => Path::new("."),
+    }
 }
 
 fn sync_temporary(temporary: &Path) -> Result<(), ToolError> {

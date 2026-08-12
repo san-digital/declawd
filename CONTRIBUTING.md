@@ -14,6 +14,8 @@ cargo test --all-targets
 ./scripts/check-security-advisories.sh
 ./scripts/check-third-party-licences.sh
 ./scripts/check-c2patool-fixtures.sh
+# With cargo-cyclonedx 0.5.9 installed:
+./scripts/check-sbom.sh
 ```
 
 Do not add claims of compatibility with an undisclosed production watermark
