@@ -1,0 +1,23 @@
+.github/workflows/release.yml
+  s_f74dbb26d88677::t_bbf35557710461 18
+Cargo.toml
+  s_f74dbb26d88677::t_bbf35557710461 15
+.github/workflows/ci.yml
+  s_f74dbb26d88677::t_bbf35557710461 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "df0136364180fd6f70b7901001b2a208e9368b62",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
