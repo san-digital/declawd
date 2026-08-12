@@ -44,8 +44,10 @@ enumerated in [`spec/unicode-registry-v1.json`](spec/unicode-registry-v1.json).
 
 ### Input and output contract
 
-- Text must be valid UTF-8 and is limited to 10 MiB. UTF-16 and invalid UTF-8
-  fail. A UTF-8 BOM, CRLF, lone CR, LF and tabs are otherwise preserved exactly.
+- Text must be valid UTF-8 and is limited to 10 MiB. UTF-16 with a BOM and
+  other invalid UTF-8 fail. BOM-less UTF-16 can be byte-wise valid UTF-8 and is
+  not inferred from NUL patterns; callers must supply correctly labelled UTF-8
+  input. A UTF-8 BOM, CRLF, lone CR, LF and tabs are otherwise preserved exactly.
 - Reports and clean operations are limited to 10,000 Unicode findings or
   changed scalars. Inputs exceeding that bound fail instead of truncating or
   allocating an unbounded report; split the input or narrow the selectors.
@@ -83,7 +85,7 @@ not tested. The accurate result is “embedded C2PA store removed”, not
 
 The SDK is pinned to `c2pa =0.90.12` with default and network features disabled;
 only `file_io` and `rust_native_crypto` are enabled. This same-day pre-release
-pin was reassessed on 12 August 2026 and retained for v0.1.0; upgrades must be
+pin was reassessed on 12 August 2026 and retained for v0.1.1; upgrades must be
 deliberate. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs`
 declares `MIT OR Apache-2.0`; this project elects Apache-2.0 and generates
 dependency notices with `cargo-about`.
@@ -118,7 +120,7 @@ Frozen artefacts:
 - calibration and evaluation reports;
 - cross-runtime scoring vectors; and
 - a machine-readable report schema, normative report vector and source-contract
-  release manifest; and
+  release manifest;
 - the six-substitution controlled-removal vector, including every cumulative
   score. Its original-passage offsets are 75, 175, 295, 371, 631 and 994; the
   final result is 358 effective contexts, 102 green and z =
@@ -150,6 +152,8 @@ cargo test --all-targets
 ./scripts/check-security-advisories.sh
 ./scripts/check-third-party-licences.sh
 ./scripts/check-c2patool-fixtures.sh
+# With cargo-cyclonedx 0.5.9 installed:
+./scripts/check-sbom.sh
 ```
 
 See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
@@ -157,19 +161,28 @@ See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
 ## Release verification
 
 Release archives include SHA-256 checksum files and GitHub build-provenance
-attestations. Verify them before running a downloaded binary:
+attestations. Each release also carries a checksummed, reproducible CycloneDX
+1.5 SBOM for the all-platform runtime and build-dependency graph; test-only
+development dependencies are excluded. Verify them before running a downloaded
+binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.1.0-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.1.1-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.1.0-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.1.1-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.1.0-<target>.zip.sha256
+sha256sum --check declawd-v0.1.1-<target>.zip.sha256
 
-gh attestation verify declawd-v0.1.0-<target>.tar.gz \
+# SBOM on Linux or Windows
+sha256sum --check declawd-v0.1.1.cdx.json.sha256
+
+# SBOM on macOS
+shasum -a 256 --check declawd-v0.1.1.cdx.json.sha256
+
+gh attestation verify declawd-v0.1.1-<target>.tar.gz \
   --repo san-digital/declawd
 ```
 

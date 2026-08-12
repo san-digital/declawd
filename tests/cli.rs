@@ -91,6 +91,62 @@ fn selective_text_cleaning_emits_report_and_never_overwrites() {
 }
 
 #[test]
+fn bare_output_filename_is_written_in_the_current_directory() {
+    let directory = tempdir().unwrap();
+    fs::write(directory.path().join("input.txt"), "a\u{200b}b").unwrap();
+
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .current_dir(directory.path())
+        .args([
+            "clean",
+            "text",
+            "input.txt",
+            "--output",
+            "output.txt",
+            "--remove",
+            "U+200B",
+        ])
+        .assert()
+        .success();
+
+    assert_eq!(
+        fs::read_to_string(directory.path().join("output.txt")).unwrap(),
+        "ab"
+    );
+}
+
+#[test]
+fn bare_input_and_dot_relative_output_alias_is_refused() {
+    let directory = tempdir().unwrap();
+    fs::write(directory.path().join("input.txt"), "plain text").unwrap();
+
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .current_dir(directory.path())
+        .args([
+            "clean",
+            "text",
+            "input.txt",
+            "--output",
+            "./input.txt",
+            "--remove",
+            "U+200B",
+        ])
+        .assert()
+        .failure()
+        .code(2)
+        .stderr(predicate::str::contains(
+            "input and output resolve to the same path",
+        ));
+
+    assert_eq!(
+        fs::read_to_string(directory.path().join("input.txt")).unwrap(),
+        "plain text"
+    );
+}
+
+#[test]
 fn text_no_op_requires_allow_empty_to_create_output() {
     let directory = tempdir().unwrap();
     let input = directory.path().join("input.txt");
@@ -160,6 +216,25 @@ fn invalid_utf8_utf16_and_selector_conflicts_exit_two() {
         .assert()
         .code(2)
         .stderr(predicate::str::contains("both removed and replaced"));
+}
+
+#[test]
+fn encoding_contract_distinguishes_bom_markers_from_valid_utf8_with_nuls() {
+    let directory = tempdir().unwrap();
+    let bomless = directory.path().join("bomless.txt");
+    fs::write(&bomless, [b'A', 0, b'B', 0]).unwrap();
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", bomless.to_str().unwrap()])
+        .assert()
+        .success();
+
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["clean", "text", "--help"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("UTF-16 with a BOM"));
 }
 
 #[test]

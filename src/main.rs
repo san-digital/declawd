@@ -58,7 +58,7 @@ enum CleanCommand {
 
 #[derive(Debug, Args)]
 struct CleanTextArgs {
-    /// UTF-8 input file. UTF-16 and invalid UTF-8 are refused.
+    /// UTF-8 input file. UTF-16 with a BOM and invalid UTF-8 are refused.
     input: PathBuf,
     /// New output path. Existing files are never overwritten.
     #[arg(long, short)]
