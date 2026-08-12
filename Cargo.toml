@@ -12,7 +12,7 @@ categories = ["command-line-utilities", "multimedia::images"]
 include = [
   "/src/**",
   "/tests/**",
-  "/reference/**",
+  "/reference/*.py",
   "/fixtures/**",
   "/reports/**",
   "/spec/**",
