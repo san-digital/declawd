@@ -1,0 +1,19 @@
+.github/workflows/release.yml
+  s_f74dbb26d88677::t_480448397747ac 116,120-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "1490c009c3b51c61c94f8249a7a19211cf3b2f98",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
