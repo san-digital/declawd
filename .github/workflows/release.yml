@@ -113,12 +113,12 @@ jobs:
       - name: Add immutable source-contract manifest
         shell: bash
         run: |
+          contract="declawd-${GITHUB_REF_NAME}-source-contract.json"
           python3 scripts/generate-release-manifest.py \
             --release "$GITHUB_REF_NAME" \
             --source-revision "$(git rev-parse HEAD)" \
-            --output "dist/declawd-${GITHUB_REF_NAME}-source-contract.json"
-          shasum -a 256 "dist/declawd-${GITHUB_REF_NAME}-source-contract.json" \
-            > "dist/declawd-${GITHUB_REF_NAME}-source-contract.json.sha256"
+            --output "dist/${contract}"
+          (cd dist && shasum -a 256 "$contract" > "${contract}.sha256")
       - name: Verify every release checksum
         shell: bash
         run: |
