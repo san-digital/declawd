@@ -7,6 +7,7 @@ from collections import Counter, deque
 import hashlib
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
 
@@ -219,7 +220,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("trace", type=Path)
     args = parser.parse_args()
-    print(json.dumps(load_and_score(args.trace), indent=2) + "\n", end="")
+    report = (json.dumps(load_and_score(args.trace), indent=2) + "\n").encode("utf-8")
+    sys.stdout.buffer.write(report)
     return 0
 
 

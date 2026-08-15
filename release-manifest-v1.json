@@ -140,8 +140,8 @@
     },
     {
       "path": "reference/synthid_reference.py",
-      "byte_length": 8732,
-      "sha256": "c84dbcf92cd7c48b62473038ee6d3e81bc3846770ca9f31fa849871f944c3ba7"
+      "byte_length": 8791,
+      "sha256": "10a75912e6eb79ea28c768c6b70e853669767494c2e8f8e72729465fb3c8ccc2"
     },
     {
       "path": "reference/verify_synthid_upstream.py",
