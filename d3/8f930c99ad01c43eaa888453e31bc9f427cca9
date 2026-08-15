@@ -1,0 +1,186 @@
+fixtures/synthid/distribution-v1.json
+  s_f74dbb26d88677::t_173cfa850f2d47 6
+  s_f74dbb26d88677::t_02f30f82a8b805 1-5,7-27
+fixtures/synthid/gpt2-trace-v1.json
+  s_f74dbb26d88677::t_2ddaa91a4c5426 1-13,34
+  s_f74dbb26d88677::t_59607852a4d42a 14-33
+scripts/generate-release-manifest.py
+  s_f74dbb26d88677::t_2ddaa91a4c5426 27
+  s_f74dbb26d88677::t_3765ba7ba00198 13,36-41
+  s_f74dbb26d88677::t_db54bb2a86701a 47
+  s_f74dbb26d88677::t_f531c16081a87d 14-16,23-26,28-33,43-46
+  s_f74dbb26d88677::t_e88eaa63bb7fc2 76
+spec/synthid-trace-v1.schema.json
+  s_f74dbb26d88677::t_02f30f82a8b805 1-4,75-76,78-79,101-105,107-108
+  s_f74dbb26d88677::t_2b865ec0ab9ca6 5-28,49-51,56,59-74,106
+  s_f74dbb26d88677::t_a1ffe4f16c08e5 29-47
+  s_f74dbb26d88677::t_ddae21b3ad2e12 48,52-55,57-58,77,80-100
+reference/synthid_model_runner.py
+  s_f74dbb26d88677::t_aded4686634f1d 69
+  s_f74dbb26d88677::t_0c60221d5bf2b7 104,108
+  s_f74dbb26d88677::t_59607852a4d42a 131-134
+  s_f74dbb26d88677::t_991412688e67e2 11,30,33-41,68
+  s_f74dbb26d88677::t_61bceb735b2861 1-10,12-29,31-32,42-67,70-103,105-107,109-117,129-130,135-140
+  s_f74dbb26d88677::t_200c8fe307c09a 118-128
+src/synthid.rs
+  s_f74dbb26d88677::t_6d62b20ea02893 22-23,27,64-67,71-85,93-96,98-99,140-141,145-148,150-151,164-167,169-170,198-202,206,213,267-268,272-275,277-278,294,296,299-314,320,322-323,327-336
+  s_f74dbb26d88677::t_a35b646ab379d2 1-6,8-18,20-21,28-36,39-63,68-70,86-92,97,100-139,142-144,149,152-155,157-163,168,171-197,203,205,207-212,214,216,226-259,264-266,269-271,276,279-282,284-293,295,297-298,324-326,337-405,407-485,487-503
+  s_f74dbb26d88677::t_49b9e6541ff0c9 316,318
+  s_f74dbb26d88677::t_c09397066407b3 24-26,156,283
+  s_f74dbb26d88677::t_7b94cc36912e1f 7,19,204,215,217-225,315,317,319,321
+  s_f74dbb26d88677::t_ea39d1bb559759 37-38,260-263,406,486
+fixtures/synthid/trace-prepared-v1.json
+  s_f74dbb26d88677::t_02477678e41cee 1-2,14,58
+  s_f74dbb26d88677::t_e5c929ccd406f7 3-13,18-21,23-24
+  s_f74dbb26d88677::t_9e7eed63f58024 15-17,22,25-57
+fixtures/synthid/gpt2-input-v1.json
+  s_f74dbb26d88677::t_61bceb735b2861 1-7
+SYNTHID_THIRD_PARTY_NOTICES.md
+  s_f74dbb26d88677::t_e24184959e5ebc 1-16
+reference/synthid_reference.py
+  s_f74dbb26d88677::t_61bceb735b2861 1-5,7-14,16-19,21-30,35-87,92-97,102-105,126-128,132,134-139,141-142,144-151,153,156,161-179,182-184,189,192-199,201-227
+  s_f74dbb26d88677::t_c09397066407b3 31-33,200
+  s_f74dbb26d88677::t_ffa777be83bd73 15,20,34,89-91,98-101,106-119,129-131,133,140,152,180-181,185-188,190-191
+  s_f74dbb26d88677::t_b47f234b2ce292 88
+  s_f74dbb26d88677::t_49b9e6541ff0c9 120-125
+  s_f74dbb26d88677::t_06e7869d183b7e 6,143,154-155,157-160
+CONTRIBUTING.md
+  s_f74dbb26d88677::t_af5015dabf7e45 18
+  s_f74dbb26d88677::t_ce612a3021d942 17,20-21,26-29
+src/lib.rs
+  s_f74dbb26d88677::t_a35b646ab379d2 3
+.gitattributes
+  s_f74dbb26d88677::t_49e77cd86cc586 5
+spec/synthid-v1.md
+  s_f74dbb26d88677::t_db54bb2a86701a 1-76
+  s_f74dbb26d88677::t_4aa4efae075147 77-90
+evidence/synthid/CC-BY-4.0.txt
+  s_f74dbb26d88677::t_49e77cd86cc586 1-9
+NOTICE
+  s_f74dbb26d88677::t_49e77cd86cc586 13-18
+spec/synthid-score-v1.schema.json
+  s_f74dbb26d88677::t_4ec5aa298de9e5 82,93
+  s_f74dbb26d88677::t_a1ffe4f16c08e5 29-47
+  s_f74dbb26d88677::t_02f30f82a8b805 1-23,59-60,72-81,94
+  s_f74dbb26d88677::t_ddae21b3ad2e12 24-28,48-58,61-71,83-92
+scripts/generate-synthid-bundle.py
+  s_f74dbb26d88677::t_6148a85e919e9a 1-14,16,18-24,26-33,35-36,38-41,43-88
+  s_f74dbb26d88677::t_e24184959e5ebc 17
+  s_f74dbb26d88677::t_d866ceaf4d8e92 34,37
+  s_f74dbb26d88677::t_2ddaa91a4c5426 25
+  s_f74dbb26d88677::t_26b804551a2c1c 15
+  s_f74dbb26d88677::t_db54bb2a86701a 42
+reference/test_synthid.py
+  s_f74dbb26d88677::t_50b053927e11e2 117-124
+  s_f74dbb26d88677::t_173cfa850f2d47 72-91
+  s_f74dbb26d88677::t_f4f892a102b8be 1-71,92-116,125-127
+scripts/generate-python-sbom.py
+  s_f74dbb26d88677::t_e24184959e5ebc 103
+  s_f74dbb26d88677::t_4aa4efae075147 116-130
+  s_f74dbb26d88677::t_107ed7fa769ac3 1-102,104-115,131-196
+README.md
+  s_f74dbb26d88677::t_8d435c8911521f 240-241,247,249
+  s_f74dbb26d88677::t_7d237dc9418c64 143
+  s_f74dbb26d88677::t_af5015dabf7e45 211-212
+  s_f74dbb26d88677::t_e6f397f5db6990 11-13,15,30-31,82-131,210,214-215,230,233,236,239,244-246,262-264
+  s_f74dbb26d88677::t_2d2ec8f00ddf38 132
+evidence/synthid/README.md
+  s_f74dbb26d88677::t_49e77cd86cc586 1-23
+fixtures/synthid/trace-short-v1.json
+  s_f74dbb26d88677::t_02477678e41cee 1-2,14,34
+  s_f74dbb26d88677::t_69bbf35e71e576 3-13,15-33
+fixtures/synthid/gemma-2b-it-input-v1.json
+  s_f74dbb26d88677::t_61bceb735b2861 1-7
+fixtures/synthid/profile-v1.json
+  s_f74dbb26d88677::t_02f30f82a8b805 1-41
+src/main.rs
+  s_f74dbb26d88677::t_4c03e410086894 15-16
+  s_f74dbb26d88677::t_e0f3d18a8ca151 7,200-203,206
+  s_f74dbb26d88677::t_06750805b91347 29-30,62-94,171-199,204-205,207-222,225-226
+  s_f74dbb26d88677::t_076aaf5a4cccbd 224
+reference/synthid-runner-requirements.txt
+  s_f74dbb26d88677::t_e24184959e5ebc 2
+  s_f74dbb26d88677::t_61bceb735b2861 1,3-4
+fixtures/synthid/environment-v1.json
+  s_f74dbb26d88677::t_9e7eed63f58024 1-31
+reference/sbom-tool-requirements.txt
+  s_f74dbb26d88677::t_107ed7fa769ac3 1-2
+scripts/check-python-sbom.sh
+  s_f74dbb26d88677::t_107ed7fa769ac3 1-20
+Cargo.toml
+  s_f74dbb26d88677::t_f531c16081a87d 3,18
+  s_f74dbb26d88677::t_c78cfa609bcc1a 6
+  s_f74dbb26d88677::t_e24184959e5ebc 16,34
+reference/synthid-runner-install-requirements.txt
+  s_f74dbb26d88677::t_0c60221d5bf2b7 1-2
+.github/workflows/release.yml
+  s_f74dbb26d88677::t_ef6b7c290715e1 60
+  s_f74dbb26d88677::t_8a4e885d8c6c93 58-59,61-64
+  s_f74dbb26d88677::t_0b356af6ff4166 140-141
+  s_f74dbb26d88677::t_328a558e4267ce 40-41,44-49,94,108,130-132,157-168
+SECURITY.md
+  s_f74dbb26d88677::t_ce612a3021d942 17-21
+ETHICS.md
+  s_f74dbb26d88677::t_e6f397f5db6990 15-20
+spec/synthid-distribution-v1.schema.json
+  s_f74dbb26d88677::t_02f30f82a8b805 1-6,8-17,19-20,23-35,38-46,49-63
+  s_f74dbb26d88677::t_173cfa850f2d47 7,18,21-22,36-37,47-48
+fixtures/synthid/trace-eos-v1.json
+  s_f74dbb26d88677::t_02477678e41cee 1-2,14,34
+  s_f74dbb26d88677::t_69bbf35e71e576 3-13,15-33
+scripts/check-synthid-bundle.sh
+  s_f74dbb26d88677::t_6148a85e919e9a 1-23
+scripts/check-synthid-gpt2.sh
+  s_f74dbb26d88677::t_2ddaa91a4c5426 1-20,31-35
+  s_f74dbb26d88677::t_4c59829280afe9 21-30
+scripts/generate-sbom.py
+  s_f74dbb26d88677::t_4aa4efae075147 155-168
+spec/synthid-profile-v1.schema.json
+  s_f74dbb26d88677::t_02f30f82a8b805 1-85
+scripts/check-sboms-clean-checkouts.sh
+  s_f74dbb26d88677::t_e87e432609bc5c 1-34
+.github/workflows/ci.yml
+  s_f74dbb26d88677::t_328a558e4267ce 38-40,56-57,60-65
+tests/synthid.rs
+  s_f74dbb26d88677::t_bdee8e9c2de343 295-299,324
+  s_f74dbb26d88677::t_2b865ec0ab9ca6 20-21,27-28,78-80,82-87,90-96,148-153,159-165
+  s_f74dbb26d88677::t_2ba880017966bc 147,154,174
+  s_f74dbb26d88677::t_59dbf2d4393279 69-74,202-207,209-210
+  s_f74dbb26d88677::t_0084b3f2a119eb 81
+  s_f74dbb26d88677::t_49b9e6541ff0c9 137-140,356-375
+  s_f74dbb26d88677::t_1d5264504334d9 257-294,300-323,325-332,334-355,376
+  s_f74dbb26d88677::t_dd7462a54707a5 1-19,22-26,29-36,77,88-89,97-110,142-146,155-158,166-173,175-201,208,211-256
+  s_f74dbb26d88677::t_7d237dc9418c64 111-136,141,333
+  s_f74dbb26d88677::t_b56febf157995e 37-68,75-76
+reference/generate_synthid_table.py
+  s_f74dbb26d88677::t_aded4686634f1d 29
+  s_f74dbb26d88677::t_d5ba99aa0d2638 1-28,30-50
+fixtures/synthid/trace-repeated-v1.json
+  s_f74dbb26d88677::t_02477678e41cee 1-2,14,34
+  s_f74dbb26d88677::t_69bbf35e71e576 3-13,15-33
+reference/verify_synthid_upstream.py
+  s_f74dbb26d88677::t_991412688e67e2 6,17,19,40-43
+  s_f74dbb26d88677::t_aded4686634f1d 44
+  s_f74dbb26d88677::t_0c60221d5bf2b7 1-5,7-16,18,20-39,45-63,65-90
+  s_f74dbb26d88677::t_200c8fe307c09a 64
+Cargo.lock
+  s_f74dbb26d88677::t_0eef15227fee52 813
+release-manifest-v1.json
+  s_f74dbb26d88677::t_818c40eaf1d1bd 3,6-25,56-110,121-150,156-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "d38f930c99ad01c43eaa888453e31bc9f427cca9",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
