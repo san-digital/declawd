@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "SYNTHID_THIRD_PARTY_NOTICES.md",
-      "byte_length": 765,
-      "sha256": "bdd3ae99eaaf43435c7c500be8566de0950dae55569132e5e378c1244be1d276"
+      "byte_length": 1372,
+      "sha256": "d54bc66ff5350578df47065970d4178be3efd15fa74e2ba9b0bd13fba1adc665"
     },
     {
       "path": "evidence/synthid/CC-BY-4.0.txt",
@@ -60,8 +60,8 @@
     },
     {
       "path": "fixtures/synthid/environment-v1.json",
-      "byte_length": 826,
-      "sha256": "5d814efb97f3b55149c3e1309c20ef84c604f69307fb2e94cfbf4b220cbc2d30"
+      "byte_length": 1371,
+      "sha256": "6307a0fec86a34b23db617ef052f9164fe69b4961cdf97783903fdd50fa8822a"
     },
     {
       "path": "fixtures/synthid/gemma-2b-it-input-v1.json",
@@ -75,13 +75,18 @@
     },
     {
       "path": "fixtures/synthid/gpt2-trace-v1.json",
-      "byte_length": 1792,
-      "sha256": "f26a7a771531f8b9dcd6789f73f1ff18ff82b0e46f3bc4902655ceafb42d6ac9"
+      "byte_length": 2221,
+      "sha256": "f91bd23a0148e9b6f40e0c86489649053bf3d8c3d8824c8a500736f67e5eb4ea"
     },
     {
       "path": "fixtures/synthid/profile-v1.json",
       "byte_length": 1810,
       "sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+    },
+    {
+      "path": "fixtures/synthid/registered-edits-v1.json",
+      "byte_length": 1965,
+      "sha256": "15a402adeb6312c31e1afb1cdeff5208e8139042e14540e122da299501a9f255"
     },
     {
       "path": "fixtures/synthid/sampling-table-v1.bin",
@@ -124,29 +129,44 @@
       "sha256": "265ac5120c912d5b6d095433f1706fa25cb1913bdfc58d231d94c56cd71f49b6"
     },
     {
+      "path": "reference/python-audit-tool-requirements.txt",
+      "byte_length": 18,
+      "sha256": "7b4acc391ab477d5fedd5d34f8d7c4da0afdae1a6c0643aa0f877220386c75ba"
+    },
+    {
+      "path": "reference/synthid-runner-linux-cpu.lock",
+      "byte_length": 4037,
+      "sha256": "1b4ff403020273f2eab415e8fb14cf7113d06144fa264f145a1d54ff8caa9829"
+    },
+    {
+      "path": "reference/synthid-runner-lock-v1.json",
+      "byte_length": 16741,
+      "sha256": "9eee0f2628106bf23720ac2764ab9e6351b72216e6407c0b5b8521059debb48b"
+    },
+    {
       "path": "reference/synthid-runner-install-requirements.txt",
-      "byte_length": 42,
-      "sha256": "23a7c1a4bc8b08351645fab65da1628998fd030280de9464a0c88dde6f3ff088"
+      "byte_length": 172,
+      "sha256": "4d681006b02039a2b2a69e4636b1b45ca4b84a90f0e0b36eea8ed1e141666c59"
     },
     {
       "path": "reference/synthid-runner-requirements.txt",
-      "byte_length": 167,
-      "sha256": "e4a162c0c2f6cda63359c66355757f3f46ce2f806c958d91c253d4cfed0d3c12"
+      "byte_length": 247,
+      "sha256": "4800d31cd470752c6a254f49b0ccaf4936068b3af7cfccffb94bfd695289bb0c"
     },
     {
       "path": "reference/synthid_model_runner.py",
-      "byte_length": 5499,
-      "sha256": "498bc689942ccbe0412ae113af9fdd7c13a473f2cd1ba75f67a5254d59d06793"
+      "byte_length": 7638,
+      "sha256": "72fa8cdf688161a6530994c740f4cc6bc3c7f3a8443cf12209ede8112176b4a8"
     },
     {
       "path": "reference/synthid_reference.py",
-      "byte_length": 8791,
-      "sha256": "10a75912e6eb79ea28c768c6b70e853669767494c2e8f8e72729465fb3c8ccc2"
+      "byte_length": 15536,
+      "sha256": "338681a8dfa87fe58a06e19917e2393ddb08c2ed079ef06f2c17a535265c2f7f"
     },
     {
       "path": "reference/verify_synthid_upstream.py",
-      "byte_length": 3518,
-      "sha256": "6eb12b5cc453e0b37c28e8eff5810b469f9a5fb2668e526b61c5752a501a1ac0"
+      "byte_length": 7780,
+      "sha256": "7646a2a06b3abb16a7da5c5d1b1ccd3d8a9f167e0ec48d1a0b6f8c744c2ec35f"
     },
     {
       "path": "spec/report-v1.schema.json",
@@ -155,28 +175,28 @@
     },
     {
       "path": "spec/synthid-distribution-v1.schema.json",
-      "byte_length": 2084,
-      "sha256": "cac7d54960e8f8b3d0ccc61c6d96c0eb29269a2a456ac0346a0c953b65590149"
+      "byte_length": 1967,
+      "sha256": "9b0e86d0625f847d54d0632cbedc87c382ae4862b4371b6f23ed8ec7bfb55a76"
     },
     {
       "path": "spec/synthid-profile-v1.schema.json",
-      "byte_length": 3430,
-      "sha256": "55db277470a9352d3ceaaabe54d1f9ffaf6202e5a88b6e47b4861d3d37b55ee7"
+      "byte_length": 3703,
+      "sha256": "3123f59a3450941b5121042be3737e6bb23362f991b8e206a07288a3408e4956"
     },
     {
       "path": "spec/synthid-score-v1.schema.json",
-      "byte_length": 3696,
-      "sha256": "fbc2e59af66cba8f5a81ab622e8bd4b8b8c7213a59674c9f84927bfa53023b3b"
+      "byte_length": 4798,
+      "sha256": "833cc222c9c771c406e6f0ed2d725a2b24941582b8b83e4ac6b4de9622180853"
     },
     {
       "path": "spec/synthid-trace-v1.schema.json",
-      "byte_length": 4381,
-      "sha256": "690a33a1e41d1e443b63563bdc3b0402d0846c1afa9f9909f8701b2c26499276"
+      "byte_length": 5483,
+      "sha256": "44c41f48bbafb2176fb0b3fff8a65c6d6ccf2c01e92ff3891e5754196b3f41c8"
     },
     {
       "path": "spec/synthid-v1.md",
-      "byte_length": 3884,
-      "sha256": "8e5be1ab3179d6e1b737da23e0bf1f93ba2c22a8f8973fec333a483202f29685"
+      "byte_length": 5644,
+      "sha256": "94970a26265124d9be6d491c8471bed02ac7253dc5628052eddae98178503cc8"
     },
     {
       "path": "spec/unicode-registry-v1.json",

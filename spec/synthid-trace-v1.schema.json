@@ -3,24 +3,44 @@
   "$id": "https://declawd.com/contracts/declawd.synthid-trace-v1.schema.json",
   "title": "Declawd SynthID token trace",
   "$defs": {
-    "digest": {
+    "g_digest": {
       "type": "object",
       "additionalProperties": false,
       "required": ["bit_length", "byte_length", "sha256"],
       "properties": {
-        "bit_length": {"type": "integer", "minimum": 0},
-        "byte_length": {"type": "integer", "minimum": 0},
+        "bit_length": {"type": "integer", "minimum": 0, "maximum": 2999880},
+        "byte_length": {"type": "integer", "minimum": 0, "maximum": 374985},
         "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },
-    "fraction": {
+    "mask_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bit_length", "byte_length", "sha256"],
+      "properties": {
+        "bit_length": {"type": "integer", "minimum": 0, "maximum": 99996},
+        "byte_length": {"type": "integer", "minimum": 0, "maximum": 12500},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "raw_fraction": {
       "type": "object",
       "additionalProperties": false,
       "required": ["numerator", "denominator", "decimal"],
       "properties": {
-        "numerator": {"type": "integer", "minimum": 0},
-        "denominator": {"type": "integer", "minimum": 1},
-        "decimal": {"type": "string", "pattern": "^[0-9]+\\.[0-9]{12}$"}
+        "numerator": {"type": "integer", "minimum": 0, "maximum": 2999880},
+        "denominator": {"type": "integer", "minimum": 1, "maximum": 2999880},
+        "decimal": {"type": "string", "pattern": "^(?:0\\.[0-9]{12}|1\\.000000000000)$"}
+      }
+    },
+    "weighted_fraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator", "decimal"],
+      "properties": {
+        "numerator": {"type": "integer", "minimum": 0, "maximum": 478480860},
+        "denominator": {"type": "integer", "minimum": 1, "maximum": 478480860},
+        "decimal": {"type": "string", "pattern": "^(?:0\\.[0-9]{12}|1\\.000000000000)$"}
       }
     },
     "expected": {
@@ -39,8 +59,8 @@
           "else": {
             "properties": {
               "valid_context_count": {"type": "integer", "minimum": 1},
-              "raw_score": {"$ref": "#/$defs/fraction"},
-              "weighted_score": {"$ref": "#/$defs/fraction"}
+              "raw_score": {"$ref": "#/$defs/raw_fraction"},
+              "weighted_score": {"$ref": "#/$defs/weighted_fraction"}
             }
           }
         }
@@ -49,26 +69,26 @@
       "properties": {
         "status": {"enum": ["scored", "insufficient_data"]},
         "token_count": {"type": "integer", "minimum": 0, "maximum": 100000},
-        "candidate_context_count": {"type": "integer", "minimum": 0},
-        "first_eos_index": {"oneOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]},
-        "repetition_excluded_count": {"type": "integer", "minimum": 0},
-        "eos_excluded_count": {"type": "integer", "minimum": 0},
-        "valid_context_count": {"type": "integer", "minimum": 0},
-        "g_value_one_count": {"type": "integer", "minimum": 0},
-        "weighted_g_value_sum": {"type": "integer", "minimum": 0},
-        "g_values": {"$ref": "#/$defs/digest"},
+        "candidate_context_count": {"type": "integer", "minimum": 0, "maximum": 99996},
+        "first_eos_index": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 99999}, {"type": "null"}]},
+        "repetition_excluded_count": {"type": "integer", "minimum": 0, "maximum": 99996},
+        "eos_excluded_count": {"type": "integer", "minimum": 0, "maximum": 99996},
+        "valid_context_count": {"type": "integer", "minimum": 0, "maximum": 99996},
+        "g_value_one_count": {"type": "integer", "minimum": 0, "maximum": 2999880},
+        "weighted_g_value_sum": {"type": "integer", "minimum": 0, "maximum": 478480860},
+        "g_values": {"$ref": "#/$defs/g_digest"},
         "masks": {
           "type": "object",
           "additionalProperties": false,
           "required": ["repetition", "eos", "valid"],
           "properties": {
-            "repetition": {"$ref": "#/$defs/digest"},
-            "eos": {"$ref": "#/$defs/digest"},
-            "valid": {"$ref": "#/$defs/digest"}
+            "repetition": {"$ref": "#/$defs/mask_digest"},
+            "eos": {"$ref": "#/$defs/mask_digest"},
+            "valid": {"$ref": "#/$defs/mask_digest"}
           }
         },
-        "raw_score": {"oneOf": [{"$ref": "#/$defs/fraction"}, {"type": "null"}]},
-        "weighted_score": {"oneOf": [{"$ref": "#/$defs/fraction"}, {"type": "null"}]}
+        "raw_score": {"oneOf": [{"$ref": "#/$defs/raw_fraction"}, {"type": "null"}]},
+        "weighted_score": {"oneOf": [{"$ref": "#/$defs/weighted_fraction"}, {"type": "null"}]}
       }
     }
   },

@@ -66,7 +66,9 @@ infinity are never emitted.
 
 The optional trace `expected` object contains derived fields only. It excludes
 trace identity and hashes to avoid a self-referential document. A mismatch is
-a verification failure and exits 3.
+a verification failure and exits 3. A null, malformed or schema-invalid
+`expected` value is an input error and exits 2; only a structurally valid but
+incorrect expected result can produce exit 3.
 
 The report warnings are fixed identifiers:
 
@@ -88,3 +90,33 @@ depth, compare the first and second candidate's keyed g value. The candidate
 with the larger bit wins; equal bits retain the first draw. Candidate IDs and
 token IDs are unique, draw depths are unique, every reference resolves, and
 the committed winners are recomputed in both Rust and Python tests.
+
+The distribution schema const-pins the entire teaching fixture. It cannot be
+used to publish alternate candidate IDs, masses, g-values, draws or winners
+under the v1 identity.
+
+## Registered token edits
+
+`declawd.synthid-registered-edits/v1` is a frozen vector, not an additional
+input contract. It binds the prepared trace by SHA-256 and registers three
+independent token-ID substitutions. Each entry identifies the original token
+at its zero-based index and records the exact raw and weighted score after the
+replacement, including signed numerator changes. Rust and Python recompute all
+three effects. The vector contains no prose, threshold or verdict.
+
+## Runtime and upstream oracle
+
+Torch 2.4.0 on CPU is immutable sampling-table generation provenance only.
+Routine gates never install it. The supported runner uses the reviewed,
+hash-pinned Linux CPU closure rooted at Torch 2.13.0, Transformers 5.15.0,
+safetensors 0.8.0 and JAX 0.11.0. Model classes and revisions are allowlisted,
+remote code is disabled and only safetensors weights are loaded. GPT-2
+reproduction enables deterministic Torch algorithms and uses one intra-op and
+one inter-op CPU thread before byte-comparing the generated trace.
+
+The release oracle checks out DeepMind 0.2.1 at its exact commit, detached and
+clean. On the prepared trace it compares the maintained runtime with the pinned
+source for every keyed g-value and the repetition, EOS and valid masks. It then
+calls DeepMind's JAX `detector_mean.mean_score` and
+`detector_mean.weighted_mean_score` and compares each with the exact rational
+report within `1e-6`.

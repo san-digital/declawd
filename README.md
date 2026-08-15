@@ -121,9 +121,21 @@ production key, configuration, detector or decision rule.
 produce token-only traces from pinned GPT-2 and Gemma 2B IT revisions. Model
 weights and decoded output are never committed. GPT-2 is the ungated release
 oracle. Gemma is optional and requires separate licence acceptance, Hugging
-Face access and suitable hardware. Install the pinned dependencies in an
-isolated environment; install the SynthID source with `--no-deps` if the local
-platform cannot satisfy its unused JAX/CUDA detector stack.
+Face access and suitable hardware. The runner allowlists concrete model
+classes, pins revisions, requires safetensors and disables remote code.
+
+The release gate installs the complete, hash-pinned 40-package Linux CPU lock
+in [`reference/synthid-runner-linux-cpu.lock`](reference/synthid-runner-linux-cpu.lock).
+The supported runtime is Torch 2.13.0, Transformers 5.15.0, safetensors 0.8.0
+and JAX 0.11.0. Torch 2.4.0 remains only as the historical CPU table-generation
+provenance and is not installed. The DeepMind 0.2.1 source is checked out clean
+at its immutable commit for compatibility checks rather than installed with its
+obsolete runtime pins.
+
+Three registered token-ID substitutions and their exact independent score
+effects are frozen in
+[`registered-edits-v1.json`](fixtures/synthid/registered-edits-v1.json). They
+contain no decoded model output, detector threshold or verdict.
 
 The retained version-of-record [SynthID-Text paper](evidence/synthid/README.md)
 is CC BY 4.0 and pinned by DOI, length and SHA-256. The teaching code follows
@@ -207,6 +219,7 @@ cargo test --all-targets
 ./scripts/check-security-advisories.sh
 ./scripts/check-third-party-licences.sh
 ./scripts/check-c2patool-fixtures.sh
+python3 scripts/check-python-runtime-lock.py
 ./scripts/check-synthid-bundle.sh
 # With cargo-cyclonedx 0.5.9 and the exact tools in
 # reference/sbom-tool-requirements.txt installed:
@@ -220,10 +233,11 @@ See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
 ## Release verification
 
 Release archives include SHA-256 checksum files and GitHub build-provenance
-attestations. Each release also carries a checksummed, reproducible CycloneDX
-1.5 SBOM for the all-platform runtime and build-dependency graph; test-only
-development dependencies are excluded. Verify them before running a downloaded
-binary:
+attestations. Each release also carries two checksummed, reproducible
+CycloneDX 1.5 SBOMs: one for the Rust runtime and build graph, and one for the
+reviewed 40-package Python runner closure plus its excluded DeepMind source
+reference. Test-only Rust development dependencies are excluded. Verify them
+before running a downloaded binary:
 
 ```sh
 # Linux archive
@@ -242,6 +256,8 @@ sha256sum --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
 shasum -a 256 --check declawd-v0.2.0.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.0-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
 
 gh attestation verify declawd-v0.2.0-<target>.tar.gz \
   --repo san-digital/declawd

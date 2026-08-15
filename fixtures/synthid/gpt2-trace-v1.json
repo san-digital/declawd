@@ -11,24 +11,113 @@
     "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
     "eos_token_id": 50256
   },
-  "token_ids": [921, 743, 307, 6655, 379, 644, 356, 460, 466, 287, 262, 1306, 1178, 812, 13, 198, 198, 5756, 338, 923, 351, 262, 4094, 1808, 25, 1374, 881, 466, 345, 760, 546, 262, 4455, 30, 198, 198, 464, 3280, 318, 326, 356, 460, 470, 760, 13, 775, 460, 470, 760, 703, 867, 661, 779, 340, 13, 775, 460, 691, 3785, 503, 644, 484, 466, 290],
+  "token_ids": [
+    921,
+    460,
+    470,
+    423,
+    257,
+    2818,
+    995,
+    1231,
+    257,
+    3049,
+    530,
+    13,
+    198,
+    198,
+    40,
+    1101,
+    407,
+    2282,
+    326,
+    356,
+    761,
+    284,
+    467,
+    736,
+    284,
+    262,
+    1468,
+    1528,
+    286,
+    262,
+    11445,
+    82,
+    13,
+    887,
+    314,
+    892,
+    340,
+    318,
+    1593,
+    284,
+    1833,
+    326,
+    262,
+    3660,
+    995,
+    318,
+    407,
+    257,
+    2818,
+    530,
+    13,
+    198,
+    198,
+    464,
+    995,
+    318,
+    407,
+    257,
+    2818,
+    995,
+    13,
+    632,
+    338,
+    407
+  ],
   "expected": {
     "status": "scored",
     "token_count": 64,
+    "valid_context_count": 57,
     "candidate_context_count": 60,
     "first_eos_index": null,
-    "repetition_excluded_count": 0,
+    "repetition_excluded_count": 3,
     "eos_excluded_count": 0,
-    "valid_context_count": 60,
-    "g_value_one_count": 1019,
-    "weighted_g_value_sum": 165883,
-    "g_values": {"bit_length": 1800, "byte_length": 225, "sha256": "1ff8f412878feae9bab87b879f3695f792b25ccde68356028df4b560c5be6c30"},
-    "masks": {
-      "repetition": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"},
-      "eos": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"},
-      "valid": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"}
+    "g_value_one_count": 944,
+    "weighted_g_value_sum": 154834,
+    "g_values": {
+      "bit_length": 1800,
+      "byte_length": 225,
+      "sha256": "38ad7216c810bd80cad9fcab491d6fefbb0796c336ecec8497b92321e5e8f024"
     },
-    "raw_score": {"numerator": 1019, "denominator": 1800, "decimal": "0.566111111111"},
-    "weighted_score": {"numerator": 165883, "denominator": 287100, "decimal": "0.577788227099"}
+    "masks": {
+      "repetition": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "2a7166420125d29b89ac9fd213033cd0296ac3f7ed693b7c48f2e35a38d1624b"
+      },
+      "eos": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"
+      },
+      "valid": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "2a7166420125d29b89ac9fd213033cd0296ac3f7ed693b7c48f2e35a38d1624b"
+      }
+    },
+    "raw_score": {
+      "numerator": 944,
+      "denominator": 1710,
+      "decimal": "0.552046783626"
+    },
+    "weighted_score": {
+      "numerator": 154834,
+      "denominator": 272745,
+      "decimal": "0.567687766962"
+    }
   }
 }

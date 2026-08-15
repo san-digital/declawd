@@ -17,7 +17,7 @@
         "version": {"const": "0.2.1"},
         "commit": {"const": "8f2e2316904ea7291ac96e30eb394c453dcc577b"},
         "licence": {"const": "Apache-2.0"},
-        "transfer_limitation": {"type": "string", "minLength": 1}
+        "transfer_limitation": {"const": "The reference repository says its hashing differs from Gemini production and its detectors do not transfer. No compatibility with Anthropic is claimed."}
       }
     },
     "parameters": {
@@ -27,11 +27,11 @@
       "properties": {
         "ngram_len": {"const": 5},
         "keys": {
-          "type": "array",
-          "minItems": 30,
-          "maxItems": 30,
-          "uniqueItems": true,
-          "items": {"type": "integer"}
+          "const": [
+            654, 400, 836, 123, 340, 443, 597, 160, 57, 29,
+            590, 639, 13, 715, 468, 990, 966, 226, 324, 585,
+            118, 504, 421, 521, 129, 669, 732, 225, 90, 960
+          ]
         },
         "context_history_size": {"const": 1024}
       }
@@ -70,10 +70,11 @@
       "properties": {
         "raw_denominator": {"const": "30 * valid_context_count"},
         "weighted_weights": {
-          "type": "array",
-          "minItems": 30,
-          "maxItems": 30,
-          "items": {"type": "integer", "minimum": 1}
+          "const": [
+            290, 281, 272, 263, 254, 245, 236, 227, 218, 209,
+            200, 191, 182, 173, 164, 155, 146, 137, 128, 119,
+            110, 101, 92, 83, 74, 65, 56, 47, 38, 29
+          ]
         },
         "weighted_weight_sum": {"const": 4785},
         "weighted_denominator": {"const": "4785 * valid_context_count"},

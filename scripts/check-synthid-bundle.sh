@@ -19,5 +19,7 @@ cmp "$first" "$second"
 tar -tzf "$first" > "$temporary_directory/files.txt"
 test "$(grep -c '^fixtures/synthid/sampling-table-v1.bin$' "$temporary_directory/files.txt")" -eq 1
 test "$(grep -c '^evidence/synthid/dathathri-2024-synthid-text.pdf$' "$temporary_directory/files.txt")" -eq 1
+test "$(grep -c '^fixtures/synthid/registered-edits-v1.json$' "$temporary_directory/files.txt")" -eq 1
+test "$(grep -c '^reference/synthid-runner-lock-v1.json$' "$temporary_directory/files.txt")" -eq 1
 
 echo "verified reproducible SynthID teaching bundle"

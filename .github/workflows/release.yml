@@ -34,6 +34,15 @@ jobs:
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
+      - name: Verify the frozen Python runtime closure
+        run: python3 scripts/check-python-runtime-lock.py
+      - name: Audit every frozen Python runtime package
+        shell: bash
+        run: |
+          audit_environment="$RUNNER_TEMP/declawd-python-audit"
+          python3 -m venv "$audit_environment"
+          "$audit_environment/bin/python" -m pip install --requirement reference/python-audit-tool-requirements.txt
+          PATH="$audit_environment/bin:$PATH" "$audit_environment/bin/python" scripts/check-python-advisories.py
       - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
         with:
           tool: cargo-cyclonedx@0.5.9
@@ -57,9 +66,17 @@ jobs:
           cmp release-manifest-v1.json /tmp/release-manifest-v1.json
       - name: Install the pinned GPT-2 oracle runtime
         run: |
-          python3 -m pip install 'torch==2.4.0' --index-url https://download.pytorch.org/whl/cpu
-          python3 -m pip install --requirement reference/synthid-runner-install-requirements.txt
-          python3 -m pip install --no-deps 'synthid-text @ git+https://github.com/google-deepmind/synthid-text.git@8f2e2316904ea7291ac96e30eb394c453dcc577b'
+          runner_environment="$RUNNER_TEMP/declawd-synthid-runtime"
+          python3 -m venv "$runner_environment"
+          "$runner_environment/bin/python" -m pip install --require-hashes --requirement reference/synthid-runner-linux-cpu.lock
+          "$runner_environment/bin/python" -m pip check
+          upstream="$RUNNER_TEMP/synthid-text-0.2.1"
+          git init "$upstream"
+          git -C "$upstream" remote add origin https://github.com/google-deepmind/synthid-text.git
+          git -C "$upstream" fetch --depth 1 origin 8f2e2316904ea7291ac96e30eb394c453dcc577b
+          git -C "$upstream" checkout --detach FETCH_HEAD
+          echo "$runner_environment/bin" >> "$GITHUB_PATH"
+          echo "DECLAWD_SYNTHID_UPSTREAM=$upstream" >> "$GITHUB_ENV"
       - name: Reproduce the GPT-2 token trace and DeepMind oracle
         run: ./scripts/check-synthid-gpt2.sh
 

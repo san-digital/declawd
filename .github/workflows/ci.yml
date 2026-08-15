@@ -50,6 +50,15 @@ jobs:
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
+      - name: Verify the frozen Python runtime closure
+        run: python3 scripts/check-python-runtime-lock.py
+      - name: Audit every frozen Python runtime package
+        shell: bash
+        run: |
+          audit_environment="$RUNNER_TEMP/declawd-python-audit"
+          python3 -m venv "$audit_environment"
+          "$audit_environment/bin/python" -m pip install --requirement reference/python-audit-tool-requirements.txt
+          PATH="$audit_environment/bin:$PATH" "$audit_environment/bin/python" scripts/check-python-advisories.py
       - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
         with:
           tool: cargo-cyclonedx@0.5.9
@@ -74,3 +83,25 @@ jobs:
         run: cargo install c2patool --version 0.27.12 --locked
       - name: Validate test-signed fixtures and cleaned outputs
         run: ./scripts/check-c2patool-fixtures.sh
+
+  synthid-gpt2-oracle:
+    name: SynthID GPT-2 oracle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce the token trace and compare the pinned oracle
+        shell: bash
+        run: |
+          runner_environment="$RUNNER_TEMP/declawd-synthid-runtime"
+          python3 -m venv "$runner_environment"
+          "$runner_environment/bin/python" -m pip install --require-hashes --requirement reference/synthid-runner-linux-cpu.lock
+          "$runner_environment/bin/python" -m pip check
+          upstream="$RUNNER_TEMP/synthid-text-0.2.1"
+          git init "$upstream"
+          git -C "$upstream" remote add origin https://github.com/google-deepmind/synthid-text.git
+          git -C "$upstream" fetch --depth 1 origin 8f2e2316904ea7291ac96e30eb394c453dcc577b
+          git -C "$upstream" checkout --detach FETCH_HEAD
+          PATH="$runner_environment/bin:$PATH" DECLAWD_SYNTHID_UPSTREAM="$upstream" ./scripts/check-synthid-gpt2.sh

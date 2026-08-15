@@ -13,39 +13,112 @@ import json
 from pathlib import Path
 from typing import Any
 
+from synthid_reference import (
+    CONTEXT_HISTORY_SIZE,
+    KEYS,
+    NGRAM_LEN,
+    PROFILE_ID,
+    PROFILE_SHA256,
+    SAMPLING_TABLE_SEED,
+    TABLE_SIZE,
+    expected_from_report,
+    load_sampling_table,
+    parse_strict_json_bytes,
+    score_trace,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MODELS = {
     "gpt2": {
         "repository": "openai-community/gpt2",
         "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
-        "class": "SynthIDGPT2LMHeadModel",
+        "class": "GPT2LMHeadModel",
     },
     "gemma-2b-it": {
         "repository": "google/gemma-2b-it",
         "revision": "96988410cbdaeb8d5093d1ebdc5a8fb563e02bad",
-        "class": "SynthIDGemmaForCausalLM",
+        "class": "GemmaForCausalLM",
     },
 }
-SYNTHID_COMMIT = "8f2e2316904ea7291ac96e30eb394c453dcc577b"
+TORCH_VERSION = "2.13.0"
+TRANSFORMERS_VERSION = "5.15.0"
+SAFETENSORS_VERSION = "0.8.0"
 
 
-def verify_synthid_install() -> None:
-    distribution = importlib.metadata.distribution("synthid-text")
-    if distribution.version != "0.2.1":
-        raise ValueError(f"expected synthid-text 0.2.1, found {distribution.version}")
-    direct_url = json.loads(distribution.read_text("direct_url.json") or "{}")
-    if direct_url.get("vcs_info", {}).get("commit_id") != SYNTHID_COMMIT:
-        raise ValueError(f"synthid-text must be installed from commit {SYNTHID_COMMIT}")
+def verify_runner_install(torch: Any) -> None:
+    installed = {
+        "torch": torch.__version__.split("+", 1)[0],
+        "transformers": importlib.metadata.version("transformers"),
+        "safetensors": importlib.metadata.version("safetensors"),
+    }
+    expected = {
+        "torch": TORCH_VERSION,
+        "transformers": TRANSFORMERS_VERSION,
+        "safetensors": SAFETENSORS_VERSION,
+    }
+    if installed != expected:
+        raise ValueError(f"expected runner versions {expected}, found {installed}")
 
 
 def read_table(torch: Any, device: Any) -> Any:
-    packed = (ROOT / "fixtures/synthid/sampling-table-v1.bin").read_bytes()
+    packed = load_sampling_table()
     bits = [
         (packed[index // 8] >> (index % 8)) & 1
         for index in range(65_536)
     ]
     return torch.tensor(bits, dtype=torch.int64, device=device)
+
+
+def validate_input(
+    input_document: Any, requested_model: str, model_spec: dict[str, str]
+) -> list[int]:
+    required_input_fields = {
+        "schema", "model", "repository", "revision", "prompt_token_ids"
+    }
+    if not isinstance(input_document, dict) or set(input_document) != required_input_fields:
+        raise ValueError("input must contain exactly the v1 model-input fields")
+    if input_document["schema"] != "declawd.synthid-model-input/v1":
+        raise ValueError("input schema must be declawd.synthid-model-input/v1")
+    expected_model = input_document["model"]
+    if expected_model != requested_model:
+        raise ValueError(
+            f"input model {expected_model!r} does not match {requested_model!r}"
+        )
+    if input_document["repository"] != model_spec["repository"]:
+        raise ValueError("input repository does not match the pinned model repository")
+    if input_document["revision"] != model_spec["revision"]:
+        raise ValueError("input revision does not match the pinned model revision")
+    token_ids = input_document["prompt_token_ids"]
+    if (
+        not isinstance(token_ids, list)
+        or not token_ids
+        or len(token_ids) > 100_000
+        or any(type(token) is not int or token < 0 for token in token_ids)
+    ):
+        raise ValueError("input requires a non-empty prompt_token_ids array")
+    return token_ids
+
+
+def validate_vocabulary(token_ids: list[int], vocabulary_size: int) -> None:
+    if any(token >= vocabulary_size for token in token_ids):
+        raise ValueError(
+            f"prompt token IDs must be below the loaded vocabulary size {vocabulary_size}"
+        )
+
+
+def load_input(path: Path, requested_model: str, model_spec: dict[str, str]) -> list[int]:
+    return validate_input(parse_strict_json_bytes(path.read_bytes()), requested_model, model_spec)
+
+
+def watermark_parameters() -> dict[str, Any]:
+    return {
+        "ngram_len": NGRAM_LEN,
+        "keys": list(KEYS),
+        "context_history_size": CONTEXT_HISTORY_SIZE,
+        "sampling_table_seed": SAMPLING_TABLE_SEED,
+        "sampling_table_size": TABLE_SIZE,
+    }
 
 
 def main() -> int:
@@ -63,43 +136,41 @@ def main() -> int:
         raise ValueError("max-new-tokens must be from 5 to 1024")
 
     import torch
-    from synthid_text import logits_processing, synthid_mixin
+    import transformers
 
-    verify_synthid_install()
-    if torch.__version__.split("+", 1)[0] != "2.4.0":
-        raise ValueError(f"expected torch 2.4.0, found {torch.__version__}")
+    verify_runner_install(torch)
+    torch.use_deterministic_algorithms(True)
+    torch.set_num_threads(1)
+    torch.set_num_interop_threads(1)
     device = torch.device(args.device)
     if device.type == "cuda" and not torch.cuda.is_available():
         raise ValueError("CUDA was requested but is unavailable")
     model_spec = MODELS[args.model]
-    base_class = getattr(synthid_mixin, model_spec["class"])
     table = read_table(torch, device)
 
-    class FixedTableModel(base_class):
-        def _construct_warper_list(self, extra_params: dict[str, Any]) -> Any:
-            config = dict(synthid_mixin.DEFAULT_WATERMARKING_CONFIG)
-            config["device"] = device
-            processor = logits_processing.SynthIDLogitsProcessor(
-                **config, **extra_params
-            )
-            processor.sampling_table = table
-            return __import__("transformers").LogitsProcessorList([processor])
+    class FixedTableWatermarkingConfig(transformers.SynthIDTextWatermarkingConfig):
+        def construct_processor(self, vocab_size: int, target_device: Any) -> Any:
+            processor = super().construct_processor(vocab_size, target_device)
+            processor.sampling_table = table.to(target_device)
+            return processor
 
-    input_document = json.loads(args.input.read_text(encoding="utf-8"))
-    expected_model = input_document.get("model")
-    if expected_model != args.model:
-        raise ValueError(f"input model {expected_model!r} does not match {args.model!r}")
-    token_ids = input_document.get("prompt_token_ids")
-    if not isinstance(token_ids, list) or not token_ids:
-        raise ValueError("input requires a non-empty prompt_token_ids array")
+    watermarking_config = FixedTableWatermarkingConfig(**watermark_parameters())
+
+    token_ids = load_input(args.input, args.model, model_spec)
 
     torch.manual_seed(args.seed)
-    model = FixedTableModel.from_pretrained(
+    model_class = getattr(transformers, model_spec["class"])
+    model = model_class.from_pretrained(
         model_spec["repository"],
         revision=model_spec["revision"],
-        torch_dtype=torch.float32 if device.type == "cpu" else torch.bfloat16,
+        dtype=torch.float32 if device.type == "cpu" else torch.bfloat16,
+        use_safetensors=True,
+        trust_remote_code=False,
     ).to(device)
+    if type(model).__name__ != model_spec["class"]:
+        raise ValueError(f"loaded unexpected model class {type(model).__name__}")
     model.eval()
+    validate_vocabulary(token_ids, model.config.vocab_size)
     prompt = torch.tensor([token_ids], dtype=torch.long, device=device)
     attention_mask = torch.ones_like(prompt)
     with torch.no_grad():
@@ -109,6 +180,7 @@ def main() -> int:
             do_sample=True,
             temperature=0.5,
             top_k=40,
+            watermarking_config=watermarking_config,
             max_new_tokens=args.max_new_tokens,
             pad_token_id=model.config.eos_token_id,
         )
@@ -117,8 +189,8 @@ def main() -> int:
         "schema": "declawd.synthid-trace/v1",
         "trace_id": f"{args.model}-seed-{args.seed}",
         "profile": {
-            "id": "declawd.synthid-profile/v1",
-            "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08",
+            "id": PROFILE_ID,
+            "file_sha256": PROFILE_SHA256,
         },
         "sequence_role": "generated_output_only",
         "tokenizer": {
@@ -128,11 +200,10 @@ def main() -> int:
         },
         "token_ids": generated,
     }
-    from synthid_reference import expected_from_report, score_trace
-
     provisional = (json.dumps(trace, indent=2) + "\n").encode("utf-8")
     trace["expected"] = expected_from_report(score_trace(trace, provisional))
-    args.output.write_text(json.dumps(trace, indent=2) + "\n", encoding="utf-8")
+    with args.output.open("x", encoding="utf-8", newline="\n") as output_file:
+        output_file.write(json.dumps(trace, indent=2) + "\n")
     return 0
 
 

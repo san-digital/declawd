@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 
@@ -26,6 +27,18 @@ class SynthIdReferenceTest(unittest.TestCase):
         self.assertEqual(report["valid_context_count"], 8)
         self.assertEqual(report["raw_score"]["decimal"], "0.545833333333")
         self.assertEqual(report["weighted_score"]["decimal"], "0.518443051202")
+
+    def test_profile_hash_keys_and_weights_are_bound_to_runtime_constants(self) -> None:
+        source = (ROOT / "fixtures/synthid/profile-v1.json").read_bytes()
+        profile = json.loads(source)
+        self.assertEqual(hashlib.sha256(source).hexdigest(), reference.PROFILE_SHA256)
+        self.assertEqual(tuple(profile["parameters"]["keys"]), reference.KEYS)
+        self.assertEqual(
+            tuple(profile["scoring"]["weighted_weights"]), reference.WEIGHTS
+        )
+        self.assertEqual(
+            profile["sampling_table"]["sha256"], reference.SAMPLING_TABLE_SHA256
+        )
 
     def test_eos_and_repetition_masks(self) -> None:
         eos, source = self.load("trace-eos-v1.json")
@@ -91,7 +104,7 @@ class SynthIdReferenceTest(unittest.TestCase):
             self.assertEqual(draw["winner"], ids[expected])
 
     def test_sampling_table_and_nature_pdf_are_pinned(self) -> None:
-        table = (ROOT / "fixtures/synthid/sampling-table-v1.bin").read_bytes()
+        table = reference.load_sampling_table()
         self.assertEqual(len(table), 8192)
         self.assertEqual(
             hashlib.sha256(table).hexdigest(),
@@ -103,6 +116,76 @@ class SynthIdReferenceTest(unittest.TestCase):
             hashlib.sha256(paper).hexdigest(),
             "ac88f69c1af9f9748cfb0b10ea34b5a0b0329bc4461cb6a57442ce572a678a4e",
         )
+
+    def test_same_length_sampling_table_corruption_is_rejected(self) -> None:
+        table = bytearray(reference.load_sampling_table())
+        table[0] ^= 1
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "sampling-table.bin"
+            path.write_bytes(table)
+            with self.assertRaisesRegex(ValueError, "SHA-256"):
+                reference.load_sampling_table(path)
+
+    def test_registered_token_substitutions_have_exact_effects(self) -> None:
+        vector, _ = self.load("registered-edits-v1.json")
+        self.assertEqual(
+            set(vector),
+            {
+                "schema", "profile", "source", "application", "source_scores",
+                "substitutions",
+            },
+        )
+        source, source_bytes = self.load("trace-prepared-v1.json")
+        self.assertEqual(
+            vector["source"]["file_sha256"], hashlib.sha256(source_bytes).hexdigest()
+        )
+        source.pop("expected")
+        source_report = reference.score_trace(
+            source, (json.dumps(source, indent=2) + "\n").encode()
+        )
+        self.assertEqual(vector["source_scores"]["raw_score"], source_report["raw_score"])
+        self.assertEqual(
+            vector["source_scores"]["weighted_score"],
+            source_report["weighted_score"],
+        )
+        seen = set()
+        seen_indices = set()
+        for edit in vector["substitutions"]:
+            self.assertEqual(
+                set(edit),
+                {
+                    "id", "token_index", "before_token_id", "after_token_id",
+                    "expected_effect",
+                },
+            )
+            self.assertNotIn(edit["id"], seen)
+            seen.add(edit["id"])
+            index = edit["token_index"]
+            self.assertNotIn(index, seen_indices)
+            seen_indices.add(index)
+            self.assertEqual(source["token_ids"][index], edit["before_token_id"])
+            self.assertNotEqual(edit["before_token_id"], edit["after_token_id"])
+            changed = json.loads(json.dumps(source))
+            changed["trace_id"] = f"registered-{edit['id']}"
+            changed["token_ids"][index] = edit["after_token_id"]
+            changed_bytes = (json.dumps(changed, indent=2) + "\n").encode()
+            report = reference.score_trace(changed, changed_bytes)
+            self.assertEqual(report["raw_score"], edit["expected_effect"]["raw_score"])
+            self.assertEqual(
+                report["weighted_score"], edit["expected_effect"]["weighted_score"]
+            )
+            self.assertEqual(
+                report["raw_score"]["numerator"]
+                - vector["source_scores"]["raw_score"]["numerator"],
+                edit["expected_effect"]["raw_numerator_delta"],
+            )
+            self.assertEqual(
+                report["weighted_score"]["numerator"]
+                - vector["source_scores"]["weighted_score"]["numerator"],
+                edit["expected_effect"]["weighted_numerator_delta"],
+            )
+        self.assertEqual(len(seen), 3)
+        self.assertEqual(len(seen_indices), 3)
 
     def test_trace_rejects_prose_and_expected_mismatch(self) -> None:
         trace, source = self.load("trace-short-v1.json")
@@ -120,6 +203,22 @@ class SynthIdReferenceTest(unittest.TestCase):
         reference.score_trace(trace, source)
         trace["tokenizer"]["model_id"] += "é"
         with self.assertRaisesRegex(ValueError, "1 to 256 characters"):
+            reference.score_trace(trace, source)
+
+    def test_lone_surrogate_tokenizer_metadata_is_rejected(self) -> None:
+        trace, source = self.load("trace-short-v1.json")
+        trace["tokenizer"]["model_id"] = "bad\ud800metadata"
+        with self.assertRaisesRegex(ValueError, "1 to 256 characters"):
+            reference.score_trace(trace, source)
+
+    def test_explicit_null_and_malformed_expected_are_input_errors(self) -> None:
+        trace, source = self.load("trace-prepared-v1.json")
+        trace["expected"] = None
+        with self.assertRaisesRegex(ValueError, "expected"):
+            reference.score_trace(trace, source)
+        trace, source = self.load("trace-prepared-v1.json")
+        trace["expected"]["raw_score"]["decimal"] = "2.000000000000"
+        with self.assertRaisesRegex(ValueError, "decimal"):
             reference.score_trace(trace, source)
 
 

@@ -1,4 +1,8 @@
-synthid-text @ git+https://github.com/google-deepmind/synthid-text.git@8f2e2316904ea7291ac96e30eb394c453dcc577b
+# Supported cross-platform runner/oracle roots. The release gate uses the full
+# hash-pinned Linux CPU closure in synthid-runner-linux-cpu.lock.
 immutabledict==4.2.0
-torch==2.4.0
-transformers==4.43.3
+jax==0.11.0
+jaxlib==0.11.0
+safetensors==0.8.0
+torch==2.13.0
+transformers==5.15.0
