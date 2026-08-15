@@ -7,3 +7,6 @@ an indication of changes.
 Licence: https://creativecommons.org/licenses/by/4.0/
 Source: https://doi.org/10.1038/s41586-024-08025-4
 Changes: none
+
+The article's licence may not cover material carrying a separate credit line.
+Follow any such credit line and obtain permission where required.
