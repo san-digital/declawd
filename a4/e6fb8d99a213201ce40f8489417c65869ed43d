@@ -1,0 +1,155 @@
+reference/test_synthid_runner.py
+  s_f74dbb26d88677::t_15cbd50472908e 59-62,77
+  s_f74dbb26d88677::t_961f3d6908c88e 8,63-76
+  s_f74dbb26d88677::t_484b6b19d96eaa 78-89
+  s_f74dbb26d88677::t_adbc8999874c81 1-7,9-58,90-92
+spec/synthid-profile-v1.schema.json
+  s_f74dbb26d88677::t_2622122451b9ea 20
+  s_f74dbb26d88677::t_16ba07a92117bc 30-34,73-77
+fixtures/synthid/environment-v1.json
+  s_f74dbb26d88677::t_97cfd908ffbc35 9,12-23
+  s_f74dbb26d88677::t_568dd4b374c9db 24-27
+.github/workflows/release.yml
+  s_f74dbb26d88677::t_b968f456caa6ad 69-72,78
+  s_f74dbb26d88677::t_f9da8e6741e89f 37-45,73-77,79
+SYNTHID_THIRD_PARTY_NOTICES.md
+  s_f74dbb26d88677::t_77abcb5a3185a4 3-7,9-12,14-18,20-22
+  s_f74dbb26d88677::t_2622122451b9ea 19
+spec/synthid-score-v1.schema.json
+  s_f74dbb26d88677::t_6b7b458068786b 6,11-12,16-36,41-43,62-63,84-91,97-99,102-103
+reference/python-audit-tool-requirements.txt
+  s_f74dbb26d88677::t_11ead4639a68fa 1
+fixtures/synthid/registered-edits-v1.json
+  s_f74dbb26d88677::t_4f3986bab2a605 1-55
+spec/synthid-v1.md
+  s_f74dbb26d88677::t_72f39a83ee25cb 113-115
+  s_f74dbb26d88677::t_77abcb5a3185a4 69-71,93-112,116-122
+tests/synthid.rs
+  s_f74dbb26d88677::t_bb28027c122ce2 537-542
+  s_f74dbb26d88677::t_02241d66b8ba99 438-467
+  s_f74dbb26d88677::t_4aec77819dd5f1 388-391,396-399,404-407,412-415,481-490,511-515,685-701,713-716,731-745
+  s_f74dbb26d88677::t_4cf83cee9c3dde 136-140
+  s_f74dbb26d88677::t_16ba07a92117bc 110-135,141-143
+  s_f74dbb26d88677::t_4876c71b4d738a 339-342,680-683,703-711,721-727,729,747-748,750,752-770
+  s_f74dbb26d88677::t_03745dbe0935af 468-480,491-510,516-517,530-536,543-562
+  s_f74dbb26d88677::t_484b6b19d96eaa 165-168
+  s_f74dbb26d88677::t_aff5d753f0f4d4 647-669
+  s_f74dbb26d88677::t_90892359f04707 891-893
+  s_f74dbb26d88677::t_78593f9d20a0b2 180-191,199
+  s_f74dbb26d88677::t_ed3a472cb924ff 109,144-164,169-179,192-198,200-224,313-338,343-379,563-595,772,894-918
+  s_f74dbb26d88677::t_cdacf1bac9f7c5 518-529,684,702,712,717-720,728,730,746,749,751,771
+  s_f74dbb26d88677::t_91e1fb4db40f2d 380-387,392-395,400-403,408-411,416-437
+  s_f74dbb26d88677::t_661086c209f61e 773
+scripts/build-python-runtime-lock.py
+  s_f74dbb26d88677::t_0947db6e8b8574 51-53
+  s_f74dbb26d88677::t_c093d2eb2b3ce7 1-23,41-50,54-75,89-120,122-150,152-179
+  s_f74dbb26d88677::t_ed07dabeb4c41b 24-40,76-88,121,151
+reference/synthid-runner-requirements.txt
+  s_f74dbb26d88677::t_565f19a9f84e5a 1-2,4-8
+scripts/generate-synthid-bundle.py
+  s_f74dbb26d88677::t_c6edac17e2c513 27,34-36
+README.md
+  s_f74dbb26d88677::t_4ea4748d8c5328 222,236-240,259-260
+  s_f74dbb26d88677::t_77abcb5a3185a4 124-138
+scripts/check-python-advisories.py
+  s_f74dbb26d88677::t_11ead4639a68fa 1-80
+scripts/generate-release-manifest.py
+  s_f74dbb26d88677::t_d818cdd8d9a4e9 29,38-40
+spec/synthid-trace-v1.schema.json
+  s_f74dbb26d88677::t_37ddceccc48a6a 6,11-12,16-36,41-43,62-63,72-79,85-87,90-91
+reference/test_synthid.py
+  s_f74dbb26d88677::t_b5d29e2d9e0fb0 31-38,42,208-222
+  s_f74dbb26d88677::t_cdacf1bac9f7c5 131-137,143-150,152,154-160,164-165,167,188
+  s_f74dbb26d88677::t_6fcbf731db7271 9,39-41,107,120-127
+  s_f74dbb26d88677::t_f208e231dbec51 129-130,138-142,151,153,161-163,166,168-187,189
+  s_f74dbb26d88677::t_1405c2604efea6 128
+  s_f74dbb26d88677::t_521c47a7ef698d 223
+reference/synthid_model_runner.py
+  s_f74dbb26d88677::t_328aeac48400ac 166,205-206
+  s_f74dbb26d88677::t_484b6b19d96eaa 17-23,114-123,157,192-193
+  s_f74dbb26d88677::t_961f3d6908c88e 108,110-111,113,159
+  s_f74dbb26d88677::t_15cbd50472908e 103-107,109,112,173
+  s_f74dbb26d88677::t_079873173837e1 36,41,162-163,168,170-171
+  s_f74dbb26d88677::t_6fcbf731db7271 16,24-28,65
+  s_f74dbb26d88677::t_076de1b792d940 46,49-61,141,167
+  s_f74dbb26d88677::t_9e75485f067777 139,151-156,183
+  s_f74dbb26d88677::t_568dd4b374c9db 142-144
+  s_f74dbb26d88677::t_e894cc2c35867a 44-45
+  s_f74dbb26d88677::t_0cef4882fa8f19 73-102
+  s_f74dbb26d88677::t_43180d82688f4e 29
+  s_f74dbb26d88677::t_0d8040ccf1634f 158
+reference/synthid-runner-install-requirements.txt
+  s_f74dbb26d88677::t_565f19a9f84e5a 1,3-6
+reference/synthid_reference.py
+  s_f74dbb26d88677::t_02241d66b8ba99 236-237
+  s_f74dbb26d88677::t_bb28027c122ce2 51-54,344,387,390
+  s_f74dbb26d88677::t_f07a89c2dd0ab3 55-67,69-81
+  s_f74dbb26d88677::t_aff5d753f0f4d4 12,349-350
+  s_f74dbb26d88677::t_9b3dd14647cc2d 9,352-375
+  s_f74dbb26d88677::t_d10dcceeaf6541 11,37-44,153-234,263,277-278,317,343,385-386,388-389,391-393
+  s_f74dbb26d88677::t_961f3d6908c88e 68,378
+  s_f74dbb26d88677::t_95a8fe2c7fd4e2 376
+  s_f74dbb26d88677::t_484b6b19d96eaa 28
+  s_f74dbb26d88677::t_6fcbf731db7271 29,129-139,280
+scripts/check-python-runtime-lock.py
+  s_f74dbb26d88677::t_2063175dac3b20 1-31,44-94
+  s_f74dbb26d88677::t_6a645d1f47fe29 32-43
+reference/verify_synthid_upstream.py
+  s_f74dbb26d88677::t_0947db6e8b8574 92-95
+  s_f74dbb26d88677::t_6acc71d582bd1d 81-84,89,91,96-98
+  s_f74dbb26d88677::t_f60d16bd531327 69-80
+  s_f74dbb26d88677::t_a024f66dee4287 2,6,10,19,21-26,36-53,56,58,63-68,86,88,90,99-121,124-133,138-147,150-151,153-161,163-190
+.github/workflows/ci.yml
+  s_f74dbb26d88677::t_568dd4b374c9db 86-107
+  s_f74dbb26d88677::t_b168dbf7765744 53-61
+Cargo.toml
+  s_f74dbb26d88677::t_07ede4dd2d6cdb 18
+  s_f74dbb26d88677::t_961f3d6908c88e 17
+scripts/check-synthid-gpt2.sh
+  s_f74dbb26d88677::t_565f19a9f84e5a 6,35-36
+  s_f74dbb26d88677::t_65e1f8cf4842b3 32
+src/synthid.rs
+  s_f74dbb26d88677::t_91e1fb4db40f2d 48-49,103,113,122,124,128-135,461
+  s_f74dbb26d88677::t_484b6b19d96eaa 20-21,227-231
+  s_f74dbb26d88677::t_4aec77819dd5f1 88
+  s_f74dbb26d88677::t_321658e79e9c48 12,38-43,47,50,80,84-87,89,279,359-361,380-460,462-488
+  s_f74dbb26d88677::t_90892359f04707 356
+  s_f74dbb26d88677::t_298076d85faa37 90
+  s_f74dbb26d88677::t_e0e25e3ff2c2ac 489
+scripts/generate-python-sbom.py
+  s_f74dbb26d88677::t_544fad7c3bd5be 300-302,305,307-308
+  s_f74dbb26d88677::t_b8c62282d59497 65-76,96-100,158,167-173,236-243,248,251-256,262-266,273-280
+  s_f74dbb26d88677::t_e50dbc7c54eff5 13,17-18,22-30,57,59-64,77-93,101-117,119-143,145-154,156-157,159-166,175,187,189-192,194-195,205,208,213,234-235,244-247,249-250,257-258,281-288,296-299,303-304,309-310,338,345,359-362,379,381
+  s_f74dbb26d88677::t_2622122451b9ea 58,268
+  s_f74dbb26d88677::t_4f11ef51204d50 94-95,118,144,174,259-260
+  s_f74dbb26d88677::t_f60d16bd531327 155,176-184,261,267,269-272,290-295
+  s_f74dbb26d88677::t_1a68745020b5c3 289
+spec/synthid-distribution-v1.schema.json
+  s_f74dbb26d88677::t_a3c020a10d3b59 5-30
+scripts/check-synthid-bundle.sh
+  s_f74dbb26d88677::t_6dfc04c64ae5f8 22-23
+fixtures/synthid/gpt2-trace-v1.json
+  s_f74dbb26d88677::t_9e59030e9d4a7f 14-79,83,86,88-94,96-115,117-121
+reference/synthid-runner-linux-cpu.lock
+  s_f74dbb26d88677::t_d98448ff0f33f1 1-46
+reference/synthid-runner-lock-v1.json
+  s_f74dbb26d88677::t_5b754d0b27e398 1-419
+release-manifest-v1.json
+  s_f74dbb26d88677::t_841868c714830a 8-9,63-64,78-79,86-90,131-145,148-149,153-154,158-159,163-164,168-169,178-179,183-184,188-189,193-194,198-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "a4e6fb8d99a213201ce40f8489417c65869ed43d",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
