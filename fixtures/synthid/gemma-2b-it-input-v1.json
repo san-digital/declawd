@@ -1,0 +1,7 @@
+{
+  "schema": "declawd.synthid-model-input/v1",
+  "model": "gemma-2b-it",
+  "repository": "google/gemma-2b-it",
+  "revision": "96988410cbdaeb8d5093d1ebdc5a8fb563e02bad",
+  "prompt_token_ids": [2, 106, 1645, 603, 476, 4826, 576, 573, 2134, 235265]
+}

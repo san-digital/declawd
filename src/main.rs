@@ -4,6 +4,7 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use clap::{Args, Parser, Subcommand};
+use declawd::synthid::{ScoreReport, SynthIdError, score_trace_file};
 use declawd::unicode::parse_code_point;
 use declawd::{Report, TextSelectors, ToolError, clean_c2pa_file, clean_text_file, inspect_file};
 
@@ -11,8 +12,8 @@ use declawd::{Report, TextSelectors, ToolError, clean_c2pa_file, clean_text_file
 #[command(
     name = "declawd",
     version,
-    about = "Inspect and selectively remove known carriers for education",
-    long_about = "Inspect and selectively remove known Unicode and embedded C2PA carriers.\n\nThis tool does not detect or certify removal of Claude's watermark. A finding is not evidence that AI was involved."
+    about = "Inspect known carriers and reproduce fixed public scoring for education",
+    long_about = "Inspect and selectively remove known Unicode and embedded C2PA carriers, or reproduce a fixed public SynthID-Text teaching score from token IDs.\n\nThis tool does not detect or certify removal of Claude's watermark. A finding or score is not evidence that AI was involved."
 )]
 struct Cli {
     #[command(subcommand)]
@@ -25,6 +26,8 @@ enum Command {
     Inspect(InspectArgs),
     /// Create a new output after an explicit, verified transformation.
     Clean(CleanArgs),
+    /// Run fixed-data educational laboratories; never emits an authorship verdict.
+    Lab(LabArgs),
 }
 
 #[derive(Debug, Args)]
@@ -54,6 +57,39 @@ enum CleanCommand {
     Text(CleanTextArgs),
     /// Remove only an embedded C2PA/JUMBF store from PNG or JPEG.
     C2pa(CleanC2paArgs),
+}
+
+#[derive(Debug, Args)]
+struct LabArgs {
+    #[command(subcommand)]
+    command: LabCommand,
+}
+
+#[derive(Debug, Subcommand)]
+enum LabCommand {
+    /// Reproduce the public SynthID-Text teaching profile.
+    Synthid(SynthIdArgs),
+}
+
+#[derive(Debug, Args)]
+struct SynthIdArgs {
+    #[command(subcommand)]
+    command: SynthIdCommand,
+}
+
+#[derive(Debug, Subcommand)]
+enum SynthIdCommand {
+    /// Score a token-ID trace against the fixed public profile.
+    Score(SynthIdScoreArgs),
+}
+
+#[derive(Debug, Args)]
+struct SynthIdScoreArgs {
+    /// JSON token trace. Prose input is not accepted.
+    trace: PathBuf,
+    /// Emit the versioned JSON report rather than the human summary.
+    #[arg(long)]
+    json: bool,
 }
 
 #[derive(Debug, Args)]
@@ -132,7 +168,62 @@ fn run(cli: Cli) -> Result<u8, ToolError> {
                 Ok(0)
             }
         },
+        Command::Lab(args) => match args.command {
+            LabCommand::Synthid(args) => match args.command {
+                SynthIdCommand::Score(args) => {
+                    let report = score_trace_file(&args.trace).map_err(map_synthid_error)?;
+                    print_synthid_report(&report, args.json)?;
+                    Ok(0)
+                }
+            },
+        },
     }
+}
+
+fn map_synthid_error(error: SynthIdError) -> ToolError {
+    match error {
+        SynthIdError::Input(message) => ToolError::Input(message),
+        SynthIdError::ExpectedMismatch(message) => ToolError::Verification(message),
+    }
+}
+
+fn print_synthid_report(report: &ScoreReport, json: bool) -> Result<(), ToolError> {
+    if json {
+        println!(
+            "{}",
+            serde_json::to_string_pretty(report).map_err(|error| {
+                ToolError::Verification(format!("cannot render SynthID JSON report: {error}"))
+            })?
+        );
+        return Ok(());
+    }
+    println!(
+        "Profile: {} ({})",
+        report.profile.id, report.profile.file_sha256
+    );
+    println!("Status: {:?}", report.status);
+    println!("Tokens: {}", report.token_count);
+    println!("Candidate contexts: {}", report.candidate_context_count);
+    println!("Valid contexts: {}", report.valid_context_count);
+    if let Some(score) = &report.raw_score {
+        println!(
+            "Raw mean: {} ({}/{})",
+            score.decimal, score.numerator, score.denominator
+        );
+    } else {
+        println!("Raw mean: insufficient data");
+    }
+    if let Some(score) = &report.weighted_score {
+        println!(
+            "Weighted mean: {} ({}/{})",
+            score.decimal, score.numerator, score.denominator
+        );
+    } else {
+        println!("Weighted mean: insufficient data");
+    }
+    println!("Scope: educational public reference profile; not Anthropic's production watermark.");
+    println!("No detector threshold or authorship verdict is applied.");
+    Ok(())
 }
 
 fn parse_selectors(

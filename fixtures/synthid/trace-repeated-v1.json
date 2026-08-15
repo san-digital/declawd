@@ -1,0 +1,34 @@
+{
+  "schema": "declawd.synthid-trace/v1",
+  "trace_id": "repeated-context-v1",
+  "profile": {
+    "id": "declawd.synthid-profile/v1",
+    "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+  },
+  "sequence_role": "generated_output_only",
+  "tokenizer": {
+    "model_id": "declawd/model-neutral-token-ids",
+    "revision": "v1",
+    "eos_token_id": null
+  },
+  "token_ids": [1, 2, 3, 4, 5, 1, 2, 3, 4, 6],
+  "expected": {
+    "status": "scored",
+    "token_count": 10,
+    "candidate_context_count": 6,
+    "first_eos_index": null,
+    "repetition_excluded_count": 1,
+    "eos_excluded_count": 0,
+    "valid_context_count": 5,
+    "g_value_one_count": 84,
+    "weighted_g_value_sum": 12948,
+    "g_values": {"bit_length": 180, "byte_length": 23, "sha256": "45717dcb7851e635b65cb3765527bbc4d941d1d7a5b4992f2d1fb037a2588b8a"},
+    "masks": {
+      "repetition": {"bit_length": 6, "byte_length": 1, "sha256": "ffe679bb831c95b67dc17819c63c5090d221aac6f4c7bf530f594ab43d21fa1e"},
+      "eos": {"bit_length": 6, "byte_length": 1, "sha256": "8a8de823d5ed3e12746a62ef169bcf372be0ca44f0a1236abc35df05d96928e1"},
+      "valid": {"bit_length": 6, "byte_length": 1, "sha256": "ffe679bb831c95b67dc17819c63c5090d221aac6f4c7bf530f594ab43d21fa1e"}
+    },
+    "raw_score": {"numerator": 84, "denominator": 150, "decimal": "0.560000000000"},
+    "weighted_score": {"numerator": 12948, "denominator": 23925, "decimal": "0.541191222571"}
+  }
+}

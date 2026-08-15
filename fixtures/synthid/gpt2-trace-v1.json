@@ -1,0 +1,34 @@
+{
+  "schema": "declawd.synthid-trace/v1",
+  "trace_id": "gpt2-seed-20260815",
+  "profile": {
+    "id": "declawd.synthid-profile/v1",
+    "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+  },
+  "sequence_role": "generated_output_only",
+  "tokenizer": {
+    "model_id": "openai-community/gpt2",
+    "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "eos_token_id": 50256
+  },
+  "token_ids": [921, 743, 307, 6655, 379, 644, 356, 460, 466, 287, 262, 1306, 1178, 812, 13, 198, 198, 5756, 338, 923, 351, 262, 4094, 1808, 25, 1374, 881, 466, 345, 760, 546, 262, 4455, 30, 198, 198, 464, 3280, 318, 326, 356, 460, 470, 760, 13, 775, 460, 470, 760, 703, 867, 661, 779, 340, 13, 775, 460, 691, 3785, 503, 644, 484, 466, 290],
+  "expected": {
+    "status": "scored",
+    "token_count": 64,
+    "candidate_context_count": 60,
+    "first_eos_index": null,
+    "repetition_excluded_count": 0,
+    "eos_excluded_count": 0,
+    "valid_context_count": 60,
+    "g_value_one_count": 1019,
+    "weighted_g_value_sum": 165883,
+    "g_values": {"bit_length": 1800, "byte_length": 225, "sha256": "1ff8f412878feae9bab87b879f3695f792b25ccde68356028df4b560c5be6c30"},
+    "masks": {
+      "repetition": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"},
+      "eos": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"},
+      "valid": {"bit_length": 60, "byte_length": 8, "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"}
+    },
+    "raw_score": {"numerator": 1019, "denominator": 1800, "decimal": "0.566111111111"},
+    "weighted_score": {"numerator": 165883, "denominator": 287100, "decimal": "0.577788227099"}
+  }
+}

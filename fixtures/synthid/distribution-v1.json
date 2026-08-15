@@ -1,0 +1,27 @@
+{
+  "schema": "declawd.synthid-distribution/v1",
+  "profile": "declawd.synthid-profile/v1",
+  "purpose": "fixed model-neutral teaching fixture; not a token trace or model output",
+  "context_token_ids": [11, 22, 33, 44],
+  "mass_denominator": 1000,
+  "candidates": [
+    {"id": "cedar", "token_id": 101, "mass_numerator": 400},
+    {"id": "fern", "token_id": 202, "mass_numerator": 300},
+    {"id": "moss", "token_id": 303, "mass_numerator": 200},
+    {"id": "reed", "token_id": 404, "mass_numerator": 100}
+  ],
+  "g_values": [
+    [1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1],
+    [1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1],
+    [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1]
+  ],
+  "draws": [
+    {"depth": 0, "first": "cedar", "second": "fern", "winner": "cedar", "rule": "higher g wins; equal g keeps the first draw"},
+    {"depth": 1, "first": "moss", "second": "reed", "winner": "moss", "rule": "higher g wins; equal g keeps the first draw"},
+    {"depth": 2, "first": "fern", "second": "reed", "winner": "reed", "rule": "higher g wins; equal g keeps the first draw"},
+    {"depth": 3, "first": "cedar", "second": "moss", "winner": "cedar", "rule": "higher g wins; equal g keeps the first draw"},
+    {"depth": 4, "first": "reed", "second": "fern", "winner": "reed", "rule": "higher g wins; equal g keeps the first draw"},
+    {"depth": 5, "first": "moss", "second": "cedar", "winner": "moss", "rule": "higher g wins; equal g keeps the first draw"}
+  ]
+}

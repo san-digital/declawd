@@ -152,6 +152,20 @@ def validate(
     if "file://" in encoded or "path+file:" in encoded:
         raise ValueError("SBOM contains a checkout-specific file path")
 
+    try:
+        from cyclonedx.schema import OutputFormat, SchemaVersion
+        from cyclonedx.validation import make_schemabased_validator
+    except ImportError as error:
+        raise ValueError(
+            "cyclonedx-python-lib 11.12.0 is required for official schema validation"
+        ) from error
+    validator = make_schemabased_validator(OutputFormat.JSON, SchemaVersion.V1_5)
+    validation_error = validator.validate_str(
+        json.dumps(document, ensure_ascii=False), all_errors=True
+    )
+    if validation_error is not None:
+        raise ValueError(f"SBOM fails the official CycloneDX 1.5 schema: {validation_error}")
+
 
 def generate(destination: Path, source_revision: str, source_epoch: int) -> None:
     tool = shutil.which("cargo-cyclonedx")

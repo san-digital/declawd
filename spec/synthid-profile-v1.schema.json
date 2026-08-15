@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://declawd.com/contracts/declawd.synthid-profile-v1.schema.json",
+  "title": "Declawd public SynthID teaching profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "purpose", "reference", "parameters", "hash", "sampling_table", "scoring"],
+  "properties": {
+    "schema": {"const": "declawd.synthid-profile/v1"},
+    "purpose": {"const": "educational reproduction of a public reference profile; not a production detector"},
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["software", "version", "commit", "licence", "transfer_limitation"],
+      "properties": {
+        "software": {"const": "google-deepmind/synthid-text"},
+        "version": {"const": "0.2.1"},
+        "commit": {"const": "8f2e2316904ea7291ac96e30eb394c453dcc577b"},
+        "licence": {"const": "Apache-2.0"},
+        "transfer_limitation": {"type": "string", "minLength": 1}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ngram_len", "keys", "context_history_size"],
+      "properties": {
+        "ngram_len": {"const": 5},
+        "keys": {
+          "type": "array",
+          "minItems": 30,
+          "maxItems": 30,
+          "uniqueItems": true,
+          "items": {"type": "integer"}
+        },
+        "context_history_size": {"const": 1024}
+      }
+    },
+    "hash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["integer", "initial", "recurrence", "table_index"],
+      "properties": {
+        "integer": {"const": "signed twos-complement i64 with wrapping after every operation"},
+        "initial": {"const": 1},
+        "recurrence": {"const": "h = (h + datum) * 6364136223846793005 + 1"},
+        "table_index": {"const": "Euclidean remainder modulo 65536"}
+      }
+    },
+    "sampling_table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["size_bits", "seed", "generator", "device", "packing", "path", "byte_length", "sha256", "runtime_policy"],
+      "properties": {
+        "size_bits": {"const": 65536},
+        "seed": {"const": 0},
+        "generator": {"const": "torch 2.4.0 torch.randint(low=0, high=2)"},
+        "device": {"const": "cpu"},
+        "packing": {"const": "LSB0"},
+        "path": {"const": "fixtures/synthid/sampling-table-v1.bin"},
+        "byte_length": {"const": 8192},
+        "sha256": {"const": "4b2efa3fbbaa5f77facce45f2c2af38ba36436b2b2b81f950005fa8af266fd3c"},
+        "runtime_policy": {"const": "consume committed bitset; never regenerate at runtime"}
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_denominator", "weighted_weights", "weighted_weight_sum", "weighted_denominator", "fractions", "decimal"],
+      "properties": {
+        "raw_denominator": {"const": "30 * valid_context_count"},
+        "weighted_weights": {
+          "type": "array",
+          "minItems": 30,
+          "maxItems": 30,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "weighted_weight_sum": {"const": 4785},
+        "weighted_denominator": {"const": "4785 * valid_context_count"},
+        "fractions": {"const": "unreduced"},
+        "decimal": {"const": "12 fractional places, integer round-half-to-even"}
+      }
+    }
+  }
+}

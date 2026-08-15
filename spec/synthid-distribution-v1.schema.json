@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://declawd.com/contracts/declawd.synthid-distribution-v1.schema.json",
+  "title": "Declawd fixed SynthID teaching distribution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "profile", "purpose", "context_token_ids", "mass_denominator", "candidates", "g_values", "draws"],
+  "properties": {
+    "schema": {"const": "declawd.synthid-distribution/v1"},
+    "profile": {"const": "declawd.synthid-profile/v1"},
+    "purpose": {"const": "fixed model-neutral teaching fixture; not a token trace or model output"},
+    "context_token_ids": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+    },
+    "mass_denominator": {"const": 1000},
+    "candidates": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "token_id", "mass_numerator"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+          "token_id": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+          "mass_numerator": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "g_values": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "array",
+        "minItems": 30,
+        "maxItems": 30,
+        "items": {"enum": [0, 1]}
+      }
+    },
+    "draws": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["depth", "first", "second", "winner", "rule"],
+        "properties": {
+          "depth": {"type": "integer", "minimum": 0, "maximum": 29},
+          "first": {"type": "string"},
+          "second": {"type": "string"},
+          "winner": {"type": "string"},
+          "rule": {"const": "higher g wins; equal g keeps the first draw"}
+        }
+      }
+    }
+  }
+}

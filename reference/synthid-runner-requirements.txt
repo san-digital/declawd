@@ -1,0 +1,4 @@
+synthid-text @ git+https://github.com/google-deepmind/synthid-text.git@8f2e2316904ea7291ac96e30eb394c453dcc577b
+immutabledict==4.2.0
+torch==2.4.0
+transformers==4.43.3

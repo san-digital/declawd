@@ -1,0 +1,7 @@
+{
+  "schema": "declawd.synthid-model-input/v1",
+  "model": "gpt2",
+  "repository": "openai-community/gpt2",
+  "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "prompt_token_ids": [464, 2068, 318, 257, 1332, 286, 262, 995, 13]
+}

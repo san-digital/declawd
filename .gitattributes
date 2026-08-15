@@ -2,6 +2,7 @@
 *.jpg binary
 *.jpeg binary
 *.png binary
+*.pdf binary
 *.zip binary
 *.gz binary
 *.exe binary

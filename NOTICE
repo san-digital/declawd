@@ -10,3 +10,9 @@ THIRD_PARTY_LICENSES.txt.
 
 The human-text fixture corpus contains public-domain works. Its provenance and
 terms are recorded in fixtures/corpus.json.
+
+The retained article “Scalable watermarking for identifying large language
+model outputs”, by Sumanth Dathathri et al., Nature 634 (2024), is © The
+Author(s) 2024 and distributed under Creative Commons Attribution 4.0
+International. The unmodified version-of-record PDF, DOI and licence link are
+recorded in evidence/synthid/README.md.

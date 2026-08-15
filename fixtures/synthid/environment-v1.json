@@ -1,0 +1,31 @@
+{
+  "schema": "declawd.synthid-environment/v1",
+  "reference": {
+    "repository": "google-deepmind/synthid-text",
+    "version": "0.2.1",
+    "commit": "8f2e2316904ea7291ac96e30eb394c453dcc577b",
+    "licence": "Apache-2.0"
+  },
+  "runtime": {
+    "python": "3.12",
+    "torch": "2.4.0",
+    "transformers": "4.43.3",
+    "sampling_table_device": "cpu"
+  },
+  "models": [
+    {
+      "id": "gpt2",
+      "repository": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "release_gate": true,
+      "access": "ungated"
+    },
+    {
+      "id": "gemma-2b-it",
+      "repository": "google/gemma-2b-it",
+      "revision": "96988410cbdaeb8d5093d1ebdc5a8fb563e02bad",
+      "release_gate": false,
+      "access": "licence acceptance, credentials and suitable hardware required"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://declawd.com/contracts/declawd.synthid-trace-v1.schema.json",
+  "title": "Declawd SynthID token trace",
+  "$defs": {
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bit_length", "byte_length", "sha256"],
+      "properties": {
+        "bit_length": {"type": "integer", "minimum": 0},
+        "byte_length": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "fraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator", "decimal"],
+      "properties": {
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 1},
+        "decimal": {"type": "string", "pattern": "^[0-9]+\\.[0-9]{12}$"}
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "insufficient_data"}}},
+          "then": {
+            "properties": {
+              "valid_context_count": {"const": 0},
+              "raw_score": {"type": "null"},
+              "weighted_score": {"type": "null"}
+            }
+          },
+          "else": {
+            "properties": {
+              "valid_context_count": {"type": "integer", "minimum": 1},
+              "raw_score": {"$ref": "#/$defs/fraction"},
+              "weighted_score": {"$ref": "#/$defs/fraction"}
+            }
+          }
+        }
+      ],
+      "required": ["status", "token_count", "candidate_context_count", "first_eos_index", "repetition_excluded_count", "eos_excluded_count", "valid_context_count", "g_value_one_count", "weighted_g_value_sum", "g_values", "masks", "raw_score", "weighted_score"],
+      "properties": {
+        "status": {"enum": ["scored", "insufficient_data"]},
+        "token_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "candidate_context_count": {"type": "integer", "minimum": 0},
+        "first_eos_index": {"oneOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]},
+        "repetition_excluded_count": {"type": "integer", "minimum": 0},
+        "eos_excluded_count": {"type": "integer", "minimum": 0},
+        "valid_context_count": {"type": "integer", "minimum": 0},
+        "g_value_one_count": {"type": "integer", "minimum": 0},
+        "weighted_g_value_sum": {"type": "integer", "minimum": 0},
+        "g_values": {"$ref": "#/$defs/digest"},
+        "masks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repetition", "eos", "valid"],
+          "properties": {
+            "repetition": {"$ref": "#/$defs/digest"},
+            "eos": {"$ref": "#/$defs/digest"},
+            "valid": {"$ref": "#/$defs/digest"}
+          }
+        },
+        "raw_score": {"oneOf": [{"$ref": "#/$defs/fraction"}, {"type": "null"}]},
+        "weighted_score": {"oneOf": [{"$ref": "#/$defs/fraction"}, {"type": "null"}]}
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "trace_id", "profile", "sequence_role", "tokenizer", "token_ids"],
+  "properties": {
+    "schema": {"const": "declawd.synthid-trace/v1"},
+    "trace_id": {"type": "string", "pattern": "^[a-z0-9-]{1,128}$"},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "file_sha256"],
+      "properties": {
+        "id": {"const": "declawd.synthid-profile/v1"},
+        "file_sha256": {"const": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"}
+      }
+    },
+    "sequence_role": {"const": "generated_output_only"},
+    "tokenizer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "revision", "eos_token_id"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "revision": {"type": "string", "minLength": 1, "maxLength": 256},
+        "eos_token_id": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 2147483647}, {"type": "null"}]}
+      }
+    },
+    "token_ids": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+    },
+    "expected": {"$ref": "#/$defs/expected"}
+  }
+}
