@@ -1,0 +1,21 @@
+evidence/synthid/CC-BY-4.0.txt
+  s_f74dbb26d88677::t_88528af48c6eb5 10-12
+release-manifest-v1.json
+  s_f74dbb26d88677::t_448d22d9a251a0 13-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "9d06c0621a2d7e7687b8b9766b4c6b81884b26b7",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
