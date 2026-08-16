@@ -1,0 +1,26 @@
+reference/test_release_manifest.py
+  s_f74dbb26d88677::t_95c0670bf19b11 1-4,6-11,19-41
+  s_f74dbb26d88677::t_50576f47bfaf69 5,12-18
+scripts/generate-release-manifest.py
+  s_f74dbb26d88677::t_95c0670bf19b11 78-84,92
+.github/workflows/release.yml
+  s_f74dbb26d88677::t_95c0670bf19b11 186-199
+.github/workflows/ci.yml
+  s_f74dbb26d88677::t_21f76847d6fa59 31-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "624a208a2ce3f08cb5a8ce4946a85f4a2bb0e07f",
+  "prompts": {},
+  "sessions": {
+    "s_f74dbb26d88677": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff589-c5b7-7e92-a26d-b988d1db5fc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Lee Crossley <leee@hotmail.co.uk>"
+    }
+  }
+}
