@@ -183,6 +183,20 @@ jobs:
           bundle="declawd-${GITHUB_REF_NAME}-synthid-contracts.tar.gz"
           python3 scripts/generate-synthid-bundle.py --output "dist/${bundle}"
           (cd dist && shasum -a 256 "$bundle" > "${bundle}.sha256")
+      - name: Verify byte-identical embedded source contracts
+        shell: bash
+        run: |
+          expected_contract="dist/declawd-${GITHUB_REF_NAME}-source-contract.json"
+          for target in \
+            aarch64-apple-darwin \
+            x86_64-apple-darwin \
+            x86_64-unknown-linux-gnu
+          do
+            archive="dist/declawd-${GITHUB_REF_NAME}-${target}.tar.gz"
+            cmp "$expected_contract" <(tar -xOf "$archive" ./release-manifest-v1.json)
+          done
+          windows_archive="dist/declawd-${GITHUB_REF_NAME}-x86_64-pc-windows-msvc.zip"
+          cmp "$expected_contract" <(unzip -p "$windows_archive" release-manifest-v1.json)
       - name: Verify every release checksum
         shell: bash
         run: |

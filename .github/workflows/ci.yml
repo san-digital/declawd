@@ -28,6 +28,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Verify canonical release manifest bytes on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $generated = Join-Path $env:RUNNER_TEMP "release-manifest-v1.json"
+          python scripts/generate-release-manifest.py --output $generated
+          $expectedBytes = [IO.File]::ReadAllBytes("release-manifest-v1.json")
+          $generatedBytes = [IO.File]::ReadAllBytes($generated)
+          if (-not [Linq.Enumerable]::SequenceEqual($expectedBytes, $generatedBytes)) {
+            throw "Windows release manifest bytes differ from the committed contract"
+          }
       - run: cargo test --all-targets --locked
 
   quality:
