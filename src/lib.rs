@@ -1,5 +1,6 @@
 pub mod artifact;
 pub mod report;
+pub mod synthid;
 pub mod unicode;
 
 pub use artifact::{

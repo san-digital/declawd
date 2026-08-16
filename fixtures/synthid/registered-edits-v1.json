@@ -1,0 +1,55 @@
+{
+  "schema": "declawd.synthid-registered-edits/v1",
+  "profile": {
+    "id": "declawd.synthid-profile/v1",
+    "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+  },
+  "source": {
+    "path": "fixtures/synthid/trace-prepared-v1.json",
+    "trace_id": "prepared-v1",
+    "file_sha256": "63c726176bad37b72dd090e5cbb69bbbce2eb063fea75a927f6dff4a5c276ea5"
+  },
+  "application": "each substitution is applied independently to the source token_ids",
+  "source_scores": {
+    "raw_score": {"numerator": 131, "denominator": 240, "decimal": "0.545833333333"},
+    "weighted_score": {"numerator": 19846, "denominator": 38280, "decimal": "0.518443051202"}
+  },
+  "substitutions": [
+    {
+      "id": "edit-a",
+      "token_index": 4,
+      "before_token_id": 505,
+      "after_token_id": 506,
+      "expected_effect": {
+        "raw_numerator_delta": 3,
+        "weighted_numerator_delta": 924,
+        "raw_score": {"numerator": 134, "denominator": 240, "decimal": "0.558333333333"},
+        "weighted_score": {"numerator": 20770, "denominator": 38280, "decimal": "0.542580982236"}
+      }
+    },
+    {
+      "id": "edit-b",
+      "token_index": 7,
+      "before_token_id": 808,
+      "after_token_id": 818,
+      "expected_effect": {
+        "raw_numerator_delta": -13,
+        "weighted_numerator_delta": -2042,
+        "raw_score": {"numerator": 118, "denominator": 240, "decimal": "0.491666666667"},
+        "weighted_score": {"numerator": 17804, "denominator": 38280, "decimal": "0.465099268548"}
+      }
+    },
+    {
+      "id": "edit-c",
+      "token_index": 10,
+      "before_token_id": 1111,
+      "after_token_id": 1112,
+      "expected_effect": {
+        "raw_numerator_delta": 5,
+        "weighted_numerator_delta": 1342,
+        "raw_score": {"numerator": 136, "denominator": 240, "decimal": "0.566666666667"},
+        "weighted_score": {"numerator": 21188, "denominator": 38280, "decimal": "0.553500522466"}
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 [package]
 name = "declawd"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.88"
-description = "Inspect and selectively remove known text and C2PA carriers for education"
+description = "Inspect known carriers and reproduce public watermark scoring for education"
 license = "Apache-2.0"
 repository = "https://github.com/san-digital/declawd"
 readme = "README.md"
@@ -13,7 +13,11 @@ include = [
   "/src/**",
   "/tests/**",
   "/reference/*.py",
+  "/reference/*.txt",
+  "/reference/synthid-runner-linux-cpu.lock",
+  "/reference/synthid-runner-lock-v1.json",
   "/fixtures/**",
+  "/evidence/**",
   "/reports/**",
   "/spec/**",
   "/vectors/**",
@@ -29,6 +33,7 @@ include = [
   "/SECURITY.md",
   "/CONTRIBUTING.md",
   "/THIRD_PARTY_LICENSES.txt",
+  "/SYNTHID_THIRD_PARTY_NOTICES.md",
   "/release-manifest-v1.json",
 ]
 

@@ -1,0 +1,41 @@
+{
+  "schema": "declawd.synthid-profile/v1",
+  "purpose": "educational reproduction of a public reference profile; not a production detector",
+  "reference": {
+    "software": "google-deepmind/synthid-text",
+    "version": "0.2.1",
+    "commit": "8f2e2316904ea7291ac96e30eb394c453dcc577b",
+    "licence": "Apache-2.0",
+    "transfer_limitation": "The reference repository says its hashing differs from Gemini production and its detectors do not transfer. No compatibility with Anthropic is claimed."
+  },
+  "parameters": {
+    "ngram_len": 5,
+    "keys": [654, 400, 836, 123, 340, 443, 597, 160, 57, 29, 590, 639, 13, 715, 468, 990, 966, 226, 324, 585, 118, 504, 421, 521, 129, 669, 732, 225, 90, 960],
+    "context_history_size": 1024
+  },
+  "hash": {
+    "integer": "signed twos-complement i64 with wrapping after every operation",
+    "initial": 1,
+    "recurrence": "h = (h + datum) * 6364136223846793005 + 1",
+    "table_index": "Euclidean remainder modulo 65536"
+  },
+  "sampling_table": {
+    "size_bits": 65536,
+    "seed": 0,
+    "generator": "torch 2.4.0 torch.randint(low=0, high=2)",
+    "device": "cpu",
+    "packing": "LSB0",
+    "path": "fixtures/synthid/sampling-table-v1.bin",
+    "byte_length": 8192,
+    "sha256": "4b2efa3fbbaa5f77facce45f2c2af38ba36436b2b2b81f950005fa8af266fd3c",
+    "runtime_policy": "consume committed bitset; never regenerate at runtime"
+  },
+  "scoring": {
+    "raw_denominator": "30 * valid_context_count",
+    "weighted_weights": [290, 281, 272, 263, 254, 245, 236, 227, 218, 209, 200, 191, 182, 173, 164, 155, 146, 137, 128, 119, 110, 101, 92, 83, 74, 65, 56, 47, 38, 29],
+    "weighted_weight_sum": 4785,
+    "weighted_denominator": "4785 * valid_context_count",
+    "fractions": "unreduced",
+    "decimal": "12 fractional places, integer round-half-to-even"
+  }
+}

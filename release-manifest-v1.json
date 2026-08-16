@@ -1,8 +1,28 @@
 {
   "schema": "declawd.release-manifest/v1",
-  "release": "v0.1.1-source-contract",
+  "release": "v0.2.0-source-contract",
   "source_revision": null,
   "files": [
+    {
+      "path": "SYNTHID_THIRD_PARTY_NOTICES.md",
+      "byte_length": 1372,
+      "sha256": "d54bc66ff5350578df47065970d4178be3efd15fa74e2ba9b0bd13fba1adc665"
+    },
+    {
+      "path": "evidence/synthid/CC-BY-4.0.txt",
+      "byte_length": 494,
+      "sha256": "f3f9a822634934d6f9d9e51bb956d70302de6b71e5e5614d1b98ea8bc693a307"
+    },
+    {
+      "path": "evidence/synthid/README.md",
+      "byte_length": 925,
+      "sha256": "e863a8029255310ae9fb6b3f14ac80632c4e5d67f7b2e27cf4330ae29360a95b"
+    },
+    {
+      "path": "evidence/synthid/dathathri-2024-synthid-text.pdf",
+      "byte_length": 4313074,
+      "sha256": "ac88f69c1af9f9748cfb0b10ea34b5a0b0329bc4461cb6a57442ce572a678a4e"
+    },
     {
       "path": "fixtures/c2pa/signed-fixture-manifest.json",
       "byte_length": 1347,
@@ -34,6 +54,66 @@
       "sha256": "4dde7f057b7d29a8846cd75043321126f92c1662a90d8a039d2696b6b28fba39"
     },
     {
+      "path": "fixtures/synthid/distribution-v1.json",
+      "byte_length": 1695,
+      "sha256": "866fbd2393cb49980cc51c9f911da5c595e19095658672a6f457592543d190b0"
+    },
+    {
+      "path": "fixtures/synthid/environment-v1.json",
+      "byte_length": 1371,
+      "sha256": "6307a0fec86a34b23db617ef052f9164fe69b4961cdf97783903fdd50fa8822a"
+    },
+    {
+      "path": "fixtures/synthid/gemma-2b-it-input-v1.json",
+      "byte_length": 249,
+      "sha256": "7823357b1f63bc9e4e9743d3f9286d34f736345edf7f2c98a851ecc7e32db64b"
+    },
+    {
+      "path": "fixtures/synthid/gpt2-input-v1.json",
+      "byte_length": 237,
+      "sha256": "a7c5947ed99db7343e7974ccd98f64ff4332c808b927032138100ce84849338b"
+    },
+    {
+      "path": "fixtures/synthid/gpt2-trace-v1.json",
+      "byte_length": 2221,
+      "sha256": "f91bd23a0148e9b6f40e0c86489649053bf3d8c3d8824c8a500736f67e5eb4ea"
+    },
+    {
+      "path": "fixtures/synthid/profile-v1.json",
+      "byte_length": 1810,
+      "sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+    },
+    {
+      "path": "fixtures/synthid/registered-edits-v1.json",
+      "byte_length": 1965,
+      "sha256": "15a402adeb6312c31e1afb1cdeff5208e8139042e14540e122da299501a9f255"
+    },
+    {
+      "path": "fixtures/synthid/sampling-table-v1.bin",
+      "byte_length": 8192,
+      "sha256": "4b2efa3fbbaa5f77facce45f2c2af38ba36436b2b2b81f950005fa8af266fd3c"
+    },
+    {
+      "path": "fixtures/synthid/trace-eos-v1.json",
+      "byte_length": 1453,
+      "sha256": "3407002b74612640e6deb478c1d170ff218aa5c7141819c7274cd7715d1ffc0c"
+    },
+    {
+      "path": "fixtures/synthid/trace-prepared-v1.json",
+      "byte_length": 1649,
+      "sha256": "63c726176bad37b72dd090e5cbb69bbbce2eb063fea75a927f6dff4a5c276ea5"
+    },
+    {
+      "path": "fixtures/synthid/trace-repeated-v1.json",
+      "byte_length": 1454,
+      "sha256": "bd2af88c896149f25ac3ba806405591d2276fb865b5d5fb62d9223657aaf1d1b"
+    },
+    {
+      "path": "fixtures/synthid/trace-short-v1.json",
+      "byte_length": 1295,
+      "sha256": "94f35b3e19de7a912323274261ab2c4eba8e629be5940cb75dcc01a85ff8bc1f"
+    },
+    {
       "path": "reports/calibration-report-v1.json",
       "byte_length": 937,
       "sha256": "702a3a98677ed98c2f41b020305e52d49771698610657a9b204057cc4be72d4a"
@@ -44,9 +124,79 @@
       "sha256": "926fcb9c5351a504e225f8d1208b8833909550c0e086564677e62856ac399cfc"
     },
     {
+      "path": "reference/generate_synthid_table.py",
+      "byte_length": 1475,
+      "sha256": "265ac5120c912d5b6d095433f1706fa25cb1913bdfc58d231d94c56cd71f49b6"
+    },
+    {
+      "path": "reference/python-audit-tool-requirements.txt",
+      "byte_length": 18,
+      "sha256": "7b4acc391ab477d5fedd5d34f8d7c4da0afdae1a6c0643aa0f877220386c75ba"
+    },
+    {
+      "path": "reference/synthid-runner-linux-cpu.lock",
+      "byte_length": 4037,
+      "sha256": "1b4ff403020273f2eab415e8fb14cf7113d06144fa264f145a1d54ff8caa9829"
+    },
+    {
+      "path": "reference/synthid-runner-lock-v1.json",
+      "byte_length": 16741,
+      "sha256": "9eee0f2628106bf23720ac2764ab9e6351b72216e6407c0b5b8521059debb48b"
+    },
+    {
+      "path": "reference/synthid-runner-install-requirements.txt",
+      "byte_length": 172,
+      "sha256": "4d681006b02039a2b2a69e4636b1b45ca4b84a90f0e0b36eea8ed1e141666c59"
+    },
+    {
+      "path": "reference/synthid-runner-requirements.txt",
+      "byte_length": 247,
+      "sha256": "4800d31cd470752c6a254f49b0ccaf4936068b3af7cfccffb94bfd695289bb0c"
+    },
+    {
+      "path": "reference/synthid_model_runner.py",
+      "byte_length": 7638,
+      "sha256": "72fa8cdf688161a6530994c740f4cc6bc3c7f3a8443cf12209ede8112176b4a8"
+    },
+    {
+      "path": "reference/synthid_reference.py",
+      "byte_length": 15536,
+      "sha256": "338681a8dfa87fe58a06e19917e2393ddb08c2ed079ef06f2c17a535265c2f7f"
+    },
+    {
+      "path": "reference/verify_synthid_upstream.py",
+      "byte_length": 7780,
+      "sha256": "7646a2a06b3abb16a7da5c5d1b1ccd3d8a9f167e0ec48d1a0b6f8c744c2ec35f"
+    },
+    {
       "path": "spec/report-v1.schema.json",
       "byte_length": 3774,
       "sha256": "2da8f8b5e84dad644df6802b42855502d8f1db2dc020e171d7977168081bd944"
+    },
+    {
+      "path": "spec/synthid-distribution-v1.schema.json",
+      "byte_length": 1967,
+      "sha256": "9b0e86d0625f847d54d0632cbedc87c382ae4862b4371b6f23ed8ec7bfb55a76"
+    },
+    {
+      "path": "spec/synthid-profile-v1.schema.json",
+      "byte_length": 3703,
+      "sha256": "3123f59a3450941b5121042be3737e6bb23362f991b8e206a07288a3408e4956"
+    },
+    {
+      "path": "spec/synthid-score-v1.schema.json",
+      "byte_length": 4798,
+      "sha256": "833cc222c9c771c406e6f0ed2d725a2b24941582b8b83e4ac6b4de9622180853"
+    },
+    {
+      "path": "spec/synthid-trace-v1.schema.json",
+      "byte_length": 5483,
+      "sha256": "44c41f48bbafb2176fb0b3fff8a65c6d6ccf2c01e92ff3891e5754196b3f41c8"
+    },
+    {
+      "path": "spec/synthid-v1.md",
+      "byte_length": 5644,
+      "sha256": "94970a26265124d9be6d491c8471bed02ac7253dc5628052eddae98178503cc8"
     },
     {
       "path": "spec/unicode-registry-v1.json",

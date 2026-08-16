@@ -1,0 +1,58 @@
+{
+  "schema": "declawd.synthid-trace/v1",
+  "trace_id": "prepared-v1",
+  "profile": {
+    "id": "declawd.synthid-profile/v1",
+    "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+  },
+  "sequence_role": "generated_output_only",
+  "tokenizer": {
+    "model_id": "declawd/model-neutral-token-ids",
+    "revision": "v1",
+    "eos_token_id": null
+  },
+  "token_ids": [101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212],
+  "expected": {
+    "status": "scored",
+    "token_count": 12,
+    "candidate_context_count": 8,
+    "first_eos_index": null,
+    "repetition_excluded_count": 0,
+    "eos_excluded_count": 0,
+    "valid_context_count": 8,
+    "g_value_one_count": 131,
+    "weighted_g_value_sum": 19846,
+    "g_values": {
+      "bit_length": 240,
+      "byte_length": 30,
+      "sha256": "656e45920369d1a5c25d23337af3d401600d1ba940dfe3bf07f0c8919a82d443"
+    },
+    "masks": {
+      "repetition": {
+        "bit_length": 8,
+        "byte_length": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      "eos": {
+        "bit_length": 8,
+        "byte_length": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      },
+      "valid": {
+        "bit_length": 8,
+        "byte_length": 1,
+        "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+      }
+    },
+    "raw_score": {
+      "numerator": 131,
+      "denominator": 240,
+      "decimal": "0.545833333333"
+    },
+    "weighted_score": {
+      "numerator": 19846,
+      "denominator": 38280,
+      "decimal": "0.518443051202"
+    }
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "schema": "declawd.python-runtime-lock/v1",
+  "environment": {
+    "implementation": "CPython",
+    "python": "3.12",
+    "platform": "manylinux x86_64",
+    "device": "cpu"
+  },
+  "indexes": [
+    "https://download.pytorch.org/whl/cpu",
+    "https://pypi.org/simple"
+  ],
+  "direct": [
+    "immutabledict",
+    "jax",
+    "jaxlib",
+    "safetensors",
+    "torch",
+    "transformers"
+  ],
+  "source_references": [
+    {
+      "name": "google-deepmind/synthid-text",
+      "version": "0.2.1",
+      "commit": "8f2e2316904ea7291ac96e30eb394c453dcc577b",
+      "role": "frozen compatibility oracle and table provenance; not installed"
+    }
+  ],
+  "packages": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+      "url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "anyio",
+      "version": "4.14.2",
+      "sha256": "9f505dda5ac9f0c8309b5e8bd445a8c2bf7246f3ce950121e45ea15bc41d1494",
+      "url": "https://files.pythonhosted.org/packages/da/35/f2287558c17e29fafc8ef3daf819bb9834061cfa43bff8014f7df7f63bdc/anyio-4.14.2-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": [
+        "idna",
+        "typing-extensions"
+      ]
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775",
+      "url": "https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl",
+      "licence": "MPL-2.0",
+      "dependencies": []
+    },
+    {
+      "name": "click",
+      "version": "8.4.2",
+      "sha256": "e6f9f66136c816745b9d65817da91d61d957fb16e02e4dcd0552553c5a197b76",
+      "url": "https://files.pythonhosted.org/packages/fb/e2/79c688af8b210d232694e31e59da9f6ec747bae31c3f5946e4e9b98860d5/click-8.4.2-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3",
+      "sha256": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09",
+      "url": "https://files.pythonhosted.org/packages/a7/8e/50f46a9c0ce8d2861a394c1347caae037ea0431d2f67d7feb151cbc4649a/filelock-3.32.3-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0",
+      "sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279",
+      "url": "https://files.pythonhosted.org/packages/fd/3c/6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9/fsspec-2026.7.0-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "url": "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "hf-xet",
+      "version": "1.6.0",
+      "sha256": "d62671bb130879cef0ee4c9ebe47a14af6c66ec53e6d84dc15936e5ffdfac82f",
+      "url": "https://files.pythonhosted.org/packages/67/4e/a28359bf1c1ecf11eba22123168c138698f7cb576ac678f5a2e16cd5da08/hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "licence": "Apache-2.0",
+      "dependencies": []
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+      "url": "https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": [
+        "certifi",
+        "h11"
+      ]
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+      "url": "https://files.pythonhosted.org/packages/2a/39/e50c7c3a983047577ee07d2a9e53faf5a69493943ec3f6a384bdc792deb2/httpx-0.28.1-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": [
+        "anyio",
+        "certifi",
+        "httpcore",
+        "idna"
+      ]
+    },
+    {
+      "name": "huggingface-hub",
+      "version": "1.27.0",
+      "sha256": "7df6827c2f956c60fbaa64646e979e566db76f619dd0a9729dfb8c5a3eb4f68d",
+      "url": "https://files.pythonhosted.org/packages/de/d8/95b735e183957c1f26d94c52977f09d466d55119cbbc1558ea4975e4c216/huggingface_hub-1.27.0-py3-none-any.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "click",
+        "filelock",
+        "fsspec",
+        "hf-xet",
+        "httpx",
+        "packaging",
+        "pyyaml",
+        "tqdm",
+        "typing-extensions"
+      ]
+    },
+    {
+      "name": "idna",
+      "version": "3.18",
+      "sha256": "7f952cbe720b688055e3f87de14f5c3e5fdaa8bc3928985c4077ca689de849a2",
+      "url": "https://files.pythonhosted.org/packages/1e/5e/d4e9f1a599fb8e573b7b87160658329fbf28d19eac2718f51fc3def3aa5a/idna-3.18-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "immutabledict",
+      "version": "4.2.0",
+      "sha256": "d728b2c2410d698d95e6200237feb50a695584d20289ad3379a439aa3d90baba",
+      "url": "https://files.pythonhosted.org/packages/e2/13/3cf4ac5b3403f3456e645c4533883ef67b1bb0c72e56b79c707715f57a74/immutabledict-4.2.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "jax",
+      "version": "0.11.0",
+      "sha256": "b31ed66c4321d5c9e48b861f51a72ed5f7960c93514296202d2041cbb9ac45bf",
+      "url": "https://files.pythonhosted.org/packages/d4/5a/26a1305f8978bc41f889a4172198c7d8976e8e394fc4d03597d9edfd6b7e/jax-0.11.0-py3-none-any.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "jaxlib",
+        "ml-dtypes",
+        "numpy",
+        "opt-einsum",
+        "scipy"
+      ]
+    },
+    {
+      "name": "jaxlib",
+      "version": "0.11.0",
+      "sha256": "7ea9dc06d94f536deabcf304513143bc89f51173ddfd786d44f8ac303efdf643",
+      "url": "https://files.pythonhosted.org/packages/86/f0/89c34a4877628edea6585699e42f7d3ed4c1e50140ade9c6efce85a0ab84/jaxlib-0.11.0-cp312-cp312-manylinux_2_27_x86_64.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "ml-dtypes",
+        "numpy",
+        "scipy"
+      ]
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": [
+        "markupsafe"
+      ]
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+      "url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": [
+        "mdurl"
+      ]
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "sha256": "d6dd0be5b5b189d31db7cda48b91d7e0a9795f31430b7f271219ab30f1d3ac9d",
+      "url": "https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8",
+      "url": "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "ml-dtypes",
+      "version": "0.6.0",
+      "sha256": "3b4a480aa8fd54a1805b8ac10f3f91763926a74f73c0c364c10f9231854f4170",
+      "url": "https://files.pythonhosted.org/packages/c7/f9/7d76c1eae866f5d4636401b31b6d6dd90e4b4ced1fa7cfdfcca9c60e4bd3/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "numpy"
+      ]
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+      "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1",
+      "sha256": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762",
+      "url": "https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.2",
+      "sha256": "3cdec01fa790a186d430433fdd4d4ffb70eed6f0eeb4bf05c8dbe2dce0a9bcb8",
+      "url": "https://files.pythonhosted.org/packages/3a/5f/62d28cf019460c7f1394105b4d49d9911a9c444cb77ab0bd95a204c5a6de/numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "dependencies": []
+    },
+    {
+      "name": "opt-einsum",
+      "version": "3.4.0",
+      "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd",
+      "url": "https://files.pythonhosted.org/packages/23/cd/066e86230ae37ed0be70aae89aabf03ca8d9f39c8aea0dec8029455b5540/opt_einsum-3.4.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "licence": "Apache-2.0 OR BSD-2-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "pygments",
+      "version": "2.20.0",
+      "sha256": "81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176",
+      "url": "https://files.pythonhosted.org/packages/f4/7e/a72dd26f3b0f4f2bf1dd8923c85f7ceb43172af56d63c7383eb62b332364/pygments-2.20.0-py3-none-any.whl",
+      "licence": "BSD-2-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+      "url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "regex",
+      "version": "2026.7.19",
+      "sha256": "9dce8ec9695f531a1b8a6f314fd4b393adcccf2ea861db480cdf97a301d01a68",
+      "url": "https://files.pythonhosted.org/packages/2a/8e/096d00c7c480ef2ff4265349b14e2261d4ab787ba1f74e2e80d1c58079c3/regex-2026.7.19-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "Apache-2.0 AND CNRI-Python",
+      "dependencies": []
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb",
+      "url": "https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": [
+        "markdown-it-py",
+        "pygments"
+      ]
+    },
+    {
+      "name": "safetensors",
+      "version": "0.8.0",
+      "sha256": "fd6f3f93c9a0a7cc2788ee63fb763353d4bd2e89b0751bc78fcf7dda00bea774",
+      "url": "https://files.pythonhosted.org/packages/28/50/f203ff3a3ddfe19308efc83c5a3a29ed02bf786732ec35e68bf9162f3365/safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "licence": "Apache-2.0",
+      "dependencies": []
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.0",
+      "sha256": "1f55797419e16e7f30cf88ffb3113ce0467f00cfe3f70d5c281730b21769bfc2",
+      "url": "https://files.pythonhosted.org/packages/dd/aa/1b939f6c67ed68635bb538e6752d3dacc02f66535182e939a89581a44e9c/scipy-1.18.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": [
+        "numpy"
+      ]
+    },
+    {
+      "name": "setuptools",
+      "version": "84.0.0",
+      "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670",
+      "url": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "shellingham",
+      "version": "1.5.4",
+      "sha256": "7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686",
+      "url": "https://files.pythonhosted.org/packages/e0/f9/0595336914c5619e5f28a1fb793285925a8cd4b432c9da0a987836c7f822/shellingham-1.5.4-py2.py3-none-any.whl",
+      "licence": "ISC",
+      "dependencies": []
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0",
+      "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+      "url": "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl",
+      "licence": "BSD-3-Clause",
+      "dependencies": [
+        "mpmath"
+      ]
+    },
+    {
+      "name": "tokenizers",
+      "version": "0.22.2",
+      "sha256": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+      "url": "https://files.pythonhosted.org/packages/2e/76/932be4b50ef6ccedf9d3c6639b056a967a86258c6d9200643f01269211ca/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "huggingface-hub"
+      ]
+    },
+    {
+      "name": "torch",
+      "version": "2.13.0+cpu",
+      "sha256": "4ca4a9394b0c771238a4f73590fdbbc4debad85ed0fa63d026ae1b085da7d6e2",
+      "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "licence": "Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT",
+      "dependencies": [
+        "filelock",
+        "fsspec",
+        "jinja2",
+        "networkx",
+        "setuptools",
+        "sympy",
+        "typing-extensions"
+      ]
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.0",
+      "sha256": "7f585706bfddbdebf89daac705b2dfcc16890130727d3197ca62c732b4310953",
+      "url": "https://files.pythonhosted.org/packages/f9/1c/01bfd571a64e7f270e6bab5e33777debe0edc56759233ce84f27dec92d14/tqdm-4.70.0-py3-none-any.whl",
+      "licence": "MPL-2.0 AND MIT",
+      "dependencies": []
+    },
+    {
+      "name": "transformers",
+      "version": "5.15.0",
+      "sha256": "d7f007736f67749ae9490c4f8cb5d30b452ae2d68c8675e50ba8d63ea7feb107",
+      "url": "https://files.pythonhosted.org/packages/d8/43/81355710a4c84e9420e11a86d41a5364deb561f2ef36dfdf254a07371bbb/transformers-5.15.0-py3-none-any.whl",
+      "licence": "Apache-2.0",
+      "dependencies": [
+        "huggingface-hub",
+        "numpy",
+        "packaging",
+        "pyyaml",
+        "regex",
+        "safetensors",
+        "tokenizers",
+        "tqdm",
+        "typer"
+      ]
+    },
+    {
+      "name": "typer",
+      "version": "0.27.1",
+      "sha256": "53150287edd11baeb4e4722c8e394fcdf8181c0ae89485cba8d25c778d5edd56",
+      "url": "https://files.pythonhosted.org/packages/43/89/9518bc0c3929bee36b3a4a8e3daddd6e03f92f9961c66d4983b837160543/typer-0.27.1-py3-none-any.whl",
+      "licence": "MIT",
+      "dependencies": [
+        "annotated-doc",
+        "rich",
+        "shellingham"
+      ]
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "licence": "PSF-2.0",
+      "dependencies": []
+    }
+  ]
+}

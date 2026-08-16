@@ -8,9 +8,11 @@ artefacts, and provides a conservative Rust CLI for:
 - removing or replacing only the exact text selectors a user requests; and
 - removing only an embedded C2PA/JUMBF store from PNG or JPEG files.
 
-**This project does not detect or remove Claude's text watermark.** A finding
+**This project does not detect or remove Claude's text watermark.** Without
+Anthropic's key, a compatible detector and a published decision rule, Declawd
+cannot directly score or exclude Anthropic's production watermark. A finding
 does not show that AI was involved, and an absence does not prove human
-authorship. Statistical token-choice and pixel-level marks are not tested.
+authorship. Pixel-level marks are not tested.
 
 ## CLI
 
@@ -25,6 +27,8 @@ declawd clean text <input> --output <output>
 
 declawd clean c2pa <input.png|jpg> --output <output>
   [--allow-empty] [--json]
+
+declawd lab synthid score <trace.json> [--json]
 ```
 
 Selectors compose as a union. Duplicate selectors are deduplicated. Removing
@@ -75,6 +79,69 @@ enumerated in [`spec/unicode-registry-v1.json`](spec/unicode-registry-v1.json).
   absent unless `--include-context` is explicitly requested; that option can
   disclose up to 32 source scalars on either side of a finding.
 
+## Public SynthID-Text laboratory
+
+The v0.2 laboratory reproduces exact mean scoring for a fixed profile from
+DeepMind's public `synthid-text` 0.2.1 implementation. It accepts token IDs,
+not prose, and emits exact fractions, 12-place decimals and hashes of the
+g-value and mask bitsets. It deliberately provides no detector threshold,
+Claude compatibility or authorship verdict.
+
+```sh
+cargo run -- lab synthid score fixtures/synthid/trace-prepared-v1.json --json
+python3 reference/synthid_reference.py fixtures/synthid/trace-prepared-v1.json
+```
+
+The Rust and standard-library Python reports are byte-identical. The contract
+is split into four schemas:
+
+- [`declawd.synthid-profile/v1`](spec/synthid-profile-v1.schema.json) pins the
+  public keys, hash arithmetic, CPU table and score representation;
+- [`declawd.synthid-distribution/v1`](spec/synthid-distribution-v1.schema.json)
+  is a fixed, model-neutral candidate exercise for the browser laboratory;
+- [`declawd.synthid-trace/v1`](spec/synthid-trace-v1.schema.json) permits only
+  token IDs, an EOS ID and an optional expected result; and
+- [`declawd.synthid-score/v1`](spec/synthid-score-v1.schema.json) reports exact
+  scores and bitset digests without a decision.
+
+Traces are limited to 8 MiB and 100,000 token IDs. They contain no prose,
+logits, floating-point probabilities, private keys or thresholds. The
+committed 65,536-bit sampling table was generated once with Torch 2.4.0 on
+`device="cpu"`, packed LSB0 and pinned by SHA-256. Runtime code never
+regenerates it.
+
+The public reference itself warns that its hashing differs from production
+Gemini hashing and its trained detectors do not transfer. Declawd makes the
+same boundary explicit for Anthropic: naming SynthID-Text does not publish the
+production key, configuration, detector or decision rule.
+
+### Optional model runners
+
+[`reference/synthid_model_runner.py`](reference/synthid_model_runner.py) can
+produce token-only traces from pinned GPT-2 and Gemma 2B IT revisions. Model
+weights and decoded output are never committed. GPT-2 is the ungated release
+oracle. Gemma is optional and requires separate licence acceptance, Hugging
+Face access and suitable hardware. The runner allowlists concrete model
+classes, pins revisions, requires safetensors and disables remote code.
+
+The release gate installs the complete, hash-pinned 40-package Linux CPU lock
+in [`reference/synthid-runner-linux-cpu.lock`](reference/synthid-runner-linux-cpu.lock).
+The supported runtime is Torch 2.13.0, Transformers 5.15.0, safetensors 0.8.0
+and JAX 0.11.0. Torch 2.4.0 remains only as the historical CPU table-generation
+provenance and is not installed. The DeepMind 0.2.1 source is checked out clean
+at its immutable commit for compatibility checks rather than installed with its
+obsolete runtime pins.
+
+Three registered token-ID substitutions and their exact independent score
+effects are frozen in
+[`registered-edits-v1.json`](fixtures/synthid/registered-edits-v1.json). They
+contain no decoded model output, detector threshold or verdict.
+
+The retained version-of-record [SynthID-Text paper](evidence/synthid/README.md)
+is CC BY 4.0 and pinned by DOI, length and SHA-256. The teaching code follows
+the separately licensed Apache-2.0 reference implementation; it does not copy
+production keys or model weights.
+
 ## C2PA scope
 
 `clean c2pa` removes only the embedded C2PA store through `c2pa-rs`. It does not
@@ -85,7 +152,7 @@ not tested. The accurate result is “embedded C2PA store removed”, not
 
 The SDK is pinned to `c2pa =0.90.12` with default and network features disabled;
 only `file_io` and `rust_native_crypto` are enabled. This same-day pre-release
-pin was reassessed on 12 August 2026 and retained for v0.1.1; upgrades must be
+pin was reassessed on 12 August 2026 and retained for v0.2.0; upgrades must be
 deliberate. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs`
 declares `MIT OR Apache-2.0`; this project elects Apache-2.0 and generates
 dependency notices with `cargo-about`.
@@ -152,8 +219,13 @@ cargo test --all-targets
 ./scripts/check-security-advisories.sh
 ./scripts/check-third-party-licences.sh
 ./scripts/check-c2patool-fixtures.sh
-# With cargo-cyclonedx 0.5.9 installed:
+python3 scripts/check-python-runtime-lock.py
+./scripts/check-synthid-bundle.sh
+# With cargo-cyclonedx 0.5.9 and the exact tools in
+# reference/sbom-tool-requirements.txt installed:
 ./scripts/check-sbom.sh
+./scripts/check-python-sbom.sh
+./scripts/check-sboms-clean-checkouts.sh
 ```
 
 See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
@@ -161,28 +233,36 @@ See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
 ## Release verification
 
 Release archives include SHA-256 checksum files and GitHub build-provenance
-attestations. Each release also carries a checksummed, reproducible CycloneDX
-1.5 SBOM for the all-platform runtime and build-dependency graph; test-only
-development dependencies are excluded. Verify them before running a downloaded
-binary:
+attestations. Each release also carries two checksummed, reproducible
+CycloneDX 1.5 SBOMs: one for the Rust runtime and build graph, and one for the
+reviewed 40-package Python runner closure plus its excluded DeepMind source
+reference. Test-only Rust development dependencies are excluded. Verify them
+before running a downloaded binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.1.1-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.2.0-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.1.1-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.2.0-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.1.1-<target>.zip.sha256
+sha256sum --check declawd-v0.2.0-<target>.zip.sha256
 
 # SBOM on Linux or Windows
-sha256sum --check declawd-v0.1.1.cdx.json.sha256
+sha256sum --check declawd-v0.2.0.cdx.json.sha256
+sha256sum --check declawd-v0.2.0-python.cdx.json.sha256
+sha256sum --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
-shasum -a 256 --check declawd-v0.1.1.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.0.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.0-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.1.1-<target>.tar.gz \
+gh attestation verify declawd-v0.2.0-<target>.tar.gz \
+  --repo san-digital/declawd
+
+gh attestation verify declawd-v0.2.0-synthid-contracts.tar.gz \
   --repo san-digital/declawd
 ```
 
@@ -195,7 +275,9 @@ policy cannot accept an unsigned binary.
 
 Original software, specifications and documentation are Apache-2.0. Corpus
 provenance is recorded in its fixture. See [NOTICE](NOTICE) and the generated
-[third-party notices](THIRD_PARTY_LICENSES.txt).
+[third-party notices](THIRD_PARTY_LICENSES.txt). Optional Python runner notices
+are recorded separately in
+[`SYNTHID_THIRD_PARTY_NOTICES.md`](SYNTHID_THIRD_PARTY_NOTICES.md).
 
 [demark](https://github.com/jcsuen/demark) informed the inspect-first workflow
 and candid limitations. No demark code was copied, forked or executed here; its

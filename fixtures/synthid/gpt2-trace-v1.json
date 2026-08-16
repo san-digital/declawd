@@ -1,0 +1,123 @@
+{
+  "schema": "declawd.synthid-trace/v1",
+  "trace_id": "gpt2-seed-20260815",
+  "profile": {
+    "id": "declawd.synthid-profile/v1",
+    "file_sha256": "3fcb8947cc6e267a653196571d9e43434de405b2977838cf95167c94c0ac8e08"
+  },
+  "sequence_role": "generated_output_only",
+  "tokenizer": {
+    "model_id": "openai-community/gpt2",
+    "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "eos_token_id": 50256
+  },
+  "token_ids": [
+    921,
+    460,
+    470,
+    423,
+    257,
+    2818,
+    995,
+    1231,
+    257,
+    3049,
+    530,
+    13,
+    198,
+    198,
+    40,
+    1101,
+    407,
+    2282,
+    326,
+    356,
+    761,
+    284,
+    467,
+    736,
+    284,
+    262,
+    1468,
+    1528,
+    286,
+    262,
+    11445,
+    82,
+    13,
+    887,
+    314,
+    892,
+    340,
+    318,
+    1593,
+    284,
+    1833,
+    326,
+    262,
+    3660,
+    995,
+    318,
+    407,
+    257,
+    2818,
+    530,
+    13,
+    198,
+    198,
+    464,
+    995,
+    318,
+    407,
+    257,
+    2818,
+    995,
+    13,
+    632,
+    338,
+    407
+  ],
+  "expected": {
+    "status": "scored",
+    "token_count": 64,
+    "valid_context_count": 57,
+    "candidate_context_count": 60,
+    "first_eos_index": null,
+    "repetition_excluded_count": 3,
+    "eos_excluded_count": 0,
+    "g_value_one_count": 944,
+    "weighted_g_value_sum": 154834,
+    "g_values": {
+      "bit_length": 1800,
+      "byte_length": 225,
+      "sha256": "38ad7216c810bd80cad9fcab491d6fefbb0796c336ecec8497b92321e5e8f024"
+    },
+    "masks": {
+      "repetition": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "2a7166420125d29b89ac9fd213033cd0296ac3f7ed693b7c48f2e35a38d1624b"
+      },
+      "eos": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "c039ec3b8d4f2641f7b899f3262347808fe56fdd8488dd0b58dc8db8768a9c59"
+      },
+      "valid": {
+        "bit_length": 60,
+        "byte_length": 8,
+        "sha256": "2a7166420125d29b89ac9fd213033cd0296ac3f7ed693b7c48f2e35a38d1624b"
+      }
+    },
+    "raw_score": {
+      "numerator": 944,
+      "denominator": 1710,
+      "decimal": "0.552046783626"
+    },
+    "weighted_score": {
+      "numerator": 154834,
+      "denominator": 272745,
+      "decimal": "0.567687766962"
+    }
+  }
+}

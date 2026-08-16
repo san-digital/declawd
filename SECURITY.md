@@ -14,6 +14,11 @@ then checked on the same handle before reading. Symbolic links and Windows
 reparse points are refused. Parent-directory links remain subject to ordinary
 operating-system path resolution.
 
+SynthID traces use the same no-follow input boundary, are limited to 8 MiB and
+100,000 non-negative i32 token IDs, and reject unknown JSON fields. The lab
+does not accept prose, make network requests, load production keys or expose a
+detector threshold.
+
 ## Temporary advisory exception
 
 `c2pa 0.90.12` selects `rsa 0.9.10` through its pinned `rust_native_crypto`
