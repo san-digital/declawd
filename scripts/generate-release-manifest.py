@@ -75,6 +75,13 @@ def render(release: str, source_revision: str | None) -> str:
     return json.dumps(document, indent=2, ensure_ascii=False) + "\n"
 
 
+def write_manifest(
+    destination: Path, release: str, source_revision: str | None
+) -> None:
+    """Write canonical UTF-8 bytes without platform newline translation."""
+    destination.write_bytes(render(release, source_revision).encode("utf-8"))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--release", default="v0.2.0-source-contract")
@@ -82,9 +89,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
     destination = args.output if args.output.is_absolute() else ROOT / args.output
-    destination.write_text(
-        render(args.release, args.source_revision), encoding="utf-8"
-    )
+    write_manifest(destination, args.release, args.source_revision)
     try:
         label = destination.relative_to(ROOT)
     except ValueError:
