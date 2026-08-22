@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# c2pa 0.90.12's rust-native backend selects rsa 0.9.10. RUSTSEC-2023-0071
+# c2pa 0.90.15's rust-native backend selects rsa 0.9.10. RUSTSEC-2023-0071
 # has no patched release. The CLI neither loads private keys nor performs RSA
 # private-key operations, so this exception is narrow and expires quickly.
 exception_id=RUSTSEC-2023-0071
