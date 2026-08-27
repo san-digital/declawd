@@ -1,0 +1,58 @@
+# Report registered carriers in changed text, as SARIF, in a pull request.
+#
+# Read the limits before you rely on the green tick.
+#
+# `inspect` reports an explicit registry: zero-width and other listed Unicode
+# carriers, and embedded C2PA stores in PNG and JPEG. It does not report
+# confusable letters, which are a cleaning selector rather than a finding, so a
+# Cyrillic lookalike substituted into a Latin word produces no result here. It
+# does not read statistical token-choice watermarks at all, and it has no
+# provider verifier behind it.
+#
+# So a run with no results means no registered carrier was found in what was
+# scanned. It does not mean the text is clean, and it is not evidence that a
+# model was or was not involved. The SARIF this produces says so in its own
+# notifications, and lists each untested channel as a notApplicable result, so
+# a reader of the dashboard is told what was not looked at.
+name: declawd inspect
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install declawd
+        run: cargo install --locked --git https://github.com/san-digital/declawd --tag v0.2.2
+
+      # One SARIF run per file keeps each result on the file it came from.
+      # --exit-zero because a carrier is something to look at, not a build break:
+      # let the dashboard show it and let a person decide.
+      - name: Inspect changed text
+        run: |
+          mkdir -p .declawd
+          git diff --name-only --diff-filter=d "origin/${GITHUB_BASE_REF}...HEAD" \
+            | grep -E '\.(md|txt|markdown)$' > .declawd/changed.txt || true
+          if [ ! -s .declawd/changed.txt ]; then
+            echo "no text files changed"
+            exit 0
+          fi
+          while IFS= read -r file; do
+            slug=$(printf '%s' "$file" | tr '/.' '__')
+            declawd inspect "$file" --sarif --exit-zero > ".declawd/${slug}.sarif"
+          done < .declawd/changed.txt
+
+      - name: Upload results
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: .declawd
+          category: declawd

@@ -6,7 +6,10 @@ use std::process::ExitCode;
 use clap::{Args, Parser, Subcommand};
 use declawd::synthid::{ScoreReport, SynthIdError, score_trace_file};
 use declawd::unicode::parse_code_point;
-use declawd::{Report, TextSelectors, ToolError, clean_c2pa_file, clean_text_file, inspect_file};
+use declawd::{
+    Report, TextSelectors, ToolError, clean_c2pa_file, clean_text_file, inspect_file,
+    inspect_stdin, to_sarif,
+};
 
 #[derive(Debug, Parser)]
 #[command(
@@ -32,11 +35,17 @@ enum Command {
 
 #[derive(Debug, Args)]
 struct InspectArgs {
-    /// UTF-8 text, PNG or JPEG file to inspect.
+    /// UTF-8 text, PNG or JPEG file to inspect, or - to read standard input.
     file: PathBuf,
     /// Emit the versioned JSON report rather than the human summary.
-    #[arg(long)]
+    #[arg(long, conflicts_with = "sarif")]
     json: bool,
+    /// Emit a SARIF 2.1.0 run rather than the human summary.
+    #[arg(long)]
+    sarif: bool,
+    /// The location recorded in SARIF output. Defaults to the file, or - for standard input.
+    #[arg(long, value_name = "URI")]
+    sarif_uri: Option<String>,
     /// Include up to 32 Unicode scalars of source context on either side.
     #[arg(long)]
     include_context: bool,
@@ -145,9 +154,24 @@ fn main() -> ExitCode {
 fn run(cli: Cli) -> Result<u8, ToolError> {
     match cli.command {
         Command::Inspect(args) => {
-            let report = inspect_file(&args.file, args.include_context)?;
+            // A single hyphen is the conventional name for standard input, and
+            // a file really called - can still be reached as ./- .
+            let from_stdin = args.file.as_os_str() == "-";
+            let report = if from_stdin {
+                inspect_stdin(args.include_context)?
+            } else {
+                inspect_file(&args.file, args.include_context)?
+            };
             let findings = report.findings.len();
-            print_report(&report, args.json)?;
+            if args.sarif {
+                let uri = args
+                    .sarif_uri
+                    .clone()
+                    .unwrap_or_else(|| args.file.display().to_string());
+                print_sarif(&report, &uri)?;
+            } else {
+                print_report(&report, args.json)?;
+            }
             Ok(if findings > 0 && !args.exit_zero {
                 1
             } else {
@@ -266,6 +290,13 @@ fn parse_selectors(
     };
     selectors.validate().map_err(ToolError::Usage)?;
     Ok(selectors)
+}
+
+fn print_sarif(report: &Report, uri: &str) -> Result<(), ToolError> {
+    let rendered = serde_json::to_string_pretty(&to_sarif(report, uri))
+        .map_err(|error| ToolError::Verification(format!("cannot render SARIF: {error}")))?;
+    println!("{rendered}");
+    Ok(())
 }
 
 fn print_report(report: &Report, json: bool) -> Result<(), ToolError> {

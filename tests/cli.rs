@@ -354,3 +354,158 @@ fn json_escapes_registered_controls_in_opt_in_context() {
     let parsed: Value = serde_json::from_slice(&stdout).unwrap();
     assert_eq!(parsed["findings"][0]["context"]["character"], "\u{202e}");
 }
+
+#[test]
+fn standard_input_is_inspected_and_matches_the_same_bytes_from_a_file() {
+    let directory = tempdir().unwrap();
+    let input = directory.path().join("input.txt");
+    fs::write(&input, "a\u{200b}b").unwrap();
+    let from_file = Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", input.to_str().unwrap(), "--json", "--exit-zero"])
+        .assert()
+        .success();
+    let from_stdin = Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-", "--json", "--exit-zero"])
+        .write_stdin("a\u{200b}b")
+        .assert()
+        .success();
+    // The report describes bytes, so the same bytes give the same report
+    // whichever way they arrived. Nothing in it names a path.
+    let file_report: Value = serde_json::from_slice(&from_file.get_output().stdout).unwrap();
+    let stdin_report: Value = serde_json::from_slice(&from_stdin.get_output().stdout).unwrap();
+    assert_eq!(file_report, stdin_report);
+}
+
+#[test]
+fn standard_input_reports_findings_through_the_exit_code() {
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-"])
+        .write_stdin("a\u{200b}b")
+        .assert()
+        .code(1);
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-"])
+        .write_stdin("plain text")
+        .assert()
+        .success();
+}
+
+#[test]
+fn standard_input_keeps_the_limits_a_file_has() {
+    // The cap cannot be read from metadata here, so it is counted while reading.
+    let over = "a".repeat(TEXT_LIMIT as usize + 1);
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-"])
+        .write_stdin(over)
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("standard input exceeds"));
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-"])
+        .write_stdin(vec![0xff, 0xfe, 0x41, 0x00])
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("not valid UTF-8"));
+}
+
+#[test]
+fn sarif_places_a_finding_and_says_what_was_not_read() {
+    let directory = tempdir().unwrap();
+    let input = directory.path().join("input.txt");
+    fs::write(&input, "a\u{200b}b").unwrap();
+    let assertion = Command::cargo_bin("declawd")
+        .unwrap()
+        .args([
+            "inspect",
+            input.to_str().unwrap(),
+            "--sarif",
+            "--sarif-uri",
+            "docs/page.txt",
+            "--exit-zero",
+        ])
+        .assert()
+        .success();
+    let sarif: Value = serde_json::from_slice(&assertion.get_output().stdout).unwrap();
+    assert_eq!(sarif["version"], "2.1.0");
+    let run = &sarif["runs"][0];
+    assert_eq!(run["tool"]["driver"]["name"], "declawd");
+
+    // The report carries no path, so the location is the one the caller gave.
+    let artifact = &run["artifacts"][0];
+    assert_eq!(artifact["location"]["uri"], "docs/page.txt");
+    assert_eq!(artifact["hashes"]["sha-256"].as_str().unwrap().len(), 64);
+
+    let results = run["results"].as_array().unwrap();
+    let finding = results
+        .iter()
+        .find(|result| result["ruleId"] == "unicode/zero-width")
+        .expect("the zero-width carrier is reported");
+    assert_eq!(finding["kind"], "review");
+    let region = &finding["locations"][0]["physicalLocation"]["region"];
+    assert_eq!(region["startLine"], 1);
+    assert_eq!(region["startColumn"], 2);
+    assert_eq!(
+        finding["locations"][0]["physicalLocation"]["artifactLocation"]["uri"],
+        "docs/page.txt"
+    );
+
+    /* An empty results array in a security dashboard reads as a clean bill of
+    health, so every channel this run did not read is stated rather than
+    left to be inferred from silence. */
+    let untested: Vec<&Value> = results
+        .iter()
+        .filter(|result| result["ruleId"] == "declawd/untested-channel")
+        .collect();
+    assert_eq!(untested.len(), 2);
+    assert!(
+        untested
+            .iter()
+            .all(|result| result["kind"] == "notApplicable")
+    );
+    let notifications = run["invocations"][0]["toolExecutionNotifications"]
+        .as_array()
+        .unwrap();
+    assert!(
+        notifications.iter().any(|note| note["message"]["text"]
+            .as_str()
+            .unwrap()
+            .contains("No provider verifier ran")),
+        "the run says that nothing was verified"
+    );
+}
+
+#[test]
+fn sarif_defaults_its_location_to_the_argument_and_reads_standard_input() {
+    let assertion = Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-", "--sarif", "--exit-zero"])
+        .write_stdin("plain text")
+        .assert()
+        .success();
+    let sarif: Value = serde_json::from_slice(&assertion.get_output().stdout).unwrap();
+    assert_eq!(sarif["runs"][0]["artifacts"][0]["location"]["uri"], "-");
+    // Nothing found, and the file still says what it did not look at.
+    let results = sarif["runs"][0]["results"].as_array().unwrap();
+    assert!(!results.is_empty());
+    assert!(
+        results
+            .iter()
+            .all(|result| result["kind"] == "notApplicable")
+    );
+}
+
+#[test]
+fn sarif_and_json_cannot_both_be_asked_for() {
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-", "--json", "--sarif"])
+        .write_stdin("plain text")
+        .assert()
+        .failure();
+}
