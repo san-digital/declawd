@@ -79,6 +79,44 @@ enumerated in [`spec/unicode-registry-v1.json`](spec/unicode-registry-v1.json).
   absent unless `--include-context` is explicitly requested; that option can
   disclose up to 32 source scalars on either side of a finding.
 
+## Standard input, SARIF and CI
+
+`inspect` reads standard input when the file is a single hyphen, so it composes
+without a temporary file. The 10 MiB text limit still applies: it cannot be read
+from metadata here, so the bytes are counted as they arrive and one past the
+limit is refused.
+
+```sh
+git show :docs/page.md | declawd inspect -
+pbpaste | declawd inspect - --json
+```
+
+`--sarif` emits a SARIF 2.1.0 run for the code scanning tools a repository
+already runs. Working examples are in `examples/ci/`: a GitHub Actions workflow
+that uploads results per changed file, and a pre-commit hook that reports
+against the staged content rather than the working tree.
+
+```sh
+declawd inspect docs/page.md --sarif --exit-zero > page.sarif
+```
+
+Two things about that output are deliberate.
+
+The report carries no path. `Artifact` is a media type, a byte length and a
+SHA-256, because a report describes bytes rather than a place on somebody's
+disk. SARIF results need a location, so the one the tool was invoked with is
+used, and `--sarif-uri` sets it explicitly when the scanned path is not the path
+a reader should see.
+
+And a run that finds nothing has not verified anything. This tool reads a
+registry of Unicode carriers and embedded C2PA stores. It does not read
+confusable letters, which are a cleaning selector rather than a finding, and it
+does not read statistical token-choice watermarks at all. An empty SARIF file in
+a security dashboard reads as a clean bill of health, so every untested channel
+is emitted as a `notApplicable` result and the invocation repeats it in its
+notifications. The reader is told what was not looked at, in the same file that
+tells them what was.
+
 ## Public SynthID-Text laboratory
 
 The v0.2 laboratory reproduces exact mean scoring for a fixed profile from
