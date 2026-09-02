@@ -26,11 +26,11 @@ jobs:
           test "$GITHUB_REF_NAME" = "v${package_version}"
       - run: cargo package --locked
       - run: ./scripts/check-c2pa-pin.sh
-      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+      - uses: taiki-e/install-action@1ed6d7be6168f6c9046541087ff549b6bc581fdf # v2
         with:
           tool: cargo-audit@0.22.0
       - run: ./scripts/check-security-advisories.sh
-      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+      - uses: taiki-e/install-action@1ed6d7be6168f6c9046541087ff549b6bc581fdf # v2
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
@@ -43,7 +43,7 @@ jobs:
           python3 -m venv "$audit_environment"
           "$audit_environment/bin/python" -m pip install --requirement reference/python-audit-tool-requirements.txt
           PATH="$audit_environment/bin:$PATH" "$audit_environment/bin/python" scripts/check-python-advisories.py
-      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+      - uses: taiki-e/install-action@1ed6d7be6168f6c9046541087ff549b6bc581fdf # v2
         with:
           tool: cargo-cyclonedx@0.5.9
       - name: Install the pinned Python SBOM tool
@@ -151,7 +151,7 @@ jobs:
         with:
           path: dist
           merge-multiple: true
-      - uses: taiki-e/install-action@b20dedce73af6905cdc30d6611090c9b67557c8d # v2
+      - uses: taiki-e/install-action@1ed6d7be6168f6c9046541087ff549b6bc581fdf # v2
         with:
           tool: cargo-cyclonedx@0.5.9
       - name: Install the pinned Python SBOM tool
