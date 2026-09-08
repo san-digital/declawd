@@ -1,19 +1,11 @@
-# Report registered carriers in changed text, as SARIF, in a pull request.
+# Copy this workflow into .github/workflows/ and inspect-changed.py into
+# .github/scripts/. Enable code scanning for the repository before uploading.
 #
-# Read the limits before you rely on the green tick.
-#
-# `inspect` reports an explicit registry: zero-width and other listed Unicode
-# carriers, and embedded C2PA stores in PNG and JPEG. It does not report
-# confusable letters, which are a cleaning selector rather than a finding, so a
-# Cyrillic lookalike substituted into a Latin word produces no result here. It
-# does not read statistical token-choice watermarks at all, and it has no
-# provider verifier behind it.
-#
-# So a run with no results means no registered carrier was found in what was
-# scanned. It does not mean the text is clean, and it is not evidence that a
-# model was or was not involved. The SARIF this produces says so in its own
-# notifications, and lists each untested channel as a notApplicable result, so
-# a reader of the dashboard is told what was not looked at.
+# This only inspects changed UTF-8 text for registered Unicode carriers.
+# Confusable letters and statistical token-choice watermarks are not inspected.
+# No provider verifier runs. Passing the job does not establish authorship.
+# SARIF viewers may omit review and notApplicable results, so retain the raw
+# report and read the workflow summary as well as the code scanning dashboard.
 name: declawd inspect
 
 on:
@@ -21,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   security-events: write
 
 jobs:
@@ -32,27 +25,27 @@ jobs:
           fetch-depth: 0
 
       - name: Install declawd
-        run: cargo install --locked --git https://github.com/san-digital/declawd --tag v0.2.2
+        # Pin a source revision that includes stdin and SARIF support.
+        run: cargo install --locked --git https://github.com/san-digital/declawd --rev 712a90caa1725c258f2156489ced0810d2d16f48
 
-      # One SARIF run per file keeps each result on the file it came from.
-      # --exit-zero because a carrier is something to look at, not a build break:
-      # let the dashboard show it and let a person decide.
+      # Combine files into one run so uploads do not collide on tool/category.
+      # --exit-zero is used by the helper because carriers need human review.
       - name: Inspect changed text
-        run: |
-          mkdir -p .declawd
-          git diff --name-only --diff-filter=d "origin/${GITHUB_BASE_REF}...HEAD" \
-            | grep -E '\.(md|txt|markdown)$' > .declawd/changed.txt || true
-          if [ ! -s .declawd/changed.txt ]; then
-            echo "no text files changed"
-            exit 0
-          fi
-          while IFS= read -r file; do
-            slug=$(printf '%s' "$file" | tr '/.' '__')
-            declawd inspect "$file" --sarif --exit-zero > ".declawd/${slug}.sarif"
-          done < .declawd/changed.txt
+        id: inspect
+        env:
+          DECLAWD_BASE_REF: ${{ github.event.pull_request.base.sha }}
+        run: python3 .github/scripts/inspect-changed.py --base-ref "$DECLAWD_BASE_REF" --output "$RUNNER_TEMP/declawd-sarif/changed-text.sarif"
+
+      - name: Retain complete report
+        if: steps.inspect.outputs.files != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: declawd-sarif
+          path: ${{ runner.temp }}/declawd-sarif/changed-text.sarif
 
       - name: Upload results
+        if: steps.inspect.outputs.files != '0'
         uses: github/codeql-action/upload-sarif@v4
         with:
-          sarif_file: .declawd
-          category: declawd
+          sarif_file: ${{ runner.temp }}/declawd-sarif/changed-text.sarif
+          category: declawd/changed-text

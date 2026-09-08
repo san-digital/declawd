@@ -44,7 +44,7 @@ struct InspectArgs {
     #[arg(long)]
     sarif: bool,
     /// The location recorded in SARIF output. Defaults to the file, or - for standard input.
-    #[arg(long, value_name = "URI")]
+    #[arg(long, value_name = "URI", requires = "sarif")]
     sarif_uri: Option<String>,
     /// Include up to 32 Unicode scalars of source context on either side.
     #[arg(long)]
@@ -167,7 +167,7 @@ fn run(cli: Cli) -> Result<u8, ToolError> {
                 let uri = args
                     .sarif_uri
                     .clone()
-                    .unwrap_or_else(|| args.file.display().to_string());
+                    .unwrap_or_else(|| declawd::sarif::path_uri(&args.file));
                 print_sarif(&report, &uri)?;
             } else {
                 print_report(&report, args.json)?;

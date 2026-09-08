@@ -20,23 +20,31 @@ if ! command -v declawd > /dev/null 2>&1; then
   exit 0
 fi
 
+hook_directory=$(mktemp -d "${TMPDIR:-/tmp}/declawd-hook.XXXXXXXX")
+trap 'rm -rf "$hook_directory"' EXIT
+git diff --cached --name-only --diff-filter=d -z > "$hook_directory/changed"
 status=0
-while IFS= read -r file; do
-  [ -f "$file" ] || continue
+while IFS= read -r -d '' file; do
   case "$file" in
     *.md | *.markdown | *.txt) ;;
     *) continue ;;
   esac
   # Read the staged content, not the working tree, so the hook judges the
   # commit rather than whatever happens to be on disk.
-  if ! git show ":$file" | declawd inspect - > /tmp/declawd-hook.$$ 2>&1; then
-    echo
-    echo "declawd: registered carriers in $file"
-    sed 's/^/    /' /tmp/declawd-hook.$$
-    status=1
+  if git show ":$file" | declawd inspect - > "$hook_directory/report" 2>&1; then
+    continue
+  else
+    pipeline_status=("${PIPESTATUS[@]}")
   fi
-  rm -f /tmp/declawd-hook.$$
-done < <(git diff --cached --name-only --diff-filter=d)
+  echo
+  if [ "${pipeline_status[0]}" -eq 0 ] && [ "${pipeline_status[1]}" -eq 1 ]; then
+    printf 'declawd: registered carriers in %q\n' "$file"
+  else
+    printf 'declawd: could not inspect staged content for %q\n' "$file"
+  fi
+  sed 's/^/    /' "$hook_directory/report"
+  status=1
+done < "$hook_directory/changed"
 
 if [ "$status" -ne 0 ]; then
   echo

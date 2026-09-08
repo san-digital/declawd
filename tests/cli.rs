@@ -509,3 +509,110 @@ fn sarif_and_json_cannot_both_be_asked_for() {
         .assert()
         .failure();
 }
+
+#[test]
+fn sarif_regions_use_code_points_and_exclude_a_leading_bom() {
+    let assertion = Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-", "--sarif", "--exit-zero"])
+        .write_stdin("\u{feff}\u{1f600}\u{200b}z\r\n\u{200b}")
+        .assert()
+        .success();
+    let sarif: Value = serde_json::from_slice(&assertion.get_output().stdout).unwrap();
+    let run = &sarif["runs"][0];
+    assert_eq!(run["columnKind"], "unicodeCodePoints");
+    assert_eq!(run["defaultEncoding"], "utf-8");
+    assert_eq!(
+        run["newlineSequences"],
+        serde_json::json!(["\r\n", "\r", "\n"])
+    );
+    let results = run["results"].as_array().unwrap();
+    assert!(
+        results[0]["locations"][0]["physicalLocation"]
+            .get("region")
+            .is_none()
+    );
+    let regions: Vec<&Value> = results
+        .iter()
+        .filter(|result| result["ruleId"] == "unicode/zero-width")
+        .map(|result| &result["locations"][0]["physicalLocation"]["region"])
+        .collect();
+    assert_eq!(
+        regions[0],
+        &serde_json::json!({
+            "startLine": 1, "startColumn": 2, "endColumn": 3, "charOffset": 1, "charLength": 1,
+        })
+    );
+    assert_eq!(
+        regions[1],
+        &serde_json::json!({
+            "startLine": 2, "startColumn": 1, "endColumn": 2, "charOffset": 5, "charLength": 1,
+        })
+    );
+    assert!(results.iter().all(|result| result["level"] == "none"));
+}
+
+#[test]
+fn sarif_escapes_filesystem_paths() {
+    let directory = tempdir().unwrap();
+    let file = "a #100% é.txt";
+    fs::write(directory.path().join(file), "a\u{200b}").unwrap();
+    let assertion = Command::cargo_bin("declawd")
+        .unwrap()
+        .current_dir(directory.path())
+        .args(["inspect", file, "--sarif", "--exit-zero"])
+        .assert()
+        .success();
+    let sarif: Value = serde_json::from_slice(&assertion.get_output().stdout).unwrap();
+    assert_eq!(
+        sarif["runs"][0]["artifacts"][0]["location"]["uri"],
+        "a%20%23100%25%20%C3%A9.txt"
+    );
+}
+
+#[test]
+fn standard_input_images_match_files_and_sarif_does_not_invent_a_byte_region() {
+    for file in ["fixtures/c2pa/signed.png", "fixtures/c2pa/signed.jpg"] {
+        let bytes = fs::read(file).unwrap();
+        let from_stdin = Command::cargo_bin("declawd")
+            .unwrap()
+            .args(["inspect", "-", "--json", "--exit-zero"])
+            .write_stdin(bytes.clone())
+            .assert()
+            .success();
+        let from_file = Command::cargo_bin("declawd")
+            .unwrap()
+            .args(["inspect", file, "--json", "--exit-zero"])
+            .assert()
+            .success();
+        assert_eq!(
+            from_stdin.get_output().stdout,
+            from_file.get_output().stdout
+        );
+        let assertion = Command::cargo_bin("declawd")
+            .unwrap()
+            .args(["inspect", "-", "--sarif", "--exit-zero"])
+            .write_stdin(bytes)
+            .assert()
+            .success();
+        let sarif: Value = serde_json::from_slice(&assertion.get_output().stdout).unwrap();
+        let run = &sarif["runs"][0];
+        assert!(run.get("columnKind").is_none());
+        assert_eq!(run["results"][0]["ruleId"], "embedded-c2pa/c2pa-jumbf");
+        assert!(
+            run["results"][0]["locations"][0]["physicalLocation"]
+                .get("region")
+                .is_none()
+        );
+    }
+}
+
+#[test]
+fn sarif_uri_requires_sarif_output() {
+    Command::cargo_bin("declawd")
+        .unwrap()
+        .args(["inspect", "-", "--sarif-uri", "page.txt"])
+        .write_stdin("plain text")
+        .assert()
+        .code(2);
+}

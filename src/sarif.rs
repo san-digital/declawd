@@ -16,8 +16,11 @@ verifier behind it. An empty SARIF file rendered in a security dashboard
 reads as a clean bill of health, so every untested channel is emitted as a
 `notApplicable` result and the invocation carries the same statement in its
 notifications. The reader is told what was not looked at, in the same file
-that tells them what was. */
+that tells them what was. Viewers may omit these informational results; the
+raw SARIF and a CI summary must remain available. */
 use serde_json::{Value, json};
+use std::fmt::Write;
+use std::path::Path;
 
 use crate::report::{Finding, Report};
 
@@ -39,25 +42,68 @@ fn rule_description(carrier: &str, class: &str) -> String {
     }
 }
 
-fn region(finding: &Finding) -> Option<Value> {
+/// Convert a filesystem path to an escaped URI reference. Explicit SARIF URI
+/// overrides bypass this conversion and must already be valid URI references.
+pub fn path_uri(path: &Path) -> String {
+    #[cfg(windows)]
+    let normalised = path.to_string_lossy().replace('\\', "/");
+    #[cfg(windows)]
+    let normalised = if let Some(unc) = normalised.strip_prefix("//?/UNC/") {
+        format!("//{unc}")
+    } else {
+        normalised
+            .strip_prefix("//?/")
+            .unwrap_or(&normalised)
+            .to_owned()
+    };
+    #[cfg(windows)]
+    let bytes = normalised.as_bytes();
+    #[cfg(not(windows))]
+    let bytes = path.as_os_str().as_encoded_bytes();
+
+    let mut uri = String::new();
+    if path.is_absolute() {
+        #[cfg(not(windows))]
+        uri.push_str("file://");
+        #[cfg(windows)]
+        uri.push_str(if bytes.starts_with(b"//") {
+            "file:"
+        } else {
+            "file:///"
+        });
+    }
+    for (index, byte) in bytes.iter().copied().enumerate() {
+        let drive_colon = cfg!(windows) && path.is_absolute() && index == 1 && byte == b':';
+        if byte.is_ascii_alphanumeric() || b"-._~/".contains(&byte) || drive_colon {
+            uri.push(char::from(byte));
+        } else {
+            write!(uri, "%{byte:02X}").expect("writing to a string cannot fail");
+        }
+    }
+    uri
+}
+
+fn region(finding: &Finding, leading_bom: bool) -> Option<Value> {
+    // SARIF positions exclude a leading BOM. The report contract includes it,
+    // so keep the BOM itself at artifact level and adjust subsequent positions.
+    if leading_bom && finding.scalar_offset == Some(0) {
+        return None;
+    }
     let mut region = json!({});
     if let Some(line) = finding.line {
         region["startLine"] = json!(line);
     }
     if let Some(column) = finding.column {
+        let column = column - usize::from(leading_bom && finding.line == Some(1));
         region["startColumn"] = json!(column);
+        region["endColumn"] = json!(column + 1);
     }
-    /* charOffset counts Unicode scalars, which is what scalar_offset holds and
-    what SARIF means by a character. byte_length is bytes and belongs to the
-    byte-oriented pair, so it is reported as byteLength rather than being
-    mixed into a character region. */
     if let Some(offset) = finding.scalar_offset {
-        region["charOffset"] = json!(offset);
+        region["charOffset"] = json!(offset - usize::from(leading_bom));
         region["charLength"] = json!(1);
     }
-    if let Some(length) = finding.byte_length {
-        region["byteLength"] = json!(length);
-    }
+    // A C2PA store length does not identify its position in the container.
+    // Without a byte offset there is no valid binary region to report.
     if region.as_object().is_some_and(|fields| fields.is_empty()) {
         return None;
     }
@@ -79,6 +125,9 @@ fn message(finding: &Finding) -> String {
 /// Render an inspection report as SARIF 2.1.0. `uri` is the location the tool
 /// was pointed at, which the report itself does not record.
 pub fn to_sarif(report: &Report, uri: &str) -> Value {
+    let leading_bom = report.findings.iter().any(|finding| {
+        finding.scalar_offset == Some(0) && finding.code_point.as_deref() == Some("U+FEFF")
+    });
     let mut rules: Vec<Value> = Vec::new();
     let mut seen: Vec<String> = Vec::new();
     for finding in &report.findings {
@@ -92,7 +141,7 @@ pub fn to_sarif(report: &Report, uri: &str) -> Value {
             "name": format!("{}{}", finding.carrier, finding.class),
             "shortDescription": { "text": format!("Registered {} carrier", finding.class) },
             "fullDescription": { "text": rule_description(&finding.carrier, &finding.class) },
-            "defaultConfiguration": { "level": "note" },
+            "defaultConfiguration": { "level": "none" },
             "helpUri": INFORMATION_URI,
             "help": {
                 "text": "Declawd reports an explicit registry of carriers. A finding is not \
@@ -111,12 +160,12 @@ pub fn to_sarif(report: &Report, uri: &str) -> Value {
                     "artifactLocation": { "uri": uri, "index": 0 },
                 },
             });
-            if let Some(region) = region(finding) {
+            if let Some(region) = region(finding, leading_bom) {
                 location["physicalLocation"]["region"] = region;
             }
             json!({
                 "ruleId": rule_id(finding),
-                "level": "note",
+                "level": "none",
                 // Not a defect: a carrier is something a person has to look at.
                 "kind": "review",
                 "message": { "text": message(finding) },
@@ -166,8 +215,11 @@ pub fn to_sarif(report: &Report, uri: &str) -> Value {
                      is not a verified result.",
         },
     }));
+    notifications.extend(report.untested_channels.iter().map(|channel| {
+        json!({ "level": "note", "message": { "text": format!("Not tested by this run: {channel}.") } })
+    }));
 
-    json!({
+    let mut sarif = json!({
         "$schema": SARIF_SCHEMA,
         "version": SARIF_VERSION,
         "runs": [{
@@ -191,5 +243,27 @@ pub fn to_sarif(report: &Report, uri: &str) -> Value {
             }],
             "results": results,
         }],
-    })
+    });
+    if report.input.media_type.starts_with("text/") {
+        sarif["runs"][0]["columnKind"] = json!("unicodeCodePoints");
+        sarif["runs"][0]["defaultEncoding"] = json!("utf-8");
+        sarif["runs"][0]["newlineSequences"] = json!(["\r\n", "\r", "\n"]);
+    }
+    sarif
+}
+
+#[cfg(all(test, windows))]
+mod windows_tests {
+    use super::path_uri;
+    use std::path::Path;
+
+    #[test]
+    fn drive_and_unc_paths_are_file_uris() {
+        for path in [r"C:\a b.txt", r"\\?\C:\a b.txt"] {
+            assert_eq!(path_uri(Path::new(path)), "file:///C:/a%20b.txt");
+        }
+        for path in [r"\\server\share\a b.txt", r"\\?\UNC\server\share\a b.txt"] {
+            assert_eq!(path_uri(Path::new(path)), "file://server/share/a%20b.txt");
+        }
+    }
 }
