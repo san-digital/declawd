@@ -26,7 +26,7 @@ jobs:
 
       - name: Install declawd
         # Pin a source revision that includes stdin and SARIF support.
-        run: cargo install --locked --git https://github.com/san-digital/declawd --rev 712a90caa1725c258f2156489ced0810d2d16f48
+        run: cargo install --locked --git https://github.com/san-digital/declawd --rev 3594686b9df138c3dcfff6039a9c78bd8174f556
 
       # Combine files into one run so uploads do not collide on tool/category.
       # --exit-zero is used by the helper because carriers need human review.
