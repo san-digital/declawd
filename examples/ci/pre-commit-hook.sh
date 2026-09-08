@@ -31,7 +31,7 @@ while IFS= read -r -d '' file; do
   esac
   # Read the staged content, not the working tree, so the hook judges the
   # commit rather than whatever happens to be on disk.
-  if git show ":$file" | declawd inspect - > "$hook_directory/report" 2>&1; then
+  if git show ":0:$file" | declawd inspect - > "$hook_directory/report" 2>&1; then
     continue
   else
     pipeline_status=("${PIPESTATUS[@]}")

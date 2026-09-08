@@ -46,7 +46,7 @@ fn command(program: &str, directory: &Path) -> Command {
 fn hook_reads_staged_names_and_content_even_when_working_file_is_absent() {
     let directory = tempdir().unwrap();
     git(directory.path(), &["init", "-q"]);
-    let file = "space and\nnewline.txt";
+    let file = "0:space and\nnewline.txt";
     fs::write(directory.path().join(file), "a\u{200b}").unwrap();
     git(directory.path(), &["add", "--", file]);
     fs::remove_file(directory.path().join(file)).unwrap();
