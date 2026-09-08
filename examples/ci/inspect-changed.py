@@ -27,6 +27,8 @@ def inspect_changed(base_ref, output):
             "declawd", "inspect", "--sarif", "--exit-zero", "--", f"./{path}"
         ]))
         run = report["runs"][0]
+        if not run["artifacts"][0]["mimeType"].startswith("text/"):
+            raise ValueError(f"changed text path contains non-text data: {path!r}")
         if combined is None:
             combined = report
             combined["runs"][0] = {

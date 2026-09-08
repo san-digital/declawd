@@ -97,6 +97,7 @@ run, and a pre-commit hook that reports against staged content. Copy the
 workflow into `.github/workflows/` and `inspect-changed.py` into
 `.github/scripts/`. The workflow requires code scanning to be enabled, retains
 the complete report as an artifact and skips uploads when no text files changed.
+It rejects binary content in files with a text suffix.
 
 ```sh
 declawd inspect docs/page.md --sarif --exit-zero > page.sarif

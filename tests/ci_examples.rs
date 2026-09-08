@@ -162,3 +162,29 @@ fn ci_helper_has_no_upload_when_no_text_changed_and_does_not_hide_git_errors() {
             .success()
     );
 }
+
+#[test]
+fn ci_helper_rejects_images_with_text_suffixes() {
+    let directory = tempdir().unwrap();
+    git(directory.path(), &["init", "-q"]);
+    git(
+        directory.path(),
+        &["commit", "--allow-empty", "-qm", "baseline"],
+    );
+    fs::copy(
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("fixtures/c2pa/source.png"),
+        directory.path().join("image.txt"),
+    )
+    .unwrap();
+    git(directory.path(), &["add", "."]);
+    git(directory.path(), &["commit", "-qm", "image"]);
+    let helper = Path::new(env!("CARGO_MANIFEST_DIR")).join("examples/ci/inspect-changed.py");
+    let result = command("python3", directory.path())
+        .arg(helper)
+        .args(["--base-ref", "HEAD~1", "--output", "out.sarif"])
+        .output()
+        .unwrap();
+    assert!(!result.status.success());
+    assert!(String::from_utf8_lossy(&result.stderr).contains("non-text data"));
+    assert!(!directory.path().join("out.sarif").exists());
+}
