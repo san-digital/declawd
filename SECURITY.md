@@ -21,13 +21,13 @@ detector threshold.
 
 ## Temporary advisory exception
 
-`c2pa 0.90.12` selects `rsa 0.9.10` through its pinned `rust_native_crypto`
+`c2pa 0.90.15` selects `rsa 0.9.10` through its pinned `rust_native_crypto`
 backend. That release is affected by `RUSTSEC-2023-0071`, a timing side channel
 in RSA private-key operations for which no patched `rsa` release exists. This
 CLI does not load private keys, sign, decrypt, expose a network service or call
-RSA private-key operations; it uses the SDK's JUMBF inspection/removal API.
+RSA private-key operations. It uses the SDK's JUMBF inspection/removal API.
 
 The exception is limited to `RUSTSEC-2023-0071` and expires on 12 September
 2026. CI still fails on every other vulnerability, and it fails once the
-exception expires. Reassess the `c2pa` pin and crypto backend before that date;
-remove the exception as soon as the dependency can be removed or patched.
+exception expires. Reassess the `c2pa` pin and crypto backend before that date.
+Remove the exception as soon as the dependency can be removed or patched.

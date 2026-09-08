@@ -150,12 +150,11 @@ data. Remote manifest references are not followed or removed. Soft bindings are
 not tested. The accurate result is “embedded C2PA store removed”, not
 “provenance removed” or “Claude watermark removed”.
 
-The SDK is pinned to `c2pa =0.90.12` with default and network features disabled;
-only `file_io` and `rust_native_crypto` are enabled. This same-day pre-release
-pin was reassessed on 12 August 2026 and retained for v0.2.0; upgrades must be
-deliberate. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs`
-declares `MIT OR Apache-2.0`; this project elects Apache-2.0 and generates
-dependency notices with `cargo-about`.
+The SDK is pinned to `c2pa =0.90.15` with default and network features disabled.
+Only `file_io` and `rust_native_crypto` are enabled. The pin was upgraded on 22
+August 2026 for v0.2.1. Upgrades remain deliberate. CI verifies the manifest pin
+against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects
+Apache-2.0 and generates dependency notices with `cargo-about`.
 
 Synthetic C2PA stores exercise malformed-input and preservation cases. Two
 additional PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development
@@ -170,10 +169,10 @@ tests run on Linux, macOS and Windows.
 ## Deferred registry candidates
 
 Typographic spaces, combining marks and mixed-script confusables are candidates
-for a separately versioned v0.2 registry after their finite taxonomy and
-multilingual negative controls have been reviewed. In v0.1 the CLI can still
-transform an exact scalar such as `--replace U+202F=U+0020`, but `inspect` does
-not classify it and no broad class selector is available.
+for a separately versioned future registry after their finite taxonomy and
+multilingual negative controls have been reviewed. The CLI can still transform
+an exact scalar such as `--replace U+202F=U+0020`, but `inspect` does not
+classify it and no broad class selector is available.
 
 ## Frozen evidence and reproduction
 
@@ -192,6 +191,27 @@ Frozen artefacts:
   score. Its original-passage offsets are 75, 175, 295, 371, 631 and 994; the
   final result is 358 effective contexts, 102 green and z =
   1.5256954942433834.
+
+### Known v1 limitations
+
+The frozen `declawd-v1` registration still reproduces byte for byte. Two input
+defects are recorded in [issue #17](https://github.com/san-digital/declawd/issues/17)
+and will not be corrected in place.
+
+- Candidate slots 39 and 116 are not substitutable in their sentence frames.
+  The marked fixture selects wording that produces "due the delay" and "carry
+  with a run". A replacement profile must render and review every candidate in
+  context before registration.
+- `min_effective_tokens` is 120, but every calibration and evaluation passage
+  has at least 200 distinct pairs. At the frozen 120-pair floor, 4 of the 192
+  human passages cross the 1.80 cut-off. The highest, Benjamin Franklin at z =
+  3.16, is above the marked fixture at z = 2.99. Interfaces using v1 should
+  withhold scores and verdicts below 200 pairs.
+
+Changing either registered input would alter the registration hash. A
+replacement therefore needs a new profile identifier, a fresh registration and
+seed, a new calibration and new vectors. It belongs in a new minor release, not
+the v0.2.2 maintenance patch.
 
 Reproduction scripts are in `reference/`. Reproduce the committed run without
 choosing a new seed:
@@ -241,33 +261,33 @@ before running a downloaded binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.2.0-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.2.2-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.2.0-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.2.2-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.2.0-<target>.zip.sha256
+sha256sum --check declawd-v0.2.2-<target>.zip.sha256
 
 # SBOM on Linux or Windows
-sha256sum --check declawd-v0.2.0.cdx.json.sha256
-sha256sum --check declawd-v0.2.0-python.cdx.json.sha256
-sha256sum --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.2.2.cdx.json.sha256
+sha256sum --check declawd-v0.2.2-python.cdx.json.sha256
+sha256sum --check declawd-v0.2.2-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
-shasum -a 256 --check declawd-v0.2.0.cdx.json.sha256
-shasum -a 256 --check declawd-v0.2.0-python.cdx.json.sha256
-shasum -a 256 --check declawd-v0.2.0-synthid-contracts.tar.gz.sha256
+shasum -a 256 --check declawd-v0.2.2.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.2-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.2.2-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.2.0-<target>.tar.gz \
+gh attestation verify declawd-v0.2.2-<target>.tar.gz \
   --repo san-digital/declawd
 
-gh attestation verify declawd-v0.2.0-synthid-contracts.tar.gz \
+gh attestation verify declawd-v0.2.2-synthid-contracts.tar.gz \
   --repo san-digital/declawd
 ```
 
 The macOS and Windows binaries are not platform code-signed or notarised.
-GitHub provenance attests the workflow and source revision; it is not an
+GitHub provenance attests the workflow and source revision. It is not an
 operating-system signing certificate. Build from the tagged source if local
 policy cannot accept an unsigned binary.
 
@@ -280,5 +300,5 @@ are recorded separately in
 [`SYNTHID_THIRD_PARTY_NOTICES.md`](SYNTHID_THIRD_PARTY_NOTICES.md).
 
 [demark](https://github.com/jcsuen/demark) informed the inspect-first workflow
-and candid limitations. No demark code was copied, forked or executed here; its
+and candid limitations. No demark code was copied, forked or executed here. Its
 PolyForm Noncommercial licence is incompatible with reuse for this project.
