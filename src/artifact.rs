@@ -1,5 +1,5 @@
 use std::fs::{self, File, OpenOptions};
-use std::io::{Read, Seek, Write};
+use std::io::{self, Read, Seek, Write};
 use std::path::Path;
 
 use c2pa::Error as C2paError;
@@ -29,6 +29,13 @@ impl MediaKind {
             Self::Text => "text/plain; charset=utf-8",
             Self::Png => "image/png",
             Self::Jpeg => "image/jpeg",
+        }
+    }
+
+    fn byte_limit(self) -> u64 {
+        match self {
+            Self::Text => TEXT_LIMIT,
+            Self::Png | Self::Jpeg => IMAGE_LIMIT,
         }
     }
 
@@ -76,6 +83,16 @@ struct InputData {
 
 fn sha256(bytes: &[u8]) -> String {
     hex::encode(Sha256::digest(bytes))
+}
+
+fn classify(prefix: &[u8]) -> MediaKind {
+    if prefix.starts_with(PNG_SIGNATURE) {
+        MediaKind::Png
+    } else if prefix.starts_with(&[0xff, 0xd8, 0xff]) {
+        MediaKind::Jpeg
+    } else {
+        MediaKind::Text
+    }
 }
 
 fn artifact(kind: MediaKind, bytes: &[u8]) -> Artifact {
@@ -150,15 +167,8 @@ fn read_input(path: &Path) -> Result<InputData, ToolError> {
         .read(&mut prefix)
         .map_err(|error| ToolError::Input(format!("cannot read {}: {error}", path.display())))?;
     let prefix = &prefix[..prefix_len];
-    let mut kind = MediaKind::Text;
-    let mut limit = TEXT_LIMIT;
-    if prefix.starts_with(PNG_SIGNATURE) {
-        kind = MediaKind::Png;
-        limit = IMAGE_LIMIT;
-    } else if prefix.starts_with(&[0xff, 0xd8, 0xff]) {
-        kind = MediaKind::Jpeg;
-        limit = IMAGE_LIMIT;
-    }
+    let kind = classify(prefix);
+    let limit = kind.byte_limit();
     if metadata.len() > limit {
         return Err(ToolError::Input(format!(
             "{} is {} bytes; the {} limit is {} bytes",
@@ -199,6 +209,55 @@ fn read_input(path: &Path) -> Result<InputData, ToolError> {
     })
 }
 
+/* Standard input has no metadata to stat and no handle to rewind, so the size
+limit cannot be checked before the read the way a file's can. The bytes are
+counted as they arrive instead: one byte past the limit is enough to refuse,
+and the sniffed prefix is chained back in front so classification sees the
+same first eight bytes a file would. */
+fn read_stdin() -> Result<InputData, ToolError> {
+    let mut prefix = [0u8; 8];
+    let mut source = io::stdin().lock();
+    let mut filled = 0usize;
+    while filled < prefix.len() {
+        let read = source
+            .read(&mut prefix[filled..])
+            .map_err(|error| ToolError::Input(format!("cannot read standard input: {error}")))?;
+        if read == 0 {
+            break;
+        }
+        filled += read;
+    }
+    let kind = classify(&prefix[..filled]);
+    let limit = kind.byte_limit();
+    let mut bytes = Vec::with_capacity(filled);
+    bytes.extend_from_slice(&prefix[..filled]);
+    let remaining = limit.saturating_sub(filled as u64).saturating_add(1);
+    Read::by_ref(&mut source)
+        .take(remaining)
+        .read_to_end(&mut bytes)
+        .map_err(|error| ToolError::Input(format!("cannot read standard input: {error}")))?;
+    if bytes.len() as u64 > limit {
+        return Err(ToolError::Input(format!(
+            "standard input exceeds the {} byte {} limit",
+            limit,
+            kind.media_type()
+        )));
+    }
+    if kind == MediaKind::Text {
+        std::str::from_utf8(&bytes).map_err(|error| {
+            ToolError::Input(format!(
+                "standard input is not valid UTF-8 (UTF-16 with a BOM is not supported): {error}"
+            ))
+        })?;
+    }
+    let input_artifact = artifact(kind, &bytes);
+    Ok(InputData {
+        bytes,
+        kind,
+        artifact: input_artifact,
+    })
+}
+
 fn c2pa_store(bytes: &[u8], kind: MediaKind) -> Result<Option<Vec<u8>>, ToolError> {
     let media = kind
         .c2pa_type()
@@ -226,8 +285,16 @@ fn validate_image(bytes: &[u8], kind: MediaKind) -> Result<(), ToolError> {
     Ok(())
 }
 
+/// Inspect standard input rather than a named file.
+pub fn inspect_stdin(include_context: bool) -> Result<Report, ToolError> {
+    inspect_input(read_stdin()?, include_context)
+}
+
 pub fn inspect_file(path: &Path, include_context: bool) -> Result<Report, ToolError> {
-    let input = read_input(path)?;
+    inspect_input(read_input(path)?, include_context)
+}
+
+fn inspect_input(input: InputData, include_context: bool) -> Result<Report, ToolError> {
     let mut report = Report::new("inspect", input.artifact);
     match input.kind {
         MediaKind::Text => {

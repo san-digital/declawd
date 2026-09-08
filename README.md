@@ -17,7 +17,7 @@ authorship. Pixel-level marks are not tested.
 ## CLI
 
 ```text
-declawd inspect <file> [--json] [--include-context] [--exit-zero]
+declawd inspect <file|-> [--json|--sarif] [--sarif-uri <uri>] [--include-context] [--exit-zero]
 
 declawd clean text <input> --output <output>
   [--remove U+200B]...
@@ -78,6 +78,52 @@ enumerated in [`spec/unicode-registry-v1.json`](spec/unicode-registry-v1.json).
 - JSON reports use [`declawd.report/v1`](spec/report-v1.md). Source context is
   absent unless `--include-context` is explicitly requested; that option can
   disclose up to 32 source scalars on either side of a finding.
+
+## Standard input, SARIF and CI
+
+`inspect` reads standard input when the file is a single hyphen, so it composes
+without a temporary file. The 10 MiB text limit still applies: it cannot be read
+from metadata here, so the bytes are counted as they arrive and one past the
+limit is refused.
+
+```sh
+git show :docs/page.md | declawd inspect -
+pbpaste | declawd inspect - --json
+```
+
+`--sarif` emits a SARIF 2.1.0 run. Examples are in `examples/ci/`: a GitHub
+Actions workflow and Python helper that combine changed-file reports into one
+run, and a pre-commit hook that reports against staged content. Copy the
+workflow into `.github/workflows/` and `inspect-changed.py` into
+`.github/scripts/`. The workflow requires code scanning to be enabled, retains
+the complete report as an artifact and skips uploads when no text files changed.
+It rejects binary content in files with a text suffix.
+
+```sh
+declawd inspect docs/page.md --sarif --exit-zero > page.sarif
+```
+
+Two things about that output are deliberate.
+
+The report carries no path. `Artifact` is a media type, a byte length and a
+SHA-256, because a report describes bytes rather than a place on somebody's
+disk. SARIF results need a location, so the one the tool was invoked with is
+converted to a percent-encoded URI reference. `--sarif-uri` requires `--sarif`
+and accepts an already encoded URI reference when the scanned path is not the
+path a reader should see. Text columns count Unicode code points; SARIF
+positions exclude a leading BOM. Image findings identify the artifact, because
+a C2PA store length alone does not locate the store inside the container.
+
+And a run that finds nothing has not verified anything. This tool reads a
+registry of Unicode carriers and embedded C2PA stores. It does not read
+confusable letters, which are a cleaning selector rather than a finding, and it
+does not read statistical token-choice watermarks at all. An empty SARIF file in
+a security dashboard reads as a clean bill of health, so every untested channel
+is emitted as a `notApplicable` result and the invocation repeats it in its
+notifications. Findings use `kind: review` and `level: none`, as required by
+[SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html).
+Viewers may omit these informational results or notifications. Read the raw
+SARIF and workflow summary; a blank dashboard is not a verification result.
 
 ## Public SynthID-Text laboratory
 

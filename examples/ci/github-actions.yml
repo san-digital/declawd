@@ -1,0 +1,51 @@
+# Copy this workflow into .github/workflows/ and inspect-changed.py into
+# .github/scripts/. Enable code scanning for the repository before uploading.
+#
+# This only inspects changed UTF-8 text for registered Unicode carriers.
+# Confusable letters and statistical token-choice watermarks are not inspected.
+# No provider verifier runs. Passing the job does not establish authorship.
+# SARIF viewers may omit review and notApplicable results, so retain the raw
+# report and read the workflow summary as well as the code scanning dashboard.
+name: declawd inspect
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install declawd
+        # Pin a source revision that includes stdin and SARIF support.
+        run: cargo install --locked --git https://github.com/san-digital/declawd --rev 21e14e7c608f99cd2f0345ec838c84da8aff092a
+
+      # Combine files into one run so uploads do not collide on tool/category.
+      # --exit-zero is used by the helper because carriers need human review.
+      - name: Inspect changed text
+        id: inspect
+        env:
+          DECLAWD_BASE_REF: ${{ github.event.pull_request.base.sha }}
+        run: python3 .github/scripts/inspect-changed.py --base-ref "$DECLAWD_BASE_REF" --output "$RUNNER_TEMP/declawd-sarif/changed-text.sarif"
+
+      - name: Retain complete report
+        if: steps.inspect.outputs.files != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: declawd-sarif
+          path: ${{ runner.temp }}/declawd-sarif/changed-text.sarif
+
+      - name: Upload results
+        if: steps.inspect.outputs.files != '0'
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: ${{ runner.temp }}/declawd-sarif/changed-text.sarif
+          category: declawd/changed-text
