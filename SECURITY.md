@@ -37,7 +37,9 @@ It was reassessed on 24 September 2026. The CLI calls two SDK functions,
 `jumbf_io::load_jumbf_from_memory` and `jumbf_io::remove_jumbf_from_file`, and
 both resolve to asset I/O handlers. The SDK's signing code in that module is
 test-only. `rsa` is linked into the binary, but no Declawd code path calls it.
-Upgrading does not remove it: `c2pa 0.90.22` still depends on `rsa ^0.9.10`, and
-not as an optional dependency. Before extending the exception again, check those
+Upgrading does not remove it: on native targets `rsa` is an optional `c2pa`
+dependency enabled by the `rust_native_crypto` feature this crate turns on, and
+`c2pa 0.90.22` keeps that arrangement. Its only non-optional `rsa` entry is for
+`wasm32`, which this crate does not build. Before extending the exception again, check those
 same points rather than moving the date. Remove the exception as soon as the
 dependency can be removed or patched.

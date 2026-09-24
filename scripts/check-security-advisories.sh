@@ -15,9 +15,11 @@ set -euo pipefail
 #   remove_cai_store). The signing code in that module is test-only and is not
 #   compiled into the release binary. rsa is linked into the binary, but no
 #   Declawd code path calls it.
-# - Upgrading does not remove it. c2pa 0.90.22 still depends on rsa ^0.9.10,
-#   and not as an optional dependency, and rsa 0.9.10 and 0.10.0-rc.18 remain
-#   affected.
+# - Upgrading does not remove it. On native targets rsa is an optional c2pa
+#   dependency, turned on by the rust_native_crypto feature that Declawd
+#   enables, and c2pa 0.90.22 keeps that arrangement. Its only non-optional
+#   rsa entry is for wasm32, which Declawd does not build. rsa 0.9.10 and
+#   0.10.0-rc.18 remain affected.
 # - No other advisory is present in Cargo.lock.
 #
 # The exception stays short on purpose, so that each renewal is a fresh
@@ -40,8 +42,13 @@ fi
 # The first exception lapsed with nobody noticing until every pull request
 # failed at once. For its last two weeks the check still passes, but raises a
 # workflow annotation that shows on each run's summary page.
-days_left=$(( ( $(date -u -d "$exception_expires" +%s 2>/dev/null || date -u -j -f %F "$exception_expires" +%s) \
-  - $(date -u -d "$audit_date" +%s 2>/dev/null || date -u -j -f %F "$audit_date" +%s) ) / 86400 ))
+# BSD date fills the time fields it is not given from the current clock, so
+# both dates are pinned to midnight UTC. Otherwise two calls that straddle a
+# second can make the difference one second short and drop a whole day.
+midnight() {
+  date -u -d "$1 00:00:00" +%s 2>/dev/null || date -u -j -f "%F %T" "$1 00:00:00" +%s
+}
+days_left=$(( ( $(midnight "$exception_expires") - $(midnight "$audit_date") ) / 86400 ))
 if (( days_left <= warn_days )); then
   echo "::warning title=Advisory exception expiring::$exception_id exception expires on $exception_expires ($days_left days). Reassess c2pa and rsa before then."
 fi
