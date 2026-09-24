@@ -27,7 +27,17 @@ in RSA private-key operations for which no patched `rsa` release exists. This
 CLI does not load private keys, sign, decrypt, expose a network service or call
 RSA private-key operations. It uses the SDK's JUMBF inspection/removal API.
 
-The exception is limited to `RUSTSEC-2023-0071` and expires on 12 September
+The exception is limited to `RUSTSEC-2023-0071` and expires on 24 October
 2026. CI still fails on every other vulnerability, and it fails once the
-exception expires. Reassess the `c2pa` pin and crypto backend before that date.
-Remove the exception as soon as the dependency can be removed or patched.
+exception expires. For the last 14 days it raises a workflow warning on every
+run, because the first exception lapsed on 12 September without anyone seeing
+it until every pull request failed at once.
+
+It was reassessed on 24 September 2026. The CLI calls two SDK functions,
+`jumbf_io::load_jumbf_from_memory` and `jumbf_io::remove_jumbf_from_file`, and
+both resolve to asset I/O handlers. The SDK's signing code in that module is
+test-only. `rsa` is linked into the binary, but no Declawd code path calls it.
+Upgrading does not remove it: `c2pa 0.90.22` still depends on `rsa ^0.9.10`, and
+not as an optional dependency. Before extending the exception again, check those
+same points rather than moving the date. Remove the exception as soon as the
+dependency can be removed or patched.
