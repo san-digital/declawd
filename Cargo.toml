@@ -1,6 +1,6 @@
 [package]
 name = "declawd"
-version = "0.2.2"
+version = "0.3.0"
 edition = "2024"
 rust-version = "1.88"
 description = "Inspect known carriers and reproduce public watermark scoring for education"
@@ -19,6 +19,7 @@ include = [
   "/fixtures/**",
   "/evidence/**",
   "/reports/**",
+  "/docs/PLAN-V2.md",
   "/spec/**",
   "/vectors/**",
   "/scripts/**",

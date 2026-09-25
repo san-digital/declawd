@@ -16,6 +16,7 @@ verdict is decided in integers so no square root is ever compared.
 from __future__ import annotations
 
 import hashlib
+from fractions import Fraction
 import math
 import re
 import unicodedata
@@ -94,14 +95,18 @@ def load_profile(path) -> None:
     """Adopt a frozen profile. Scoring is refused until this has been called."""
     import json
     from pathlib import Path as _Path
-    global SEED, MIN_EFFECTIVE_TOKENS, THRESHOLD_NUM, THRESHOLD_DEN, GAMMA_NUM, GAMMA_DEN
+    global SEED, MIN_EFFECTIVE_TOKENS, THRESHOLD_NUM, THRESHOLD_DEN, GAMMA_NUM, GAMMA_DEN, DOMAIN_SEPARATOR
     profile = json.loads(_Path(path).read_text(encoding="utf-8"))
+    domain = profile["domain_separator"]
+    if domain not in ("declawd/v1/green", "declawd/v2/green"):
+        raise DeclawdError(f"unknown domain separator: {domain!r}")
+    DOMAIN_SEPARATOR = domain.encode("ascii")
     GAMMA_NUM = int(profile["gamma"]["numerator"])
     GAMMA_DEN = int(profile["gamma"]["denominator"])
     SEED = bytes.fromhex(profile["seed_hex"])
     MIN_EFFECTIVE_TOKENS = int(profile["min_effective_tokens"])
-    THRESHOLD_NUM = int(round(float(profile["threshold"]["numerator"]) * 100))
-    THRESHOLD_DEN = 100
+    threshold = Fraction(str(profile["threshold"]["numerator"])) / Fraction(str(profile["threshold"]["denominator"]))
+    THRESHOLD_NUM, THRESHOLD_DEN = threshold.numerator, threshold.denominator
     validate_parameters()
 
 

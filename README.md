@@ -1,8 +1,6 @@
 # Declawd
 
-Declawd is an inspect-first educational laboratory for known content carriers.
-It publishes the frozen `declawd-v1` watermark reference and reproducibility
-artefacts, and provides a conservative Rust CLI for:
+Declawd is an educational laboratory for known content carriers. It publishes the registered `declawd-v2` watermark experiment alongside the frozen `declawd-v1` inputs and results, and provides a conservative Rust CLI for:
 
 - inspecting UTF-8 text for an explicit registry of Unicode structures;
 - removing or replacing only the exact text selectors a user requests; and
@@ -224,9 +222,7 @@ classify it and no broad class selector is available.
 
 The repository is a curated public snapshot, not an export of private history.
 
-Frozen artefacts:
-
-- `reference/declawd.py` and its original 45-test suite;
+The shared reference scorer supports both profiles, and its original 45-test suite remains in place. Frozen v1 inputs and results include:
 - `fixtures/profile-v1.json`, registration, template, corpus, rewrite and
   perturbation fixtures;
 - calibration and evaluation reports;
@@ -254,10 +250,22 @@ and will not be corrected in place.
   3.16, is above the marked fixture at z = 2.99. Interfaces using v1 should
   withhold scores and verdicts below 200 pairs.
 
-Changing either registered input would alter the registration hash. A
-replacement therefore needs a new profile identifier, a fresh registration and
-seed, a new calibration and new vectors. It belongs in a new minor release, not
-the v0.2.2 maintenance patch.
+Changing either registered input would alter the registration hash. V2 therefore has its own profile identifier, registration, seed, calibration and vectors, included in the 0.3.0 minor release.
+
+### Registered v2
+
+The [v2 plan](docs/PLAN-V2.md) fixes the candidate review, minimum length, threshold rule and seed procedure before the draw. Every candidate in `fixtures/template-v2.json` has an exact sentence and an agent review of grammar and operational meaning in `fixtures/candidate-review-v2.json`. The checker rejects incomplete or stale reviews.
+
+The minimum is 200 distinct pairs. Calibration measures full passages and prefixes at 200 and 201 pairs separately, and the 199-pair group verifies that public scores and verdicts are withheld. The threshold must meet the 2% target in each eligible calibration group. Evaluation uses the other authors after threshold selection, retaining any crossings and an undetected marked fixture. These are the historical v1 corpora, already published and examined, with a new seed and registered procedure.
+
+Reproduce the recorded v2 run and compare every output byte without drawing a seed:
+
+```sh
+python3 reference/candidate_review.py fixtures/template-v2.json fixtures/candidate-review-v2.json
+python3 reference/calibrate_v2.py reproduce
+```
+
+`register` and `sample` are the creation commands. Registration requires committed inputs, and sampling requires the committed registration. An existing seed or output prevents another draw. `reproduce --write` can restore outputs from the recorded seed after an interrupted run. The seed record documents the draw and commit, with no independent witness. V1 evidence and the historical controlled-removal result remain unchanged.
 
 Reproduction scripts are in `reference/`. Reproduce the committed run without
 choosing a new seed:
@@ -307,28 +315,28 @@ before running a downloaded binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.2.2-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.3.0-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.2.2-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.0-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.2.2-<target>.zip.sha256
+sha256sum --check declawd-v0.3.0-<target>.zip.sha256
 
 # SBOM on Linux or Windows
-sha256sum --check declawd-v0.2.2.cdx.json.sha256
-sha256sum --check declawd-v0.2.2-python.cdx.json.sha256
-sha256sum --check declawd-v0.2.2-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.3.0.cdx.json.sha256
+sha256sum --check declawd-v0.3.0-python.cdx.json.sha256
+sha256sum --check declawd-v0.3.0-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
-shasum -a 256 --check declawd-v0.2.2.cdx.json.sha256
-shasum -a 256 --check declawd-v0.2.2-python.cdx.json.sha256
-shasum -a 256 --check declawd-v0.2.2-synthid-contracts.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.0.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.0-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.0-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.2.2-<target>.tar.gz \
+gh attestation verify declawd-v0.3.0-<target>.tar.gz \
   --repo san-digital/declawd
 
-gh attestation verify declawd-v0.2.2-synthid-contracts.tar.gz \
+gh attestation verify declawd-v0.3.0-synthid-contracts.tar.gz \
   --repo san-digital/declawd
 ```
 

@@ -3,8 +3,13 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
+import tomllib
 import unittest
 
 
@@ -19,6 +24,57 @@ MODULE_SPEC.loader.exec_module(release_manifest)
 
 
 class ReleaseManifestTest(unittest.TestCase):
+    def test_manifest_covers_both_experiments(self) -> None:
+        required = {
+            "docs/PLAN-V2.md",
+            "fixtures/candidate-review-v2.json",
+            "fixtures/corpus.json",
+            "fixtures/perturbations.json",
+            "fixtures/profile-v1.json",
+            "fixtures/profile-v2.json",
+            "fixtures/registration-v1.json",
+            "fixtures/registration-v2.json",
+            "fixtures/rewrite.json",
+            "fixtures/seed-v2.json",
+            "fixtures/template.json",
+            "fixtures/template-v2.json",
+            "reference/calibrate.py",
+            "reference/calibrate_v2.py",
+            "reference/candidate_review.py",
+            "reference/declawd.py",
+            "reports/calibration-report-v1.json",
+            "reports/calibration-report-v2.json",
+            "reports/evaluation-report-v1.json",
+            "reports/evaluation-report-v2.json",
+            "vectors/controlled-removal-v1.json",
+            "vectors/controlled-removal-v2.json",
+            "vectors/scoring-v1.json",
+            "vectors/scoring-v2.json",
+        }
+        self.assertTrue(required <= set(release_manifest.FILES))
+        self.assertEqual(len(release_manifest.FILES), len(set(release_manifest.FILES)))
+
+    def test_records_match_source_bytes(self) -> None:
+        document = json.loads(release_manifest.render("v-test", None))
+        for record in document["files"]:
+            with self.subTest(path=record["path"]):
+                data = (ROOT / record["path"]).read_bytes()
+                self.assertEqual(record["byte_length"], len(data))
+                self.assertEqual(record["sha256"], hashlib.sha256(data).hexdigest())
+
+    def test_default_release_follows_package_version(self) -> None:
+        cargo = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary) / "release-manifest-v1.json"
+            subprocess.run(
+                [sys.executable, str(MODULE_PATH), "--output", str(destination)],
+                check=True,
+                capture_output=True,
+            )
+            document = json.loads(destination.read_bytes())
+        self.assertEqual(document["release"], f"v{cargo['package']['version']}-source-contract")
+        self.assertIsNone(document["source_revision"])
+
     def test_writer_emits_canonical_utf8_lf_bytes(self) -> None:
         release = "v-test"
         source_revision = "0" * 40

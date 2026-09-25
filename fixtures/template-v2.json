@@ -1,0 +1,273 @@
+{
+  "fixture_id": "flow-meter-v2",
+  "domain": "Flow meter verification procedure",
+  "note": "Strings are literal text. Arrays hold reviewed alternatives for one ASCII token, with the default first. Candidate order is fixed. Each alternative retains the sentence grammar and the same operational instruction. The candidate review catalogue records the sentences and the agent judgement made before the seed is sampled.",
+  "segments": [
+    "Set the reference flow to 40 litres per minute before you ",
+    [
+      "record",
+      "log",
+      "note"
+    ],
+    " the first ",
+    [
+      "reading",
+      "value"
+    ],
+    " on the raw sheet. ",
+    [
+      "Hold",
+      "Keep",
+      "Maintain"
+    ],
+    " the line at that ",
+    [
+      "rate",
+      "flow"
+    ],
+    " for two minutes so the pressure can ",
+    [
+      "settle",
+      "stabilise"
+    ],
+    ". ",
+    [
+      "Write",
+      "Note"
+    ],
+    " down the meter ",
+    [
+      "value",
+      "reading"
+    ],
+    ", the ambient temperature, and the clock time. ",
+    [
+      "Take",
+      "Obtain"
+    ],
+    " the reading at 60 and 80 litres per minute, and ",
+    [
+      "allow",
+      "provide"
+    ],
+    " the same ",
+    [
+      "settling",
+      "stabilisation"
+    ],
+    " time at each ",
+    [
+      "rate",
+      "setting"
+    ],
+    ". If a value ",
+    [
+      "changes",
+      "varies"
+    ],
+    " by more than 2 per cent across ",
+    [
+      "repeats",
+      "repetitions"
+    ],
+    ", stop the run and ",
+    [
+      "inspect",
+      "check",
+      "examine"
+    ],
+    " the coupling for leaks before you ",
+    [
+      "continue",
+      "resume",
+      "proceed"
+    ],
+    ". A ",
+    [
+      "small",
+      "minor",
+      "slight"
+    ],
+    " leak at the union will ",
+    [
+      "bias",
+      "skew",
+      "distort"
+    ],
+    " every later ",
+    [
+      "reading",
+      "value"
+    ],
+    ", so completing the check before proceeding is ",
+    [
+      "worthwhile",
+      "sensible",
+      "prudent"
+    ],
+    " despite the delay. ",
+    [
+      "Record",
+      "Log",
+      "Note"
+    ],
+    " the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date ",
+    [
+      "falls",
+      "lies",
+      "is"
+    ],
+    " outside the preceding twelve month ",
+    [
+      "window",
+      "period"
+    ],
+    ", treat the run as ",
+    [
+      "invalid",
+      "void"
+    ],
+    " and obtain a reference meter with calibration dated within that period before proceeding. ",
+    [
+      "Keep",
+      "Retain"
+    ],
+    " the raw sheet even when a run is ",
+    [
+      "void",
+      "invalid"
+    ],
+    ", because the sheet still ",
+    [
+      "shows",
+      "records"
+    ],
+    " what the instrument was doing at that time. When measurements at all three rates are ",
+    [
+      "complete",
+      "finished"
+    ],
+    ", work out the mean error at each point and ",
+    [
+      "plot",
+      "graph",
+      "chart"
+    ],
+    " it against the permitted ",
+    [
+      "band",
+      "range"
+    ],
+    ". A meter whose error ",
+    [
+      "lies",
+      "sits",
+      "is"
+    ],
+    " inside the band at every point passes the verification. A meter whose error falls outside the band at any single point fails the whole verification, and no ",
+    [
+      "average",
+      "mean"
+    ],
+    " across the three rates can ",
+    [
+      "alter",
+      "change"
+    ],
+    " that outcome. Sign the sheet, state the ambient conditions, and ",
+    [
+      "send",
+      "forward"
+    ],
+    " the signed result to the quality file. Where a run is ",
+    [
+      "stopped",
+      "halted"
+    ],
+    " early, write the ",
+    [
+      "reason",
+      "explanation"
+    ],
+    " on the sheet in plain words, because a ",
+    [
+      "blank",
+      "empty"
+    ],
+    " field tells the next reader nothing at all. Store the sheets in date ",
+    [
+      "order",
+      "sequence"
+    ],
+    " so that a later ",
+    [
+      "query",
+      "question",
+      "enquiry"
+    ],
+    " can be answered using those records. If the meter is ",
+    [
+      "moved",
+      "relocated",
+      "transferred"
+    ],
+    " to another bay, note the new ",
+    [
+      "location",
+      "position"
+    ],
+    " and the date of the ",
+    [
+      "move",
+      "relocation",
+      "transfer"
+    ],
+    ", because a meter that has moved may need a ",
+    [
+      "further",
+      "additional"
+    ],
+    " check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not ",
+    [
+      "continue",
+      "proceed"
+    ],
+    " with a run on equipment you cannot trust. A doubtful reference makes every ",
+    [
+      "reading",
+      "result"
+    ],
+    " obtained with it doubtful too, and the ",
+    [
+      "cost",
+      "expense"
+    ],
+    " of repeating a run is ",
+    [
+      "lower",
+      "smaller"
+    ],
+    " than the cost of correcting a bad result. When the file is ",
+    [
+      "complete",
+      "finished"
+    ],
+    " for the month, check that every sheet has a signature and that no run is ",
+    [
+      "missing",
+      "absent",
+      "omitted"
+    ],
+    " from the sequence. A gap in the ",
+    [
+      "record",
+      "log"
+    ],
+    " is harder to explain later than a poor result recorded ",
+    [
+      "accurately",
+      "truthfully"
+    ],
+    " at the time."
+  ]
+}
