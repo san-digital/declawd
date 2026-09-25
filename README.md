@@ -264,7 +264,7 @@ python3 reference/calibrate_v2.py reproduce
 
 `calibrate_v2.py` finds `candidate_review.py` and `declawd.py` through its own folder, so run it with `PYTHONSAFEPATH` unset.
 
-`register` and `sample` are the creation commands. Registration requires committed inputs, and sampling requires the committed registration. An existing seed or output prevents another draw. `reproduce --write` can restore outputs from the recorded seed after an interrupted run. The seed record documents the draw and commit, with no independent witness. V1 evidence and the historical controlled-removal result remain unchanged.
+`register` and `sample` are the creation commands. Registration requires committed inputs, and sampling requires the committed registration. An existing seed or output prevents another draw. `reproduce --write` restores missing outputs from the recorded seed, but a truncated calibration report prevents it from reaching the write step. For the published r2 run, restore both the seed record and calibration report from v0.3.0 before recovery, following the [recovery commands](docs/V2-RESULTS.md#recovery). The seed record documents the draw and commit, with no independent witness. V1 evidence and the historical controlled-removal result remain unchanged.
 
 ### Reproducing v1
 
@@ -316,28 +316,28 @@ before running a downloaded binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.3.0-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.3.1-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.3.0-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.1-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.3.0-<target>.zip.sha256
+sha256sum --check declawd-v0.3.1-<target>.zip.sha256
 
 # SBOM on Linux or Windows
-sha256sum --check declawd-v0.3.0.cdx.json.sha256
-sha256sum --check declawd-v0.3.0-python.cdx.json.sha256
-sha256sum --check declawd-v0.3.0-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.3.1.cdx.json.sha256
+sha256sum --check declawd-v0.3.1-python.cdx.json.sha256
+sha256sum --check declawd-v0.3.1-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
-shasum -a 256 --check declawd-v0.3.0.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.0-python.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.0-synthid-contracts.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.1.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.1-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.1-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.3.0-<target>.tar.gz \
+gh attestation verify declawd-v0.3.1-<target>.tar.gz \
   --repo san-digital/declawd
 
-gh attestation verify declawd-v0.3.0-synthid-contracts.tar.gz \
+gh attestation verify declawd-v0.3.1-synthid-contracts.tar.gz \
   --repo san-digital/declawd
 ```
 
