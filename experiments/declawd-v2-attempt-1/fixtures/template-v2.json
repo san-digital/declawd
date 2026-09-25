@@ -1,5 +1,5 @@
 {
-  "fixture_id": "flow-meter-v2-r2",
+  "fixture_id": "flow-meter-v2",
   "domain": "Flow meter verification procedure",
   "note": "Strings are literal text. Arrays hold reviewed alternatives for one ASCII token, with the default first. Candidate order is fixed. Each alternative retains the sentence grammar and the same operational instruction. The candidate review catalogue records the sentences and the agent judgement made before the seed is sampled.",
   "segments": [
@@ -45,7 +45,7 @@
       "Take",
       "Obtain"
     ],
-    " readings at 60 and 80 litres per minute, and ",
+    " the reading at 60 and 80 litres per minute, and ",
     [
       "allow",
       "provide"
@@ -117,7 +117,7 @@
       "lies",
       "is"
     ],
-    " outside the preceding twelve-month ",
+    " outside the preceding twelve month ",
     [
       "window",
       "period"
@@ -189,7 +189,12 @@
       "reason",
       "explanation"
     ],
-    " on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date ",
+    " on the sheet in plain words, because a ",
+    [
+      "blank",
+      "empty"
+    ],
+    " field tells the next reader nothing at all. Store the sheets in date ",
     [
       "order",
       "sequence"
@@ -217,7 +222,12 @@
       "relocation",
       "transfer"
     ],
-    ", because a meter that has moved may need a further check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not ",
+    ", because a meter that has moved may need a ",
+    [
+      "further",
+      "additional"
+    ],
+    " check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not ",
     [
       "continue",
       "proceed"

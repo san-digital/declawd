@@ -9,6 +9,28 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "release-manifest-v1.json"
+ARCHIVE_ROOT = "experiments/declawd-v2-attempt-1"
+ARCHIVE_FILES = (
+    "README.md",
+    "archive-manifest.json",
+    "docs/PLAN-V2.md",
+    "docs/V2-RESULTS.md",
+    "fixtures/candidate-review-v2.json",
+    "fixtures/corpus.json",
+    "fixtures/perturbations.json",
+    "fixtures/profile-v2.json",
+    "fixtures/registration-v2.json",
+    "fixtures/rewrite.json",
+    "fixtures/seed-v2.json",
+    "fixtures/template-v2.json",
+    "reference/calibrate_v2.py",
+    "reference/candidate_review.py",
+    "reference/declawd.py",
+    "reports/calibration-report-v2.json",
+    "reports/evaluation-report-v2.json",
+    "vectors/controlled-removal-v2.json",
+    "vectors/scoring-v2.json",
+)
 FILES = (
     "SYNTHID_THIRD_PARTY_NOTICES.md",
     "docs/PLAN-V2.md",
@@ -74,7 +96,7 @@ FILES = (
     "vectors/scoring-v1.json",
     "vectors/scoring-v2.json",
     "vectors/unicode-v1.json",
-)
+) + tuple(f"{ARCHIVE_ROOT}/{name}" for name in ARCHIVE_FILES)
 
 
 def render(release: str, source_revision: str | None) -> str:

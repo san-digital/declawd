@@ -63,6 +63,12 @@ class ReleaseManifestTest(unittest.TestCase):
                 self.assertEqual(record["byte_length"], len(data))
                 self.assertEqual(record["sha256"], hashlib.sha256(data).hexdigest())
 
+    def test_manifest_retains_every_archived_attempt_file(self) -> None:
+        archive = ROOT / release_manifest.ARCHIVE_ROOT
+        actual = {str(path.relative_to(ROOT)) for path in archive.rglob("*") if path.is_file()}
+        recorded = {name for name in release_manifest.FILES if name.startswith(release_manifest.ARCHIVE_ROOT + "/")}
+        self.assertEqual(recorded, actual)
+
     def test_default_release_follows_package_version(self) -> None:
         cargo = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory() as temporary:

@@ -1,13 +1,12 @@
 {
   "schema": "declawd.candidate-review/v2",
   "method": "agent review of grammar and unchanged operational meaning",
-  "template_sha256": "4ce7f8c890fe3e6877638d43720678213222a8fa91009f51cf200f99136fb30e",
-  "scope": "Each candidate is rendered in its full sentence with all other slots at their defaults. Each recorded sentence receives agent review of grammar and preservation of the operational instruction. The deterministic validator checks coverage, approvals and exact text, plus a/an agreement against a finite vocabulary of reviewed initial sounds. Other grammar and semantic judgements remain agent review.",
+  "template_sha256": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb",
+  "scope": "Every candidate was reviewed in its full sentence with the other slots at their defaults. The review checks grammar and preservation of the operational instruction, including combinations where a sentence contains several slots. The deterministic validator checks the recorded coverage, approvals and exact text. Grammatical and semantic judgements remain agent review.",
   "decisions": [
     "Calibration and its permitted date, signature, reporting day and the quality file are literal because their former alternatives changed the required operation or record.",
     "The leak sentence has a new frame that accepts each of worthwhile, sensible and prudent. The continuation instruction permits continue and proceed.",
-    "Measurements, pass and fail conditions, equipment references and perturbation words remain explicit in the surrounding text.",
-    "Blank and further are literal words because their former alternatives required a different indefinite article. The finite article rule rejects those mismatches even when a review entry marks the sentence approved."
+    "Measurements, pass and fail conditions, equipment references and perturbation words remain explicit in the surrounding text."
   ],
   "entries": [
     {
@@ -141,7 +140,7 @@
     {
       "segment_index": 15,
       "candidate": "Take",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both verbs require a reading at each of the two further flow rates."
@@ -149,7 +148,7 @@
     {
       "segment_index": 15,
       "candidate": "Obtain",
-      "sentence": "Obtain readings at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "sentence": "Obtain the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both verbs require a reading at each of the two further flow rates."
@@ -157,7 +156,7 @@
     {
       "segment_index": 17,
       "candidate": "allow",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both verbs require the same settling time at each further flow rate."
@@ -165,7 +164,7 @@
     {
       "segment_index": 17,
       "candidate": "provide",
-      "sentence": "Take readings at 60 and 80 litres per minute, and provide the same settling time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and provide the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both verbs require the same settling time at each further flow rate."
@@ -173,7 +172,7 @@
     {
       "segment_index": 19,
       "candidate": "settling",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both words name the waiting period for stable pressure."
@@ -181,7 +180,7 @@
     {
       "segment_index": 19,
       "candidate": "stabilisation",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same stabilisation time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same stabilisation time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both words name the waiting period for stable pressure."
@@ -189,7 +188,7 @@
     {
       "segment_index": 21,
       "candidate": "rate",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both nouns refer to each of the stated flow settings."
@@ -197,7 +196,7 @@
     {
       "segment_index": 21,
       "candidate": "setting",
-      "sentence": "Take readings at 60 and 80 litres per minute, and allow the same settling time at each setting.",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each setting.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both nouns refer to each of the stated flow settings."
@@ -397,7 +396,7 @@
     {
       "segment_index": 41,
       "candidate": "falls",
-      "sentence": "If that date falls outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Each verb places the date outside the same permitted time window."
@@ -405,7 +404,7 @@
     {
       "segment_index": 41,
       "candidate": "lies",
-      "sentence": "If that date lies outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date lies outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Each verb places the date outside the same permitted time window."
@@ -413,7 +412,7 @@
     {
       "segment_index": 41,
       "candidate": "is",
-      "sentence": "If that date is outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date is outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Each verb places the date outside the same permitted time window."
@@ -421,7 +420,7 @@
     {
       "segment_index": 43,
       "candidate": "window",
-      "sentence": "If that date falls outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both nouns refer to the preceding twelve months."
@@ -429,7 +428,7 @@
     {
       "segment_index": 43,
       "candidate": "period",
-      "sentence": "If that date falls outside the preceding twelve-month period, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date falls outside the preceding twelve month period, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both nouns refer to the preceding twelve months."
@@ -437,7 +436,7 @@
     {
       "segment_index": 45,
       "candidate": "invalid",
-      "sentence": "If that date falls outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both adjectives reject the run because its reference calibration is too old."
@@ -445,7 +444,7 @@
     {
       "segment_index": 45,
       "candidate": "void",
-      "sentence": "If that date falls outside the preceding twelve-month window, treat the run as void and obtain a reference meter with calibration dated within that period before proceeding.",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as void and obtain a reference meter with calibration dated within that period before proceeding.",
       "grammar_approved": true,
       "same_job_approved": true,
       "rationale": "Both adjectives reject the run because its reference calibration is too old."
@@ -660,6 +659,22 @@
     },
     {
       "segment_index": 71,
+      "candidate": "blank",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives describe a field with no recorded explanation."
+    },
+    {
+      "segment_index": 71,
+      "candidate": "empty",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a empty field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives describe a field with no recorded explanation."
+    },
+    {
+      "segment_index": 73,
       "candidate": "order",
       "sentence": "Store the sheets in date order so that a later query can be answered using those records.",
       "grammar_approved": true,
@@ -667,7 +682,7 @@
       "rationale": "Both nouns require arranging sheets by date."
     },
     {
-      "segment_index": 71,
+      "segment_index": 73,
       "candidate": "sequence",
       "sentence": "Store the sheets in date sequence so that a later query can be answered using those records.",
       "grammar_approved": true,
@@ -675,7 +690,7 @@
       "rationale": "Both nouns require arranging sheets by date."
     },
     {
-      "segment_index": 73,
+      "segment_index": 75,
       "candidate": "query",
       "sentence": "Store the sheets in date order so that a later query can be answered using those records.",
       "grammar_approved": true,
@@ -683,7 +698,7 @@
       "rationale": "Each noun refers to a later request for information about the run."
     },
     {
-      "segment_index": 73,
+      "segment_index": 75,
       "candidate": "question",
       "sentence": "Store the sheets in date order so that a later question can be answered using those records.",
       "grammar_approved": true,
@@ -691,7 +706,7 @@
       "rationale": "Each noun refers to a later request for information about the run."
     },
     {
-      "segment_index": 73,
+      "segment_index": 75,
       "candidate": "enquiry",
       "sentence": "Store the sheets in date order so that a later enquiry can be answered using those records.",
       "grammar_approved": true,
@@ -699,7 +714,7 @@
       "rationale": "Each noun refers to a later request for information about the run."
     },
     {
-      "segment_index": 75,
+      "segment_index": 77,
       "candidate": "moved",
       "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -707,7 +722,7 @@
       "rationale": "Each verb describes moving the meter to another bay."
     },
     {
-      "segment_index": 75,
+      "segment_index": 77,
       "candidate": "relocated",
       "sentence": "If the meter is relocated to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -715,7 +730,7 @@
       "rationale": "Each verb describes moving the meter to another bay."
     },
     {
-      "segment_index": 75,
+      "segment_index": 77,
       "candidate": "transferred",
       "sentence": "If the meter is transferred to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -723,7 +738,7 @@
       "rationale": "Each verb describes moving the meter to another bay."
     },
     {
-      "segment_index": 77,
+      "segment_index": 79,
       "candidate": "location",
       "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -731,7 +746,7 @@
       "rationale": "Both nouns require recording where the meter has been moved."
     },
     {
-      "segment_index": 77,
+      "segment_index": 79,
       "candidate": "position",
       "sentence": "If the meter is moved to another bay, note the new position and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -739,7 +754,7 @@
       "rationale": "Both nouns require recording where the meter has been moved."
     },
     {
-      "segment_index": 79,
+      "segment_index": 81,
       "candidate": "move",
       "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -747,7 +762,7 @@
       "rationale": "Each noun identifies the same change of bay whose date must be recorded."
     },
     {
-      "segment_index": 79,
+      "segment_index": 81,
       "candidate": "relocation",
       "sentence": "If the meter is moved to another bay, note the new location and the date of the relocation, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -755,7 +770,7 @@
       "rationale": "Each noun identifies the same change of bay whose date must be recorded."
     },
     {
-      "segment_index": 79,
+      "segment_index": 81,
       "candidate": "transfer",
       "sentence": "If the meter is moved to another bay, note the new location and the date of the transfer, because a meter that has moved may need a further check before its next use.",
       "grammar_approved": true,
@@ -763,7 +778,23 @@
       "rationale": "Each noun identifies the same change of bay whose date must be recorded."
     },
     {
-      "segment_index": 81,
+      "segment_index": 83,
+      "candidate": "further",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require the same additional check after a change of bay."
+    },
+    {
+      "segment_index": 83,
+      "candidate": "additional",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a additional check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require the same additional check after a change of bay."
+    },
+    {
+      "segment_index": 85,
       "candidate": "continue",
       "sentence": "Report any damage or faults affecting the reference equipment on the same day, and do not continue with a run on equipment you cannot trust.",
       "grammar_approved": true,
@@ -771,7 +802,7 @@
       "rationale": "Both verbs prohibit proceeding with a run using equipment the operator cannot trust."
     },
     {
-      "segment_index": 81,
+      "segment_index": 85,
       "candidate": "proceed",
       "sentence": "Report any damage or faults affecting the reference equipment on the same day, and do not proceed with a run on equipment you cannot trust.",
       "grammar_approved": true,
@@ -779,7 +810,7 @@
       "rationale": "Both verbs prohibit proceeding with a run using equipment the operator cannot trust."
     },
     {
-      "segment_index": 83,
+      "segment_index": 87,
       "candidate": "reading",
       "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -787,7 +818,7 @@
       "rationale": "Both nouns refer to measurements obtained using the doubtful reference."
     },
     {
-      "segment_index": 83,
+      "segment_index": 87,
       "candidate": "result",
       "sentence": "A doubtful reference makes every result obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -795,7 +826,7 @@
       "rationale": "Both nouns refer to measurements obtained using the doubtful reference."
     },
     {
-      "segment_index": 85,
+      "segment_index": 89,
       "candidate": "cost",
       "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -803,7 +834,7 @@
       "rationale": "Both nouns describe the cost of repeating the run."
     },
     {
-      "segment_index": 85,
+      "segment_index": 89,
       "candidate": "expense",
       "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the expense of repeating a run is lower than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -811,7 +842,7 @@
       "rationale": "Both nouns describe the cost of repeating the run."
     },
     {
-      "segment_index": 87,
+      "segment_index": 91,
       "candidate": "lower",
       "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -819,7 +850,7 @@
       "rationale": "Both adjectives compare the cost of repetition with the cost of correcting a bad result."
     },
     {
-      "segment_index": 87,
+      "segment_index": 91,
       "candidate": "smaller",
       "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is smaller than the cost of correcting a bad result.",
       "grammar_approved": true,
@@ -827,7 +858,7 @@
       "rationale": "Both adjectives compare the cost of repetition with the cost of correcting a bad result."
     },
     {
-      "segment_index": 89,
+      "segment_index": 93,
       "candidate": "complete",
       "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence.",
       "grammar_approved": true,
@@ -835,7 +866,7 @@
       "rationale": "Both adjectives place the final sheet check at completion of the monthly file."
     },
     {
-      "segment_index": 89,
+      "segment_index": 93,
       "candidate": "finished",
       "sentence": "When the file is finished for the month, check that every sheet has a signature and that no run is missing from the sequence.",
       "grammar_approved": true,
@@ -843,7 +874,7 @@
       "rationale": "Both adjectives place the final sheet check at completion of the monthly file."
     },
     {
-      "segment_index": 91,
+      "segment_index": 95,
       "candidate": "missing",
       "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence.",
       "grammar_approved": true,
@@ -851,7 +882,7 @@
       "rationale": "Each adjective requires identifying any run left out of the sequence."
     },
     {
-      "segment_index": 91,
+      "segment_index": 95,
       "candidate": "absent",
       "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is absent from the sequence.",
       "grammar_approved": true,
@@ -859,7 +890,7 @@
       "rationale": "Each adjective requires identifying any run left out of the sequence."
     },
     {
-      "segment_index": 91,
+      "segment_index": 95,
       "candidate": "omitted",
       "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is omitted from the sequence.",
       "grammar_approved": true,
@@ -867,7 +898,7 @@
       "rationale": "Each adjective requires identifying any run left out of the sequence."
     },
     {
-      "segment_index": 93,
+      "segment_index": 97,
       "candidate": "record",
       "sentence": "A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
       "grammar_approved": true,
@@ -875,7 +906,7 @@
       "rationale": "Both nouns refer to the chronological record of runs."
     },
     {
-      "segment_index": 93,
+      "segment_index": 97,
       "candidate": "log",
       "sentence": "A gap in the log is harder to explain later than a poor result recorded accurately at the time.",
       "grammar_approved": true,
@@ -883,7 +914,7 @@
       "rationale": "Both nouns refer to the chronological record of runs."
     },
     {
-      "segment_index": 95,
+      "segment_index": 99,
       "candidate": "accurately",
       "sentence": "A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
       "grammar_approved": true,
@@ -891,7 +922,7 @@
       "rationale": "Both adverbs require an account of the actual poor result at the time of the run."
     },
     {
-      "segment_index": 95,
+      "segment_index": 99,
       "candidate": "truthfully",
       "sentence": "A gap in the record is harder to explain later than a poor result recorded truthfully at the time.",
       "grammar_approved": true,

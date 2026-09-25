@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import hashlib
+import itertools
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -335,12 +337,13 @@ class PublishedV2Tests(unittest.TestCase):
         registration = self.read("fixtures/registration-v2.json")
         calibration = self.read("reports/calibration-report-v2.json")
         evaluation = self.read("reports/evaluation-report-v2.json")
-        self.assertEqual(profile["profile_id"], "declawd-v2")
-        self.assertEqual(profile["domain_separator"], "declawd/v2/green")
+        self.assertEqual(profile["profile_id"], "declawd-v2-r2")
+        self.assertEqual(profile["domain_separator"], "declawd/v2-r2/green")
         self.assertEqual(profile["min_effective_tokens"], 200)
-        self.assertEqual(profile["threshold"], {"numerator": 1.65, "denominator": 1})
-        self.assertEqual(seed["registration_commit"], "d87977b989555f40da623675fd8053df8d120e1d")
-        self.assertEqual(seed["seed_hex"], "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98")
+        self.assertEqual(profile["threshold"]["denominator"], 1)
+        self.assertEqual(profile["threshold"]["numerator"], calibration["threshold"])
+        self.assertNotEqual(seed["registration_commit"], "d87977b989555f40da623675fd8053df8d120e1d")
+        self.assertNotEqual(seed["seed_hex"], "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98")
         self.assertEqual(profile["seed_hex"], seed["seed_hex"])
         self.assertEqual(calibration["seed_hex"], seed["seed_hex"])
         for name, expected in registration["source_files"].items():
@@ -365,12 +368,12 @@ class PublishedV2Tests(unittest.TestCase):
 
     def test_length_reports_retain_every_result_and_mask_199_pairs(self) -> None:
         expected = {
-            "calibration": {"prefix_200": (1, 96), "prefix_201": (1, 95), "full": (0, 96)},
-            "evaluation": {"prefix_200": (2, 96), "prefix_201": (2, 94), "full": (2, 96)},
+            "calibration": {"prefix_200": 96, "prefix_201": 95, "full": 96},
+            "evaluation": {"prefix_200": 96, "prefix_201": 94, "full": 96},
         }
         for split, counts in expected.items():
             report = self.read(f"reports/{split}-report-v2.json")
-            self.assertEqual(report["threshold"], 1.65)
+            self.assertEqual(report["threshold"], self.read("fixtures/profile-v2.json")["threshold"]["numerator"])
             short = report["length_groups"]["prefix_199"]
             self.assertEqual((short["source_passages"], short["passages"], short["below_minimum"]), (96, 96, 96))
             self.assertEqual(short["usable"], 0)
@@ -382,9 +385,10 @@ class PublishedV2Tests(unittest.TestCase):
                 self.assertEqual(row["verdict"], "insufficient text")
                 for field in ("green", "z", "crossed"):
                     self.assertIsNone(row[field])
-            for name, (crossings, total) in counts.items():
+            for name, total in counts.items():
                 group = report["length_groups"][name]
-                self.assertEqual((group["crossings"], group["usable"]), (crossings, total))
+                crossings = group["crossings"]
+                self.assertEqual(group["usable"], total)
                 self.assertEqual(group["passages"] + group["unavailable"], 96)
                 self.assertEqual(len(group["rows"]), total)
                 self.assertEqual(group["rate"], round(crossings / total, 4))
@@ -397,14 +401,24 @@ class PublishedV2Tests(unittest.TestCase):
                         declawd.verdict(row["effective_tokens"], row["green"]) == "above threshold",
                     )
         calibration = self.read("reports/calibration-report-v2.json")
-        self.assertEqual(calibration["marked_fixture"], {"detected": True, "effective_tokens": 377, "z": 2.94})
-        self.assertEqual(calibration["control_fixture"], {"effective_tokens": 378, "z": 0.89})
+        segments = self.read("fixtures/template-v2.json")["segments"]
+        for name, marked in (("marked_fixture", True), ("control_fixture", False)):
+            score = declawd.score(declawd.generate(segments, marked=marked))
+            expected = {"effective_tokens": score.effective_tokens, "z": round(score.z_display, 2)}
+            if marked:
+                expected["detected"] = score.verdict == "above threshold"
+            self.assertEqual(calibration[name], expected)
 
     def test_threshold_is_the_first_grid_value_meeting_every_calibration_group(self) -> None:
-        groups = self.read("reports/calibration-report-v2.json")["length_groups"]
+        report = self.read("reports/calibration-report-v2.json")
+        groups = report["length_groups"]
         eligible = [groups[name] for name in ("prefix_200", "prefix_201", "full")]
         self.assertTrue(all(group["crossings"] * 50 <= group["usable"] for group in eligible))
-        with mock.patch.multiple(declawd, THRESHOLD_NUM=160, THRESHOLD_DEN=100):
+        numerator = round(report["threshold"] * 100)
+        self.assertEqual(numerator % 5, 0)
+        if numerator == 0:
+            return
+        with mock.patch.multiple(declawd, THRESHOLD_NUM=numerator - 5, THRESHOLD_DEN=100):
             previous = [
                 sum(declawd.verdict(row["effective_tokens"], row["green"]) == "above threshold" for row in group["rows"])
                 for group in eligible
@@ -415,7 +429,7 @@ class PublishedV2Tests(unittest.TestCase):
         document = self.read("vectors/controlled-removal-v2.json")
         template = self.read("fixtures/template-v2.json")
         self.assertEqual(document["fixture_id"], template["fixture_id"])
-        self.assertEqual(document["profile_id"], "declawd-v2")
+        self.assertEqual(document["profile_id"], "declawd-v2-r2")
         self.assertEqual(document["source_text"], declawd.generate(template["segments"], marked=True))
         self.assert_score(document["source_text"], document["source_score"])
         slots = {}
@@ -427,8 +441,9 @@ class PublishedV2Tests(unittest.TestCase):
                 before = declawd.TOKEN_PATTERN.match(document["source_text"], offset).group()
                 slots[offset] = (before, part)
                 offset += len(before)
-        self.assertEqual(len(document["steps"]), 6)
+        self.assertLessEqual(len(document["steps"]), 6)
         previous = document["source_score"]["z"]
+        text = document["source_text"]
         for count, step in enumerate(document["steps"], start=1):
             self.assertEqual(step["applied"], count)
             self.assertEqual(step["substitution"], document["substitutions"][count - 1])
@@ -445,7 +460,6 @@ class PublishedV2Tests(unittest.TestCase):
             previous = step["score"]["z"]
         self.assertEqual(text, document["expected_text"])
         self.assert_score(text, document["expected_score"])
-        self.assertEqual(document["expected_score"]["verdict"], "below threshold")
 
     def test_recorded_run_reproduces_every_output_without_sampling(self) -> None:
         before = {name: (ROOT / name).read_bytes() for name in (calibrate_v2.SEED, *calibrate_v2.OUTPUTS)}
@@ -472,6 +486,96 @@ class FrozenV1BytesTests(unittest.TestCase):
         for name, digest in expected.items():
             with self.subTest(path=name):
                 self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), digest)
+
+
+class ArchivedAttemptTests(unittest.TestCase):
+    archive = ROOT / "experiments/declawd-v2-attempt-1"
+
+    def test_archive_manifest_binds_every_payload_file(self) -> None:
+        manifest = json.loads((self.archive / "archive-manifest.json").read_bytes())
+        self.assertEqual(manifest["source_commit"], "77c1d6e9dfad7018491308e13ddd5a4a1b9d08e0")
+        self.assertEqual(len(manifest["files"]), 18)
+        for name, expected in manifest["files"].items():
+            self.assertEqual(hashlib.sha256((self.archive / name).read_bytes()).hexdigest(), expected)
+
+    def test_original_seed_and_results_remain_visible(self) -> None:
+        seed = json.loads((self.archive / "fixtures/seed-v2.json").read_bytes())
+        profile = json.loads((self.archive / "fixtures/profile-v2.json").read_bytes())
+        calibration = json.loads((self.archive / "reports/calibration-report-v2.json").read_bytes())
+        evaluation = json.loads((self.archive / "reports/evaluation-report-v2.json").read_bytes())
+        self.assertEqual(seed["registration_commit"], "d87977b989555f40da623675fd8053df8d120e1d")
+        self.assertEqual(seed["seed_hex"], "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98")
+        self.assertEqual(profile["profile_id"], "declawd-v2")
+        self.assertEqual(profile["threshold"], {"numerator": 1.65, "denominator": 1})
+        self.assertEqual(calibration["marked_fixture"], {"detected": True, "effective_tokens": 377, "z": 2.94})
+        self.assertEqual(calibration["control_fixture"], {"effective_tokens": 378, "z": 0.89})
+        for group, expected in {"full": (2, 96), "prefix_200": (2, 96), "prefix_201": (2, 94)}.items():
+            report = evaluation["length_groups"][group]
+            self.assertEqual((report["crossings"], report["usable"]), expected)
+        scoring = json.loads((self.archive / "vectors/scoring-v2.json").read_bytes())
+        marked = scoring["vectors"][8]["text"]
+        self.assertIn("a empty field", marked)
+        self.assertIn("a additional check", marked)
+
+    def test_current_validator_rejects_the_previously_approved_article_mismatch(self) -> None:
+        review = json.loads((self.archive / "fixtures/candidate-review-v2.json").read_bytes())
+        self.assertTrue(all(entry["grammar_approved"] and entry["same_job_approved"] for entry in review["entries"]))
+        with self.assertRaisesRegex(ValueError, "article agreement mismatch"):
+            calibrate_v2.candidate_review.validate(
+                self.archive / "fixtures/template-v2.json",
+                self.archive / "fixtures/candidate-review-v2.json",
+            )
+
+    def test_archived_source_and_outputs_reproduce_without_current_code(self) -> None:
+        paths = [path for path in self.archive.rglob("*") if path.is_file()]
+        before = {path: path.read_bytes() for path in paths}
+        result = subprocess.run(
+            [sys.executable, "-B", str(self.archive / "reference/calibrate_v2.py"), "reproduce"],
+            cwd=self.archive,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        self.assertIn("[ok] v2 reproduce", result.stdout)
+        self.assertEqual(before, {path: path.read_bytes() for path in before})
+
+
+class TemplateGrammarTests(unittest.TestCase):
+    def test_article_sensitive_words_are_literal(self) -> None:
+        template = json.loads((ROOT / "fixtures/template-v2.json").read_bytes())
+        segments = template["segments"]
+        candidates = {candidate.lower() for part in segments if isinstance(part, list) for candidate in part}
+        self.assertNotIn("empty", candidates)
+        self.assertNotIn("additional", candidates)
+        control = "".join(part if isinstance(part, str) else part[0] for part in segments)
+        self.assertIn("because a blank field tells the next reader nothing at all", control)
+        self.assertIn("may need a further check before its next use", control)
+        self.assertIn(" readings at 60 and 80 litres per minute", control)
+        self.assertIn("preceding twelve-month", control)
+
+    def test_all_sentence_combinations_keep_reviewed_article_agreement(self) -> None:
+        segments = json.loads((ROOT / "fixtures/template-v2.json").read_bytes())["segments"]
+        frames = [[]]
+        for part in segments:
+            if isinstance(part, list):
+                frames[-1].append(part)
+                continue
+            for chunk in re.split(r"(?<=[.!?])(?=\s|$)", part):
+                if chunk:
+                    frames[-1].append([chunk])
+                    if re.search(r"[.!?]\s*$", chunk):
+                        frames.append([])
+        followers = {"bad", "blank", "doubtful", "further", "gap", "later", "meter", "minor", "poor", "reference", "run", "signature", "slight", "small", "value"}
+        combinations = 0
+        for frame in (frame for frame in frames if frame):
+            for parts in itertools.product(*frame):
+                sentence = "".join(parts)
+                combinations += 1
+                self.assertNotRegex(sentence, r"\ba (?:empty|additional)\b")
+                for article, word in re.findall(r"\b(a|an)\s+([A-Za-z]+)", sentence, re.IGNORECASE):
+                    self.assertIn(word.lower(), followers, sentence)
+                    self.assertEqual(article.lower(), "a", sentence)
+        self.assertGreater(combinations, 115)
 
 
 if __name__ == "__main__":

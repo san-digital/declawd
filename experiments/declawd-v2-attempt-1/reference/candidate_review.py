@@ -10,27 +10,6 @@ from pathlib import Path
 
 TOKEN = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
 SENTENCE_END = re.compile(r"[.!?](?=\s|$)")
-ARTICLE_FOLLOWER = re.compile(r"\b(a|an)\s+([A-Za-z]+(?:'[A-Za-z]+)?)", re.IGNORECASE)
-# Initial sounds are reviewed for this fixture's vocabulary. New article followers require an explicit review, including words whose spelling and initial sound differ.
-ARTICLE_SOUNDS = {
-    "additional": "vowel",
-    "bad": "consonant",
-    "blank": "consonant",
-    "doubtful": "consonant",
-    "empty": "vowel",
-    "further": "consonant",
-    "gap": "consonant",
-    "later": "consonant",
-    "meter": "consonant",
-    "minor": "consonant",
-    "poor": "consonant",
-    "reference": "consonant",
-    "run": "consonant",
-    "signature": "consonant",
-    "slight": "consonant",
-    "small": "consonant",
-    "value": "consonant",
-}
 SCHEMA = "declawd.candidate-review/v2"
 METHOD = "agent review of grammar and unchanged operational meaning"
 
@@ -95,19 +74,8 @@ def render_variants(template_path: Path) -> list[dict]:
     return variants
 
 
-def _validate_articles(text: str) -> None:
-    """Check a/an against the reviewed initial sounds in this fixture's finite vocabulary."""
-    for article, word in ARTICLE_FOLLOWER.findall(text):
-        sound = ARTICLE_SOUNDS.get(word.lower())
-        if sound is None:
-            raise ValueError(f"unreviewed article follower: {word!r}")
-        expected = "an" if sound == "vowel" else "a"
-        if article.lower() != expected:
-            raise ValueError(f"article agreement mismatch: {article} {word}, expected {expected} {word}")
-
-
 def validate(template_path: Path, review_path: Path) -> None:
-    """Check current review coverage and finite article rules. Other grammar judgements remain manual."""
+    """Require complete, current review records without claiming to assess grammar in code."""
     template_path = Path(template_path)
     review = _load(Path(review_path))
     expected = render_variants(template_path)
@@ -115,8 +83,6 @@ def validate(template_path: Path, review_path: Path) -> None:
         raise ValueError("review schema or review method is missing or unsupported")
     if review.get("template_sha256") != hashlib.sha256(template_path.read_bytes()).hexdigest():
         raise ValueError("candidate review is stale: template SHA-256 differs")
-    segments = _segments(_load(template_path))
-    _validate_articles("".join(part if isinstance(part, str) else part[0] for part in segments))
     entries = review.get("entries")
     if not isinstance(entries, list) or len(entries) != len(expected):
         raise ValueError("candidate review must cover every candidate exactly once")
@@ -139,7 +105,6 @@ def validate(template_path: Path, review_path: Path) -> None:
         key = (variant["segment_index"], variant["candidate"])
         if key not in by_key or by_key[key].get("sentence") != variant["sentence"]:
             raise ValueError(f"candidate review is missing or its sentence differs: {key}")
-        _validate_articles(variant["sentence"])
 
 
 def main() -> int:

@@ -18,6 +18,7 @@ include = [
   "/reference/synthid-runner-lock-v1.json",
   "/fixtures/**",
   "/evidence/**",
+  "/experiments/**",
   "/reports/**",
   "/docs/PLAN-V2.md",
   "/docs/V2-RESULTS.md",

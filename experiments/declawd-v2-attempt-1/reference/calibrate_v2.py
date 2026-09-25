@@ -18,8 +18,6 @@ import candidate_review
 import declawd
 
 ROOT = Path(__file__).resolve().parents[1]
-PROFILE_ID = "declawd-v2-r2"
-DOMAIN_SEPARATOR = b"declawd/v2-r2/green"
 MINIMUM = 200
 GROUPS = ("prefix_199", "prefix_200", "prefix_201", "full")
 CALIBRATION_GROUPS = GROUPS[1:]
@@ -33,7 +31,6 @@ INPUTS = (
     "reference/candidate_review.py",
     "reference/calibrate_v2.py",
     "docs/PLAN-V2.md",
-    "experiments/declawd-v2-attempt-1/archive-manifest.json",
 )
 REGISTRATION = "fixtures/registration-v2.json"
 SEED = "fixtures/seed-v2.json"
@@ -87,18 +84,12 @@ def registration_payload(root: Path) -> dict:
         raise ValueError("calibration and evaluation authors overlap")
     files = {name: digest((root / name).read_bytes()) for name in INPUTS}
     return {
-        "registration_id": PROFILE_ID,
-        "previous_attempt": {
-            "profile_id": "declawd-v2",
-            "source_commit": "77c1d6e9dfad7018491308e13ddd5a4a1b9d08e0",
-            "archive": "experiments/declawd-v2-attempt-1",
-            "reason": "candidate review missed a empty and a additional article agreement",
-        },
+        "registration_id": "declawd-v2",
         "targets": {
             "min_effective_tokens": MINIMUM,
             "false_positive_rate_at_or_below": 0.02,
         },
-        "domain_separator": DOMAIN_SEPARATOR.decode("ascii"),
+        "domain_separator": "declawd/v2/green",
         "gamma": {"numerator": 1, "denominator": 4},
         "tokeniser": {
             "pattern": declawd.TOKEN_PATTERN.pattern,
@@ -403,7 +394,7 @@ def removal_vector(segments: list, marked: str, fixture_id: str) -> dict:
     count = declawd.score(marked).effective_tokens
     return {
         "schema": "declawd.controlled-removal/v1",
-        "profile_id": PROFILE_ID,
+        "profile_id": "declawd-v2",
         "fixture_id": fixture_id,
         "position_model": "zero-based Unicode scalar offsets in the original marked passage",
         "source_text": marked,
@@ -441,7 +432,7 @@ def reproduce(root: Path = ROOT, write: bool = False) -> dict[str, dict]:
             raise ValueError(
                 "recorded seed differs from the existing calibration report"
             )
-    declawd.DOMAIN_SEPARATOR = DOMAIN_SEPARATOR
+    declawd.DOMAIN_SEPARATOR = b"declawd/v2/green"
     declawd.SEED = bytes.fromhex(seed["seed_hex"])
     declawd.GAMMA_NUM, declawd.GAMMA_DEN = 1, 4
     declawd.MIN_EFFECTIVE_TOKENS = MINIMUM
@@ -484,10 +475,10 @@ def reproduce(root: Path = ROOT, write: bool = False) -> dict[str, dict]:
         "note_on_threshold": registration["threshold_policy"]["selection"],
     }
     profile = {
-        "profile_id": PROFILE_ID,
+        "profile_id": "declawd-v2",
         "registration_sha256": registration_sha,
         "seed_hex": seed["seed_hex"],
-        "domain_separator": DOMAIN_SEPARATOR.decode("ascii"),
+        "domain_separator": "declawd/v2/green",
         "gamma": registration["gamma"],
         "threshold": {"numerator": threshold / 100, "denominator": 1},
         "min_effective_tokens": MINIMUM,
@@ -569,7 +560,7 @@ def main() -> int:
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
         print(f"[failed] {error}", file=sys.stderr)
         return 1
-    print(f"[ok] {PROFILE_ID} {args.command}")
+    print(f"[ok] v2 {args.command}")
     return 0
 
 

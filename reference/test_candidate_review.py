@@ -42,6 +42,15 @@ class CandidateReviewTests(unittest.TestCase):
     def write_review(self) -> None:
         self.review_path.write_text(json.dumps(self.review) + "\n", encoding="utf-8")
 
+    def approve_current_template(self) -> None:
+        self.write_template()
+        self.review["template_sha256"] = hashlib.sha256(self.template_path.read_bytes()).hexdigest()
+        self.review["entries"] = [
+            dict(variant, grammar_approved=True, same_job_approved=True, rationale="Synthetic approval for testing the structural validator.")
+            for variant in candidate_review.render_variants(self.template_path)
+        ]
+        self.write_review()
+
     def test_renders_each_candidate_in_its_complete_sentence(self) -> None:
         self.assertEqual(candidate_review.render_variants(self.template_path), [
             {"segment_index": 1, "candidate": "Keep", "sentence": "Keep the sheet."},
@@ -111,10 +120,48 @@ class CandidateReviewTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "complete sentence"):
             candidate_review.render_variants(self.template_path)
 
+    def test_original_article_errors_are_rejected_despite_review_approvals(self) -> None:
+        frames = [
+            (
+                ["Where a run is stopped early, write the reason on the sheet in plain words, because a ", ["blank", "empty"], " field tells the next reader nothing at all."],
+                "a empty",
+            ),
+            (
+                ["If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a ", ["further", "additional"], " check before its next use."],
+                "a additional",
+            ),
+        ]
+        for segments, mistake in frames:
+            with self.subTest(mistake=mistake):
+                self.template["segments"] = segments
+                self.approve_current_template()
+                with self.assertRaisesRegex(ValueError, f"article agreement mismatch: {mistake}"):
+                    candidate_review.validate(self.template_path, self.review_path)
+
+    def test_article_rule_also_checks_sentences_without_candidate_slots(self) -> None:
+        self.template["segments"][0] = "An blank field is unhelpful. "
+        self.approve_current_template()
+        with self.assertRaisesRegex(ValueError, "article agreement mismatch: An blank"):
+            candidate_review.validate(self.template_path, self.review_path)
+
+    def test_reviewed_article_sounds_accept_a_and_an(self) -> None:
+        self.template["segments"][0] = "An empty field needs a further check. "
+        self.approve_current_template()
+        candidate_review.validate(self.template_path, self.review_path)
+
+    def test_unknown_article_followers_require_sound_review(self) -> None:
+        self.template["segments"] = ["A ", ["blank", "vacant"], " field is unhelpful."]
+        self.approve_current_template()
+        with self.assertRaisesRegex(ValueError, "unreviewed article follower: 'vacant'"):
+            candidate_review.validate(self.template_path, self.review_path)
+
     def test_committed_v2_review_and_seed_independent_length(self) -> None:
         template_path = ROOT / "fixtures" / "template-v2.json"
         candidate_review.validate(template_path, ROOT / "fixtures" / "candidate-review-v2.json")
         segments = json.loads(template_path.read_text(encoding="utf-8"))["segments"]
+        self.assertEqual(json.loads(template_path.read_text(encoding="utf-8"))["fixture_id"], "flow-meter-v2-r2")
+        self.assertEqual(sum(isinstance(segment, list) for segment in segments), 48)
+        self.assertEqual(len(candidate_review.render_variants(template_path)), 111)
         default_text = "".join(segment if isinstance(segment, str) else segment[0] for segment in segments)
         self.assertGreater(declawd.count_contexts(default_text), 250)
         literal_text = "".join(segment for segment in segments if isinstance(segment, str))

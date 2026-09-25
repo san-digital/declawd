@@ -1,0 +1,24 @@
+{
+  "files": {
+    "README.md": "fe21be5574b11452dc77fa0839cee8912c1bfa08bb5b11f94100156bc16e1117",
+    "docs/PLAN-V2.md": "f3c498f0e2bc881d46d3c682eb25df1f260856c3b59502ead5c287aacc4cb844",
+    "docs/V2-RESULTS.md": "692341fbf8655979984ca61cc17800d1f0428211bdc5051a5506a56f1b3f2354",
+    "fixtures/candidate-review-v2.json": "56fcae117300d370811ad4fc89bbc612e7f89bebec16b6b50ca13e0dee85f965",
+    "fixtures/corpus.json": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+    "fixtures/perturbations.json": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+    "fixtures/profile-v2.json": "8066601b681d638a3b65b7eb341a0129d83e517537ce7cd4162908869dd8c38a",
+    "fixtures/registration-v2.json": "a1d0830c913dbab104ec4c77d688627d794560dab6fcc165ff7a68f00197e826",
+    "fixtures/rewrite.json": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+    "fixtures/seed-v2.json": "33d6e281dce3ee200a77a93af9257fcb23833212ec4083e1d3bef3495eac33ec",
+    "fixtures/template-v2.json": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb",
+    "reference/calibrate_v2.py": "796740f223f469b5fc24f65316382ade36675f0f4a7a38b98cb63554729c006c",
+    "reference/candidate_review.py": "d6945726c5936630b69d845d5339ea16a34d7b3fa0f0acf9ceb0c6e19db5f4ad",
+    "reference/declawd.py": "a3d44fbf154429fa20abdfd830a006170959f0c904d822cab1cd90cfc2f4a021",
+    "reports/calibration-report-v2.json": "2bf486bc5c755b10c49277f8215f4b424fc8bb519d6842cd86291707a10684dc",
+    "reports/evaluation-report-v2.json": "d4352da982cc0c1299bd8dda4e970255cfdd3511ffc05552328a2be1a83a67ec",
+    "vectors/controlled-removal-v2.json": "b801a22b5b3314ed0b114531ddb0183383eec20e8733997878bdd54cc51b2c16",
+    "vectors/scoring-v2.json": "4236554e751b18dbce1a51366627b343e2134b6b50c865438ef00354198f1a10"
+  },
+  "reason": "two article-agreement errors missed by candidate review",
+  "source_commit": "77c1d6e9dfad7018491308e13ddd5a4a1b9d08e0"
+}

@@ -1,12 +1,10 @@
 # Second registration
 
-Issue #17 records two defects in the frozen `declawd-v1` experiment: candidates that do not fit their sentence frames and a 120-pair verdict floor below the measured range. V2 keeps the original inputs, reports and vectors available and introduces `declawd-v2-r2` with its own domain separator, registration, seed record and outputs. The package version becomes 0.3.0.
-
-The first `declawd-v2` attempt was registered and sampled before browser inspection exposed two further grammar errors: "a empty field" and "a additional check". Its complete inputs, executable code, seed and results remain in `experiments/declawd-v2-attempt-1`. This successor removes those candidate slots, adds a finite article-agreement check and has a new identifier and domain separator. Its corpus, length groups and threshold selection policy remain the same. The new seed follows a separately committed registration, and the first attempt's measured results remain available.
+Issue #17 records two defects in the frozen `declawd-v1` experiment: candidates that do not fit their sentence frames and a 120-pair verdict floor below the measured range. V2 keeps the original inputs, reports and vectors available and introduces `declawd-v2` with its own domain separator, registration, seed record and outputs. The package version becomes 0.3.0.
 
 ## Inputs
 
-Review every candidate in every sentence frame before registration, including grammar and the operational instruction it gives. The review catalogue records each exact rendered variant and binds it to the template hash. A deterministic check verifies coverage and rejects changes to reviewed wording. It checks a/an agreement against a finite reviewed vocabulary and rejects an unknown follower until it has an explicit sound classification. Grammar beyond that rule and the meaning judgement are recorded as agent review.
+Review every candidate in every sentence frame before registration, including grammar and the operational instruction it gives. The review catalogue records each exact rendered variant and binds it to the template hash. A deterministic check verifies coverage and rejects changes to reviewed wording. The grammar and meaning judgement is recorded as agent review. Software checks the record and its coverage.
 
 Keep the existing author-separated corpus and disclose that it was already published and examined for v1. This is a new seeded experiment on a historical corpus, so its evaluation set is not newly collected or previously unseen. Keep the existing rewrite and perturbation rules as named historical inputs. No example is selected or rewritten after scores are known.
 
