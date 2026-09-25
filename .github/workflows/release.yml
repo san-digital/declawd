@@ -26,11 +26,11 @@ jobs:
           test "$GITHUB_REF_NAME" = "v${package_version}"
       - run: cargo package --locked
       - run: ./scripts/check-c2pa-pin.sh
-      - uses: taiki-e/install-action@6cd13508893c0e7eab5f273c2575d3859bd7229a # v2
+      - uses: taiki-e/install-action@94c31af3204a9f15ab40b35ad084410b905bbc73 # v2
         with:
           tool: cargo-audit@0.22.0
       - run: ./scripts/check-security-advisories.sh
-      - uses: taiki-e/install-action@6cd13508893c0e7eab5f273c2575d3859bd7229a # v2
+      - uses: taiki-e/install-action@94c31af3204a9f15ab40b35ad084410b905bbc73 # v2
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
@@ -43,7 +43,7 @@ jobs:
           python3 -m venv "$audit_environment"
           "$audit_environment/bin/python" -m pip install --requirement reference/python-audit-tool-requirements.txt
           PATH="$audit_environment/bin:$PATH" "$audit_environment/bin/python" scripts/check-python-advisories.py
-      - uses: taiki-e/install-action@6cd13508893c0e7eab5f273c2575d3859bd7229a # v2
+      - uses: taiki-e/install-action@94c31af3204a9f15ab40b35ad084410b905bbc73 # v2
         with:
           tool: cargo-cyclonedx@0.5.9
       - name: Install the pinned Python SBOM tool
@@ -151,7 +151,7 @@ jobs:
         with:
           path: dist
           merge-multiple: true
-      - uses: taiki-e/install-action@6cd13508893c0e7eab5f273c2575d3859bd7229a # v2
+      - uses: taiki-e/install-action@94c31af3204a9f15ab40b35ad084410b905bbc73 # v2
         with:
           tool: cargo-cyclonedx@0.5.9
       - name: Install the pinned Python SBOM tool
@@ -207,7 +207,7 @@ jobs:
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: dist/*
-      - uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           draft: true
           generate_release_notes: true
