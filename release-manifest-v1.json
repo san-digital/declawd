@@ -10,13 +10,13 @@
     },
     {
       "path": "docs/PLAN-V2.md",
-      "byte_length": 4293,
-      "sha256": "f3c498f0e2bc881d46d3c682eb25df1f260856c3b59502ead5c287aacc4cb844"
+      "byte_length": 4996,
+      "sha256": "9c150a3f187c19d7c17ca736d622188ff6e89d5c2b4bcf34790cbd6759ce6c98"
     },
     {
       "path": "docs/V2-RESULTS.md",
-      "byte_length": 3350,
-      "sha256": "692341fbf8655979984ca61cc17800d1f0428211bdc5051a5506a56f1b3f2354"
+      "byte_length": 4205,
+      "sha256": "7e3d9f90b884fe093b25ad586556dc8ec2cd5fb3f1503c21dcb0dbedb8956911"
     },
     {
       "path": "evidence/synthid/CC-BY-4.0.txt",
@@ -60,8 +60,8 @@
     },
     {
       "path": "fixtures/candidate-review-v2.json",
-      "byte_length": 43295,
-      "sha256": "56fcae117300d370811ad4fc89bbc612e7f89bebec16b6b50ca13e0dee85f965"
+      "byte_length": 41941,
+      "sha256": "b5c6ac6486557aaba6ad17faea3503ccf7e4a0bdecfe1544dfc977a862699ebb"
     },
     {
       "path": "fixtures/corpus.json",
@@ -80,8 +80,8 @@
     },
     {
       "path": "fixtures/profile-v2.json",
-      "byte_length": 556,
-      "sha256": "8066601b681d638a3b65b7eb341a0129d83e517537ce7cd4162908869dd8c38a"
+      "byte_length": 561,
+      "sha256": "6e95a79214fa5e550677747955932241fcea42de8907fb9bad4f03f0a7535f50"
     },
     {
       "path": "fixtures/registration-v1.json",
@@ -90,8 +90,8 @@
     },
     {
       "path": "fixtures/registration-v2.json",
-      "byte_length": 3792,
-      "sha256": "a1d0830c913dbab104ec4c77d688627d794560dab6fcc165ff7a68f00197e826"
+      "byte_length": 4188,
+      "sha256": "113264ba19926cd039440c4b13e11b030b0708321e6f447186963f466f91516e"
     },
     {
       "path": "fixtures/rewrite.json",
@@ -101,7 +101,7 @@
     {
       "path": "fixtures/seed-v2.json",
       "byte_length": 374,
-      "sha256": "33d6e281dce3ee200a77a93af9257fcb23833212ec4083e1d3bef3495eac33ec"
+      "sha256": "bd11c5715a5c666b2ba265e66c1e52177a71863c8fa91e6f48eea800345bf4ee"
     },
     {
       "path": "fixtures/synthid/distribution-v1.json",
@@ -170,8 +170,8 @@
     },
     {
       "path": "fixtures/template-v2.json",
-      "byte_length": 5384,
-      "sha256": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb"
+      "byte_length": 5289,
+      "sha256": "4ce7f8c890fe3e6877638d43720678213222a8fa91009f51cf200f99136fb30e"
     },
     {
       "path": "reports/calibration-report-v1.json",
@@ -180,8 +180,8 @@
     },
     {
       "path": "reports/calibration-report-v2.json",
-      "byte_length": 168132,
-      "sha256": "2bf486bc5c755b10c49277f8215f4b424fc8bb519d6842cd86291707a10684dc"
+      "byte_length": 167966,
+      "sha256": "d3fb6c204764cb350e12c7f6148e68257bc6d625d6964e31db87bf8cfc053b33"
     },
     {
       "path": "reports/evaluation-report-v1.json",
@@ -190,8 +190,8 @@
     },
     {
       "path": "reports/evaluation-report-v2.json",
-      "byte_length": 165276,
-      "sha256": "d4352da982cc0c1299bd8dda4e970255cfdd3511ffc05552328a2be1a83a67ec"
+      "byte_length": 165214,
+      "sha256": "3ea533ee688b0de3b840a63d3676fbcfa491ba3c258a15d3a6c4ad7854f71ab0"
     },
     {
       "path": "reference/calibrate.py",
@@ -200,18 +200,18 @@
     },
     {
       "path": "reference/calibrate_v2.py",
-      "byte_length": 21322,
-      "sha256": "796740f223f469b5fc24f65316382ade36675f0f4a7a38b98cb63554729c006c"
+      "byte_length": 21789,
+      "sha256": "6a12a600757942b7fafa8dd5155a399b223fe2c7805185fb7f5177f13dbeb34b"
     },
     {
       "path": "reference/candidate_review.py",
-      "byte_length": 5643,
-      "sha256": "d6945726c5936630b69d845d5339ea16a34d7b3fa0f0acf9ceb0c6e19db5f4ad"
+      "byte_length": 7109,
+      "sha256": "8f05c722853ee1d2b8ea94c76add3ce3607c13db3f8a5349294b8c01f443ae60"
     },
     {
       "path": "reference/declawd.py",
-      "byte_length": 12905,
-      "sha256": "a3d44fbf154429fa20abdfd830a006170959f0c904d822cab1cd90cfc2f4a021"
+      "byte_length": 12928,
+      "sha256": "76dc273ea462b7f8e53652d66b655f0091189b59dfc20a95b5c3e9bd89aab9bf"
     },
     {
       "path": "reference/generate_synthid_table.py",
@@ -300,8 +300,8 @@
     },
     {
       "path": "vectors/controlled-removal-v2.json",
-      "byte_length": 7982,
-      "sha256": "b801a22b5b3314ed0b114531ddb0183383eec20e8733997878bdd54cc51b2c16"
+      "byte_length": 7971,
+      "sha256": "aa3fde9a32ecc5008b1ad0dc5f3206506f8590b5c028afb89f4107e43fcbef05"
     },
     {
       "path": "vectors/report-v1.json",
@@ -315,13 +315,108 @@
     },
     {
       "path": "vectors/scoring-v2.json",
-      "byte_length": 11190,
-      "sha256": "4236554e751b18dbce1a51366627b343e2134b6b50c865438ef00354198f1a10"
+      "byte_length": 11221,
+      "sha256": "4ca687746009aa1c271eaba3abbdd8a493497967be9f416fe24883751d283daf"
     },
     {
       "path": "vectors/unicode-v1.json",
       "byte_length": 8164,
       "sha256": "543aa68bc703f0a7bf104791c401b6d16154c1dc1e2d3c51df32b457d40efb77"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/README.md",
+      "byte_length": 1437,
+      "sha256": "fe21be5574b11452dc77fa0839cee8912c1bfa08bb5b11f94100156bc16e1117"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/archive-manifest.json",
+      "byte_length": 1962,
+      "sha256": "b1d245b8cdf8eb53dbc2da7edc2455f2436806cda3541b52d534fc3f72c87c57"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/docs/PLAN-V2.md",
+      "byte_length": 4293,
+      "sha256": "f3c498f0e2bc881d46d3c682eb25df1f260856c3b59502ead5c287aacc4cb844"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/docs/V2-RESULTS.md",
+      "byte_length": 3350,
+      "sha256": "692341fbf8655979984ca61cc17800d1f0428211bdc5051a5506a56f1b3f2354"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/candidate-review-v2.json",
+      "byte_length": 43295,
+      "sha256": "56fcae117300d370811ad4fc89bbc612e7f89bebec16b6b50ca13e0dee85f965"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/corpus.json",
+      "byte_length": 401074,
+      "sha256": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/perturbations.json",
+      "byte_length": 791,
+      "sha256": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/profile-v2.json",
+      "byte_length": 556,
+      "sha256": "8066601b681d638a3b65b7eb341a0129d83e517537ce7cd4162908869dd8c38a"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/registration-v2.json",
+      "byte_length": 3792,
+      "sha256": "a1d0830c913dbab104ec4c77d688627d794560dab6fcc165ff7a68f00197e826"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/rewrite.json",
+      "byte_length": 1649,
+      "sha256": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/seed-v2.json",
+      "byte_length": 374,
+      "sha256": "33d6e281dce3ee200a77a93af9257fcb23833212ec4083e1d3bef3495eac33ec"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/fixtures/template-v2.json",
+      "byte_length": 5384,
+      "sha256": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/reference/calibrate_v2.py",
+      "byte_length": 21322,
+      "sha256": "796740f223f469b5fc24f65316382ade36675f0f4a7a38b98cb63554729c006c"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/reference/candidate_review.py",
+      "byte_length": 5643,
+      "sha256": "d6945726c5936630b69d845d5339ea16a34d7b3fa0f0acf9ceb0c6e19db5f4ad"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/reference/declawd.py",
+      "byte_length": 12905,
+      "sha256": "a3d44fbf154429fa20abdfd830a006170959f0c904d822cab1cd90cfc2f4a021"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/reports/calibration-report-v2.json",
+      "byte_length": 168132,
+      "sha256": "2bf486bc5c755b10c49277f8215f4b424fc8bb519d6842cd86291707a10684dc"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/reports/evaluation-report-v2.json",
+      "byte_length": 165276,
+      "sha256": "d4352da982cc0c1299bd8dda4e970255cfdd3511ffc05552328a2be1a83a67ec"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/vectors/controlled-removal-v2.json",
+      "byte_length": 7982,
+      "sha256": "b801a22b5b3314ed0b114531ddb0183383eec20e8733997878bdd54cc51b2c16"
+    },
+    {
+      "path": "experiments/declawd-v2-attempt-1/vectors/scoring-v2.json",
+      "byte_length": 11190,
+      "sha256": "4236554e751b18dbce1a51366627b343e2134b6b50c865438ef00354198f1a10"
     }
   ]
 }

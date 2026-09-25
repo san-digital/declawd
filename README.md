@@ -1,6 +1,6 @@
 # Declawd
 
-Declawd is an educational laboratory for known content carriers. It publishes the registered `declawd-v2` watermark experiment alongside the frozen `declawd-v1` inputs and results, and provides a conservative Rust CLI for:
+Declawd is an educational laboratory for known content carriers. It publishes the registered `declawd-v2-r2` watermark experiment alongside the frozen `declawd-v1` inputs and results, and provides a conservative Rust CLI for:
 
 - inspecting UTF-8 text for an explicit registry of Unicode structures;
 - removing or replacing only the exact text selectors a user requests; and
@@ -256,7 +256,7 @@ Changing either registered input would alter the registration hash. V2 therefore
 
 The active profile is `declawd-v2-r2`. The first sampled v2 attempt exposed two article-agreement errors during browser inspection and is preserved with its original results in [the attempt archive](experiments/declawd-v2-attempt-1/README.md). R2 removes those slots, checks article agreement and has its own registration and fresh seed.
 
-The [v2 results](docs/V2-RESULTS.md) record the single draw and its measured outcomes. The [v2 plan](docs/PLAN-V2.md) fixes the candidate review, minimum length, threshold rule and seed procedure before the draw. Every candidate in `fixtures/template-v2.json` has an exact sentence and an agent review of grammar and operational meaning in `fixtures/candidate-review-v2.json`. The checker rejects incomplete or stale reviews.
+The [v2 results](docs/V2-RESULTS.md) record the single draw and its measured outcomes: the marked example scores 0.77 against a 2.30 threshold and is missed, while 6 of 96 full human passages cross the threshold (6.25%). The [v2 plan](docs/PLAN-V2.md) fixes the candidate review, minimum length, threshold rule and seed procedure before the draw. Every candidate in `fixtures/template-v2.json` has an exact sentence and an agent review of grammar and operational meaning in `fixtures/candidate-review-v2.json`. The checker rejects incomplete or stale reviews.
 
 The minimum is 200 distinct pairs. Calibration measures full passages and prefixes at 200 and 201 pairs separately, and the 199-pair group verifies that public scores and verdicts are withheld. The threshold must meet the 2% target in each eligible calibration group. Evaluation uses the other authors after threshold selection, retaining any crossings and an undetected marked fixture. These are the historical v1 corpora, already published and examined, with a new seed and registered procedure.
 

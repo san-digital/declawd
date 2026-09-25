@@ -78,9 +78,11 @@ class ReleaseManifestTest(unittest.TestCase):
                 check=True,
                 capture_output=True,
             )
-            document = json.loads(destination.read_bytes())
+            generated = destination.read_bytes()
+            document = json.loads(generated)
         self.assertEqual(document["release"], f"v{cargo['package']['version']}-source-contract")
         self.assertIsNone(document["source_revision"])
+        self.assertEqual(generated, (ROOT / "release-manifest-v1.json").read_bytes())
 
     def test_writer_emits_canonical_utf8_lf_bytes(self) -> None:
         release = "v-test"

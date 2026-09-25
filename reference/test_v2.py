@@ -342,8 +342,8 @@ class PublishedV2Tests(unittest.TestCase):
         self.assertEqual(profile["min_effective_tokens"], 200)
         self.assertEqual(profile["threshold"]["denominator"], 1)
         self.assertEqual(profile["threshold"]["numerator"], calibration["threshold"])
-        self.assertNotEqual(seed["registration_commit"], "d87977b989555f40da623675fd8053df8d120e1d")
-        self.assertNotEqual(seed["seed_hex"], "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98")
+        self.assertEqual(seed["registration_commit"], "126fac944b86e1f154a0470a46697beca4b3dd74")
+        self.assertEqual(seed["seed_hex"], "ffbbfdc089c8c5124e1605f69e90300939037f524a7f70e5429472f07a554a55")
         self.assertEqual(profile["seed_hex"], seed["seed_hex"])
         self.assertEqual(calibration["seed_hex"], seed["seed_hex"])
         for name, expected in registration["source_files"].items():
@@ -357,6 +357,20 @@ class PublishedV2Tests(unittest.TestCase):
             expected = hashlib.sha256((ROOT / source).read_bytes()).hexdigest()
             for record in records:
                 self.assertEqual(record[field], expected)
+
+    def test_recorded_outcomes_retain_the_missed_fixture_and_evaluation_crossings(self) -> None:
+        calibration = self.read("reports/calibration-report-v2.json")
+        evaluation = self.read("reports/evaluation-report-v2.json")
+        self.assertEqual(calibration["threshold"], 2.3)
+        self.assertEqual(calibration["marked_fixture"], {"detected": False, "effective_tokens": 378, "z": 0.77})
+        self.assertEqual(calibration["control_fixture"], {"effective_tokens": 377, "z": -0.62})
+        for group, total in {"full": 96, "prefix_200": 96, "prefix_201": 95}.items():
+            report = calibration["length_groups"][group]
+            self.assertEqual((report["crossings"], report["usable"]), (1, total))
+        for group, expected in {"full": (6, 96), "prefix_200": (1, 96), "prefix_201": (1, 94)}.items():
+            report = evaluation["length_groups"][group]
+            self.assertEqual((report["crossings"], report["usable"]), expected)
+        self.assertEqual(evaluation["rate"], 0.0625)
 
     def test_published_scoring_vectors_match_the_profile(self) -> None:
         document = self.read("vectors/scoring-v2.json")
