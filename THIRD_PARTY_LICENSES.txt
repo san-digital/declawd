@@ -51,7 +51,7 @@ Package inventory
 - byteorder 1.5.0 | Unlicense OR MIT | https://github.com/BurntSushi/byteorder
 - byteordered 0.6.0 | MIT OR Apache-2.0 | https://github.com/Enet4/byteordered
 - bytes 1.12.1 | MIT | https://github.com/tokio-rs/bytes
-- c2pa 0.90.15 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-rs
+- c2pa 0.90.22 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-rs
 - c2pa_cbor 0.77.2 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-cbor
 - cc 1.4.4 | MIT OR Apache-2.0 | https://github.com/rust-lang/cc-rs
 - cc-traits 2.0.0 | MIT OR Apache-2.0 | https://github.com/timothee-haudebourg/cc-traits
