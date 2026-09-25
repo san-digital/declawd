@@ -20,6 +20,7 @@ include = [
   "/evidence/**",
   "/reports/**",
   "/docs/PLAN-V2.md",
+  "/docs/V2-RESULTS.md",
   "/spec/**",
   "/vectors/**",
   "/scripts/**",

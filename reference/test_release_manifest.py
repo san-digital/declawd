@@ -27,6 +27,7 @@ class ReleaseManifestTest(unittest.TestCase):
     def test_manifest_covers_both_experiments(self) -> None:
         required = {
             "docs/PLAN-V2.md",
+            "docs/V2-RESULTS.md",
             "fixtures/candidate-review-v2.json",
             "fixtures/corpus.json",
             "fixtures/perturbations.json",

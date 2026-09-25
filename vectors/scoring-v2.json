@@ -1,0 +1,125 @@
+{
+  "profile": {
+    "calibration_report_sha256": "2bf486bc5c755b10c49277f8215f4b424fc8bb519d6842cd86291707a10684dc",
+    "domain_separator": "declawd/v2/green",
+    "gamma": {
+      "denominator": 4,
+      "numerator": 1
+    },
+    "min_effective_tokens": 200,
+    "profile_id": "declawd-v2",
+    "registration_sha256": "a1d0830c913dbab104ec4c77d688627d794560dab6fcc165ff7a68f00197e826",
+    "seed_hex": "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98",
+    "threshold": {
+      "denominator": 1,
+      "numerator": 1.65
+    },
+    "tokeniser_pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  },
+  "vectors": [
+    {
+      "effective": 0,
+      "green": null,
+      "raw": 0,
+      "text": "",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 1,
+      "green": null,
+      "raw": 1,
+      "text": "a",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 9,
+      "green": null,
+      "raw": 9,
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 2,
+      "green": null,
+      "raw": 5,
+      "text": "spam spam spam spam spam",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 8,
+      "green": null,
+      "raw": 8,
+      "text": "can't can’t naive naïve co-operate",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 2,
+      "green": null,
+      "raw": 2,
+      "text": "ab​cd",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 2,
+      "green": null,
+      "raw": 2,
+      "text": "a😀b",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 3,
+      "green": null,
+      "raw": 3,
+      "text": "one\r\ntwo\tthree",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 377,
+      "green": 119,
+      "raw": 428,
+      "text": "Set the reference flow to 40 litres per minute before you log the first reading on the raw sheet. Keep the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value varies by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A minor leak at the union will bias every later value, so completing the check before proceeding is worthwhile despite the delay. Log the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is invalid, because the sheet still shows what the instrument was doing at that time. When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted range. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome. Sign the sheet, state the ambient conditions, and send the signed result to the quality file. Where a run is stopped early, write the reason on the sheet in plain words, because a empty field tells the next reader nothing at all. Store the sheets in date order so that a later question can be answered using those records. If the meter is moved to another bay, note the new location and the date of the transfer, because a meter that has moved may need a additional check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not continue with a run on equipment you cannot trust. A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is smaller than the cost of correcting a bad result. When the file is finished for the month, check that every sheet has a signature and that no run is missing from the sequence. A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
+      "verdict": "above threshold",
+      "z": 2.9437701155777605
+    },
+    {
+      "effective": 378,
+      "green": 102,
+      "raw": 428,
+      "text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay. Record the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time. When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome. Sign the sheet, state the ambient conditions, and send the signed result to the quality file. Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be answered using those records. If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not continue with a run on equipment you cannot trust. A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result. When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence. A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
+      "verdict": "below threshold",
+      "z": 0.890870806374748
+    },
+    {
+      "effective": 199,
+      "green": null,
+      "raw": 218,
+      "text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay. Record the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time. When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls",
+      "verdict": "insufficient text",
+      "z": null
+    },
+    {
+      "effective": 200,
+      "green": 55,
+      "raw": 223,
+      "text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay. Record the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time. When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any",
+      "verdict": "below threshold",
+      "z": 0.816496580927726
+    },
+    {
+      "effective": 201,
+      "green": 55,
+      "raw": 224,
+      "text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue. A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay. Record the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time. When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any single",
+      "verdict": "below threshold",
+      "z": 0.7737398142565998
+    }
+  ]
+}

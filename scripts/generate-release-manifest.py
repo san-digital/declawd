@@ -12,6 +12,7 @@ OUTPUT = ROOT / "release-manifest-v1.json"
 FILES = (
     "SYNTHID_THIRD_PARTY_NOTICES.md",
     "docs/PLAN-V2.md",
+    "docs/V2-RESULTS.md",
     "evidence/synthid/CC-BY-4.0.txt",
     "evidence/synthid/README.md",
     "evidence/synthid/dathathri-2024-synthid-text.pdf",

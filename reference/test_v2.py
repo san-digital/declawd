@@ -302,6 +302,159 @@ class ProfileTests(unittest.TestCase):
             self.assertEqual(declawd.verdict(300, 91), "above threshold")
 
 
+class PublishedV2Tests(unittest.TestCase):
+    def setUp(self) -> None:
+        names = (
+            "SEED", "GAMMA_NUM", "GAMMA_DEN", "THRESHOLD_NUM", "THRESHOLD_DEN",
+            "MIN_EFFECTIVE_TOKENS", "DOMAIN_SEPARATOR",
+        )
+        state = mock.patch.multiple(declawd, **{name: getattr(declawd, name) for name in names})
+        state.start()
+        self.addCleanup(state.stop)
+        declawd.load_profile(ROOT / "fixtures/profile-v2.json")
+
+    @staticmethod
+    def read(name: str) -> dict:
+        return json.loads((ROOT / name).read_bytes())
+
+    def assert_score(self, text: str, expected: dict) -> None:
+        score = declawd.score(text)
+        self.assertEqual(score.raw_tokens, expected["raw"])
+        self.assertEqual(score.effective_tokens, expected["effective"])
+        self.assertEqual(score.verdict, expected["verdict"])
+        if score.effective_tokens < 200:
+            self.assertIsNone(expected["green"])
+            self.assertIsNone(expected["z"])
+        else:
+            self.assertEqual(score.green, expected["green"])
+            self.assertAlmostEqual(score.z_display, expected["z"], places=14)
+
+    def test_profile_seed_registration_and_reports_bind_exact_bytes(self) -> None:
+        profile = self.read("fixtures/profile-v2.json")
+        seed = self.read("fixtures/seed-v2.json")
+        registration = self.read("fixtures/registration-v2.json")
+        calibration = self.read("reports/calibration-report-v2.json")
+        evaluation = self.read("reports/evaluation-report-v2.json")
+        self.assertEqual(profile["profile_id"], "declawd-v2")
+        self.assertEqual(profile["domain_separator"], "declawd/v2/green")
+        self.assertEqual(profile["min_effective_tokens"], 200)
+        self.assertEqual(profile["threshold"], {"numerator": 1.65, "denominator": 1})
+        self.assertEqual(seed["registration_commit"], "d87977b989555f40da623675fd8053df8d120e1d")
+        self.assertEqual(seed["seed_hex"], "be14186bfb7b4e2261e3ae1a493816bf92320a0a0fb39f4f02e0485e9bf45c98")
+        self.assertEqual(profile["seed_hex"], seed["seed_hex"])
+        self.assertEqual(calibration["seed_hex"], seed["seed_hex"])
+        for name, expected in registration["source_files"].items():
+            self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), expected)
+        for source, records, field in (
+            ("fixtures/registration-v2.json", [seed, profile, calibration], "registration_sha256"),
+            ("fixtures/seed-v2.json", [calibration], "seed_record_sha256"),
+            ("reports/calibration-report-v2.json", [profile], "calibration_report_sha256"),
+            ("fixtures/profile-v2.json", [evaluation], "profile_sha256"),
+        ):
+            expected = hashlib.sha256((ROOT / source).read_bytes()).hexdigest()
+            for record in records:
+                self.assertEqual(record[field], expected)
+
+    def test_published_scoring_vectors_match_the_profile(self) -> None:
+        document = self.read("vectors/scoring-v2.json")
+        self.assertEqual(document["profile"], self.read("fixtures/profile-v2.json"))
+        for index, vector in enumerate(document["vectors"]):
+            with self.subTest(vector=index):
+                self.assert_score(vector["text"], vector)
+        self.assertTrue({199, 200, 201} <= {v["effective"] for v in document["vectors"]})
+
+    def test_length_reports_retain_every_result_and_mask_199_pairs(self) -> None:
+        expected = {
+            "calibration": {"prefix_200": (1, 96), "prefix_201": (1, 95), "full": (0, 96)},
+            "evaluation": {"prefix_200": (2, 96), "prefix_201": (2, 94), "full": (2, 96)},
+        }
+        for split, counts in expected.items():
+            report = self.read(f"reports/{split}-report-v2.json")
+            self.assertEqual(report["threshold"], 1.65)
+            short = report["length_groups"]["prefix_199"]
+            self.assertEqual((short["source_passages"], short["passages"], short["below_minimum"]), (96, 96, 96))
+            self.assertEqual(short["usable"], 0)
+            self.assertIsNone(short["rate"])
+            self.assertIsNone(short["wilson_95"])
+            self.assertEqual(short["scores"], [])
+            for row in short["rows"]:
+                self.assertEqual(row["effective_tokens"], 199)
+                self.assertEqual(row["verdict"], "insufficient text")
+                for field in ("green", "z", "crossed"):
+                    self.assertIsNone(row[field])
+            for name, (crossings, total) in counts.items():
+                group = report["length_groups"][name]
+                self.assertEqual((group["crossings"], group["usable"]), (crossings, total))
+                self.assertEqual(group["passages"] + group["unavailable"], 96)
+                self.assertEqual(len(group["rows"]), total)
+                self.assertEqual(group["rate"], round(crossings / total, 4))
+                crossed = [row["id"] for row in group["rows"] if row["crossed"]]
+                self.assertEqual(crossed, group["crossing_ids"])
+                self.assertEqual(len(crossed), crossings)
+                for row in group["rows"]:
+                    self.assertEqual(
+                        row["crossed"],
+                        declawd.verdict(row["effective_tokens"], row["green"]) == "above threshold",
+                    )
+        calibration = self.read("reports/calibration-report-v2.json")
+        self.assertEqual(calibration["marked_fixture"], {"detected": True, "effective_tokens": 377, "z": 2.94})
+        self.assertEqual(calibration["control_fixture"], {"effective_tokens": 378, "z": 0.89})
+
+    def test_threshold_is_the_first_grid_value_meeting_every_calibration_group(self) -> None:
+        groups = self.read("reports/calibration-report-v2.json")["length_groups"]
+        eligible = [groups[name] for name in ("prefix_200", "prefix_201", "full")]
+        self.assertTrue(all(group["crossings"] * 50 <= group["usable"] for group in eligible))
+        with mock.patch.multiple(declawd, THRESHOLD_NUM=160, THRESHOLD_DEN=100):
+            previous = [
+                sum(declawd.verdict(row["effective_tokens"], row["green"]) == "above threshold" for row in group["rows"])
+                for group in eligible
+            ]
+        self.assertTrue(any(crossings * 50 > group["usable"] for crossings, group in zip(previous, eligible)))
+
+    def test_controlled_removal_uses_reviewed_alternatives_and_original_offsets(self) -> None:
+        document = self.read("vectors/controlled-removal-v2.json")
+        template = self.read("fixtures/template-v2.json")
+        self.assertEqual(document["fixture_id"], template["fixture_id"])
+        self.assertEqual(document["profile_id"], "declawd-v2")
+        self.assertEqual(document["source_text"], declawd.generate(template["segments"], marked=True))
+        self.assert_score(document["source_text"], document["source_score"])
+        slots = {}
+        offset = 0
+        for part in template["segments"]:
+            if isinstance(part, str):
+                offset += len(part)
+            else:
+                before = declawd.TOKEN_PATTERN.match(document["source_text"], offset).group()
+                slots[offset] = (before, part)
+                offset += len(before)
+        self.assertEqual(len(document["steps"]), 6)
+        previous = document["source_score"]["z"]
+        for count, step in enumerate(document["steps"], start=1):
+            self.assertEqual(step["applied"], count)
+            self.assertEqual(step["substitution"], document["substitutions"][count - 1])
+            text = document["source_text"]
+            for change in sorted(document["substitutions"][:count], key=lambda c: c["scalar_offset"], reverse=True):
+                offset = change["scalar_offset"]
+                before, candidates = slots[offset]
+                self.assertEqual(change["before"], before)
+                self.assertIn(change["after"], candidates)
+                self.assertEqual(text[offset:offset + len(before)], before)
+                text = text[:offset] + change["after"] + text[offset + len(before):]
+            self.assert_score(text, step["score"])
+            self.assertLess(step["score"]["z"], previous)
+            previous = step["score"]["z"]
+        self.assertEqual(text, document["expected_text"])
+        self.assert_score(text, document["expected_score"])
+        self.assertEqual(document["expected_score"]["verdict"], "below threshold")
+
+    def test_recorded_run_reproduces_every_output_without_sampling(self) -> None:
+        before = {name: (ROOT / name).read_bytes() for name in (calibrate_v2.SEED, *calibrate_v2.OUTPUTS)}
+        with mock.patch.object(calibrate_v2.secrets, "token_bytes") as draw:
+            calibrate_v2.reproduce(ROOT)
+        draw.assert_not_called()
+        self.assertEqual(before, {name: (ROOT / name).read_bytes() for name in before})
+
+
 class FrozenV1BytesTests(unittest.TestCase):
     def test_v1_fixture_report_and_vector_bytes_are_preserved(self) -> None:
         expected = {
