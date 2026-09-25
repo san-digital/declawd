@@ -1,6 +1,6 @@
 # Recorded results
 
-The active experiment is `declawd-v2-r2`. Its registration was committed at [`126fac944b86e1f154a0470a46697beca4b3dd74`](https://github.com/san-digital/declawd/commit/126fac944b86e1f154a0470a46697beca4b3dd74) and pushed before its one seed draw at `2026-09-25T05:42:52.095797+00:00`. The registered plan, candidate review and executable inputs are bound by SHA-256. The corrected template has 48 candidate slots and 111 individually reviewed renderings, with tests covering all 220 combinations within its sentences.
+The active experiment is `declawd-v2-r2`. Its registration was committed at [`126fac944b86e1f154a0470a46697beca4b3dd74`](https://github.com/san-digital/declawd/commit/126fac944b86e1f154a0470a46697beca4b3dd74) and pushed before its one seed draw at `2026-09-25T05:42:52.095797+00:00`. The registered plan, candidate review and executable inputs are bound by SHA-256. The corrected template has 48 candidate slots and 111 rendered sentences. Each rendering carries grammar and meaning approvals. The review gives one rationale per slot, copied word for word from the first attempt's review, including for 15 renderings whose sentences changed in r2. Tests cover all 220 combinations within its sentences.
 
 ## Outcomes
 

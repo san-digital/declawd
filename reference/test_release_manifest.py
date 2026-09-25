@@ -5,12 +5,14 @@ from __future__ import annotations
 import importlib.util
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import tomllib
 import unittest
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,10 +66,23 @@ class ReleaseManifestTest(unittest.TestCase):
                 self.assertEqual(record["sha256"], hashlib.sha256(data).hexdigest())
 
     def test_manifest_retains_every_archived_attempt_file(self) -> None:
-        archive = ROOT / release_manifest.ARCHIVE_ROOT
-        actual = {str(path.relative_to(ROOT)) for path in archive.rglob("*") if path.is_file()}
+        environment = {name: value for name, value in os.environ.items() if not name.startswith("GIT_")}
+        environment.update(GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_NOSYSTEM="1")
+        tracked = subprocess.run(
+            ["git", "ls-files", "-z", "--", release_manifest.ARCHIVE_ROOT],
+            cwd=ROOT,
+            env=environment,
+            check=True,
+            capture_output=True,
+        ).stdout
+        actual = {name for name in tracked.decode("utf-8").split("\0") if name}
         recorded = {name for name in release_manifest.FILES if name.startswith(release_manifest.ARCHIVE_ROOT + "/")}
         self.assertEqual(recorded, actual)
+
+    def test_archive_inventory_ignores_inherited_git_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            with mock.patch.dict(os.environ, {"GIT_DIR": str(Path(temporary) / "unrelated.git"), "GIT_WORK_TREE": temporary}):
+                self.test_manifest_retains_every_archived_attempt_file()
 
     def test_default_release_follows_package_version(self) -> None:
         cargo = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))

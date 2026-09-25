@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import itertools
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -101,6 +102,12 @@ class ThresholdTests(unittest.TestCase):
 
 class ProtocolTests(unittest.TestCase):
     def setUp(self) -> None:
+        # An inherited GIT_DIR, which git sets for hooks, would send these commits to another repository, and global hooks or config would change them.
+        environment = {name: value for name, value in os.environ.items() if not name.startswith("GIT_")}
+        environment.update(GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_NOSYSTEM="1")
+        isolated = mock.patch.dict(os.environ, environment, clear=True)
+        isolated.start()
+        self.addCleanup(isolated.stop)
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
@@ -143,7 +150,7 @@ class ProtocolTests(unittest.TestCase):
 
     def commit(self) -> None:
         self.git("add", ".")
-        self.git("-c", "commit.gpgsign=false", "commit", "--quiet", "-m", "freeze synthetic inputs")
+        self.git("-c", "commit.gpgsign=false", "commit", "--no-verify", "--quiet", "-m", "freeze synthetic inputs")
 
     def registered(self) -> None:
         calibrate_v2.register(self.root)
@@ -161,6 +168,15 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             calibrate_v2.register(self.root)
         self.assertEqual((self.root / calibrate_v2.REGISTRATION).read_bytes(), before)
+
+    def test_overlapping_authors_are_rejected_before_registration(self) -> None:
+        corpus = self.root / "fixtures/corpus.json"
+        document = json.loads(corpus.read_bytes())
+        document["passages"][1]["author"] = document["passages"][0]["author"]
+        corpus.write_text(json.dumps(document), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "authors overlap"):
+            calibrate_v2.register(self.root)
+        self.assertFalse((self.root / calibrate_v2.REGISTRATION).exists())
 
     def test_sample_requires_registration_to_be_committed(self) -> None:
         calibrate_v2.register(self.root)
@@ -195,6 +211,21 @@ class ProtocolTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "seed or output already exists"):
                 calibrate_v2.sample(self.root)
         draw.assert_called_once_with(32)
+
+    def test_write_restores_outputs_after_an_interrupted_run(self) -> None:
+        self.registered()
+        names = (
+            "SEED", "GAMMA_NUM", "GAMMA_DEN", "THRESHOLD_NUM", "THRESHOLD_DEN",
+            "MIN_EFFECTIVE_TOKENS", "DOMAIN_SEPARATOR",
+        )
+        with mock.patch.multiple(declawd, **{name: getattr(declawd, name) for name in names}):
+            with mock.patch.object(calibrate_v2.secrets, "token_bytes", return_value=b"\x11" * 32):
+                calibrate_v2.sample(self.root)
+            complete = {name: (self.root / name).read_bytes() for name in calibrate_v2.OUTPUTS}
+            for name in calibrate_v2.OUTPUTS[2:]:
+                (self.root / name).unlink()
+            calibrate_v2.reproduce(self.root, write=True)
+        self.assertEqual({name: (self.root / name).read_bytes() for name in calibrate_v2.OUTPUTS}, complete)
 
     def test_existing_outputs_prevent_another_draw(self) -> None:
         self.registered()
@@ -500,6 +531,33 @@ class FrozenV1BytesTests(unittest.TestCase):
         for name, digest in expected.items():
             with self.subTest(path=name):
                 self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), digest)
+
+    def test_v1_calibration_reproduces_from_its_recorded_seed(self) -> None:
+        inputs = (
+            "reference/calibrate.py", "reference/declawd.py", "fixtures/template.json",
+            "fixtures/corpus.json", "fixtures/rewrite.json", "fixtures/perturbations.json",
+            "reports/calibration-report-v1.json",
+        )
+        outputs = (
+            "fixtures/registration-v1.json", "fixtures/profile-v1.json",
+            "reports/calibration-report-v1.json", "reports/evaluation-report-v1.json",
+        )
+        seed = json.loads((ROOT / "fixtures/profile-v1.json").read_bytes())["seed_hex"]
+        # calibrate.py rewrites its outputs in place, so run it on a copy.
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name in inputs:
+                (root / name).parent.mkdir(parents=True, exist_ok=True)
+                (root / name).write_bytes((ROOT / name).read_bytes())
+            subprocess.run(
+                [sys.executable, "-B", str(root / "reference/calibrate.py"), "--seed-hex", seed],
+                cwd=root,
+                capture_output=True,
+                check=True,
+            )
+            for name in outputs:
+                with self.subTest(path=name):
+                    self.assertEqual((root / name).read_bytes(), (ROOT / name).read_bytes())
 
 
 class ArchivedAttemptTests(unittest.TestCase):

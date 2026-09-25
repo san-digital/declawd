@@ -39,6 +39,8 @@ include = [
   "/THIRD_PARTY_LICENSES.txt",
   "/SYNTHID_THIRD_PARTY_NOTICES.md",
   "/release-manifest-v1.json",
+  "!*.pyc",
+  "!.DS_Store",
 ]
 
 [dependencies]

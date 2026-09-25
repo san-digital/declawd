@@ -218,13 +218,12 @@ classify it and no broad class selector is available.
 
 The repository is a curated public snapshot, not an export of private history.
 
-The shared reference scorer supports both profiles, and its original 45-test suite remains in place. Frozen v1 inputs and results include:
+The shared reference scorer supports both profiles, and its original 45-test suite remains in place. The `declawd-v2-r2` registration records the scorer's exact bytes, so before any change to `reference/declawd.py`, including a new domain separator, archive r2 with its own copy of the scorer, as `experiments/declawd-v2-attempt-1` does. Frozen v1 inputs and results include:
 - `fixtures/profile-v1.json`, registration, template, corpus, rewrite and
   perturbation fixtures;
 - calibration and evaluation reports;
 - cross-runtime scoring vectors; and
-- a machine-readable report schema, normative report vector and source-contract
-  release manifest;
+- a machine-readable report schema and normative report vector;
 - the six-substitution controlled-removal vector, including every cumulative
   score. Its original-passage offsets are 75, 175, 295, 371, 631 and 994; the
   final result is 358 effective contexts, 102 green and z =
@@ -263,7 +262,11 @@ python3 reference/candidate_review.py fixtures/template-v2.json fixtures/candida
 python3 reference/calibrate_v2.py reproduce
 ```
 
+`calibrate_v2.py` finds `candidate_review.py` and `declawd.py` through its own folder, so run it with `PYTHONSAFEPATH` unset.
+
 `register` and `sample` are the creation commands. Registration requires committed inputs, and sampling requires the committed registration. An existing seed or output prevents another draw. `reproduce --write` can restore outputs from the recorded seed after an interrupted run. The seed record documents the draw and commit, with no independent witness. V1 evidence and the historical controlled-removal result remain unchanged.
+
+### Reproducing v1
 
 Reproduction scripts are in `reference/`. Reproduce the committed run without
 choosing a new seed:
