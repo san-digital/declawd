@@ -35,8 +35,21 @@ python3 -B experiments/declawd-v2-attempt-1/reference/calibrate_v2.py reproduce
 python3 -B -m unittest discover -s reference -p 'test_*.py'
 ```
 
-Reproduction compares all five active output files byte for byte. `sample` refuses an existing seed or output. `reproduce --write` can recover outputs from the recorded seed after an interruption, and refuses a seed record that differs from an existing calibration report.
+Reproduction compares all five active output files byte for byte. `sample` refuses an existing seed or output. `reproduce --write` restores missing outputs from the recorded seed and refuses a seed record that differs from an existing calibration report.
+
+## Recovery
+
+A truncated `reports/calibration-report-v2.json` causes a JSON parsing error before `reproduce --write` can write any outputs. The registered code retains this limitation. For the published r2 run, restore both the seed record and calibration report from the [v0.3.0 release](https://github.com/san-digital/declawd/releases/tag/v0.3.0), then regenerate and compare the outputs:
+
+```bash
+git fetch origin tag v0.3.0
+git restore --source=v0.3.0 -- fixtures/seed-v2.json reports/calibration-report-v2.json
+python3 -B reference/calibrate_v2.py reproduce --write
+python3 -B reference/calibrate_v2.py reproduce
+```
+
+These commands replace the two local files with their published bytes. In a source archive without Git metadata, copy both files from a fresh download of the same v0.3.0 source release before running the two Python commands. Keep the seed record and calibration report together, since the report binds the complete seed record. Deleting the report alone removes that comparison and could accept a changed seed. Recovery uses the published draw and does not call `sample`.
 
 ## Publication
 
-Version 0.3.0 is prepared with v1, the superseded attempt and active r2 evidence in the source contract. The website change pins an exact source commit and retains the historical v1 articles and examples. Production verification requires a published v0.3.0 source contract before that staged website can be released. No release or deployment is part of this change.
+Version 0.3.0 was published with v1, the superseded attempt and active r2 evidence in the source contract. The 0.3.1 patch adds test portability and recovery guidance, with every registered input and output unchanged. Website production verification checks its pinned, published source contract and retains the historical v1 articles and examples.

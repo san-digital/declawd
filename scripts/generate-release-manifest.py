@@ -126,7 +126,7 @@ def write_manifest(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--release", default="v0.3.0-source-contract")
+    parser.add_argument("--release", default="v0.3.1-source-contract")
     parser.add_argument("--source-revision")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()

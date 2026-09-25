@@ -1,6 +1,6 @@
 {
   "schema": "declawd.release-manifest/v1",
-  "release": "v0.3.0-source-contract",
+  "release": "v0.3.1-source-contract",
   "source_revision": null,
   "files": [
     {
@@ -15,8 +15,8 @@
     },
     {
       "path": "docs/V2-RESULTS.md",
-      "byte_length": 4391,
-      "sha256": "4ad7b05972ee5084cfe51e3705ab58d5aa6552010c52fb1d81ee046be00e27c7"
+      "byte_length": 5451,
+      "sha256": "11ee62302601219a9fb355f2884ee6c208139995cb360ef08a9b176aa02fc98d"
     },
     {
       "path": "evidence/synthid/CC-BY-4.0.txt",
