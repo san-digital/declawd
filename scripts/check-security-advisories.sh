@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# RUSTSEC-2023-0071 (rsa, Marvin timing attack) has no patched release. It
-# enters this crate only through c2pa: rsa 0.9.10 <- c2pa 0.90.15 <- declawd.
+# RUSTSEC-2023-0071 (rsa, Marvin timing attack) has no patched release. It enters this crate only through c2pa: rsa 0.9.10 <- c2pa 0.90.22 <- declawd.
 #
 # Reassessed on 24 September 2026, after the first exception lapsed on 12
 # September:
