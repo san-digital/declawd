@@ -1,6 +1,6 @@
 [package]
 name = "declawd"
-version = "0.2.2"
+version = "0.3.0"
 edition = "2024"
 rust-version = "1.88"
 description = "Inspect known carriers and reproduce public watermark scoring for education"
@@ -18,7 +18,10 @@ include = [
   "/reference/synthid-runner-lock-v1.json",
   "/fixtures/**",
   "/evidence/**",
+  "/experiments/**",
   "/reports/**",
+  "/docs/PLAN-V2.md",
+  "/docs/V2-RESULTS.md",
   "/spec/**",
   "/vectors/**",
   "/scripts/**",
@@ -36,6 +39,8 @@ include = [
   "/THIRD_PARTY_LICENSES.txt",
   "/SYNTHID_THIRD_PARTY_NOTICES.md",
   "/release-manifest-v1.json",
+  "!*.pyc",
+  "!.DS_Store",
 ]
 
 [dependencies]

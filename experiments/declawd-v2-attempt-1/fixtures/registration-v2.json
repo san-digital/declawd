@@ -1,0 +1,96 @@
+{
+  "analysis": {
+    "corpus_reuse": "historical corpus previously examined for v1, including its evaluation results",
+    "corpus_split": "by author, preserving the published v1 split",
+    "interval": "Wilson 95 per cent, descriptive because passages share authors and prefixes share passages",
+    "length_groups": [
+      "prefix_199",
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "prefix_rule": "shortest original-text prefix ending at a token reaching the named distinct-pair count",
+    "selection": "all eligible passages reported, unavailable lengths counted as exclusions",
+    "unit": "one verdict per source passage within each length group"
+  },
+  "canonicaliser": {
+    "confusables": {
+      "а": "a",
+      "е": "e",
+      "о": "o",
+      "р": "p",
+      "с": "c"
+    },
+    "zero_width": "U+200B"
+  },
+  "controlled_removal": {
+    "max_steps": 6,
+    "selection": "lowest resulting z among reviewed alternatives in unused slots",
+    "stop": "no strict score reduction",
+    "ties": "slot index then authored candidate order"
+  },
+  "corpus_sha256": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+  "domain_separator": "declawd/v2/green",
+  "gamma": {
+    "denominator": 4,
+    "numerator": 1
+  },
+  "perturbations": {
+    "del": {
+      "offset": 0,
+      "word": "clock"
+    },
+    "look": {
+      "offset": 2,
+      "replace_with": "а",
+      "word": "quality"
+    },
+    "many": {
+      "every_nth_token": 10,
+      "method": "confusable substitution of the first eligible character in every tenth scored token",
+      "rationale": "A token editing rate of about 0.1, which is the rate the NDSS 2026 character-level attack paper uses. One character changes almost nothing; this is what an actual attack looks like."
+    },
+    "zw": {
+      "insert": "​",
+      "offset": 4,
+      "word": "pressure"
+    }
+  },
+  "perturbations_sha256": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+  "registration_id": "declawd-v2",
+  "rewrite_sha256": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+  "seed_policy": "commit registration before one recorded draw, retain its outcomes, refuse a second draw",
+  "source_files": {
+    "docs/PLAN-V2.md": "f3c498f0e2bc881d46d3c682eb25df1f260856c3b59502ead5c287aacc4cb844",
+    "fixtures/candidate-review-v2.json": "56fcae117300d370811ad4fc89bbc612e7f89bebec16b6b50ca13e0dee85f965",
+    "fixtures/corpus.json": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+    "fixtures/perturbations.json": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+    "fixtures/rewrite.json": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+    "fixtures/template-v2.json": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb",
+    "reference/calibrate_v2.py": "796740f223f469b5fc24f65316382ade36675f0f4a7a38b98cb63554729c006c",
+    "reference/candidate_review.py": "d6945726c5936630b69d845d5339ea16a34d7b3fa0f0acf9ceb0c6e19db5f4ad",
+    "reference/declawd.py": "a3d44fbf154429fa20abdfd830a006170959f0c904d822cab1cd90cfc2f4a021"
+  },
+  "targets": {
+    "false_positive_rate_at_or_below": 0.02,
+    "min_effective_tokens": 200
+  },
+  "template_sha256": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb",
+  "threshold_policy": {
+    "comparison": "strict integer verdict comparison",
+    "groups": [
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "marked_fixture": "reported outcome",
+    "max_step": 399,
+    "selection": "smallest threshold meeting target separately in each eligible calibration group",
+    "step_denominator": 100,
+    "step_numerator": 5
+  },
+  "tokeniser": {
+    "folding": "ASCII A-Z to a-z",
+    "pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  }
+}

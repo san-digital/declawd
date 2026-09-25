@@ -9,8 +9,32 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "release-manifest-v1.json"
+ARCHIVE_ROOT = "experiments/declawd-v2-attempt-1"
+ARCHIVE_FILES = (
+    "README.md",
+    "archive-manifest.json",
+    "docs/PLAN-V2.md",
+    "docs/V2-RESULTS.md",
+    "fixtures/candidate-review-v2.json",
+    "fixtures/corpus.json",
+    "fixtures/perturbations.json",
+    "fixtures/profile-v2.json",
+    "fixtures/registration-v2.json",
+    "fixtures/rewrite.json",
+    "fixtures/seed-v2.json",
+    "fixtures/template-v2.json",
+    "reference/calibrate_v2.py",
+    "reference/candidate_review.py",
+    "reference/declawd.py",
+    "reports/calibration-report-v2.json",
+    "reports/evaluation-report-v2.json",
+    "vectors/controlled-removal-v2.json",
+    "vectors/scoring-v2.json",
+)
 FILES = (
     "SYNTHID_THIRD_PARTY_NOTICES.md",
+    "docs/PLAN-V2.md",
+    "docs/V2-RESULTS.md",
     "evidence/synthid/CC-BY-4.0.txt",
     "evidence/synthid/README.md",
     "evidence/synthid/dathathri-2024-synthid-text.pdf",
@@ -19,7 +43,15 @@ FILES = (
     "fixtures/c2pa/signed.png",
     "fixtures/c2pa/source.jpg",
     "fixtures/c2pa/source.png",
+    "fixtures/candidate-review-v2.json",
+    "fixtures/corpus.json",
+    "fixtures/perturbations.json",
     "fixtures/profile-v1.json",
+    "fixtures/profile-v2.json",
+    "fixtures/registration-v1.json",
+    "fixtures/registration-v2.json",
+    "fixtures/rewrite.json",
+    "fixtures/seed-v2.json",
     "fixtures/synthid/distribution-v1.json",
     "fixtures/synthid/environment-v1.json",
     "fixtures/synthid/gemma-2b-it-input-v1.json",
@@ -32,8 +64,16 @@ FILES = (
     "fixtures/synthid/trace-prepared-v1.json",
     "fixtures/synthid/trace-repeated-v1.json",
     "fixtures/synthid/trace-short-v1.json",
+    "fixtures/template.json",
+    "fixtures/template-v2.json",
     "reports/calibration-report-v1.json",
+    "reports/calibration-report-v2.json",
     "reports/evaluation-report-v1.json",
+    "reports/evaluation-report-v2.json",
+    "reference/calibrate.py",
+    "reference/calibrate_v2.py",
+    "reference/candidate_review.py",
+    "reference/declawd.py",
     "reference/generate_synthid_table.py",
     "reference/python-audit-tool-requirements.txt",
     "reference/synthid-runner-linux-cpu.lock",
@@ -51,10 +91,12 @@ FILES = (
     "spec/synthid-v1.md",
     "spec/unicode-registry-v1.json",
     "vectors/controlled-removal-v1.json",
+    "vectors/controlled-removal-v2.json",
     "vectors/report-v1.json",
     "vectors/scoring-v1.json",
+    "vectors/scoring-v2.json",
     "vectors/unicode-v1.json",
-)
+) + tuple(f"{ARCHIVE_ROOT}/{name}" for name in ARCHIVE_FILES)
 
 
 def render(release: str, source_revision: str | None) -> str:
@@ -84,7 +126,7 @@ def write_manifest(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--release", default="v0.2.0-source-contract")
+    parser.add_argument("--release", default="v0.3.0-source-contract")
     parser.add_argument("--source-revision")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()

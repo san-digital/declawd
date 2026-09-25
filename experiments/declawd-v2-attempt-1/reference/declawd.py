@@ -98,7 +98,7 @@ def load_profile(path) -> None:
     global SEED, MIN_EFFECTIVE_TOKENS, THRESHOLD_NUM, THRESHOLD_DEN, GAMMA_NUM, GAMMA_DEN, DOMAIN_SEPARATOR
     profile = json.loads(_Path(path).read_text(encoding="utf-8"))
     domain = profile["domain_separator"]
-    if domain not in ("declawd/v1/green", "declawd/v2/green", "declawd/v2-r2/green"):
+    if domain not in ("declawd/v1/green", "declawd/v2/green"):
         raise DeclawdError(f"unknown domain separator: {domain!r}")
     DOMAIN_SEPARATOR = domain.encode("ascii")
     GAMMA_NUM = int(profile["gamma"]["numerator"])

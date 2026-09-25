@@ -1,0 +1,933 @@
+{
+  "schema": "declawd.candidate-review/v2",
+  "method": "agent review of grammar and unchanged operational meaning",
+  "template_sha256": "1378aa9ba4e8f591139ce05c31cf75c3196d07095f53accf9c5dd06c63d463eb",
+  "scope": "Every candidate was reviewed in its full sentence with the other slots at their defaults. The review checks grammar and preservation of the operational instruction, including combinations where a sentence contains several slots. The deterministic validator checks the recorded coverage, approvals and exact text. Grammatical and semantic judgements remain agent review.",
+  "decisions": [
+    "Calibration and its permitted date, signature, reporting day and the quality file are literal because their former alternatives changed the required operation or record.",
+    "The leak sentence has a new frame that accepts each of worthwhile, sensible and prudent. The continuation instruction permits continue and proceed.",
+    "Measurements, pass and fail conditions, equipment references and perturbation words remain explicit in the surrounding text."
+  ],
+  "entries": [
+    {
+      "segment_index": 1,
+      "candidate": "record",
+      "sentence": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb asks the operator to write down the first meter reading."
+    },
+    {
+      "segment_index": 1,
+      "candidate": "log",
+      "sentence": "Set the reference flow to 40 litres per minute before you log the first reading on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb asks the operator to write down the first meter reading."
+    },
+    {
+      "segment_index": 1,
+      "candidate": "note",
+      "sentence": "Set the reference flow to 40 litres per minute before you note the first reading on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb asks the operator to write down the first meter reading."
+    },
+    {
+      "segment_index": 3,
+      "candidate": "reading",
+      "sentence": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the numerical reading from the meter."
+    },
+    {
+      "segment_index": 3,
+      "candidate": "value",
+      "sentence": "Set the reference flow to 40 litres per minute before you record the first value on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the numerical reading from the meter."
+    },
+    {
+      "segment_index": 5,
+      "candidate": "Hold",
+      "sentence": "Hold the line at that rate for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires maintaining the stated flow for the full two minutes."
+    },
+    {
+      "segment_index": 5,
+      "candidate": "Keep",
+      "sentence": "Keep the line at that rate for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires maintaining the stated flow for the full two minutes."
+    },
+    {
+      "segment_index": 5,
+      "candidate": "Maintain",
+      "sentence": "Maintain the line at that rate for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires maintaining the stated flow for the full two minutes."
+    },
+    {
+      "segment_index": 7,
+      "candidate": "rate",
+      "sentence": "Hold the line at that rate for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the stated flow of 40 litres per minute."
+    },
+    {
+      "segment_index": 7,
+      "candidate": "flow",
+      "sentence": "Hold the line at that flow for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the stated flow of 40 litres per minute."
+    },
+    {
+      "segment_index": 9,
+      "candidate": "settle",
+      "sentence": "Hold the line at that rate for two minutes so the pressure can settle.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe the pressure becoming stable during the waiting period."
+    },
+    {
+      "segment_index": 9,
+      "candidate": "stabilise",
+      "sentence": "Hold the line at that rate for two minutes so the pressure can stabilise.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe the pressure becoming stable during the waiting period."
+    },
+    {
+      "segment_index": 11,
+      "candidate": "Write",
+      "sentence": "Write down the meter value, the ambient temperature, and the clock time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs form an instruction to put the meter reading on the sheet."
+    },
+    {
+      "segment_index": 11,
+      "candidate": "Note",
+      "sentence": "Note down the meter value, the ambient temperature, and the clock time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs form an instruction to put the meter reading on the sheet."
+    },
+    {
+      "segment_index": 13,
+      "candidate": "value",
+      "sentence": "Write down the meter value, the ambient temperature, and the clock time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns identify the numerical meter reading to be recorded."
+    },
+    {
+      "segment_index": 13,
+      "candidate": "reading",
+      "sentence": "Write down the meter reading, the ambient temperature, and the clock time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns identify the numerical meter reading to be recorded."
+    },
+    {
+      "segment_index": 15,
+      "candidate": "Take",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require a reading at each of the two further flow rates."
+    },
+    {
+      "segment_index": 15,
+      "candidate": "Obtain",
+      "sentence": "Obtain the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require a reading at each of the two further flow rates."
+    },
+    {
+      "segment_index": 17,
+      "candidate": "allow",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require the same settling time at each further flow rate."
+    },
+    {
+      "segment_index": 17,
+      "candidate": "provide",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and provide the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require the same settling time at each further flow rate."
+    },
+    {
+      "segment_index": 19,
+      "candidate": "settling",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both words name the waiting period for stable pressure."
+    },
+    {
+      "segment_index": 19,
+      "candidate": "stabilisation",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same stabilisation time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both words name the waiting period for stable pressure."
+    },
+    {
+      "segment_index": 21,
+      "candidate": "rate",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each rate.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to each of the stated flow settings."
+    },
+    {
+      "segment_index": 21,
+      "candidate": "setting",
+      "sentence": "Take the reading at 60 and 80 litres per minute, and allow the same settling time at each setting.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to each of the stated flow settings."
+    },
+    {
+      "segment_index": 23,
+      "candidate": "changes",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs apply the same numerical condition to differences between repeated readings."
+    },
+    {
+      "segment_index": 23,
+      "candidate": "varies",
+      "sentence": "If a value varies by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs apply the same numerical condition to differences between repeated readings."
+    },
+    {
+      "segment_index": 25,
+      "candidate": "repeats",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to repeated readings within the run."
+    },
+    {
+      "segment_index": 25,
+      "candidate": "repetitions",
+      "sentence": "If a value changes by more than 2 per cent across repetitions, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to repeated readings within the run."
+    },
+    {
+      "segment_index": 27,
+      "candidate": "inspect",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires examining the same coupling for leaks."
+    },
+    {
+      "segment_index": 27,
+      "candidate": "check",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and check the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires examining the same coupling for leaks."
+    },
+    {
+      "segment_index": 27,
+      "candidate": "examine",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and examine the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires examining the same coupling for leaks."
+    },
+    {
+      "segment_index": 29,
+      "candidate": "continue",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you continue.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb refers to proceeding with the interrupted run after the leak check."
+    },
+    {
+      "segment_index": 29,
+      "candidate": "resume",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you resume.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb refers to proceeding with the interrupted run after the leak check."
+    },
+    {
+      "segment_index": 29,
+      "candidate": "proceed",
+      "sentence": "If a value changes by more than 2 per cent across repeats, stop the run and inspect the coupling for leaks before you proceed.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb refers to proceeding with the interrupted run after the leak check."
+    },
+    {
+      "segment_index": 31,
+      "candidate": "small",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective describes a leak that can still distort later readings."
+    },
+    {
+      "segment_index": 31,
+      "candidate": "minor",
+      "sentence": "A minor leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective describes a leak that can still distort later readings."
+    },
+    {
+      "segment_index": 31,
+      "candidate": "slight",
+      "sentence": "A slight leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective describes a leak that can still distort later readings."
+    },
+    {
+      "segment_index": 33,
+      "candidate": "bias",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes an error introduced into later readings by the leak."
+    },
+    {
+      "segment_index": 33,
+      "candidate": "skew",
+      "sentence": "A small leak at the union will skew every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes an error introduced into later readings by the leak."
+    },
+    {
+      "segment_index": 33,
+      "candidate": "distort",
+      "sentence": "A small leak at the union will distort every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes an error introduced into later readings by the leak."
+    },
+    {
+      "segment_index": 35,
+      "candidate": "reading",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to later numerical readings from the meter."
+    },
+    {
+      "segment_index": 35,
+      "candidate": "value",
+      "sentence": "A small leak at the union will bias every later value, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to later numerical readings from the meter."
+    },
+    {
+      "segment_index": 37,
+      "candidate": "worthwhile",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective supports completing the same leak check despite its delay."
+    },
+    {
+      "segment_index": 37,
+      "candidate": "sensible",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is sensible despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective supports completing the same leak check despite its delay."
+    },
+    {
+      "segment_index": 37,
+      "candidate": "prudent",
+      "sentence": "A small leak at the union will bias every later reading, so completing the check before proceeding is prudent despite the delay.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective supports completing the same leak check despite its delay."
+    },
+    {
+      "segment_index": 39,
+      "candidate": "Record",
+      "sentence": "Record the serial number of the reference meter and the date of its last calibration on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires writing down the reference serial number and calibration date."
+    },
+    {
+      "segment_index": 39,
+      "candidate": "Log",
+      "sentence": "Log the serial number of the reference meter and the date of its last calibration on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires writing down the reference serial number and calibration date."
+    },
+    {
+      "segment_index": 39,
+      "candidate": "Note",
+      "sentence": "Note the serial number of the reference meter and the date of its last calibration on the raw sheet.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires writing down the reference serial number and calibration date."
+    },
+    {
+      "segment_index": 41,
+      "candidate": "falls",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the date outside the same permitted time window."
+    },
+    {
+      "segment_index": 41,
+      "candidate": "lies",
+      "sentence": "If that date lies outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the date outside the same permitted time window."
+    },
+    {
+      "segment_index": 41,
+      "candidate": "is",
+      "sentence": "If that date is outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the date outside the same permitted time window."
+    },
+    {
+      "segment_index": 43,
+      "candidate": "window",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the preceding twelve months."
+    },
+    {
+      "segment_index": 43,
+      "candidate": "period",
+      "sentence": "If that date falls outside the preceding twelve month period, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the preceding twelve months."
+    },
+    {
+      "segment_index": 45,
+      "candidate": "invalid",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives reject the run because its reference calibration is too old."
+    },
+    {
+      "segment_index": 45,
+      "candidate": "void",
+      "sentence": "If that date falls outside the preceding twelve month window, treat the run as void and obtain a reference meter with calibration dated within that period before proceeding.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives reject the run because its reference calibration is too old."
+    },
+    {
+      "segment_index": 47,
+      "candidate": "Keep",
+      "sentence": "Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require preserving the original raw sheet."
+    },
+    {
+      "segment_index": 47,
+      "candidate": "Retain",
+      "sentence": "Retain the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require preserving the original raw sheet."
+    },
+    {
+      "segment_index": 49,
+      "candidate": "void",
+      "sentence": "Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives refer to the rejected run whose sheet must be kept."
+    },
+    {
+      "segment_index": 49,
+      "candidate": "invalid",
+      "sentence": "Keep the raw sheet even when a run is invalid, because the sheet still shows what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives refer to the rejected run whose sheet must be kept."
+    },
+    {
+      "segment_index": 51,
+      "candidate": "shows",
+      "sentence": "Keep the raw sheet even when a run is void, because the sheet still shows what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe the retained sheet as evidence of the instrument behaviour."
+    },
+    {
+      "segment_index": 51,
+      "candidate": "records",
+      "sentence": "Keep the raw sheet even when a run is void, because the sheet still records what the instrument was doing at that time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe the retained sheet as evidence of the instrument behaviour."
+    },
+    {
+      "segment_index": 53,
+      "candidate": "complete",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require measurements at all three rates to be finished before calculation."
+    },
+    {
+      "segment_index": 53,
+      "candidate": "finished",
+      "sentence": "When measurements at all three rates are finished, work out the mean error at each point and plot it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require measurements at all three rates to be finished before calculation."
+    },
+    {
+      "segment_index": 55,
+      "candidate": "plot",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires presenting the mean error against the permitted band."
+    },
+    {
+      "segment_index": 55,
+      "candidate": "graph",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and graph it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires presenting the mean error against the permitted band."
+    },
+    {
+      "segment_index": 55,
+      "candidate": "chart",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and chart it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb requires presenting the mean error against the permitted band."
+    },
+    {
+      "segment_index": 57,
+      "candidate": "band",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted band.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the permitted interval for error."
+    },
+    {
+      "segment_index": 57,
+      "candidate": "range",
+      "sentence": "When measurements at all three rates are complete, work out the mean error at each point and plot it against the permitted range.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the permitted interval for error."
+    },
+    {
+      "segment_index": 59,
+      "candidate": "lies",
+      "sentence": "A meter whose error lies inside the band at every point passes the verification.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the meter error inside the band at every point."
+    },
+    {
+      "segment_index": 59,
+      "candidate": "sits",
+      "sentence": "A meter whose error sits inside the band at every point passes the verification.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the meter error inside the band at every point."
+    },
+    {
+      "segment_index": 59,
+      "candidate": "is",
+      "sentence": "A meter whose error is inside the band at every point passes the verification.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb places the meter error inside the band at every point."
+    },
+    {
+      "segment_index": 61,
+      "candidate": "average",
+      "sentence": "A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to an arithmetic average across the three rates."
+    },
+    {
+      "segment_index": 61,
+      "candidate": "mean",
+      "sentence": "A meter whose error falls outside the band at any single point fails the whole verification, and no mean across the three rates can alter that outcome.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to an arithmetic average across the three rates."
+    },
+    {
+      "segment_index": 63,
+      "candidate": "alter",
+      "sentence": "A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs state that averaging cannot change a failure at one rate."
+    },
+    {
+      "segment_index": 63,
+      "candidate": "change",
+      "sentence": "A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can change that outcome.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs state that averaging cannot change a failure at one rate."
+    },
+    {
+      "segment_index": 65,
+      "candidate": "send",
+      "sentence": "Sign the sheet, state the ambient conditions, and send the signed result to the quality file.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require passing the signed result to the quality file."
+    },
+    {
+      "segment_index": 65,
+      "candidate": "forward",
+      "sentence": "Sign the sheet, state the ambient conditions, and forward the signed result to the quality file.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs require passing the signed result to the quality file."
+    },
+    {
+      "segment_index": 67,
+      "candidate": "stopped",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe ending a run before it is complete."
+    },
+    {
+      "segment_index": 67,
+      "candidate": "halted",
+      "sentence": "Where a run is halted early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs describe ending a run before it is complete."
+    },
+    {
+      "segment_index": 69,
+      "candidate": "reason",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require an account of why the run stopped early."
+    },
+    {
+      "segment_index": 69,
+      "candidate": "explanation",
+      "sentence": "Where a run is stopped early, write the explanation on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require an account of why the run stopped early."
+    },
+    {
+      "segment_index": 71,
+      "candidate": "blank",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives describe a field with no recorded explanation."
+    },
+    {
+      "segment_index": 71,
+      "candidate": "empty",
+      "sentence": "Where a run is stopped early, write the reason on the sheet in plain words, because a empty field tells the next reader nothing at all.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives describe a field with no recorded explanation."
+    },
+    {
+      "segment_index": 73,
+      "candidate": "order",
+      "sentence": "Store the sheets in date order so that a later query can be answered using those records.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require arranging sheets by date."
+    },
+    {
+      "segment_index": 73,
+      "candidate": "sequence",
+      "sentence": "Store the sheets in date sequence so that a later query can be answered using those records.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require arranging sheets by date."
+    },
+    {
+      "segment_index": 75,
+      "candidate": "query",
+      "sentence": "Store the sheets in date order so that a later query can be answered using those records.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun refers to a later request for information about the run."
+    },
+    {
+      "segment_index": 75,
+      "candidate": "question",
+      "sentence": "Store the sheets in date order so that a later question can be answered using those records.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun refers to a later request for information about the run."
+    },
+    {
+      "segment_index": 75,
+      "candidate": "enquiry",
+      "sentence": "Store the sheets in date order so that a later enquiry can be answered using those records.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun refers to a later request for information about the run."
+    },
+    {
+      "segment_index": 77,
+      "candidate": "moved",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes moving the meter to another bay."
+    },
+    {
+      "segment_index": 77,
+      "candidate": "relocated",
+      "sentence": "If the meter is relocated to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes moving the meter to another bay."
+    },
+    {
+      "segment_index": 77,
+      "candidate": "transferred",
+      "sentence": "If the meter is transferred to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each verb describes moving the meter to another bay."
+    },
+    {
+      "segment_index": 79,
+      "candidate": "location",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require recording where the meter has been moved."
+    },
+    {
+      "segment_index": 79,
+      "candidate": "position",
+      "sentence": "If the meter is moved to another bay, note the new position and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns require recording where the meter has been moved."
+    },
+    {
+      "segment_index": 81,
+      "candidate": "move",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun identifies the same change of bay whose date must be recorded."
+    },
+    {
+      "segment_index": 81,
+      "candidate": "relocation",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the relocation, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun identifies the same change of bay whose date must be recorded."
+    },
+    {
+      "segment_index": 81,
+      "candidate": "transfer",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the transfer, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each noun identifies the same change of bay whose date must be recorded."
+    },
+    {
+      "segment_index": 83,
+      "candidate": "further",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a further check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require the same additional check after a change of bay."
+    },
+    {
+      "segment_index": 83,
+      "candidate": "additional",
+      "sentence": "If the meter is moved to another bay, note the new location and the date of the move, because a meter that has moved may need a additional check before its next use.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives require the same additional check after a change of bay."
+    },
+    {
+      "segment_index": 85,
+      "candidate": "continue",
+      "sentence": "Report any damage or faults affecting the reference equipment on the same day, and do not continue with a run on equipment you cannot trust.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs prohibit proceeding with a run using equipment the operator cannot trust."
+    },
+    {
+      "segment_index": 85,
+      "candidate": "proceed",
+      "sentence": "Report any damage or faults affecting the reference equipment on the same day, and do not proceed with a run on equipment you cannot trust.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both verbs prohibit proceeding with a run using equipment the operator cannot trust."
+    },
+    {
+      "segment_index": 87,
+      "candidate": "reading",
+      "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to measurements obtained using the doubtful reference."
+    },
+    {
+      "segment_index": 87,
+      "candidate": "result",
+      "sentence": "A doubtful reference makes every result obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to measurements obtained using the doubtful reference."
+    },
+    {
+      "segment_index": 89,
+      "candidate": "cost",
+      "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns describe the cost of repeating the run."
+    },
+    {
+      "segment_index": 89,
+      "candidate": "expense",
+      "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the expense of repeating a run is lower than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns describe the cost of repeating the run."
+    },
+    {
+      "segment_index": 91,
+      "candidate": "lower",
+      "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives compare the cost of repetition with the cost of correcting a bad result."
+    },
+    {
+      "segment_index": 91,
+      "candidate": "smaller",
+      "sentence": "A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is smaller than the cost of correcting a bad result.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives compare the cost of repetition with the cost of correcting a bad result."
+    },
+    {
+      "segment_index": 93,
+      "candidate": "complete",
+      "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives place the final sheet check at completion of the monthly file."
+    },
+    {
+      "segment_index": 93,
+      "candidate": "finished",
+      "sentence": "When the file is finished for the month, check that every sheet has a signature and that no run is missing from the sequence.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adjectives place the final sheet check at completion of the monthly file."
+    },
+    {
+      "segment_index": 95,
+      "candidate": "missing",
+      "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective requires identifying any run left out of the sequence."
+    },
+    {
+      "segment_index": 95,
+      "candidate": "absent",
+      "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is absent from the sequence.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective requires identifying any run left out of the sequence."
+    },
+    {
+      "segment_index": 95,
+      "candidate": "omitted",
+      "sentence": "When the file is complete for the month, check that every sheet has a signature and that no run is omitted from the sequence.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Each adjective requires identifying any run left out of the sequence."
+    },
+    {
+      "segment_index": 97,
+      "candidate": "record",
+      "sentence": "A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the chronological record of runs."
+    },
+    {
+      "segment_index": 97,
+      "candidate": "log",
+      "sentence": "A gap in the log is harder to explain later than a poor result recorded accurately at the time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both nouns refer to the chronological record of runs."
+    },
+    {
+      "segment_index": 99,
+      "candidate": "accurately",
+      "sentence": "A gap in the record is harder to explain later than a poor result recorded accurately at the time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adverbs require an account of the actual poor result at the time of the run."
+    },
+    {
+      "segment_index": 99,
+      "candidate": "truthfully",
+      "sentence": "A gap in the record is harder to explain later than a poor result recorded truthfully at the time.",
+      "grammar_approved": true,
+      "same_job_approved": true,
+      "rationale": "Both adverbs require an account of the actual poor result at the time of the run."
+    }
+  ]
+}
