@@ -141,8 +141,16 @@ class ProtocolTests(unittest.TestCase):
         self.commit()
 
     def git(self, *arguments: str) -> str:
+        # Without the last two settings, each commit starts `git maintenance run --auto --detach`, which can still be writing to .git when cleanup deletes the temporary directory.
         return subprocess.check_output(
-            ["git", "-c", "user.name=Protocol Test", "-c", "user.email=protocol@example.invalid", *arguments],
+            [
+                "git",
+                "-c", "user.name=Protocol Test",
+                "-c", "user.email=protocol@example.invalid",
+                "-c", "maintenance.auto=false",
+                "-c", "gc.auto=0",
+                *arguments,
+            ],
             cwd=self.root,
             text=True,
             stderr=subprocess.STDOUT,
