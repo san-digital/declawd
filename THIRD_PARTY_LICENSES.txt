@@ -284,9 +284,9 @@ Package inventory
 - tempfile 3.27.0 | MIT OR Apache-2.0 | https://github.com/Stebalien/tempfile
 - termtree 0.5.1 | MIT | https://github.com/rust-cli/termtree
 - thiserror 1.0.69 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
-- thiserror 2.0.20 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
+- thiserror 2.0.21 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
 - thiserror-impl 1.0.69 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
-- thiserror-impl 2.0.20 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
+- thiserror-impl 2.0.21 | MIT OR Apache-2.0 | https://github.com/dtolnay/thiserror
 - time 0.3.55 | MIT OR Apache-2.0 | https://github.com/time-rs/time
 - time-core 0.1.9 | MIT OR Apache-2.0 | https://github.com/time-rs/time
 - time-macros 0.2.32 | MIT OR Apache-2.0 | https://github.com/time-rs/time
