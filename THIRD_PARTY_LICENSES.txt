@@ -154,9 +154,9 @@ Package inventory
 - itoa 1.0.18 | MIT OR Apache-2.0 | https://github.com/dtolnay/itoa
 - jfifdump 0.6.0 | MIT OR Apache-2.0 | https://github.com/vstroebel/jfifdump.git
 - js-sys 0.3.104 | MIT OR Apache-2.0 | https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/js-sys
-- jsonschema 0.57.0 | MIT | https://github.com/Stranger6667/jsonschema
-- jsonschema-regex 0.57.0 | MIT | https://github.com/Stranger6667/jsonschema
-- jsonschema-value 0.57.0 | MIT | https://github.com/Stranger6667/jsonschema
+- jsonschema 0.58.5 | MIT | https://github.com/Stranger6667/jsonschema
+- jsonschema-regex 0.58.6 | MIT | https://github.com/Stranger6667/jsonschema
+- jsonschema-value 0.58.6 | MIT | https://github.com/Stranger6667/jsonschema
 - lazy_static 1.5.0 | MIT OR Apache-2.0 | https://github.com/rust-lang-nursery/lazy-static.rs
 - libc 0.2.189 | MIT OR Apache-2.0 | https://github.com/rust-lang/libc
 - libm 0.2.16 | MIT | https://github.com/rust-lang/compiler-builtins
@@ -233,7 +233,7 @@ Package inventory
 - redox_syscall 0.5.18 | MIT | https://gitlab.redox-os.org/redox-os/syscall
 - ref-cast 1.0.27 | MIT OR Apache-2.0 | https://github.com/dtolnay/ref-cast
 - ref-cast-impl 1.0.27 | MIT OR Apache-2.0 | https://github.com/dtolnay/ref-cast
-- referencing 0.57.0 | MIT | https://github.com/Stranger6667/jsonschema
+- referencing 0.58.6 | MIT | https://github.com/Stranger6667/jsonschema
 - regex 1.13.1 | MIT OR Apache-2.0 | https://github.com/rust-lang/regex
 - regex-automata 0.4.18 | MIT OR Apache-2.0 | https://github.com/rust-lang/regex
 - regex-syntax 0.8.11 | MIT OR Apache-2.0 | https://github.com/rust-lang/regex
