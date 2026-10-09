@@ -158,7 +158,7 @@ Package inventory
 - jsonschema-regex 0.58.6 | MIT | https://github.com/Stranger6667/jsonschema
 - jsonschema-value 0.58.6 | MIT | https://github.com/Stranger6667/jsonschema
 - lazy_static 1.5.0 | MIT OR Apache-2.0 | https://github.com/rust-lang-nursery/lazy-static.rs
-- libc 0.2.189 | MIT OR Apache-2.0 | https://github.com/rust-lang/libc
+- libc 0.2.190 | MIT OR Apache-2.0 | https://github.com/rust-lang/libc
 - libm 0.2.16 | MIT | https://github.com/rust-lang/compiler-builtins
 - linux-raw-sys 0.12.1 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | https://github.com/sunfishcode/linux-raw-sys
 - litemap 0.8.3 | Unicode-3.0 | https://github.com/unicode-org/icu4x
