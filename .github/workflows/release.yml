@@ -30,6 +30,8 @@ jobs:
         with:
           tool: cargo-audit@0.22.0
       - run: ./scripts/check-security-advisories.sh
+      - run: python3 scripts/install-osv-scanner.py "$RUNNER_TEMP/osv-scanner"
+      - run: OSV_SCANNER="$RUNNER_TEMP/osv-scanner" python3 scripts/check-rust-osv.py --output "$RUNNER_TEMP/rust-osv.json"
       - uses: taiki-e/install-action@5488ac5a951645ce95062214902ac4b6bc1a1037 # v2
         with:
           tool: cargo-about@0.8.4

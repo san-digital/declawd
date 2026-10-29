@@ -1,0 +1,26 @@
+{
+  "ghsa_id": "GHSA-qwgh-2vcv-g2f7",
+  "published_at": "2026-06-11T15:44:42Z",
+  "updated_at": "2026-10-27T10:55:47Z",
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "rust",
+        "name": "block_buffer"
+      },
+      "vulnerable_version_range": ">=0.11.0,<0.12.1",
+      "patched_versions": "0.12.1",
+      "vulnerable_functions": []
+    }
+  ],
+  "severity": "low",
+  "html_url": "https://github.com/RustCrypto/utils/security/advisories/GHSA-qwgh-2vcv-g2f7",
+  "observed_at": "2026-10-29T03:59:51.679538+00:00",
+  "reviewed_package": {
+    "name": "block-buffer",
+    "version": "0.10.4",
+    "checksum": "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71"
+  },
+  "source_url": "https://github.com/RustCrypto/utils/blob/block-buffer-v0.10.4/block-buffer/src/lib.rs",
+  "finding": "Version 0.10.4 stores the buffer position in a separate pos field. The maintainer affected range begins at 0.11.0."
+}

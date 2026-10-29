@@ -1,0 +1,46 @@
+{
+  "schema": "declawd.rust-osv-review/v1",
+  "observed_at": "2026-10-29T03:55:35.682427+00:00",
+  "scanner_version": "2.7.0",
+  "cargo_lock_sha256": "9f4ca6c75975b996f70b68a5c346d1e030bdd9e70b0d08aeb3256587bdf934ee",
+  "audited_packages": 382,
+  "findings": [
+    {
+      "package": {
+        "name": "block-buffer",
+        "version": "0.10.4",
+        "ecosystem": "crates.io",
+        "purl": "pkg:cargo/block-buffer@0.10.4"
+      },
+      "id": "GHSA-qwgh-2vcv-g2f7",
+      "aliases": [],
+      "decision": "outside_upstream_affected_range_0.11.0_to_0.12.1"
+    },
+    {
+      "package": {
+        "name": "proc-macro-error",
+        "version": "1.0.4",
+        "ecosystem": "crates.io",
+        "purl": "pkg:cargo/proc-macro-error@1.0.4"
+      },
+      "id": "RUSTSEC-2024-0370",
+      "aliases": [],
+      "decision": "informational_unmaintained"
+    },
+    {
+      "package": {
+        "name": "rsa",
+        "version": "0.9.10",
+        "ecosystem": "crates.io",
+        "purl": "pkg:cargo/rsa@0.9.10"
+      },
+      "id": "RUSTSEC-2023-0071",
+      "aliases": [
+        "CVE-2023-49092",
+        "GHSA-4grx-2x9w-596c",
+        "GHSA-c38w-74pg-36hr"
+      ],
+      "decision": "reviewed_rsa_exception_until_2026-11-28"
+    }
+  ]
+}

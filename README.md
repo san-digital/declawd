@@ -196,15 +196,9 @@ not tested. The accurate result is “embedded C2PA store removed”, not
 
 The SDK is pinned to `c2pa =0.91.7` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
 
-Synthetic C2PA stores exercise malformed-input and preservation cases. Two
-additional PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development
-certificate. The independent Linux oracle is pinned separately to `c2patool
-0.27.12`; it must find the embedded manifests and
-matching hard bindings, run Declawd, confirm the cleaned bytes equal the
-committed sources and confirm no claim remains. The gate deliberately does not
-assert current certificate validity, so it does not rot when a test certificate
-expires; nor does it establish public trust-list acceptance. Ordinary Rust
-tests run on Linux, macOS and Windows.
+Synthetic C2PA stores exercise malformed-input and preservation cases. Two PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development certificate. The independent Linux oracle is pinned separately to `c2patool 0.27.12`. It checks the embedded manifests and matching hard bindings, runs Declawd, compares the cleaned bytes with the committed sources and confirms no claim remains. Certificate expiry and public trust-list acceptance are separate from these checks. Ordinary Rust tests run on Linux, macOS and Windows.
+
+The [expanded fixture set](fixtures/c2pa/public/README.md) adds six unmodified JPEG files from the C2PA public collection and three derived PNG/JPEG controls. It covers absent stores, valid bindings, invalid bindings, signature and assertion-hash failures, bad PNG CRCs and truncated JPEG data. Declawd reports store presence separately from C2PA validation, so a removable store with an invalid signature remains a removal case. The tests compare every retained byte with frozen output hashes and refuse malformed image containers without writing output. The upstream assets retain their CC BY-SA 4.0 licence and attribution.
 
 ## Deferred registry candidates
 
@@ -292,6 +286,8 @@ cargo clippy --all-targets --all-features -- -D warnings
 cargo test --all-targets
 ./scripts/check-c2pa-pin.sh
 ./scripts/check-security-advisories.sh
+python3 scripts/install-osv-scanner.py /tmp/declawd-osv-scanner
+OSV_SCANNER=/tmp/declawd-osv-scanner python3 scripts/check-rust-osv.py --output /tmp/declawd-rust-osv.json
 ./scripts/check-third-party-licences.sh
 ./scripts/check-c2patool-fixtures.sh
 python3 scripts/check-python-runtime-lock.py
