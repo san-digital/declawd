@@ -206,6 +206,10 @@ multilingual negative controls have been reviewed. The CLI can still transform
 an exact scalar such as `--replace U+202F=U+0020`, but `inspect` does not
 classify it and no broad class selector is available.
 
+## Mixed passages
+
+The separately registered [mixed-passage experiment](experiments/mixed-passage-v1/README.md) compares whole-document scores with a fixed window search on a controlled word-pair scheme. Reusing the whole-document cut-off for the search flagged 19 of 24 human evaluation documents at 768 tokens. A separately calibrated search cut-off reduced that to 1 of 24, while detecting only 19 of 648 marked mixtures and locating six under the registered rule. The report retains the detection misses, evaluation target failures and limits of the reused corpus. Its fresh key and scoring code are separate from the frozen v1/v2 contracts.
+
 ## Frozen evidence and reproduction
 
 The repository is a curated public snapshot, not an export of private history.
