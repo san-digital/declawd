@@ -49,6 +49,19 @@ jobs:
           fail-on-severity: high
           allow-ghsas: GHSA-c38w-74pg-36hr,GHSA-4grx-2x9w-596c
 
+  trustmark-evidence:
+    name: TrustMark frozen evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - run: |
+          python3 -m pip install --require-hashes --only-binary=:all: --requirement experiments/trustmark-v1/verifier-requirements.txt
+      - run: python3 experiments/trustmark-v1/verify.py --pixels
+      - run: python3 -B -m unittest discover -s experiments/trustmark-v1 -p 'test_*.py' -v
+
   rust:
     name: Rust (${{ matrix.os }})
     strategy:

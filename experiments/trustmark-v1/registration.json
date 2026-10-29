@@ -1,0 +1,218 @@
+{
+  "schema": "declawd.trustmark-registration/v1",
+  "registered_at": "2026-10-29T04:14:47.803969+00:00",
+  "upstream_revision": "6df5a0a29b51cbec832695fdf02051a1937e37bd",
+  "seed": 20261029,
+  "model": {
+    "variant": "Q",
+    "encoding": "BCH_4",
+    "schema": 2,
+    "payload_bits": 68,
+    "strength": 1.0,
+    "merge": "bilinear"
+  },
+  "execution": {
+    "device": "cpu",
+    "threads": 1,
+    "rotation_search": false,
+    "bounding_box_detector": false,
+    "watermark_remover": false,
+    "weights_only_load": true
+  },
+  "formats": {
+    "png_compress_level": 9,
+    "jpeg_quality": 95,
+    "jpeg_subsampling": 0,
+    "jpeg_optimize": false,
+    "jpeg_progressive": false
+  },
+  "states": [
+    "source",
+    "marked",
+    "signed",
+    "cleaned"
+  ],
+  "analysis": "Decode every state with the matching Q decoder. Record detection, payload and schema without dropping failures. Compare marked, signed and cleaned bytes and RGB pixels. Independently validate signed manifests and claim absence after cleaning. Count detections in the 12 unmarked controls without estimating a population false-positive rate.",
+  "retries": "One encoding attempt per case. Retain every outcome. Setup or execution failures are recorded separately from watermark detection failures.",
+  "scope": "Generated owned images, the selected Q model and fixed decoder settings. Results concern this set and do not measure SynthID, text watermarks or production vendor detectors.",
+  "files": [
+    {
+      "path": "experiment.py",
+      "bytes": 14005,
+      "sha256": "88e06a7210230602d204d73469ea1b1f208e168079fc951347c233cc2b444557"
+    },
+    {
+      "path": "models.json",
+      "bytes": 873,
+      "sha256": "a66f300433331c85559b4acef5f3cafe2c0475d3905e1784191aa86d0472312e"
+    },
+    {
+      "path": "requirements-macos-arm64.lock",
+      "bytes": 3065,
+      "sha256": "87f285e56f7f8150fdaa4969774659499b05471f8819cd366503a453a7f50da1"
+    },
+    {
+      "path": "runtime-wheels.json",
+      "bytes": 10453,
+      "sha256": "748b51d6e8fb7e033cc28a568846227fb1a2f799b702a557be2f7a97987c0697"
+    }
+  ],
+  "cases": [
+    {
+      "id": "gradient-png",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "00011100110101101110001010011100101110011100111100011110101100111111",
+      "source": {
+        "path": "assets/gradient-png/source.png",
+        "bytes": 1570,
+        "sha256": "673fe071effc286d697017d4d755b5f3dbfb7582492352f11d43a651ac79ee86"
+      }
+    },
+    {
+      "id": "gradient-jpg",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "01011100001000000000001101101100010100100101111001000011010001101001",
+      "source": {
+        "path": "assets/gradient-jpg/source.jpg",
+        "bytes": 33102,
+        "sha256": "6710bfc3291367bd5a75cd761fa7990dd9a86de59eb6fb0a2f643e55cdd57320"
+      }
+    },
+    {
+      "id": "tiles-png",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "11000100101101011110100001100010010100000001100010010001001011101101",
+      "source": {
+        "path": "assets/tiles-png/source.png",
+        "bytes": 27196,
+        "sha256": "666712bcb168a8e2224a6a1b22a221e3aa2b4f702b12551bad40c46309d17308"
+      }
+    },
+    {
+      "id": "tiles-jpg",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "00111010001101001000010111111101000000011010101111011111110001011001",
+      "source": {
+        "path": "assets/tiles-jpg/source.jpg",
+        "bytes": 185304,
+        "sha256": "79560ea72612fbf6d1a55c4faf1cf005204b484b5df9c680fedb2deee7f1dde8"
+      }
+    },
+    {
+      "id": "noise-png",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "01011011111011001001111110110101101011111001010001010100000001011100",
+      "source": {
+        "path": "assets/noise-png/source.png",
+        "bytes": 788083,
+        "sha256": "d4e604afb6b63431e2a62b1f5b45ed9dfe3d3b0686dc888fd3dda324fb22aaaf"
+      }
+    },
+    {
+      "id": "noise-jpg",
+      "size": [
+        512,
+        512
+      ],
+      "payload": "10111010110001100111101011000111101101110000011111000111100101001010",
+      "source": {
+        "path": "assets/noise-jpg/source.jpg",
+        "bytes": 634619,
+        "sha256": "85d011405d0f3fff784fd3d361ba27cad86ad986b5978303fda71eb0308e90df"
+      }
+    },
+    {
+      "id": "landscape-png",
+      "size": [
+        768,
+        384
+      ],
+      "payload": "01101110011010110011110100100011001000000001010110000001001101000010",
+      "source": {
+        "path": "assets/landscape-png/source.png",
+        "bytes": 6116,
+        "sha256": "d4a0f2863d3476c877f5b36e9abc440f0498ae3be111264fd2322a8206ada819"
+      }
+    },
+    {
+      "id": "landscape-jpg",
+      "size": [
+        768,
+        384
+      ],
+      "payload": "11000001011011011101111101111111010001000011101011101000110100001101",
+      "source": {
+        "path": "assets/landscape-jpg/source.jpg",
+        "bytes": 37737,
+        "sha256": "bfa7bcd68d7281e866a6419a8f557dcb92267c65e34eb3ab5eda42940c48128f"
+      }
+    },
+    {
+      "id": "portrait-png",
+      "size": [
+        384,
+        768
+      ],
+      "payload": "11100110111111110100010010110001110000010011101101101100000100101011",
+      "source": {
+        "path": "assets/portrait-png/source.png",
+        "bytes": 6129,
+        "sha256": "4ce4c75c8b12ab820f5b2df355bf27710463f5ee030885d70c93e08c9251a15d"
+      }
+    },
+    {
+      "id": "portrait-jpg",
+      "size": [
+        384,
+        768
+      ],
+      "payload": "00101001110010001100001001000101101111001011011100110100111000011000",
+      "source": {
+        "path": "assets/portrait-jpg/source.jpg",
+        "bytes": 51729,
+        "sha256": "6a6a0c2253d1d16906599d1e4a1b0575e001f1c543700466fd45dcf20a297f7d"
+      }
+    },
+    {
+      "id": "texture-png",
+      "size": [
+        640,
+        480
+      ],
+      "payload": "00110110011001111010100111000110010011110011011000001010100011100010",
+      "source": {
+        "path": "assets/texture-png/source.png",
+        "bytes": 34394,
+        "sha256": "bc3832297ff459dd3287b9a664d99eec58db6ee7fff4bcbb0af6ef6a2c70a4a0"
+      }
+    },
+    {
+      "id": "texture-jpg",
+      "size": [
+        640,
+        480
+      ],
+      "payload": "10100110001100100001111000010010111111111001010110010101000001101111",
+      "source": {
+        "path": "assets/texture-jpg/source.jpg",
+        "bytes": 253466,
+        "sha256": "a3f98a9af6ca3377de69ac74c646ac72ac3ea1aed38a486190e4095d7b148025"
+      }
+    }
+  ]
+}

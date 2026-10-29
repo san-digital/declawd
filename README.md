@@ -188,11 +188,9 @@ production keys or model weights.
 
 ## C2PA scope
 
-`clean c2pa` removes only the embedded C2PA store through `c2pa-rs`. It does not
-strip EXIF orientation, ICC profiles, IPTC copyright, unrelated XMP or image
-data. Remote manifest references are not followed or removed. Soft bindings are
-not tested. The accurate result is “embedded C2PA store removed”, not
-“provenance removed” or “Claude watermark removed”.
+`clean c2pa` removes only the embedded C2PA store through `c2pa-rs`, preserving EXIF orientation, ICC profiles, IPTC copyright, unrelated XMP and image data. Remote manifest references remain untouched. The accurate result is “embedded C2PA store removed”.
+
+The separate [TrustMark experiment](https://github.com/san-digital/declawd/tree/main/experiments/trustmark-v1) tests a selected pixel watermark on twelve generated PNG/JPEG files. The matching decoder recovered ten exact payloads before C2PA was added and the same ten after removal. Both tiled images were missed throughout. Every cleaned file was byte-identical to its marked version from before signing. This result concerns the fixed image set and TrustMark Q settings.
 
 The SDK is pinned to `c2pa =0.91.7` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
 
