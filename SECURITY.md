@@ -19,23 +19,24 @@ SynthID traces use the same no-follow input boundary, are limited to 8 MiB and
 does not accept prose, make network requests, load production keys or expose a
 detector threshold.
 
-## Temporary advisory exception
+## Advisory exceptions
 
-`c2pa 0.90.22` selects `rsa 0.9.10` through its pinned `rust_native_crypto` backend. That release is affected by `RUSTSEC-2023-0071`, a timing side channel in RSA private-key operations for which no patched `rsa` release exists. This CLI does not load private keys, sign, decrypt, expose a network service or call RSA private-key operations. It uses the SDK's JUMBF inspection/removal API.
+Reassessed on 29 October 2026. The pinned `c2pa 0.90.22` selects `rsa 0.9.10`, `crypto-bigint 0.5.5` through `elliptic-curve`, and `zip 8.6.0`. RustSec reports five vulnerabilities in those dependencies. The exceptions below concern operations outside this CLI's current code paths. The packages remain affected.
 
-The exception is limited to `RUSTSEC-2023-0071` and expires on 24 October
-2026. CI still fails on every other vulnerability, and it fails once the
-exception expires. For the last 14 days it raises a workflow warning on every
-run, because the first exception lapsed on 12 September without anyone seeing
-it until every pull request failed at once.
+| Advisory | Affected operation | Current scope |
+|---|---|---|
+| [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) | Timing leakage from RSA private-key operations | The CLI loads no private keys and does not sign or decrypt |
+| [RUSTSEC-2026-0387](https://rustsec.org/advisories/RUSTSEC-2026-0387.html) | Timing variability in cryptographic arithmetic on secret integers | The CLI performs no cryptographic operation on secret integers |
+| [RUSTSEC-2026-0367](https://rustsec.org/advisories/RUSTSEC-2026-0367.html) | Privileged Unix permissions retained during ZIP extraction | The CLI accepts PNG/JPEG for C2PA operations and extracts no ZIP archives |
+| [RUSTSEC-2026-0368](https://rustsec.org/advisories/RUSTSEC-2026-0368.html) | ZIP extraction creates links to targets outside the destination | The CLI extracts no ZIP archives and creates no archive links |
+| [RUSTSEC-2026-0369](https://rustsec.org/advisories/RUSTSEC-2026-0369.html) | ZIP extraction applies permissions through unconfined links | The CLI extracts no ZIP archives and applies no archive permissions |
 
-It was reassessed on 24 September 2026. The CLI calls two SDK functions,
-`jumbf_io::load_jumbf_from_memory` and `jumbf_io::remove_jumbf_from_file`, and
-both resolve to asset I/O handlers. The SDK's signing code in that module is
-test-only. `rsa` is linked into the binary, but no Declawd code path calls it.
-Upgrading does not remove it: on native targets `rsa` is an optional `c2pa`
-dependency enabled by the `rust_native_crypto` feature this crate turns on, and
-`c2pa 0.90.22` keeps that arrangement. Its only non-optional `rsa` entry is for
-`wasm32`, which this crate does not build. Before extending the exception again, check those
-same points rather than moving the date. Remove the exception as soon as the
-dependency can be removed or patched.
+`src/artifact.rs` imports the SDK error type and calls only `jumbf_io::load_jumbf_from_memory` and `jumbf_io::remove_jumbf_from_file`. Both resolve to asset I/O handlers. The input kind and temporary-file extension restrict these calls to the PNG/JPEG handlers. They read or remove the embedded store without validating signatures, loading keys or using ZIP extraction. The signing code in the SDK's `jumbf_io` module is test-only. A source inspection found no ZIP extraction call in the SDK paths used here.
+
+The RSA advisory still has no patched release. The arithmetic advisory requires `crypto-bigint >=0.7.6`, while the pinned SDK's elliptic-curve dependencies select 0.5.5. The three RustSec ZIP advisories require `zip >=9.0.0`. The current SDK release, 0.91.7, selects ZIP 9.0.4 but requires Rust 1.96.0, above this crate's declared Rust 1.88 minimum. That SDK upgrade needs a separate compatibility review. Removing the cryptographic backend is not supported by the pinned SDK, which requires either its OpenSSL or Rust native backend at compile time.
+
+GitHub also reports [GHSA-m665-v7pm-7grj](https://github.com/advisories/GHSA-m665-v7pm-7grj), a critical ZIP parser disagreement between central-directory inspection and streaming extraction, fixed in ZIP 9.0.5. Declawd uses neither ZIP reader for its PNG/JPEG operations and provides no archive approval or extraction service. The affected dependency remains present and the GitHub alert remains open. This advisory was reviewed separately because the current RustSec audit does not report it.
+
+These five RustSec exceptions expire on 28 November 2026. `scripts/check-security-advisories.sh` checks the four reviewed package versions and a SHA-256 digest of all Rust files under `src/` before applying the exact advisory IDs. A source or package change requires reassessment. The Rust audit fails after expiry and on any other RustSec vulnerability, and warns during the final fourteen days. Recheck both advisory databases, dependency paths, source calls and available SDK/toolchain options before renewing. Remove an exception when its affected dependency can be removed or patched.
+
+The active Python runner closure was updated on 29 October to certifi 2026.10.23, filelock 4.2.4 and setuptools 84.1.0, with verified wheel hashes. Its direct model libraries, profile, source oracle and trace fixtures are unchanged. Earlier release tags preserve their original dependency locks. The Python audit checks every package in the current 40-package closure and permits no vulnerability exclusions.
