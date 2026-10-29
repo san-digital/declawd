@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Audit the recorded counts independently of the registered scoring functions."""
 
+import argparse
 from collections import Counter
 from fractions import Fraction
 from functools import lru_cache
@@ -103,6 +104,7 @@ def audit_provenance():
         data = (HERE / output["path"]).read_bytes()
         assert len(data) == output["bytes"] and sha(data) == output["sha256"], output["path"]
     commits = provenance["commits"]
+    assert all(re.fullmatch(r"[0-9a-f]{40}", value) for value in [provenance["source_base_commit"], *commits.values()])
     registration = read(HERE / "registration.json")
     assert read(HERE / "seed.json")["registration_commit"] == commits["registration"]
     for earlier, later in [(provenance["source_base_commit"], commits["registration"]), (commits["registration"], commits["key"]), (commits["key"], commits["calibration"])]:
@@ -153,4 +155,13 @@ def main():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--fetch-history", action="store_true", help="Fetch the recorded calibration commit if a squash merge or shallow clone omitted it")
+    args = parser.parse_args()
+    if args.fetch_history:
+        commit = read(HERE / "provenance.json")["commits"]["calibration"]
+        if not re.fullmatch(r"[0-9a-f]{40}", commit):
+            raise ValueError("Invalid calibration commit")
+        if subprocess.run(["git", "-C", str(ROOT), "cat-file", "-e", commit], capture_output=True).returncode:
+            subprocess.run(["git", "-C", str(ROOT), "fetch", "--no-tags", "origin", commit], check=True)
     main()

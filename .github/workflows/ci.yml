@@ -74,7 +74,7 @@ jobs:
           python-version: '3.12'
       - run: python3 -B -m unittest discover -s experiments/mixed-passage-v1 -p 'test_*.py' -v
       - run: python3 experiments/mixed-passage-v1/experiment.py verify
-      - run: python3 experiments/mixed-passage-v1/verify.py
+      - run: python3 experiments/mixed-passage-v1/verify.py --fetch-history
 
   rust:
     name: Rust (${{ matrix.os }})

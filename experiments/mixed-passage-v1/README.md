@@ -72,7 +72,7 @@ python3 experiments/mixed-passage-v1/verify.py
 
 Verification checks the registered inputs and key binding, recomputes all 72 calibration cases and 1,368 evaluation cases, and compares every saved output byte. The evaluation set contains 72 human controls, 648 marked mixtures and 648 neutral mixtures. The JSONL files preserve every searched window, including its raw counts. Human prefixes, insertion variants and shared authors are dependent observations. The reports include breakdowns by author and position, with no population confidence intervals.
 
-The separate `verify.py` was written after the run. It reconstructs the documents and hashes pairs independently of the registered scoring functions, checks every window, uses rational arithmetic to check rankings and thresholds, and checks the committed input sequence and provenance hashes. Its Git checks require the registration, key and calibration commits to be available locally. CI fetches the full history for that check.
+The separate `verify.py` was written after the run. It reconstructs the documents and hashes pairs independently of the registered scoring functions, checks every window, uses rational arithmetic to check rankings and thresholds, and checks the committed input sequence and provenance hashes. Its Git checks require the registration, key and calibration commits to be available locally. Add `--fetch-history` to retrieve the recorded calibration commit and its ancestors from `origin` if a shallow clone or squash merge omitted them. CI uses that option. The registered runner's output verification needs no network.
 
 | File | Contents |
 |---|---|
