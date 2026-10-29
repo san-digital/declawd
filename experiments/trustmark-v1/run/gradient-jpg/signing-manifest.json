@@ -1,0 +1,18 @@
+{
+  "claim_generator": "declawd-trustmark-experiment/1",
+  "title": "Generated test image",
+  "assertions": [
+    {
+      "label": "c2pa.soft-binding",
+      "data": {
+        "alg": "com.adobe.trustmark.Q",
+        "blocks": [
+          {
+            "scope": {},
+            "value": "2*01011100001000000000001101101100010100100101111001000011010001101001"
+          }
+        ]
+      }
+    }
+  ]
+}

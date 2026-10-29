@@ -1,0 +1,53 @@
+{
+  "schema": "declawd.report/v1",
+  "tool_version": "0.3.1",
+  "operation": "clean-c2pa",
+  "changed": true,
+  "input": {
+    "media_type": "image/jpeg",
+    "byte_length": 130837,
+    "sha256": "079ee27c7ccd8ec6bf3e34afb2c556bf66a8e26717251e409ede046d90fbff96"
+  },
+  "output": {
+    "media_type": "image/jpeg",
+    "byte_length": 58417,
+    "sha256": "7a15749c611877e592100a7b0e625cc57bf1383bd3b3ac36e4052d2e2d2546aa"
+  },
+  "findings": [
+    {
+      "carrier": "embedded-c2pa",
+      "class": "c2pa-jumbf",
+      "byte_length": 72388,
+      "disposition": "removed"
+    }
+  ],
+  "requested_actions": [
+    {
+      "action": "remove-embedded-c2pa",
+      "selector": "c2pa-jumbf",
+      "matches": 1
+    }
+  ],
+  "completed_actions": [
+    {
+      "action": "remove-embedded-c2pa",
+      "selector": "c2pa-jumbf",
+      "matches": 1
+    }
+  ],
+  "verification": {
+    "embedded_c2pa_absent": true,
+    "non_c2pa_bytes_unchanged": true,
+    "compressed_image_data_unchanged": true
+  },
+  "untested_channels": [
+    "statistical token-choice watermarks",
+    "pixel-level or perceptual watermarks",
+    "remote C2PA references were not followed or removed",
+    "soft bindings were not tested or removed"
+  ],
+  "warnings": [
+    "A finding is not evidence that AI was involved.",
+    "This tool does not detect or certify removal of Claude's watermark."
+  ]
+}
