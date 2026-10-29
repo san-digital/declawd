@@ -253,7 +253,7 @@ Package inventory
 - serde_bytes 0.11.19 | MIT OR Apache-2.0 | https://github.com/serde-rs/bytes
 - serde_core 1.0.229 | MIT OR Apache-2.0 | https://github.com/serde-rs/serde
 - serde_derive 1.0.229 | MIT OR Apache-2.0 | https://github.com/serde-rs/serde
-- serde_json 1.0.151 | MIT OR Apache-2.0 | https://github.com/serde-rs/json
+- serde_json 1.0.154 | MIT OR Apache-2.0 | https://github.com/serde-rs/json
 - serde_spanned 1.1.1 | MIT OR Apache-2.0 | https://github.com/toml-rs/toml
 - serde_with 3.22.0 | MIT OR Apache-2.0 | https://github.com/jonasbb/serde_with/
 - serde_with_macros 3.22.0 | MIT OR Apache-2.0 | https://github.com/jonasbb/serde_with/
