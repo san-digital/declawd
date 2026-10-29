@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Reviewed on 29 October 2026. SECURITY.md records the affected operations, dependency constraints and source paths for these five exceptions.
-exception_ids=(RUSTSEC-2023-0071 RUSTSEC-2026-0387 RUSTSEC-2026-0367 RUSTSEC-2026-0368 RUSTSEC-2026-0369)
+# Reviewed on 29 October 2026. SECURITY.md records the RSA dependency path and unused private-key operations.
+exception_ids=(RUSTSEC-2023-0071)
 exception_expires=2026-11-28
 warn_days=14
 audit_date=${DECLAWD_AUDIT_DATE:-$(date -u +%F)}
@@ -19,10 +19,19 @@ fi
 python3 - <<'PY'
 from pathlib import Path
 import hashlib
+import re
 import tomllib
 
-expected = {"c2pa": "0.90.22", "rsa": "0.9.10", "crypto-bigint": "0.5.5", "zip": "8.6.0"}
 packages = tomllib.loads(Path("Cargo.lock").read_text())["package"]
+zip_versions = {package["version"] for package in packages if package["name"] == "zip"}
+if not zip_versions:
+    raise SystemExit("ZIP security check needs reassessment: dependency missing")
+for version in zip_versions:
+    match = re.fullmatch(r"([0-9]+)\.([0-9]+)\.([0-9]+)", version)
+    if not match or tuple(map(int, match.groups())) < (9, 0, 5):
+        raise SystemExit(f"ZIP {version} is not a patched stable release for GHSA-m665-v7pm-7grj. Require 9.0.5 or newer")
+
+expected = {"c2pa": "0.91.7", "c2pa_raw_crypto": "0.2.1", "rsa": "0.9.10"}
 for name, version in expected.items():
     actual = {package["version"] for package in packages if package["name"] == name}
     if actual != {version}:
@@ -48,5 +57,5 @@ audit_arguments=()
 for exception_id in "${exception_ids[@]}"; do
   audit_arguments+=(--ignore "$exception_id")
 done
-echo "five scoped advisory exceptions valid through $exception_expires"
+echo "ZIP dependency is patched. Scoped RSA advisory exception valid through $exception_expires"
 exec cargo audit "${audit_arguments[@]}" "$@"

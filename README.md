@@ -194,7 +194,7 @@ data. Remote manifest references are not followed or removed. Soft bindings are
 not tested. The accurate result is “embedded C2PA store removed”, not
 “provenance removed” or “Claude watermark removed”.
 
-The SDK is pinned to `c2pa =0.90.22` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
+The SDK is pinned to `c2pa =0.91.7` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
 
 Synthetic C2PA stores exercise malformed-input and preservation cases. Two
 additional PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development
@@ -284,7 +284,7 @@ release: doing so intentionally creates a new experiment.
 
 ## Development
 
-Rust 1.88 or newer is required.
+Rust 1.96 or newer is required. The SDK upgrade permits the patched ZIP 9.0.5 dependency recorded in `Cargo.lock`.
 
 ```sh
 cargo fmt -- --check

@@ -2,7 +2,7 @@
 name = "declawd"
 version = "0.3.1"
 edition = "2024"
-rust-version = "1.88"
+rust-version = "1.96"
 description = "Inspect known carriers and reproduce public watermark scoring for education"
 license = "Apache-2.0"
 repository = "https://github.com/san-digital/declawd"
@@ -45,7 +45,7 @@ include = [
 
 [dependencies]
 clap = { version = "4.5.45", features = ["derive"] }
-c2pa = { version = "=0.90.22", default-features = false, features = ["file_io", "rust_native_crypto"] }
+c2pa = { version = "=0.91.7", default-features = false, features = ["file_io", "rust_native_crypto"] }
 crc32fast = "1.5.0"
 hex = "0.4.3"
 img-parts = "0.4.0"
