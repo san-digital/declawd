@@ -1,0 +1,23 @@
+[
+  {
+    "file": "trustmark_Q.yaml",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/trustmark_Q.yaml",
+    "upstream_md5": "fe40df84a7feeebfceb7a7678d7e6ec6",
+    "sha256": "43f37103f92efa8bd6b1c5902bb537cc12a981dc699fca19d9bb7de8c62d03d9",
+    "bytes": 2009
+  },
+  {
+    "file": "decoder_Q.ckpt",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/decoder_Q.ckpt",
+    "upstream_md5": "4ced90e9cfe13e3295ad082887fe9187",
+    "sha256": "e3d9cea5406a26590735719f8f15cb10802b11852ae69047eaf4cf17214df781",
+    "bytes": 47652460
+  },
+  {
+    "file": "encoder_Q.ckpt",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/encoder_Q.ckpt",
+    "upstream_md5": "700328b8754db934b2f6cb5e5185d81f",
+    "sha256": "dc382c3f6b4fd568b27d6fbb763d6ffc2d2587126d84afe9d5ee95b4c5d99826",
+    "bytes": 17302074
+  }
+]
