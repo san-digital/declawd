@@ -1,0 +1,18 @@
+{
+  "experiment_id": "declawd-mixed-passage-v1",
+  "domain": "declawd/mixed-passage-v1/green",
+  "background_tokens": [128, 384, 768],
+  "insertion_tokens": [64, 128, 256],
+  "positions": ["start", "middle", "end"],
+  "window_tokens": [64, 128, 256],
+  "stride": 16,
+  "minimum_pairs": 32,
+  "threshold_step_hundredths": 5,
+  "threshold_steps": 400,
+  "false_positive_target": {"numerator": 2, "denominator": 100},
+  "source_passages_per_background": 4,
+  "sources": {
+    "corpus": "fixtures/corpus.json",
+    "template": "fixtures/template-v2.json"
+  }
+}

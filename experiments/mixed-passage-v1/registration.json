@@ -1,0 +1,51 @@
+{
+  "config": {
+    "background_tokens": [
+      128,
+      384,
+      768
+    ],
+    "domain": "declawd/mixed-passage-v1/green",
+    "experiment_id": "declawd-mixed-passage-v1",
+    "false_positive_target": {
+      "denominator": 100,
+      "numerator": 2
+    },
+    "insertion_tokens": [
+      64,
+      128,
+      256
+    ],
+    "minimum_pairs": 32,
+    "positions": [
+      "start",
+      "middle",
+      "end"
+    ],
+    "source_passages_per_background": 4,
+    "sources": {
+      "corpus": "fixtures/corpus.json",
+      "template": "fixtures/template-v2.json"
+    },
+    "stride": 16,
+    "threshold_step_hundredths": 5,
+    "threshold_steps": 400,
+    "window_tokens": [
+      64,
+      128,
+      256
+    ]
+  },
+  "experiment_id": "declawd-mixed-passage-v1",
+  "files": {
+    "experiments/mixed-passage-v1/PLAN.md": "84e673b97ef6c7a14b4ab67bdd96e79a589d222a06aec6bb4a2ebc721f3f70bd",
+    "experiments/mixed-passage-v1/config.json": "b0e0d0d29bb987d9b98e0f02753dd1cce502ed9b6615ad9f7beff74d3c387fb0",
+    "experiments/mixed-passage-v1/corpus.json": "42e63b5bfa3f1966d72218434a5b069e7fde1eaccabbde91df3fd36cb1a62d6b",
+    "experiments/mixed-passage-v1/experiment.py": "eeba85f9ac9de481821bc451b0df3a0321072969fa7ebc5adfba24d1f3e05ae6",
+    "experiments/mixed-passage-v1/test_experiment.py": "a3c473a224ff6d5307849a98f642715e840ed0c53d6b423e6d134b99d3248f33",
+    "fixtures/corpus.json": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+    "fixtures/template-v2.json": "4ce7f8c890fe3e6877638d43720678213222a8fa91009f51cf200f99136fb30e"
+  },
+  "registered_at": "2026-10-29T09:16:01.097681+00:00",
+  "schema": "declawd.mixed-passage-registration/v1"
+}
