@@ -122,6 +122,16 @@ class SecurityPolicyTests(unittest.TestCase):
         self.env["DECLAWD_TEST_AUDIT_EXIT"] = "17"
         self.assertEqual(self.run_policy().returncode, 17)
 
+    def test_policy_only_checks_guards_without_running_cargo(self):
+        self.env["DECLAWD_TEST_AUDIT_EXIT"] = "17"
+        command = ["bash", str(ROOT / "scripts/check-security-advisories.sh"), "--policy-only"]
+        result = subprocess.run(command, cwd=self.root, env=self.env, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn('["audit"', result.stdout)
+        self.env["DECLAWD_AUDIT_DATE"] = "2026-11-29"
+        result = subprocess.run(command, cwd=self.root, env=self.env, capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+
 
 if __name__ == "__main__":
     unittest.main()

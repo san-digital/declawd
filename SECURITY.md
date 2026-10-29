@@ -24,6 +24,16 @@ Reassessed on 29 October 2026. `c2pa 0.91.7` selects `rsa 0.9.10` through `c2pa_
 
 The RSA exception expires on 28 November 2026. The audit script checks the three reviewed SDK and RSA package versions and a SHA-256 digest of all Rust files under `src/` before applying this advisory ID. Source or package changes require reassessment. The audit fails after expiry and on any other RustSec vulnerability, and warns during the final fourteen days. Recheck the advisory, dependency path, source calls and available SDK options before renewing. Remove the exception when the affected dependency can be removed or patched.
 
+## OSV check
+
+CI and the release workflow also run OSV-Scanner 2.7.0 against the full Cargo.lock. The installer verifies the published binary's SHA-256 digest. The check requires an inventory matching every locked package, including repeated package names at different versions. Scanner errors, malformed results, missing packages and unreviewed vulnerability records stop the check. It uses an empty scanner configuration and disables call analysis, so repository exclusions and inferred function reachability cannot hide a dependency finding. Raw results and the review summary are retained as CI artifacts. OSV receives package names and versions from the lockfile.
+
+The RSA advisory and its recorded aliases use the source, package and expiry guards above. Pull requests also run GitHub dependency review, rejecting introduced high or critical advisories with the same guarded RSA allowance.
+
+OSV's imported record for [GHSA-qwgh-2vcv-g2f7](https://osv.dev/vulnerability/GHSA-qwgh-2vcv-g2f7) currently flags `block-buffer 0.10.4`. The [maintainer's advisory](https://github.com/RustCrypto/utils/security/advisories/GHSA-qwgh-2vcv-g2f7), updated on 27 October, specifies affected versions `>=0.11.0,<0.12.1`. Version 0.10.4 stores its cursor in a separate field, outside the block passed to the compression callback. The OSV check records this result as outside the upstream affected range only for 0.10.4 with its reviewed crates.io checksum. Other versions, checksums or advisory aliases require review. The same 28 November reassessment date applies through the shared policy guard. The lock also contains patched `block-buffer 0.12.1`.
+
+`RUSTSEC-2024-0370` is retained as an informational notice that `proc-macro-error` is unmaintained. It adds no vulnerability exception. A changed classification or another advisory against that package stops the check.
+
 ## Python audit
 
 The active Python runner closure was updated on 29 October to certifi 2026.10.23, filelock 4.2.4 and setuptools 84.1.0, with verified wheel hashes. Its direct model libraries, profile, source oracle and trace fixtures are unchanged. Earlier release tags preserve their original dependency locks. The Python audit checks every package in the current 40-package closure and permits no vulnerability exclusions.

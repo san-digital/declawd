@@ -84,3 +84,5 @@ for case in manifest["cases"]:
 
 print(f"verified {len(manifest['cases'])} test-signed C2PA fixtures end to end")
 PY
+
+python3 scripts/check-public-c2pa.py "$declawd_bin"

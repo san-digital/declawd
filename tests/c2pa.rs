@@ -3,6 +3,7 @@ use std::fs;
 use base64::Engine as _;
 use base64::engine::general_purpose::STANDARD;
 use declawd::{clean_c2pa_file, inspect_file};
+use sha2::{Digest, Sha256};
 use tempfile::tempdir;
 
 const PNG: &str = "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAJWlDQ1BJQ0MgUHJvZmlsZQAAeJwrSS0u0c1MTtYtKMpPy8xJBQA0wAY7S2eyQwAAAB50RVh0Q29weXJpZ2h0AERlY2xhd2QgdGVzdCBmaXh0dXJlXLv0HwAAACt0RVh0RGVzY3JpcHRpb24AdW5yZWxhdGVkIG1ldGFkYXRhIG11c3Qgc3Vydml2ZYJvXpgAAAASSURBVHicY+RRsmBgYGBiAAMABMYAapYtOQQAAAAASUVORK5CYII=";
@@ -161,4 +162,71 @@ fn jpeg_marker_fill_change_is_detected_and_output_refused() {
             .contains("outside the embedded C2PA carrier changed")
     );
     assert!(!output.exists());
+}
+
+#[test]
+fn public_and_derived_c2pa_cases_preserve_every_retained_byte() {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let manifest: serde_json::Value = serde_json::from_str(include_str!(
+        "../fixtures/c2pa/public-fixture-manifest.json"
+    ))
+    .unwrap();
+    for case in manifest["cases"].as_array().unwrap() {
+        let id = case["id"].as_str().unwrap();
+        let input = root.join(case["path"].as_str().unwrap());
+        let original = fs::read(&input).unwrap();
+        assert_eq!(
+            hex::encode(Sha256::digest(&original)),
+            case["sha256"],
+            "{id}"
+        );
+        let directory = tempdir().unwrap();
+        let output = directory.path().join(input.file_name().unwrap());
+        let expected = case["expected"].as_str().unwrap();
+        if expected == "reject" {
+            assert!(inspect_file(&input, false).is_err(), "{id}");
+            assert!(clean_c2pa_file(&input, &output, true).is_err(), "{id}");
+            assert!(!output.exists(), "{id}");
+            continue;
+        }
+        let present = expected == "present";
+        let inspected = inspect_file(&input, false).unwrap();
+        assert_eq!(
+            inspected
+                .findings
+                .iter()
+                .any(|finding| finding.class == "c2pa-jumbf"),
+            present,
+            "{id}"
+        );
+        let report = clean_c2pa_file(&input, &output, true).unwrap();
+        assert_eq!(report.changed, present, "{id}");
+        assert_eq!(report.verification.embedded_c2pa_absent, Some(true), "{id}");
+        assert_eq!(
+            report.verification.non_c2pa_bytes_unchanged,
+            Some(true),
+            "{id}"
+        );
+        assert_eq!(
+            report.verification.compressed_image_data_unchanged,
+            Some(true),
+            "{id}"
+        );
+        assert_eq!(
+            hex::encode(Sha256::digest(fs::read(&output).unwrap())),
+            case["cleaned_sha256"],
+            "{id}"
+        );
+        assert!(
+            inspect_file(&output, false).unwrap().findings.is_empty(),
+            "{id}"
+        );
+        let second = directory.path().join("second.png");
+        assert!(
+            !clean_c2pa_file(&output, &second, false).unwrap().changed,
+            "{id}"
+        );
+        assert!(!second.exists(), "{id}");
+        assert_eq!(fs::read(&input).unwrap(), original, "{id}");
+    }
 }

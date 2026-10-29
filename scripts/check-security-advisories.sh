@@ -58,4 +58,8 @@ for exception_id in "${exception_ids[@]}"; do
   audit_arguments+=(--ignore "$exception_id")
 done
 echo "ZIP dependency is patched. Scoped RSA advisory exception valid through $exception_expires"
+if [[ "${1:-}" == "--policy-only" ]]; then
+  [[ "$#" == 1 ]] || { echo "--policy-only takes no other arguments" >&2; exit 1; }
+  exit 0
+fi
 exec cargo audit "${audit_arguments[@]}" "$@"
