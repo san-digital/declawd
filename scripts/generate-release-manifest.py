@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "release-manifest-v1.json"
@@ -126,7 +127,8 @@ def write_manifest(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--release", default="v0.3.1-source-contract")
+    version = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))["package"]["version"]
+    parser.add_argument("--release", default=f"v{version}-source-contract")
     parser.add_argument("--source-revision")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()

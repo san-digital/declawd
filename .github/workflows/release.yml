@@ -16,6 +16,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 -B -m unittest discover -s reference -p 'test_*.py' -v
+      - name: Verify the recorded TrustMark experiment
+        run: |
+          python3 -m pip install --require-hashes --only-binary=:all: --requirement experiments/trustmark-v1/verifier-requirements.txt
+          python3 experiments/trustmark-v1/verify.py --pixels
+          python3 -B -m unittest discover -s experiments/trustmark-v1 -p 'test_*.py' -v
       - run: cargo fmt -- --check
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo test --all-targets --locked
