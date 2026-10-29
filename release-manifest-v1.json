@@ -226,12 +226,12 @@
     {
       "path": "reference/synthid-runner-linux-cpu.lock",
       "byte_length": 4037,
-      "sha256": "1b4ff403020273f2eab415e8fb14cf7113d06144fa264f145a1d54ff8caa9829"
+      "sha256": "3038630eae8223cbdb0f3be77d2fbfe3ef11c1e41f46ef47c9795fb5efb993f4"
     },
     {
       "path": "reference/synthid-runner-lock-v1.json",
       "byte_length": 16741,
-      "sha256": "9eee0f2628106bf23720ac2764ab9e6351b72216e6407c0b5b8521059debb48b"
+      "sha256": "998d095345409362fe5870d895a5836d54ddc76e731082e07aa0cebcde2c6a1f"
     },
     {
       "path": "reference/synthid-runner-install-requirements.txt",
