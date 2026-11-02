@@ -1,0 +1,14 @@
+{
+  "schema": "declawd.window-family-config/v1",
+  "length": 12,
+  "mark_probability": {"numerator": 1, "denominator": 4},
+  "alpha": {"numerator": 1, "denominator": 20},
+  "decision": "pvalue <= threshold",
+  "include_final_start": true,
+  "families": [
+    {"id": "document", "widths": [12], "stride": "width"},
+    {"id": "sliding", "widths": [4], "stride": 1},
+    {"id": "dyadic", "widths": [2, 4, 8], "stride": "half-width"}
+  ],
+  "corrections": ["uncorrected", "bonferroni"]
+}
