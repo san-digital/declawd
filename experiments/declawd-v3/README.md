@@ -13,3 +13,5 @@ The scorer derives the domain from the profile identifier and validates the enti
 ## Scope
 
 V3 supersedes the workflow for future educational runs. It does not change the r2 profile or establish a rate on unseen writing. The public seed and reviewed alternatives allow deliberate editing against this teaching scheme. No provider's production text watermark or private detector is measured here.
+
+The [recorded result](docs/RESULTS.md) retains the missed marked fixture: its score of 1.90 is below the selected 3.30 threshold. Full evaluation crossed once in 96 passages. The six-edit trace starts and ends below the threshold.

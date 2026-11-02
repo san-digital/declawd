@@ -1,0 +1,151 @@
+{
+  "expected_score": {
+    "effective": 378,
+    "green": 99,
+    "raw": 427,
+    "verdict": "below threshold",
+    "z": 0.5345224838248488
+  },
+  "expected_text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take readings at 60 and 80 litres per minute, and allow the same settling time at each setting. If a value changes by more than 2 per cent across repeats, stop the run and check the coupling for leaks before you proceed. A small leak at the union will bias every later reading, so completing the check before proceeding is worthwhile despite the delay. Log the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still records what the instrument was doing at that time. When measurements at all three rates are finished, work out the mean error at each point and graph it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome. Sign the sheet, state the ambient conditions, and send the signed result to the quality file. Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be answered using those records. If the meter is moved to another bay, note the new location and the date of the transfer, because a meter that has moved may need a further check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not continue with a run on equipment you cannot trust. A doubtful reference makes every reading obtained with it doubtful too, and the cost of repeating a run is lower than the cost of correcting a bad result. When the file is complete for the month, check that every sheet has a signature and that no run is missing from the sequence. A gap in the record is harder to explain later than a poor result recorded truthfully at the time.",
+  "fixture_id": "flow-meter-v3",
+  "note": "Up to six reductions chosen by the registered rule using the public seed and reviewed candidates. Original offsets are applied from right to left.",
+  "one_green_context_z_step": 0.11846977555181847,
+  "position_model": "zero-based Unicode scalar offsets in the original marked passage",
+  "profile_id": "declawd-v3",
+  "registration_sha256": "6ac84b6c39d7c1bf4d1a67b2e4184d11941e1f4a001e2c6446020f0a9fa45630",
+  "schema": "declawd.controlled-removal/v1",
+  "seed_hex": "dd686884295ceaa329d6ec623551510fac0bc8b7aa268ad7de19b97f3e1bdf42",
+  "seed_record_sha256": "a08d131cb36ecf42c9d68a5ef3b51693fc6dcc066bdaad90004efe4ce23cc5e7",
+  "source_score": {
+    "effective": 380,
+    "green": 111,
+    "raw": 427,
+    "verdict": "below threshold",
+    "z": 1.8955164088290954
+  },
+  "source_text": "Set the reference flow to 40 litres per minute before you record the first reading on the raw sheet. Hold the line at that rate for two minutes so the pressure can settle. Write down the meter value, the ambient temperature, and the clock time. Take readings at 60 and 80 litres per minute, and allow the same settling time at each rate. If a value changes by more than 2 per cent across repeats, stop the run and check the coupling for leaks before you proceed. A small leak at the union will bias every later reading, so completing the check before proceeding is sensible despite the delay. Log the serial number of the reference meter and the date of its last calibration on the raw sheet. If that date falls outside the preceding twelve-month window, treat the run as invalid and obtain a reference meter with calibration dated within that period before proceeding. Keep the raw sheet even when a run is void, because the sheet still records what the instrument was doing at that time. When measurements at all three rates are finished, work out the mean error at each point and plot it against the permitted band. A meter whose error lies inside the band at every point passes the verification. A meter whose error falls outside the band at any single point fails the whole verification, and no average across the three rates can alter that outcome. Sign the sheet, state the ambient conditions, and send the signed result to the quality file. Where a run is stopped early, write the reason on the sheet in plain words, because a blank field tells the next reader nothing at all. Store the sheets in date order so that a later query can be answered using those records. If the meter is moved to another bay, note the new location and the date of the transfer, because a meter that has moved may need a further check before its next use. Report any damage or faults affecting the reference equipment on the same day, and do not proceed with a run on equipment you cannot trust. A doubtful reference makes every reading obtained with it doubtful too, and the expense of repeating a run is lower than the cost of correcting a bad result. When the file is finished for the month, check that every sheet has a signature and that no run is missing from the sequence. A gap in the record is harder to explain later than a poor result recorded truthfully at the time.",
+  "steps": [
+    {
+      "applied": 1,
+      "score": {
+        "effective": 380,
+        "green": 109,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 1.6585768577254585
+      },
+      "substitution": {
+        "after": "setting",
+        "before": "rate",
+        "scalar_offset": 332
+      }
+    },
+    {
+      "applied": 2,
+      "score": {
+        "effective": 380,
+        "green": 107,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 1.4216373066218215
+      },
+      "substitution": {
+        "after": "worthwhile",
+        "before": "sensible",
+        "scalar_offset": 565
+      }
+    },
+    {
+      "applied": 3,
+      "score": {
+        "effective": 380,
+        "green": 105,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 1.1846977555181846
+      },
+      "substitution": {
+        "after": "graph",
+        "before": "plot",
+        "scalar_offset": 1083
+      }
+    },
+    {
+      "applied": 4,
+      "score": {
+        "effective": 380,
+        "green": 103,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 0.9477582044145477
+      },
+      "substitution": {
+        "after": "continue",
+        "before": "proceed",
+        "scalar_offset": 1932
+      }
+    },
+    {
+      "applied": 5,
+      "score": {
+        "effective": 380,
+        "green": 101,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 0.7108186533109108
+      },
+      "substitution": {
+        "after": "complete",
+        "before": "finished",
+        "scalar_offset": 2157
+      }
+    },
+    {
+      "applied": 6,
+      "score": {
+        "effective": 378,
+        "green": 99,
+        "raw": 427,
+        "verdict": "below threshold",
+        "z": 0.5345224838248488
+      },
+      "substitution": {
+        "after": "cost",
+        "before": "expense",
+        "scalar_offset": 2062
+      }
+    }
+  ],
+  "substitutions": [
+    {
+      "after": "setting",
+      "before": "rate",
+      "scalar_offset": 332
+    },
+    {
+      "after": "worthwhile",
+      "before": "sensible",
+      "scalar_offset": 565
+    },
+    {
+      "after": "graph",
+      "before": "plot",
+      "scalar_offset": 1083
+    },
+    {
+      "after": "continue",
+      "before": "proceed",
+      "scalar_offset": 1932
+    },
+    {
+      "after": "complete",
+      "before": "finished",
+      "scalar_offset": 2157
+    },
+    {
+      "after": "cost",
+      "before": "expense",
+      "scalar_offset": 2062
+    }
+  ]
+}
