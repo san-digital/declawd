@@ -41,9 +41,9 @@ The [TrustMark guide](../experiments/trustmark-v1/README.md#check) gives its ret
 
 The original fixture scored 2.99 against 1.80. Its six-substitution trace ended at 1.5256954942433834, with 358 effective contexts and 102 green contexts. Zero-width and confusable substitutions could be reversed byte for byte, while the bundled rewrite scored -0.04. The blind edit attempt remained above the cut-off at 2.61.
 
-The registered two per cent evaluation target was missed: two of 96 human passages crossed (2.08 per cent, 95 per cent interval 0.57 to 7.28). Every measured passage had at least 200 distinct pairs, while the frozen engine issued verdicts from 120. At 120 pairs, four of the 192 passages crossed, including a Benjamin Franklin passage at 3.16. Interfaces using this historical profile should withhold scores below 200 pairs.
+The registered two per cent evaluation target was missed: two of 96 human passages crossed (2.08 per cent, 95 per cent interval 0.57 to 7.28). Every measured passage had at least 200 distinct pairs, while the frozen engine issued verdicts from 120. At 120 pairs, four of the 192 passages crossed, including a Benjamin Franklin passage at 3.16. Interfaces using this historical profile should withhold scores and verdicts below 200 pairs.
 
-Candidate slots 39 and 116 produce “due the delay” and “carry with a run” in the marked fixture. [Issue 17](https://github.com/san-digital/declawd/issues/17) records both the grammar and length-floor problems. R2 supplies separate calibration and candidate review while preserving v1 inputs.
+Candidate slots 39 and 116 produce “due the delay” and “carry with a run” in the marked fixture. [Issue 17](https://github.com/san-digital/declawd/issues/17) records both the grammar and length-floor problems. R2 supplies separate calibration and candidate review while preserving v1 inputs. These frozen defects will not be corrected in place.
 
 The v1 calibration command rewrites its recorded reports. Run it in a disposable checkout with the recorded seed, then confirm that the resulting bytes match Git:
 

@@ -21,12 +21,13 @@ class DocumentationPinTests(unittest.TestCase):
         c2pa_version = cargo["dependencies"]["c2pa"]["version"].removeprefix("=")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
+        development = (ROOT / "docs/DEVELOPMENT.md").read_text(encoding="utf-8")
 
-        self.assertIn(f"The SDK is pinned to `c2pa ={c2pa_version}`", readme)
+        self.assertIn(f"c2pa {c2pa_version}", readme)
         self.assertIn(f"`c2pa {c2pa_version}` selects", security)
 
-        release_section = readme.split("## Release verification", 1)[1]
-        release_section = release_section.split("## Licensing and related work", 1)[0]
+        release_section = development.split("## Release checks", 1)[1]
+        release_section = release_section.split("## Related work", 1)[0]
         documented_versions = set(re.findall(r"declawd-v(\d+\.\d+\.\d+)", release_section))
         self.assertEqual(documented_versions, {package_version})
 
@@ -89,11 +90,13 @@ class FrozenV1LimitationTests(unittest.TestCase):
         self.assertIn("due the delay", marked)
         self.assertIn("carry with a run", marked)
 
-    def test_readme_discloses_the_v1_boundary(self) -> None:
+    def test_readme_links_the_guide_disclosing_the_v1_boundary(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("https://github.com/san-digital/declawd/issues/17", readme)
-        self.assertIn("withhold scores and verdicts below 200 pairs", readme)
-        self.assertIn("will not be corrected in place", readme)
+        evidence = (ROOT / "docs/EVIDENCE.md").read_text(encoding="utf-8")
+        self.assertIn("[Evidence](docs/EVIDENCE.md)", readme)
+        self.assertIn("https://github.com/san-digital/declawd/issues/17", evidence)
+        self.assertIn("withhold scores and verdicts below 200 pairs", evidence)
+        self.assertIn("will not be corrected in place", evidence)
 
 
 if __name__ == "__main__":
