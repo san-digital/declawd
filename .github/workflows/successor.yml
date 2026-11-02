@@ -22,4 +22,5 @@ jobs:
       - run: python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v
       - run: python3 experiments/declawd-v2-r2/reference/calibrate_v2.py reproduce
       - run: python3 experiments/declawd-v3/reference/calibrate_v3.py reproduce
-      - run: python3 experiments/declawd-v3/verify.py
+      - run: python3 -B -m unittest discover -s scripts -p 'test_verify_v3_history.py' -v
+      - run: python3 scripts/verify-v3-history.py
