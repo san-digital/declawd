@@ -192,7 +192,7 @@ production keys or model weights.
 
 The separate [TrustMark experiment](https://github.com/san-digital/declawd/tree/main/experiments/trustmark-v1) tests a selected pixel watermark on twelve generated PNG/JPEG files. The matching decoder recovered ten exact payloads before C2PA was added and the same ten after removal. Both tiled images were missed throughout. Every cleaned file was byte-identical to its marked version from before signing. This result concerns the fixed image set and TrustMark Q settings.
 
-The SDK is pinned to `c2pa =0.91.7` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
+The SDK is pinned to `c2pa =0.91.8` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
 
 Synthetic C2PA stores exercise malformed-input and preservation cases. Two PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development certificate. The independent Linux oracle is pinned separately to `c2patool 0.27.12`. It checks the embedded manifests and matching hard bindings, runs Declawd, compares the cleaned bytes with the committed sources and confirms no claim remains. Certificate expiry and public trust-list acceptance are separate from these checks. Ordinary Rust tests run on Linux, macOS and Windows.
 
@@ -280,7 +280,7 @@ release: doing so intentionally creates a new experiment.
 
 ## Development
 
-Rust 1.96 or newer is required. The SDK upgrade permits the patched ZIP 9.0.5 dependency recorded in `Cargo.lock`.
+Rust 1.96 or newer is required. `Cargo.lock` selects the patched ZIP 9.2.2 dependency through c2pa 0.91.8.
 
 ```sh
 cargo fmt -- --check
@@ -314,28 +314,28 @@ before running a downloaded binary:
 
 ```sh
 # Linux archive
-sha256sum --check declawd-v0.3.2-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.3.3-<target>.tar.gz.sha256
 
 # macOS archive
-shasum -a 256 --check declawd-v0.3.2-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.3-<target>.tar.gz.sha256
 
 # Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.3.2-<target>.zip.sha256
+sha256sum --check declawd-v0.3.3-<target>.zip.sha256
 
 # SBOM on Linux or Windows
-sha256sum --check declawd-v0.3.2.cdx.json.sha256
-sha256sum --check declawd-v0.3.2-python.cdx.json.sha256
-sha256sum --check declawd-v0.3.2-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.3.3.cdx.json.sha256
+sha256sum --check declawd-v0.3.3-python.cdx.json.sha256
+sha256sum --check declawd-v0.3.3-synthid-contracts.tar.gz.sha256
 
 # SBOM on macOS
-shasum -a 256 --check declawd-v0.3.2.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.2-python.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.2-synthid-contracts.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.3.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.3-python.cdx.json.sha256
+shasum -a 256 --check declawd-v0.3.3-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.3.2-<target>.tar.gz \
+gh attestation verify declawd-v0.3.3-<target>.tar.gz \
   --repo san-digital/declawd
 
-gh attestation verify declawd-v0.3.2-synthid-contracts.tar.gz \
+gh attestation verify declawd-v0.3.3-synthid-contracts.tar.gz \
   --repo san-digital/declawd
 ```
 
