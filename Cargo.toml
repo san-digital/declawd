@@ -21,6 +21,7 @@ include = [
   "/experiments/**",
   "!/experiments/trustmark-v1/**",
   "/reports/**",
+  "/docs/FUTURE-REGISTRATION.md",
   "/docs/PLAN-V2.md",
   "/docs/V2-RESULTS.md",
   "/spec/**",
