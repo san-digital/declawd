@@ -23,6 +23,11 @@ jobs:
           python3 -m pip install --require-hashes --only-binary=:all: --requirement experiments/trustmark-v1/verifier-requirements.txt
           python3 experiments/trustmark-v1/verify.py --pixels
           python3 -B -m unittest discover -s experiments/trustmark-v1 -p 'test_*.py' -v
+      - name: Verify mixed-passage evidence
+        run: |
+          python3 -B -m unittest discover -s experiments/mixed-passage-v1 -p 'test_*.py' -v
+          python3 experiments/mixed-passage-v1/experiment.py verify
+          python3 experiments/mixed-passage-v1/verify.py --fetch-history
       - name: Verify archived r2 and successor evidence
         run: |
           python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v
