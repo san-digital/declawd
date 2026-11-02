@@ -23,7 +23,7 @@ class DocumentationPinTests(unittest.TestCase):
         security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
         development = (ROOT / "docs/DEVELOPMENT.md").read_text(encoding="utf-8")
 
-        self.assertIn(f"c2pa {c2pa_version}", readme)
+        self.assertIn(f"`c2pa {c2pa_version}`", readme)
         self.assertIn(f"`c2pa {c2pa_version}` selects", security)
 
         release_section = development.split("## Release checks", 1)[1]
