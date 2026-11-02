@@ -210,9 +210,13 @@ classify it and no broad class selector is available.
 
 The separately registered [mixed-passage experiment](experiments/mixed-passage-v1/README.md) compares whole-document scores with a fixed window search on a controlled word-pair scheme. Reusing the whole-document cut-off for the search flagged 19 of 24 human evaluation documents at 768 tokens. A separately calibrated search cut-off reduced that to 1 of 24, while detecting only 19 of 648 marked mixtures and locating six under the registered rule. The report retains the detection misses, evaluation target failures and limits of the reused corpus. Its fresh key and scoring code are separate from the frozen v1/v2 contracts.
 
+The separate [window-family experiment](experiments/window-family-v1/README.md) enumerates all 4,096 sequences in a twelve-position independent null model, using exact Bernoulli weights. The eighteen-window dyadic search gives a false document alarm probability of `909559/16777216` without correction and `12619/16777216` with Bonferroni correction. The document and nine-window sliding searches stay below the nominal five per cent under both rules. These exact model probabilities supply no human-corpus, power or provider-watermark result.
+
 ## Frozen evidence and reproduction
 
 The repository is a curated public snapshot, not an export of private history.
+
+On a checkout produced by a squash merge, `python3 scripts/verify-v3-history.py` compares the current v3 registered inputs, seed and outputs with the pinned `declawd-v3-evidence-2026-11-02` history, then runs the frozen numerical reproducer. A missing or moved tag is an error. Fetch a missing tag only with the explicit `--fetch-history` option.
 
 The shared reference scorer supports both profiles, and its original 45-test suite remains in place. The `declawd-v2-r2` registration records the scorer's exact bytes, so before any change to `reference/declawd.py`, including a new domain separator, archive r2 with its own copy of the scorer, as `experiments/declawd-v2-attempt-1` does. Frozen v1 inputs and results include:
 - `fixtures/profile-v1.json`, registration, template, corpus, rewrite and
