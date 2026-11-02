@@ -210,6 +210,8 @@ classify it and no broad class selector is available.
 
 The separately registered [mixed-passage experiment](experiments/mixed-passage-v1/README.md) compares whole-document scores with a fixed window search on a controlled word-pair scheme. Reusing the whole-document cut-off for the search flagged 19 of 24 human evaluation documents at 768 tokens. A separately calibrated search cut-off reduced that to 1 of 24, while detecting only 19 of 648 marked mixtures and locating six under the registered rule. The report retains the detection misses, evaluation target failures and limits of the reused corpus. Its fresh key and scoring code are separate from the frozen v1/v2 contracts.
 
+The separate [window-family experiment](experiments/window-family-v1/README.md) enumerates all 4,096 sequences in a twelve-position independent null model, using exact Bernoulli weights. The eighteen-window dyadic search gives a false document alarm probability of `909559/16777216` without correction and `12619/16777216` with Bonferroni correction. The document and nine-window sliding searches stay below the nominal five per cent under both rules. These exact model probabilities supply no human-corpus, power or provider-watermark result.
+
 ## Frozen evidence and reproduction
 
 The repository is a curated public snapshot, not an export of private history.

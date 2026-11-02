@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
@@ -21,6 +23,17 @@ jobs:
           python3 -m pip install --require-hashes --only-binary=:all: --requirement experiments/trustmark-v1/verifier-requirements.txt
           python3 experiments/trustmark-v1/verify.py --pixels
           python3 -B -m unittest discover -s experiments/trustmark-v1 -p 'test_*.py' -v
+      - name: Verify archived r2 and successor evidence
+        run: |
+          python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v
+          python3 experiments/declawd-v2-r2/reference/calibrate_v2.py reproduce
+          python3 experiments/declawd-v3/reference/calibrate_v3.py reproduce
+          python3 experiments/declawd-v3/verify.py
+      - name: Verify exact window-family evidence
+        run: |
+          python3 -B -m unittest discover -s experiments/window-family-v1 -p 'test_*.py' -v
+          python3 experiments/window-family-v1/experiment.py verify
+          python3 experiments/window-family-v1/verify.py --fetch-history
       - run: cargo fmt -- --check
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo test --all-targets --locked
