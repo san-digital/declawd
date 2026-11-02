@@ -1,0 +1,54 @@
+{
+  "schema": "declawd.future-registration-review/v1",
+  "reviewed_at": "2026-11-02T18:02:47.151967+00:00",
+  "scope": "Future creation guard, preserving the recorded r2 and v3 inputs, seeds and outputs.",
+  "new_experiment_created": false,
+  "actual_seed_drawn": false,
+  "seed_test_method": "All unit-test sampling patches secrets.token_bytes to fixed synthetic bytes. The counterexample uses a fixed integer-encoded test seed without an entropy call.",
+  "counterexample": {
+    "old_literal_bound": 401,
+    "control_pairs": 201,
+    "marked_pairs": 199,
+    "fixed_test_seed_hex": "0000000000000000000000000000000000000000000000000000000000000003",
+    "old_reproduction_error": "TypeError: type NoneType does not define __round__",
+    "new_guaranteed_bound": 199,
+    "new_preflight_result": "rejected before registration and entropy"
+  },
+  "recorded_v3": {
+    "recorded_literal_bound": 286,
+    "true_guaranteed_literal_pairs": 290,
+    "control_pairs": 377,
+    "unchanged_registration_sha256": "6ac84b6c39d7c1bf4d1a67b2e4184d11941e1f4a001e2c6446020f0a9fa45630"
+  },
+  "controls": [
+    "coalesced adjacent literals",
+    "split ASCII apostrophes",
+    "literal and variable token separators",
+    "complete paragraph candidate review",
+    "minimum and corpus preflight",
+    "nested and staged Git paths",
+    "bound receipt and tool sources",
+    "one exclusive attempt published before entropy",
+    "failed seed publication blocks another attempt",
+    "committed seed and first-record comparison",
+    "all surviving output bindings before writes",
+    "complete atomic output publication"
+  ],
+  "validation": {
+    "future_guard_unit_tests": 20,
+    "existing_v3_unit_tests": 24,
+    "existing_root_reference_tests": 150,
+    "registered_runs_reproduced": [
+      "declawd-v2-r2",
+      "declawd-v3"
+    ],
+    "new_draws": 0
+  },
+  "source_files": {
+    "scripts/future_registration.py": "4f7338dd0967de6aab5c24259f03d3c0736d14506db256879c9bc089a7da106d",
+    "scripts/future_candidate_review.py": "93c89b09b0a27fbc03448e8270bf9c2e20ed34381009945e9e45a8daa9ef6c59",
+    "scripts/test_future_registration.py": "0a68ea67642f3b99462a85b686680b94a5a16f8755887211e87698efb8146ba3",
+    "experiments/declawd-v3/fixtures/template-v3.json": "640248f778c6dba64db89e7cc82504436cf280f331202bf1b544f380c4dd7f13",
+    "experiments/declawd-v3/fixtures/registration-v3.json": "6ac84b6c39d7c1bf4d1a67b2e4184d11941e1f4a001e2c6446020f0a9fa45630"
+  }
+}
