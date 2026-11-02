@@ -1,0 +1,13 @@
+{
+  "note": "The exact perturbation targets, committed before the seed is sampled and hashed into the registration. Every rule here is deterministic and seed-independent, so the demonstration cannot be steered after scores are known.",
+  "targets": {
+    "zw": { "word": "pressure", "offset": 4, "insert": "​" },
+    "look": { "word": "quality", "offset": 2, "replace_with": "а" },
+    "del": { "word": "clock", "offset": 0 },
+    "many": {
+      "every_nth_token": 10,
+      "method": "confusable substitution of the first eligible character in every tenth scored token",
+      "rationale": "A token editing rate of about 0.1, which is the rate the NDSS 2026 character-level attack paper uses. One character changes almost nothing; this is what an actual attack looks like."
+    }
+  }
+}

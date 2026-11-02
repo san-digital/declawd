@@ -355,3 +355,7 @@ are recorded separately in
 [demark](https://github.com/jcsuen/demark) informed the inspect-first workflow
 and candid limitations. No demark code was copied, forked or executed here. Its
 PolyForm Noncommercial licence is incompatible with reuse for this project.
+
+## Successor
+
+The [v3 experiment](experiments/declawd-v3/README.md) supersedes the r2 workflow for future educational runs and addresses [issue 35](https://github.com/san-digital/declawd/issues/35). Its template review, profile loading, preflight and output recovery are registered separately. The root r2 implementation and website evidence retain their original bytes, with an exact payload and scorer in the [r2 archive](experiments/declawd-v2-r2/README.md). The historical corpus is reused, with its previous exposure disclosed in the v3 plan.

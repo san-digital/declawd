@@ -1,0 +1,103 @@
+{
+  "analysis": {
+    "corpus_reuse": "historical corpus previously examined for v1, including its evaluation results",
+    "corpus_split": "by author, preserving the published v1 split",
+    "interval": "Wilson 95 per cent, descriptive because passages share authors and prefixes share passages",
+    "length_groups": [
+      "prefix_199",
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "prefix_rule": "shortest original-text prefix ending at a token reaching the named distinct-pair count",
+    "selection": "all eligible passages reported, unavailable lengths counted as exclusions",
+    "unit": "one verdict per source passage within each length group"
+  },
+  "canonicaliser": {
+    "confusables": {
+      "а": "a",
+      "е": "e",
+      "о": "o",
+      "р": "p",
+      "с": "c"
+    },
+    "zero_width": "U+200B"
+  },
+  "controlled_removal": {
+    "max_steps": 6,
+    "selection": "lowest resulting z among reviewed alternatives in unused slots",
+    "stop": "no strict score reduction",
+    "ties": "slot index then authored candidate order"
+  },
+  "corpus_sha256": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+  "domain_separator": "declawd/v2-r2/green",
+  "gamma": {
+    "denominator": 4,
+    "numerator": 1
+  },
+  "perturbations": {
+    "del": {
+      "offset": 0,
+      "word": "clock"
+    },
+    "look": {
+      "offset": 2,
+      "replace_with": "а",
+      "word": "quality"
+    },
+    "many": {
+      "every_nth_token": 10,
+      "method": "confusable substitution of the first eligible character in every tenth scored token",
+      "rationale": "A token editing rate of about 0.1, which is the rate the NDSS 2026 character-level attack paper uses. One character changes almost nothing; this is what an actual attack looks like."
+    },
+    "zw": {
+      "insert": "​",
+      "offset": 4,
+      "word": "pressure"
+    }
+  },
+  "perturbations_sha256": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+  "previous_attempt": {
+    "archive": "experiments/declawd-v2-attempt-1",
+    "profile_id": "declawd-v2",
+    "reason": "candidate review missed a empty and a additional article agreement",
+    "source_commit": "77c1d6e9dfad7018491308e13ddd5a4a1b9d08e0"
+  },
+  "registration_id": "declawd-v2-r2",
+  "rewrite_sha256": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+  "seed_policy": "commit registration before one recorded draw, retain its outcomes, refuse a second draw",
+  "source_files": {
+    "docs/PLAN-V2.md": "9c150a3f187c19d7c17ca736d622188ff6e89d5c2b4bcf34790cbd6759ce6c98",
+    "experiments/declawd-v2-attempt-1/archive-manifest.json": "b1d245b8cdf8eb53dbc2da7edc2455f2436806cda3541b52d534fc3f72c87c57",
+    "fixtures/candidate-review-v2.json": "b5c6ac6486557aaba6ad17faea3503ccf7e4a0bdecfe1544dfc977a862699ebb",
+    "fixtures/corpus.json": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+    "fixtures/perturbations.json": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+    "fixtures/rewrite.json": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+    "fixtures/template-v2.json": "4ce7f8c890fe3e6877638d43720678213222a8fa91009f51cf200f99136fb30e",
+    "reference/calibrate_v2.py": "6a12a600757942b7fafa8dd5155a399b223fe2c7805185fb7f5177f13dbeb34b",
+    "reference/candidate_review.py": "8f05c722853ee1d2b8ea94c76add3ce3607c13db3f8a5349294b8c01f443ae60",
+    "reference/declawd.py": "76dc273ea462b7f8e53652d66b655f0091189b59dfc20a95b5c3e9bd89aab9bf"
+  },
+  "targets": {
+    "false_positive_rate_at_or_below": 0.02,
+    "min_effective_tokens": 200
+  },
+  "template_sha256": "4ce7f8c890fe3e6877638d43720678213222a8fa91009f51cf200f99136fb30e",
+  "threshold_policy": {
+    "comparison": "strict integer verdict comparison",
+    "groups": [
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "marked_fixture": "reported outcome",
+    "max_step": 399,
+    "selection": "smallest threshold meeting target separately in each eligible calibration group",
+    "step_denominator": 100,
+    "step_numerator": 5
+  },
+  "tokeniser": {
+    "folding": "ASCII A-Z to a-z",
+    "pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  }
+}
