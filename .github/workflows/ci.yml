@@ -62,6 +62,20 @@ jobs:
       - run: python3 experiments/trustmark-v1/verify.py --pixels
       - run: python3 -B -m unittest discover -s experiments/trustmark-v1 -p 'test_*.py' -v
 
+  mixed-passage-evidence:
+    name: Mixed-passage frozen evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - run: python3 -B -m unittest discover -s experiments/mixed-passage-v1 -p 'test_*.py' -v
+      - run: python3 experiments/mixed-passage-v1/experiment.py verify
+      - run: python3 experiments/mixed-passage-v1/verify.py --fetch-history
+
   rust:
     name: Rust (${{ matrix.os }})
     strategy:

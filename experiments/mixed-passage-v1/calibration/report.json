@@ -1,0 +1,1451 @@
+{
+  "registration_sha256": "e76cdcb8ab648bea1ec246e6ba52f75dd328ed6830127f4625389b025b21e29c",
+  "rows": [
+    {
+      "author": "Adam Smith",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg3300-0/human/128",
+      "text_sha256": "2202f10c18b559f271459cf5115d771c2851698f0de20bf44bf551633b69ef9b",
+      "tokens": 128,
+      "trace_sha256": "986015ae14f917974462b5290151b601a7d5bd7ebe15bb31ad23baf2712c9bc1",
+      "whole": {
+        "g": 36,
+        "n": 120
+      },
+      "window": {
+        "end": 64,
+        "g": 21,
+        "n": 60,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg3300-0/human/384",
+      "text_sha256": "95da44ce43de742fbf408f2d2b82dc00fca0e82611f72ec31906a24eb03d2b05",
+      "tokens": 384,
+      "trace_sha256": "1f8611b6d32cb175655a705ba210e3b77197056c00b0028759c0833f5fff82bb",
+      "whole": {
+        "g": 74,
+        "n": 309
+      },
+      "window": {
+        "end": 64,
+        "g": 21,
+        "n": 60,
+        "start": 0
+      },
+      "windows": 47
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg3300-0/human/768",
+      "text_sha256": "142894871a76e3385193e63e151661639a10d0fb0902fbc725c4136dc3a8ee01",
+      "tokens": 768,
+      "trace_sha256": "121cff658fe67dd3dfd454693bce27f11e7b4f13bf3930d5fdc2f1575327eb53",
+      "whole": {
+        "g": 155,
+        "n": 588
+      },
+      "window": {
+        "end": 672,
+        "g": 72,
+        "n": 233,
+        "start": 416
+      },
+      "windows": 119
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg3300-1/human/128",
+      "text_sha256": "677ac034bc529b61878a3f67f783e1e5a5aa1b9a99d7d19126d068be2356fab7",
+      "tokens": 128,
+      "trace_sha256": "f2c01544c22687ab8e407626d3d07c5557777b398252134009375141161f7b9c",
+      "whole": {
+        "g": 27,
+        "n": 115
+      },
+      "window": {
+        "end": 128,
+        "g": 17,
+        "n": 57,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg3300-1/human/384",
+      "text_sha256": "e7ece362238a3f7b00a115cc48a55a4459e52eb7ab468f95af03f03d0b96ba13",
+      "tokens": 384,
+      "trace_sha256": "5405ca8429e929769fb5eda0d8149cd263aac67ccce0c2fee18bf33ec36b98cf",
+      "whole": {
+        "g": 66,
+        "n": 292
+      },
+      "window": {
+        "end": 320,
+        "g": 18,
+        "n": 52,
+        "start": 256
+      },
+      "windows": 47
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg3300-1/human/768",
+      "text_sha256": "76312e6ce6d391b84bc4d53c43d4204547a583509b503fb3bfffb12750ee85b8",
+      "tokens": 768,
+      "trace_sha256": "1ae98507c064452c70a6529215f0b5cdba107950d7c7c670245ab7146ec849d2",
+      "whole": {
+        "g": 150,
+        "n": 580
+      },
+      "window": {
+        "end": 592,
+        "g": 40,
+        "n": 118,
+        "start": 464
+      },
+      "windows": 119
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg3300-2/human/128",
+      "text_sha256": "a2d107c743b3e2d9648f7875aab21eddc321f5fa82b7e2e78468aa6fddd88de6",
+      "tokens": 128,
+      "trace_sha256": "753d7f6c4bced6b05d5b99028169d272fb6cb0f97ad8011b4dd37f32f852ffd1",
+      "whole": {
+        "g": 37,
+        "n": 119
+      },
+      "window": {
+        "end": 128,
+        "g": 24,
+        "n": 60,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg3300-2/human/384",
+      "text_sha256": "7bd18eb59db2d67559a7df2f97ad51b453c951d8477f9d4af359fdc37a36909b",
+      "tokens": 384,
+      "trace_sha256": "05fc01ffb067c697e18adaad1c5f190e57d9f48fe82f901f458a874e213f92ab",
+      "whole": {
+        "g": 85,
+        "n": 336
+      },
+      "window": {
+        "end": 128,
+        "g": 24,
+        "n": 60,
+        "start": 64
+      },
+      "windows": 47
+    },
+    {
+      "author": "Adam Smith",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg3300-2/human/768",
+      "text_sha256": "1055251fc75894e3a25acdd07ec4dc9a1bf83de0f8480470793f714f31c92199",
+      "tokens": 768,
+      "trace_sha256": "fd2464420731d17ff25783ac88defeb4f54dd6434fd82f528b8ff57e7bf48fb8",
+      "whole": {
+        "g": 149,
+        "n": 598
+      },
+      "window": {
+        "end": 128,
+        "g": 24,
+        "n": 60,
+        "start": 64
+      },
+      "windows": 119
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg20203-0/human/128",
+      "text_sha256": "4d2e566e7be96385a770fdb7830c24974dc130357cd418a80ad9419295d79956",
+      "tokens": 128,
+      "trace_sha256": "157069c2eee00f267934fb12b52fcc7e38c5e92f0c0c633e144efca8be7c620f",
+      "whole": {
+        "g": 24,
+        "n": 125
+      },
+      "window": {
+        "end": 64,
+        "g": 14,
+        "n": 63,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg20203-0/human/384",
+      "text_sha256": "5a1f2ce531c8e21f5410891ee005d8b8c7feab7e3040ef593913ae4b651ac9f9",
+      "tokens": 384,
+      "trace_sha256": "0bfffd27dbae818783ef481ed33700ead0bfc7118953fb2545d653b94ebc5276",
+      "whole": {
+        "g": 75,
+        "n": 366
+      },
+      "window": {
+        "end": 336,
+        "g": 21,
+        "n": 61,
+        "start": 272
+      },
+      "windows": 47
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg20203-0/human/768",
+      "text_sha256": "750bae230116e9b902baeb2bb284f6ec23ce6eee1a22a25df0ca822c3e12d50b",
+      "tokens": 768,
+      "trace_sha256": "d2599e832fd87945bba11c5493515c1ee51fcc3a46a4e523addd1f7a33deceae",
+      "whole": {
+        "g": 151,
+        "n": 718
+      },
+      "window": {
+        "end": 336,
+        "g": 21,
+        "n": 61,
+        "start": 272
+      },
+      "windows": 119
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg20203-1/human/128",
+      "text_sha256": "2b8f8205edeb5a78c5f39728767bb501f87456afc4ac312283ca2acc07b1b922",
+      "tokens": 128,
+      "trace_sha256": "837774627d83f73e417a0ceca82513f7c074205a4355b2cf0d841ce0f7b5f548",
+      "whole": {
+        "g": 39,
+        "n": 125
+      },
+      "window": {
+        "end": 128,
+        "g": 39,
+        "n": 125,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg20203-1/human/384",
+      "text_sha256": "c38da40d5e3a7a6469148f588e4a5aa748000ae34d50b2cf8b6298e39b627be5",
+      "tokens": 384,
+      "trace_sha256": "92c5951d44a6e5113a7e82a48aadacd8e871e09a030b4d41b92cdeba768e8702",
+      "whole": {
+        "g": 99,
+        "n": 358
+      },
+      "window": {
+        "end": 256,
+        "g": 75,
+        "n": 242,
+        "start": 0
+      },
+      "windows": 47
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg20203-1/human/768",
+      "text_sha256": "b38772f4513aa52a4410a5c2f88e078c1c0fe61aee74fd959555bf0e6b688bfc",
+      "tokens": 768,
+      "trace_sha256": "f1adb9cba221f0148453fdedf42d82c163eab6ccedbacb6039e9f85bc8b57a36",
+      "whole": {
+        "g": 182,
+        "n": 712
+      },
+      "window": {
+        "end": 656,
+        "g": 24,
+        "n": 63,
+        "start": 592
+      },
+      "windows": 119
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg20203-2/human/128",
+      "text_sha256": "b0d8517faf3561025a76bfb21cefe36d1603b84f06057cc087153f4eb058d4f6",
+      "tokens": 128,
+      "trace_sha256": "1bab2720296f663c32af98a65523c11ced6f96f1fc1df1da1179f15e10316bf7",
+      "whole": {
+        "g": 34,
+        "n": 126
+      },
+      "window": {
+        "end": 128,
+        "g": 19,
+        "n": 63,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg20203-2/human/384",
+      "text_sha256": "f7eb32be79c0c281a5e855d54d597bd1a4bb663757c1ee436c0682eb9f4552d2",
+      "tokens": 384,
+      "trace_sha256": "3be5e739d8d631b436012a94d3cc5ed3671079979f8c12ec4bf77db991954fe3",
+      "whole": {
+        "g": 96,
+        "n": 366
+      },
+      "window": {
+        "end": 224,
+        "g": 23,
+        "n": 63,
+        "start": 160
+      },
+      "windows": 47
+    },
+    {
+      "author": "Benjamin Franklin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg20203-2/human/768",
+      "text_sha256": "155dbc77bddaac937486bb82f476ad0fabb1314300dfe39328ecacee96d3aac4",
+      "tokens": 768,
+      "trace_sha256": "c07ab5b6ef205ac317e8c23c10537530388284ac1429d6aa263e0e8102028a64",
+      "whole": {
+        "g": 180,
+        "n": 705
+      },
+      "window": {
+        "end": 224,
+        "g": 23,
+        "n": 63,
+        "start": 160
+      },
+      "windows": 119
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg2009-0/human/128",
+      "text_sha256": "8fd578bb3e185c4728e9b4679b5267a768a8870764b30f2910a2346613967182",
+      "tokens": 128,
+      "trace_sha256": "4bd78d06643b0af4709ab2a86e7164542f4b7246ecc006bddafb59fa6cfc5963",
+      "whole": {
+        "g": 36,
+        "n": 121
+      },
+      "window": {
+        "end": 128,
+        "g": 36,
+        "n": 121,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg2009-0/human/384",
+      "text_sha256": "79b805c01bf9d88655d155ef123a8e178a4d51210c86031083c8d768e2c4b5c5",
+      "tokens": 384,
+      "trace_sha256": "33ea20e00b615a13bb715933e5a054874f291b283b4c0a8bb080f1b40c4f1b04",
+      "whole": {
+        "g": 86,
+        "n": 331
+      },
+      "window": {
+        "end": 176,
+        "g": 35,
+        "n": 117,
+        "start": 48
+      },
+      "windows": 47
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg2009-0/human/768",
+      "text_sha256": "6dfe0903e1d461334c8fbd94111e2b2f49e482a8f25154b8c29295cd6b2d74c3",
+      "tokens": 768,
+      "trace_sha256": "71e8709b7af4c41a73e90a549bc4e7c66caf3191850710ddb38bf255cea6b3af",
+      "whole": {
+        "g": 157,
+        "n": 657
+      },
+      "window": {
+        "end": 752,
+        "g": 22,
+        "n": 61,
+        "start": 688
+      },
+      "windows": 119
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg2009-1/human/128",
+      "text_sha256": "f89aa1705d8c8dae38f06d1e9954d4f4ded93e52b613037b44bccb676b771ca8",
+      "tokens": 128,
+      "trace_sha256": "032659230774bb7951afe87b60c18304034b7d6c6ba8fdfba7605a8c2f959493",
+      "whole": {
+        "g": 34,
+        "n": 124
+      },
+      "window": {
+        "end": 112,
+        "g": 21,
+        "n": 63,
+        "start": 48
+      },
+      "windows": 6
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg2009-1/human/384",
+      "text_sha256": "fba65bd628f1748212855501c476c79ae3ed092f8ca69a3c5ec631cf96689976",
+      "tokens": 384,
+      "trace_sha256": "85fd4098d9b240f96dce55a52cf207650e2e771a4070e9096eee7bebd43723bd",
+      "whole": {
+        "g": 103,
+        "n": 358
+      },
+      "window": {
+        "end": 352,
+        "g": 25,
+        "n": 61,
+        "start": 288
+      },
+      "windows": 47
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg2009-1/human/768",
+      "text_sha256": "93ae3d567f3c8f598ccd4ef5e4c9e0dd7bebbf2a3f897f318f28b0b08fc93234",
+      "tokens": 768,
+      "trace_sha256": "9882c9d9d25633218f8cfd93bc5c52512cadffd9978285b18aaf1dd6201efe76",
+      "whole": {
+        "g": 180,
+        "n": 672
+      },
+      "window": {
+        "end": 352,
+        "g": 25,
+        "n": 61,
+        "start": 288
+      },
+      "windows": 119
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg2009-2/human/128",
+      "text_sha256": "83474e5f55495d09bb4cf52fb41031b3d954ce91bc8b5d117a3318bb1fa24fb9",
+      "tokens": 128,
+      "trace_sha256": "f75b9647805afca77236c2b0571bc498a9f23a1c3d09a49a097e77238649000e",
+      "whole": {
+        "g": 32,
+        "n": 123
+      },
+      "window": {
+        "end": 64,
+        "g": 19,
+        "n": 63,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg2009-2/human/384",
+      "text_sha256": "1d2f2a4a96a4b43fcbda64a10e07de3be7b6cbc09a670faa559dd634176fb06d",
+      "tokens": 384,
+      "trace_sha256": "5cc73a3a518be00243ce510e344a79ac79fa35d20ca41cf35260906a8160704a",
+      "whole": {
+        "g": 96,
+        "n": 346
+      },
+      "window": {
+        "end": 352,
+        "g": 26,
+        "n": 59,
+        "start": 288
+      },
+      "windows": 47
+    },
+    {
+      "author": "Charles Darwin",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg2009-2/human/768",
+      "text_sha256": "eb0e8a7b9b2ce980075716aaada04b03e6d6dc7a39318240c0a51e2e6037bd93",
+      "tokens": 768,
+      "trace_sha256": "ad53a6d5521d7e7863b1363424bad60894a08778a97657c860ed24c7591147ee",
+      "whole": {
+        "g": 160,
+        "n": 632
+      },
+      "window": {
+        "end": 352,
+        "g": 26,
+        "n": 59,
+        "start": 288
+      },
+      "windows": 119
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg9662-0/human/128",
+      "text_sha256": "a787d95d47342fa6d4762fe79a5ee99c3dbdb77004565bed6700f344de9d7e4d",
+      "tokens": 128,
+      "trace_sha256": "0fae505c07dc6d0233b1d1ed866b8e92218aa55663f50d4f8702e1d167930faf",
+      "whole": {
+        "g": 27,
+        "n": 107
+      },
+      "window": {
+        "end": 80,
+        "g": 18,
+        "n": 62,
+        "start": 16
+      },
+      "windows": 6
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg9662-0/human/384",
+      "text_sha256": "cf1f2d3a8c88a733f57f3667e8094a85b9ee64555f3af303f7f2bce42a57cef0",
+      "tokens": 384,
+      "trace_sha256": "dd213388f5311fa6c58e9bc72214e6a062785848dbdd8541bf6f617d87d70232",
+      "whole": {
+        "g": 81,
+        "n": 344
+      },
+      "window": {
+        "end": 336,
+        "g": 21,
+        "n": 62,
+        "start": 272
+      },
+      "windows": 47
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg9662-0/human/768",
+      "text_sha256": "d278fdaddcb4d881ad85bfb8300a9a6ac2356787d32435f8b474adcfd8d10917",
+      "tokens": 768,
+      "trace_sha256": "0ab3dc7f485730b829de096cdb8a9ad8c5de0643c5b15bc89e262ad542f3560d",
+      "whole": {
+        "g": 174,
+        "n": 680
+      },
+      "window": {
+        "end": 592,
+        "g": 23,
+        "n": 63,
+        "start": 528
+      },
+      "windows": 119
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg9662-1/human/128",
+      "text_sha256": "9c585411a949f7b6e824e49fe74cda02fb768eaa3c185726437fddeb28195a59",
+      "tokens": 128,
+      "trace_sha256": "c4d954106fee5d479cfdbd4a62161af17e8a8eefdf030d68592ce03ba08a73c0",
+      "whole": {
+        "g": 35,
+        "n": 118
+      },
+      "window": {
+        "end": 112,
+        "g": 23,
+        "n": 61,
+        "start": 48
+      },
+      "windows": 6
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg9662-1/human/384",
+      "text_sha256": "2091e45391d2293a32e2f7f52c06db7e3978251dae987396b302b636e6037031",
+      "tokens": 384,
+      "trace_sha256": "415b05cdb089e37a03ff226ac4d3b1e73a11168d03769e48d55b5a453dab6de2",
+      "whole": {
+        "g": 98,
+        "n": 357
+      },
+      "window": {
+        "end": 112,
+        "g": 23,
+        "n": 61,
+        "start": 48
+      },
+      "windows": 47
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg9662-1/human/768",
+      "text_sha256": "f0b0884704307306ac8f3a187990a12dc4636b02b58fd255188bd588139bf010",
+      "tokens": 768,
+      "trace_sha256": "db086f62e672e842e3198cbc723adc6dbfbf9c46a32490e38e68206bbbe8b5ae",
+      "whole": {
+        "g": 182,
+        "n": 684
+      },
+      "window": {
+        "end": 112,
+        "g": 23,
+        "n": 61,
+        "start": 48
+      },
+      "windows": 119
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg9662-2/human/128",
+      "text_sha256": "f504ebb7957f8ab0f32213c2a641a6e8b3fcaf8f753fc9a5671c82345cae040f",
+      "tokens": 128,
+      "trace_sha256": "a263539c934094d13a7268a8fa72a2755df01b73298e93fed9e83c7e57cd2e29",
+      "whole": {
+        "g": 30,
+        "n": 115
+      },
+      "window": {
+        "end": 64,
+        "g": 15,
+        "n": 54,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg9662-2/human/384",
+      "text_sha256": "6c817481414a584c6592272ffd09e4163b454186a744db9a91437c1cb507ac87",
+      "tokens": 384,
+      "trace_sha256": "ba755098ef4d38b69c031b063f533aa1c9386fb254908b7ade51830a9babc9fd",
+      "whole": {
+        "g": 82,
+        "n": 349
+      },
+      "window": {
+        "end": 336,
+        "g": 19,
+        "n": 60,
+        "start": 272
+      },
+      "windows": 47
+    },
+    {
+      "author": "David Hume",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg9662-2/human/768",
+      "text_sha256": "f11b0dbb9108fe3fb907288ec9e91eaf61bd1a01d9243fd54ab2073753e778b0",
+      "tokens": 768,
+      "trace_sha256": "b72666bfce22160a0c2e130e70fc2c9ec084be70324e5558539ef9b18cf4eaba",
+      "whole": {
+        "g": 173,
+        "n": 687
+      },
+      "window": {
+        "end": 624,
+        "g": 21,
+        "n": 61,
+        "start": 560
+      },
+      "windows": 119
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg205-0/human/128",
+      "text_sha256": "30b33498d60ea0fff7cf429728cd157388015f8ce784822332d96d32a83fcb8b",
+      "tokens": 128,
+      "trace_sha256": "78d1b7a6fabbebcc2a34b2b2d3bffd87b39ee92c4028265e784e00d30db80b31",
+      "whole": {
+        "g": 34,
+        "n": 125
+      },
+      "window": {
+        "end": 112,
+        "g": 20,
+        "n": 61,
+        "start": 48
+      },
+      "windows": 6
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg205-0/human/384",
+      "text_sha256": "f48d13179746dd738d33a5a8dcc4f751dbaf18fc826f241e9c702806333edaa3",
+      "tokens": 384,
+      "trace_sha256": "d5fcb0fc2ef1a3f0f1d353073f85e1daa0378a226cb4c297f0c1779b09b52530",
+      "whole": {
+        "g": 96,
+        "n": 368
+      },
+      "window": {
+        "end": 112,
+        "g": 20,
+        "n": 61,
+        "start": 48
+      },
+      "windows": 47
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg205-0/human/768",
+      "text_sha256": "1de8b65840e571422936f3d5859d2f8c57e2db0b708ac2ef4692a47c2b6b24e3",
+      "tokens": 768,
+      "trace_sha256": "823b40d3c27162fd77c2a3e558f5a624d2acb65907f109cf63bade667f29027b",
+      "whole": {
+        "g": 194,
+        "n": 717
+      },
+      "window": {
+        "end": 560,
+        "g": 38,
+        "n": 123,
+        "start": 432
+      },
+      "windows": 119
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg205-1/human/128",
+      "text_sha256": "0f581e1b1b0b5e0be655e31673dfdc122fb566ce78be19dd735d1b34214c68b2",
+      "tokens": 128,
+      "trace_sha256": "63f06eae315fc6e9595935aff3f13fa752b418e8d595b048afc8251ef91aa929",
+      "whole": {
+        "g": 31,
+        "n": 120
+      },
+      "window": {
+        "end": 64,
+        "g": 18,
+        "n": 58,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg205-1/human/384",
+      "text_sha256": "42985062b329f13ec8b6d167dab1956049dad518d3c185a8086925cabaf47e61",
+      "tokens": 384,
+      "trace_sha256": "59ec793595e6655145c0f303111248b246cfb8d50ee2936f504ce56765fd2581",
+      "whole": {
+        "g": 97,
+        "n": 360
+      },
+      "window": {
+        "end": 176,
+        "g": 21,
+        "n": 63,
+        "start": 112
+      },
+      "windows": 47
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg205-1/human/768",
+      "text_sha256": "c75df909a0f5010086af31f5011df303e38c629b5aabd67b0caefb05343d26e1",
+      "tokens": 768,
+      "trace_sha256": "a783713db4ff53149f09cea43b57a3902d91da910f6e0e1a4b7f2fa515d2279b",
+      "whole": {
+        "g": 183,
+        "n": 707
+      },
+      "window": {
+        "end": 512,
+        "g": 22,
+        "n": 62,
+        "start": 448
+      },
+      "windows": 119
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg205-2/human/128",
+      "text_sha256": "b536d3a90349b7633a9183c94d63f83bb4e4a40840655ddb5e206afb1d009a6d",
+      "tokens": 128,
+      "trace_sha256": "21979e694a261db1e23cb18f0598c64f37622e0c3b253425062ecd2502797b3b",
+      "whole": {
+        "g": 34,
+        "n": 122
+      },
+      "window": {
+        "end": 64,
+        "g": 20,
+        "n": 62,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg205-2/human/384",
+      "text_sha256": "73eee49c305bf9bb1b7bbfc50f4a662284a8512a667094cc5709bcca54cc1a4c",
+      "tokens": 384,
+      "trace_sha256": "dd1809db4fb22ae4dfb5b8b8029f6c5abe65a89098c38d8c8809ec43fa52fc99",
+      "whole": {
+        "g": 96,
+        "n": 362
+      },
+      "window": {
+        "end": 64,
+        "g": 20,
+        "n": 62,
+        "start": 0
+      },
+      "windows": 47
+    },
+    {
+      "author": "Henry David Thoreau",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg205-2/human/768",
+      "text_sha256": "1b47cf7b975d4f33a7793f31bb9221f3009f4ac39ba5ed7421afff570484fa0e",
+      "tokens": 768,
+      "trace_sha256": "6517b0b7121940ff70cba1c7e9e5767175e0ff506926d3b75d73207d0a020100",
+      "whole": {
+        "g": 189,
+        "n": 712
+      },
+      "window": {
+        "end": 656,
+        "g": 22,
+        "n": 63,
+        "start": 592
+      },
+      "windows": 119
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg34901-0/human/128",
+      "text_sha256": "c6abee30ea1431c2d505fb0f10954b266b2f78b2ad5f7d0a687f8125250ba19c",
+      "tokens": 128,
+      "trace_sha256": "1b06ecfc17c0781702c350736075c34b23dc338cd000ae3f814b7fc0f1dd3b9f",
+      "whole": {
+        "g": 32,
+        "n": 119
+      },
+      "window": {
+        "end": 128,
+        "g": 20,
+        "n": 58,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg34901-0/human/384",
+      "text_sha256": "1176142858177344862bbfe86e08ae50ea2284580f0df1569201395d48e9f000",
+      "tokens": 384,
+      "trace_sha256": "b67e79ecf858fbd08c1aff451b5bd3bfe04d17343437f667db2e1fd63803c1f6",
+      "whole": {
+        "g": 102,
+        "n": 361
+      },
+      "window": {
+        "end": 368,
+        "g": 43,
+        "n": 126,
+        "start": 240
+      },
+      "windows": 47
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg34901-0/human/768",
+      "text_sha256": "3b9ffde69dab44a6418e0b3458b291335ce6940b202afcbbee7bd65bbe525908",
+      "tokens": 768,
+      "trace_sha256": "0f6a7cf00b12c9ee288cf509967fa4df57b9be6fb21b3c08d7f550ef541e83fc",
+      "whole": {
+        "g": 183,
+        "n": 686
+      },
+      "window": {
+        "end": 368,
+        "g": 43,
+        "n": 126,
+        "start": 240
+      },
+      "windows": 119
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg34901-1/human/128",
+      "text_sha256": "af5b97eb1fd53a0219c173491d0b7f78710f7a97ca89ea3644348f9f1ab8c4ff",
+      "tokens": 128,
+      "trace_sha256": "7315c74bcb07ba6a5b9e10444e85dd1bb18b8ffde384d288bccae981da050d76",
+      "whole": {
+        "g": 35,
+        "n": 122
+      },
+      "window": {
+        "end": 80,
+        "g": 19,
+        "n": 60,
+        "start": 16
+      },
+      "windows": 6
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg34901-1/human/384",
+      "text_sha256": "edb4d9134c260dc1defbb9b37a33e43bff32358c2b6a1a4a2a9d85735669aea9",
+      "tokens": 384,
+      "trace_sha256": "77ce10635de8d831ba988fa8842302bfa464aa3e15fc8f7cf01d619fa1be092d",
+      "whole": {
+        "g": 81,
+        "n": 353
+      },
+      "window": {
+        "end": 304,
+        "g": 20,
+        "n": 63,
+        "start": 240
+      },
+      "windows": 47
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg34901-1/human/768",
+      "text_sha256": "d01c7123a85474101699ed183056c9b1953af6d605db8dcabc9e2db89758aae5",
+      "tokens": 768,
+      "trace_sha256": "f649ae087726030e14617d38022dc8c4d340ff72cec5f1572e7f7649b8f674f9",
+      "whole": {
+        "g": 168,
+        "n": 696
+      },
+      "window": {
+        "end": 304,
+        "g": 20,
+        "n": 63,
+        "start": 240
+      },
+      "windows": 119
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg34901-2/human/128",
+      "text_sha256": "af0c7ffb0892c0481dacb409697ba5ef38804cb04dfaa42984b6de7240b64a39",
+      "tokens": 128,
+      "trace_sha256": "cd6adac1f74ec012070bd7fc8887a55482b2a6fca52e01023fd334fad56b351d",
+      "whole": {
+        "g": 29,
+        "n": 122
+      },
+      "window": {
+        "end": 128,
+        "g": 17,
+        "n": 61,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg34901-2/human/384",
+      "text_sha256": "0319f6bc9dc6476ff481600bb67453e40ebe6bf64185ee9c492d0809cf974d61",
+      "tokens": 384,
+      "trace_sha256": "5d01de3c1602342c5f5d4d35bdc35f5b6bb6d9118995045db1ca1594f7bbca7f",
+      "whole": {
+        "g": 89,
+        "n": 357
+      },
+      "window": {
+        "end": 304,
+        "g": 40,
+        "n": 125,
+        "start": 176
+      },
+      "windows": 47
+    },
+    {
+      "author": "John Stuart Mill",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg34901-2/human/768",
+      "text_sha256": "138e175003a8d5e85379f46ce2fc6461d2163c2997d0c868d77baaa5d971d389",
+      "tokens": 768,
+      "trace_sha256": "6be906379ede76df73f88285ad524dd740085969e8c988f25e60decea4c541e5",
+      "whole": {
+        "g": 170,
+        "n": 693
+      },
+      "window": {
+        "end": 304,
+        "g": 40,
+        "n": 125,
+        "start": 176
+      },
+      "windows": 119
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg14474-0/human/128",
+      "text_sha256": "cbbb5d68ec65938e5f638354af45482e134ccdfe45fdefbe27ad7a1c8cfd4bb3",
+      "tokens": 128,
+      "trace_sha256": "63705219540682b22f1cfe20b1f33408a25d4f36b90cbc8131f4a1874a88ea98",
+      "whole": {
+        "g": 27,
+        "n": 122
+      },
+      "window": {
+        "end": 64,
+        "g": 16,
+        "n": 63,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg14474-0/human/384",
+      "text_sha256": "5535bdd1f6b9f14682b389c76872e210138c0b45bfcb0e198f531c6d33a26895",
+      "tokens": 384,
+      "trace_sha256": "e40c45bc64e0a66f4d3f27a1c9ca7a6ab01eaee72a5e8e53f728a80c1d007202",
+      "whole": {
+        "g": 80,
+        "n": 322
+      },
+      "window": {
+        "end": 208,
+        "g": 22,
+        "n": 59,
+        "start": 144
+      },
+      "windows": 47
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg14474-0/human/768",
+      "text_sha256": "ac7daa6051907e0ce083898e638ea42b257a41462213af8daed7e1f7cc835716",
+      "tokens": 768,
+      "trace_sha256": "9b599f6a90e94caba0dd6fa26cc6a26f0de312276bae85db349165b579b5dce4",
+      "whole": {
+        "g": 163,
+        "n": 623
+      },
+      "window": {
+        "end": 736,
+        "g": 23,
+        "n": 61,
+        "start": 672
+      },
+      "windows": 119
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg14474-1/human/128",
+      "text_sha256": "d1ff5ab94f21383020b2235032a615a0c3747e8e772190e163e27ef1d6910d82",
+      "tokens": 128,
+      "trace_sha256": "7a7ea7b64004a1eb711838daf75f5628ccabab0a1bcf97efaad38d6a288788b8",
+      "whole": {
+        "g": 23,
+        "n": 116
+      },
+      "window": {
+        "end": 128,
+        "g": 14,
+        "n": 61,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg14474-1/human/384",
+      "text_sha256": "ea26ae8d3c76b75773e77aadfe43f9389c308232be9148d08b20027e62ca87d5",
+      "tokens": 384,
+      "trace_sha256": "3aeb7afc9c75ac61183f0c51f16d4b23326757ec1fb8d2cae8b9a0e964bc5062",
+      "whole": {
+        "g": 80,
+        "n": 339
+      },
+      "window": {
+        "end": 304,
+        "g": 20,
+        "n": 61,
+        "start": 240
+      },
+      "windows": 47
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg14474-1/human/768",
+      "text_sha256": "f35f3c381bc11cfd8cf66533367bdbf1c2ea1d05eb6ace093062e5644ef2af85",
+      "tokens": 768,
+      "trace_sha256": "fbd688783702a796f59df7bfc79745a5ccd73639da8ddf36e4ee11da5faf2333",
+      "whole": {
+        "g": 160,
+        "n": 657
+      },
+      "window": {
+        "end": 624,
+        "g": 23,
+        "n": 63,
+        "start": 560
+      },
+      "windows": 119
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg14474-2/human/128",
+      "text_sha256": "cde9f7a0899fedeccbe234d9f08ea139fe722cb24c719cf8238e6886370ef201",
+      "tokens": 128,
+      "trace_sha256": "3628264367276a07e0102dd556ea8ea0d635f4ed72b02d81b614514507e38a25",
+      "whole": {
+        "g": 30,
+        "n": 116
+      },
+      "window": {
+        "end": 128,
+        "g": 17,
+        "n": 59,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg14474-2/human/384",
+      "text_sha256": "a07dc6ba3ef3160c53e2929d6fecb1a9fd23cc5429c5aec9841fbbd41456a6ab",
+      "tokens": 384,
+      "trace_sha256": "9e5a9a5eb91000b459acc8d16ab9345640b6860d49597ea9d4dc834a3388f7a4",
+      "whole": {
+        "g": 89,
+        "n": 334
+      },
+      "window": {
+        "end": 368,
+        "g": 21,
+        "n": 61,
+        "start": 304
+      },
+      "windows": 47
+    },
+    {
+      "author": "Michael Faraday",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg14474-2/human/768",
+      "text_sha256": "ead24308ee4189062a4abeb4aa3e74fb4650efd21c27911c5d10387146ce11d0",
+      "tokens": 768,
+      "trace_sha256": "330ebc71a43b73e1bda03f209104c7286de99b74ec0d8bd62d94d91fe5295986",
+      "whole": {
+        "g": 148,
+        "n": 619
+      },
+      "window": {
+        "end": 368,
+        "g": 21,
+        "n": 61,
+        "start": 304
+      },
+      "windows": 119
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg833-0/human/128",
+      "text_sha256": "c12931cf72387b015dc916fca1aefc1885fd3bd2f4c23441f6c9df594ceb0c2a",
+      "tokens": 128,
+      "trace_sha256": "430358509246553d87295fa75f44310010b2b37d2a3d1bf64693355cb6f21d09",
+      "whole": {
+        "g": 28,
+        "n": 120
+      },
+      "window": {
+        "end": 112,
+        "g": 17,
+        "n": 60,
+        "start": 48
+      },
+      "windows": 6
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg833-0/human/384",
+      "text_sha256": "9a630bfd0cfbfd7c3519c28521f1d54f75f06af1cc283c1ab4f2aaeb90e60cea",
+      "tokens": 384,
+      "trace_sha256": "3deae0f2515e6d90c9d18ffe65f6bdb02143faf53a31a17539d97ca367e7cb85",
+      "whole": {
+        "g": 76,
+        "n": 330
+      },
+      "window": {
+        "end": 304,
+        "g": 18,
+        "n": 59,
+        "start": 240
+      },
+      "windows": 47
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg833-0/human/768",
+      "text_sha256": "ee65aebafa2e2ad431980189138e9b06ab513a3880c6d1e063ba2c581386744a",
+      "tokens": 768,
+      "trace_sha256": "8113be35fd43e25b8c7806110dfcf7e73e073bc7d7d9acb14d8f4df3673f2f5f",
+      "whole": {
+        "g": 146,
+        "n": 638
+      },
+      "window": {
+        "end": 592,
+        "g": 19,
+        "n": 60,
+        "start": 528
+      },
+      "windows": 119
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg833-1/human/128",
+      "text_sha256": "c8a1f174bcb6d178f1e98902efd736f40bb814ad3768cefa50502643e781dbf5",
+      "tokens": 128,
+      "trace_sha256": "74c91c2494f195da9912b5edc2d7aa2a90eab90a54b453ad8d056298a16e366f",
+      "whole": {
+        "g": 32,
+        "n": 123
+      },
+      "window": {
+        "end": 128,
+        "g": 18,
+        "n": 60,
+        "start": 64
+      },
+      "windows": 6
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg833-1/human/384",
+      "text_sha256": "0404e1a1a75fe949cc09f56481350bb16f4f3893f959c6b43f6223b390588315",
+      "tokens": 384,
+      "trace_sha256": "a2469e50efcebe2378935b1722a68c594513272c4cca11736d588f8cb4802a46",
+      "whole": {
+        "g": 88,
+        "n": 342
+      },
+      "window": {
+        "end": 144,
+        "g": 21,
+        "n": 60,
+        "start": 80
+      },
+      "windows": 47
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg833-1/human/768",
+      "text_sha256": "5ff132677f3dc36564f67c833e5459566ada817353d433b88d119ae219ef85fb",
+      "tokens": 768,
+      "trace_sha256": "00addb22a60ee8fc79025fe5d9963575b78fc9fb030f86c614a5358fa14044ae",
+      "whole": {
+        "g": 166,
+        "n": 664
+      },
+      "window": {
+        "end": 144,
+        "g": 21,
+        "n": 60,
+        "start": 80
+      },
+      "windows": 119
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 128,
+      "eligible_windows": 6,
+      "id": "pg833-2/human/128",
+      "text_sha256": "907255aaa7fbd2323d7af4b034da7420f32eaec24f552b137dad0c2ef1c6a7e2",
+      "tokens": 128,
+      "trace_sha256": "13e6d6c1313e06e57fab5b4960a74bdd80a202bc9d222c6f68aeb24b417c46d5",
+      "whole": {
+        "g": 22,
+        "n": 115
+      },
+      "window": {
+        "end": 64,
+        "g": 15,
+        "n": 61,
+        "start": 0
+      },
+      "windows": 6
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 384,
+      "eligible_windows": 47,
+      "id": "pg833-2/human/384",
+      "text_sha256": "c5ba0499ad0643e90085901afdad678ec299e05d9ed5814b377589f41e704822",
+      "tokens": 384,
+      "trace_sha256": "4b7b3bd4e8e8c89c756efc7ff6649f8e6f7edb89796e809bb5238b7779c005c1",
+      "whole": {
+        "g": 77,
+        "n": 315
+      },
+      "window": {
+        "end": 192,
+        "g": 21,
+        "n": 60,
+        "start": 128
+      },
+      "windows": 47
+    },
+    {
+      "author": "Thorstein Veblen",
+      "background_tokens": 768,
+      "eligible_windows": 119,
+      "id": "pg833-2/human/768",
+      "text_sha256": "85e7b3ba04bf0f884e9fb98adbcf3f6bb62940e4bb854e1f19f4e9ee608910c3",
+      "tokens": 768,
+      "trace_sha256": "935cdf188b4007380e80a9cbe623f85b68da12cecf4fa1f8a07e4b3e8f23126e",
+      "whole": {
+        "g": 153,
+        "n": 627
+      },
+      "window": {
+        "end": 448,
+        "g": 23,
+        "n": 62,
+        "start": 384
+      },
+      "windows": 119
+    }
+  ],
+  "schema": "declawd.mixed-passage-calibration/v1",
+  "seed_sha256": "3c0887ebd8f760abc2c766ca943d3e4ee800a23f25733381333fd382cd530c87",
+  "thresholds_hundredths": {
+    "whole": 165,
+    "window": 340
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "commits": {
+    "calibration": "eb81ac219273d95aac5a787703e415ad7bb17a7c",
+    "key": "5ad4d32d1a25ac18e6304b5b8cb6fe1707e14193",
+    "registration": "8aaa372c97f6a741acac09f64f9d8f9ff9e760c3"
+  },
+  "measurements": {
+    "calibration_cases": 72,
+    "human_evaluation_cases": 72,
+    "marked_mixtures": 648,
+    "neutral_mixtures": 648
+  },
+  "outputs": [
+    {
+      "bytes": 38150,
+      "path": "calibration/report.json",
+      "sha256": "7b61f53591946a90de50cf290c527b8ce0a019117ca263774a3bb22562338639"
+    },
+    {
+      "bytes": 160562,
+      "path": "calibration/windows.jsonl",
+      "sha256": "ee9fd1920d81e2cd8f7ad0965b4ff2290e62134969535fd784944c01d6d2cb11"
+    },
+    {
+      "bytes": 1456920,
+      "path": "run/evaluation.json",
+      "sha256": "63c81a67171895e5a4b9755d4bc22bbca5bc66391a19bf563cda1e88772be1a3"
+    },
+    {
+      "bytes": 2368,
+      "path": "run/marked.txt",
+      "sha256": "5071eda58a43a165889fe28b69e42f95025e288c842905702fb32558abc2103e"
+    },
+    {
+      "bytes": 2365,
+      "path": "run/neutral.txt",
+      "sha256": "9b16e6c76a35fbf7bff03f88305dcd42b7fef15c56f9e36cbfbe27815ef10286"
+    },
+    {
+      "bytes": 4363371,
+      "path": "run/windows.jsonl",
+      "sha256": "66f8258ba90638f6099903a7783ac99c04a8b1d263e0fc9cf31d94d41b69b436"
+    }
+  ],
+  "recorded_at": "2026-10-29T09:19:47.597263+00:00",
+  "runtime": {
+    "dependencies": "Python standard library only",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "python": "3.11.8 (v3.11.8:db85d51d3e, Feb  6 2024, 18:02:37) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "schema": "declawd.mixed-passage-provenance/v1",
+  "source_base_commit": "b46408f58be6e350295f5c5eeba94d85f892cda8",
+  "writing_review": "The scanner flags short headings as fragments. The prose and unwrapped paragraphs were reviewed."
+}
