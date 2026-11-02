@@ -1,367 +1,61 @@
 # Declawd
 
-Declawd is an educational laboratory for known content carriers. It publishes the registered `declawd-v2-r2` watermark experiment alongside the frozen `declawd-v1` inputs and results, and provides a conservative Rust CLI for:
+Declawd is an educational toolkit for inspecting known content carriers and reproducing published watermark experiments. Its Rust CLI can inspect listed Unicode structures, apply exact text edits you select, remove embedded C2PA stores from PNG/JPEG files, and score token traces from a fixed public SynthID-Text reference.
 
-- inspecting UTF-8 text for an explicit registry of Unicode structures;
-- removing or replacing only the exact text selectors a user requests; and
-- removing only an embedded C2PA/JUMBF store from PNG or JPEG files.
+The [website](https://declawd.com) explains the experiments and provides browser tools. Its text checker uses the recorded `declawd-v2-r2` teaching profile. Declawd has no compatible production key, detector or decision rule for Claude, ChatGPT or Gemini. Its findings and scores do not establish authorship or whether someone used AI.
 
-**This project does not detect or remove Claude's text watermark.** Without
-Anthropic's key, a compatible detector and a published decision rule, Declawd
-cannot directly score or exclude Anthropic's production watermark. A finding
-does not show that AI was involved, and an absence does not prove human
-authorship. Pixel-level marks are not tested.
+## Install
 
-## CLI
-
-```text
-declawd inspect <file|-> [--json|--sarif] [--sarif-uri <uri>] [--include-context] [--exit-zero]
-
-declawd clean text <input> --output <output>
-  [--remove U+200B]...
-  [--remove-class tag-character]...
-  [--replace U+202F=U+0020]...
-  [--allow-empty] [--json]
-
-declawd clean c2pa <input.png|jpg> --output <output>
-  [--allow-empty] [--json]
-
-declawd lab synthid score <trace.json> [--json]
-```
-
-Selectors compose as a union. Duplicate selectors are deduplicated. Removing
-and replacing the same scalar is an error, as is replacing one scalar with a
-target selected for another removal or replacement. The selectable class IDs are:
-
-- `zero-width`
-- `join-control`
-- `bidi-control`
-- `tag-character`
-- `variation-selector`
-
-There is deliberately no `format-control` umbrella. A leading U+FEFF is
-reported as `bom`, preserved by every class operation, and removable only with
-the explicit `--remove U+FEFF` selector. The complete, disjoint membership is
-enumerated in [`spec/unicode-registry-v1.json`](spec/unicode-registry-v1.json).
-
-### Input and output contract
-
-- Text must be valid UTF-8 and is limited to 10 MiB. UTF-16 with a BOM and
-  other invalid UTF-8 fail. BOM-less UTF-16 can be byte-wise valid UTF-8 and is
-  not inferred from NUL patterns; callers must supply correctly labelled UTF-8
-  input. A UTF-8 BOM, CRLF, lone CR, LF and tabs are otherwise preserved exactly.
-- Reports and clean operations are limited to 10,000 Unicode findings or
-  changed scalars. Inputs exceeding that bound fail instead of truncating or
-  allocating an unbounded report; split the input or narrow the selectors.
-- PNG and JPEG are identified by their signatures, not extensions, and limited
-  to 100 MiB.
-- Image validation checks bounded PNG chunks, all chunk CRCs, a first 13-byte
-  IHDR, at least one IDAT and an exact empty final IEND. JPEG validation checks
-  bounded segments, scan framing, byte stuffing, restart markers, multiple
-  scans and a terminal EOI. It does not enforce every format semantic or
-  perform a pixel decode. Use a full decoder as an additional validation
-  boundary when those properties matter.
-- Input file entries that are symbolic links or Windows reparse points are
-  refused with no-follow handle opening. Parent-directory links are resolved by
-  the operating system. Inputs are never overwritten and existing outputs are
-  refused.
-- Output is written beside the destination, verified, flushed and atomically
-  renamed.
-- A clean operation with no matching target succeeds with `changed:false` and
-  creates no output. Add `--allow-empty` to create a byte-identical copy.
-- `inspect` exits `1` when it finds a supported carrier and `0` otherwise. This
-  makes findings visible in automated checks; use `--exit-zero` when a finding
-  should not stop a `set -e` pipeline. Usage/input failures exit `2`, while
-  post-transform verification failures exit `3`.
-- JSON reports use [`declawd.report/v1`](spec/report-v1.md). Source context is
-  absent unless `--include-context` is explicitly requested; that option can
-  disclose up to 32 source scalars on either side of a finding.
-
-## Standard input, SARIF and CI
-
-`inspect` reads standard input when the file is a single hyphen, so it composes
-without a temporary file. The 10 MiB text limit still applies: it cannot be read
-from metadata here, so the bytes are counted as they arrive and one past the
-limit is refused.
+[Download 0.3.3 binaries](https://declawd.com/downloads) for Apple Silicon, Intel Mac, Linux or Windows, or install the [crate](https://crates.io/crates/declawd/0.3.3) with Rust 1.96 or newer:
 
 ```sh
-git show :docs/page.md | declawd inspect -
-pbpaste | declawd inspect - --json
+cargo install declawd --locked --version 0.3.3
 ```
 
-`--sarif` emits a SARIF 2.1.0 run. Examples are in `examples/ci/`: a GitHub
-Actions workflow and Python helper that combine changed-file reports into one
-run, and a pre-commit hook that reports against staged content. Copy the
-workflow into `.github/workflows/` and `inspect-changed.py` into
-`.github/scripts/`. The workflow requires code scanning to be enabled, retains
-the complete report as an artifact and skips uploads when no text files changed.
-It rejects binary content in files with a text suffix.
+Archives have SHA-256 checksums and GitHub build attestations. Mac and Windows binaries are unsigned by operating-system signing services. The [verification guide](docs/DEVELOPMENT.md#release-checks) explains what to check before running them.
+
+## First checks
 
 ```sh
-declawd inspect docs/page.md --sarif --exit-zero > page.sarif
+declawd inspect notes.txt --json --exit-zero
+declawd clean text notes.txt --output edited.txt --remove U+200B
+declawd clean c2pa signed.png --output stripped.png --json
 ```
 
-Two things about that output are deliberate.
+Inspection reports only its explicit registry and embedded stores. A clean operation applies the selectors you request and refuses an existing output path. When nothing matches, it returns `changed:false` and creates no file unless you add `--allow-empty`.
 
-The report carries no path. `Artifact` is a media type, a byte length and a
-SHA-256, because a report describes bytes rather than a place on somebody's
-disk. SARIF results need a location, so the one the tool was invoked with is
-converted to a percent-encoded URI reference. `--sarif-uri` requires `--sarif`
-and accepts an already encoded URI reference when the scanned path is not the
-path a reader should see. Text columns count Unicode code points; SARIF
-positions exclude a leading BOM. Image findings identify the artifact, because
-a C2PA store length alone does not locate the store inside the container.
+Unicode characters can carry meaning in ordinary writing. Review each edit in context. C2PA removal leaves remote references and pixel watermarks outside the operation, and it does not validate a signature or establish that an image is authentic.
 
-And a run that finds nothing has not verified anything. This tool reads a
-registry of Unicode carriers and embedded C2PA stores. It does not read
-confusable letters, which are a cleaning selector rather than a finding, and it
-does not read statistical token-choice watermarks at all. An empty SARIF file in
-a security dashboard reads as a clean bill of health, so every untested channel
-is emitted as a `notApplicable` result and the invocation repeats it in its
-notifications. Findings use `kind: review` and `level: none`, as required by
-[SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html).
-Viewers may omit these informational results or notifications. Read the raw
-SARIF and workflow summary; a blank dashboard is not a verification result.
+## Guides
 
-## Public SynthID-Text laboratory
+| Task | Guide |
+|---|---|
+| Inspect files, select edits, understand reports and exit codes | [CLI](docs/CLI.md) |
+| Use standard input, SARIF or the CI examples | [CLI integration](docs/CLI.md#integration) |
+| Score SynthID token traces or use optional model runners | [SynthID lab](docs/SYNTHID.md) |
+| Find recorded results and reproduce them without a new draw | [Evidence](docs/EVIDENCE.md) |
+| Register future inputs and record one seed | [Future registration](docs/FUTURE-REGISTRATION.md) |
+| Build, contribute or verify a release | [Development](docs/DEVELOPMENT.md) |
+| Report a vulnerability or inspect advisory exceptions | [Security](SECURITY.md) |
 
-The v0.2 laboratory reproduces exact mean scoring for a fixed profile from
-DeepMind's public `synthid-text` 0.2.1 implementation. It accepts token IDs,
-not prose, and emits exact fractions, 12-place decimals and hashes of the
-g-value and mask bitsets. It deliberately provides no detector threshold,
-Claude compatibility or authorship verdict.
+## Recorded results
 
-```sh
-cargo run -- lab synthid score fixtures/synthid/trace-prepared-v1.json --json
-python3 reference/synthid_reference.py fixtures/synthid/trace-prepared-v1.json
-```
+| Record | Retained outcome |
+|---|---|
+| Root r2 profile | The marked fixture scored 0.77 below 2.30. Six of 96 full human evaluation passages crossed. |
+| Separate v3 run | The marked fixture scored 1.90 below 3.30. One of 96 full evaluation passages crossed. |
+| Mixed passages | The adjusted search detected 19 of 648 marked mixtures and correctly located six. |
+| Window families | Exact enumeration of 4,096 synthetic sequences measures false alarms within its independent null model. |
+| TrustMark | The matching decoder recovered ten of twelve exact payloads before and after C2PA removal, retaining both misses. |
 
-The Rust and standard-library Python reports are byte-identical. The contract
-is split into four schemas:
+The [evidence guide](docs/EVIDENCE.md) links the plans, registrations, complete outputs and limits. Reused corpora, small controls and synthetic models have separate scopes. These measurements supply no production-detector or population guarantee. Registered files retain their bytes, including failures and the invalidated first v2 attempt.
 
-- [`declawd.synthid-profile/v1`](spec/synthid-profile-v1.schema.json) pins the
-  public keys, hash arithmetic, CPU table and score representation;
-- [`declawd.synthid-distribution/v1`](spec/synthid-distribution-v1.schema.json)
-  is a fixed, model-neutral candidate exercise for the browser laboratory;
-- [`declawd.synthid-trace/v1`](spec/synthid-trace-v1.schema.json) permits only
-  token IDs, an EOS ID and an optional expected result; and
-- [`declawd.synthid-score/v1`](spec/synthid-score-v1.schema.json) reports exact
-  scores and bitset digests without a decision.
+## Boundaries
 
-Traces are limited to 8 MiB and 100,000 token IDs. They contain no prose,
-logits, floating-point probabilities, private keys or thresholds. The
-committed 65,536-bit sampling table was generated once with Torch 2.4.0 on
-`device="cpu"`, packed LSB0 and pinned by SHA-256. Runtime code never
-regenerates it.
+Use the tools on content you own or are authorised to change. Findings must not support employment, education, disciplinary, legal, forensic or authorship decisions. Read [responsible use](ETHICS.md) before extending or applying the cleaner.
 
-The public reference itself warns that its hashing differs from production
-Gemini hashing and its trained detectors do not transfer. Declawd makes the
-same boundary explicit for Anthropic: naming SynthID-Text does not publish the
-production key, configuration, detector or decision rule.
+The CLI makes no network requests. Release 0.3.3 uses `c2pa 0.91.8` and `ZIP 9.2.2`. The [security policy](SECURITY.md) records the scoped RSA exception, its 28 November 2026 expiry and the checks required for reassessment.
 
-### Optional model runners
+## Licence
 
-[`reference/synthid_model_runner.py`](reference/synthid_model_runner.py) can
-produce token-only traces from pinned GPT-2 and Gemma 2B IT revisions. Model
-weights and decoded output are never committed. GPT-2 is the ungated release
-oracle. Gemma is optional and requires separate licence acceptance, Hugging
-Face access and suitable hardware. The runner allowlists concrete model
-classes, pins revisions, requires safetensors and disables remote code.
-
-The release gate installs the complete, hash-pinned 40-package Linux CPU lock
-in [`reference/synthid-runner-linux-cpu.lock`](reference/synthid-runner-linux-cpu.lock).
-The supported runtime is Torch 2.13.0, Transformers 5.15.0, safetensors 0.8.0
-and JAX 0.11.0. Torch 2.4.0 remains only as the historical CPU table-generation
-provenance and is not installed. The DeepMind 0.2.1 source is checked out clean
-at its immutable commit for compatibility checks rather than installed with its
-obsolete runtime pins.
-
-Three registered token-ID substitutions and their exact independent score
-effects are frozen in
-[`registered-edits-v1.json`](fixtures/synthid/registered-edits-v1.json). They
-contain no decoded model output, detector threshold or verdict.
-
-The retained version-of-record [SynthID-Text paper](evidence/synthid/README.md)
-is CC BY 4.0 and pinned by DOI, length and SHA-256. The teaching code follows
-the separately licensed Apache-2.0 reference implementation; it does not copy
-production keys or model weights.
-
-## C2PA scope
-
-`clean c2pa` removes only the embedded C2PA store through `c2pa-rs`, preserving EXIF orientation, ICC profiles, IPTC copyright, unrelated XMP and image data. Remote manifest references remain untouched. The accurate result is “embedded C2PA store removed”.
-
-The separate [TrustMark experiment](https://github.com/san-digital/declawd/tree/main/experiments/trustmark-v1) tests a selected pixel watermark on twelve generated PNG/JPEG files. The matching decoder recovered ten exact payloads before C2PA was added and the same ten after removal. Both tiled images were missed throughout. Every cleaned file was byte-identical to its marked version from before signing. This result concerns the fixed image set and TrustMark Q settings.
-
-The SDK is pinned to `c2pa =0.91.8` with default and network features disabled. Only `file_io` and `rust_native_crypto` are enabled. CI verifies the manifest pin against `Cargo.lock`. `c2pa-rs` declares `MIT OR Apache-2.0`. This project elects Apache-2.0 and generates dependency notices with `cargo-about`.
-
-Synthetic C2PA stores exercise malformed-input and preservation cases. Two PNG/JPEG fixtures were signed with `c2patool 0.27.11`'s development certificate. The independent Linux oracle is pinned separately to `c2patool 0.27.12`. It checks the embedded manifests and matching hard bindings, runs Declawd, compares the cleaned bytes with the committed sources and confirms no claim remains. Certificate expiry and public trust-list acceptance are separate from these checks. Ordinary Rust tests run on Linux, macOS and Windows.
-
-The [expanded fixture set](fixtures/c2pa/public/README.md) adds six unmodified JPEG files from the C2PA public collection and three derived PNG/JPEG controls. It covers absent stores, valid bindings, invalid bindings, signature and assertion-hash failures, bad PNG CRCs and truncated JPEG data. Declawd reports store presence separately from C2PA validation, so a removable store with an invalid signature remains a removal case. The tests compare every retained byte with frozen output hashes and refuse malformed image containers without writing output. The upstream assets retain their CC BY-SA 4.0 licence and attribution.
-
-## Deferred registry candidates
-
-Typographic spaces, combining marks and mixed-script confusables are candidates
-for a separately versioned future registry after their finite taxonomy and
-multilingual negative controls have been reviewed. The CLI can still transform
-an exact scalar such as `--replace U+202F=U+0020`, but `inspect` does not
-classify it and no broad class selector is available.
-
-## Mixed passages
-
-The separately registered [mixed-passage experiment](experiments/mixed-passage-v1/README.md) compares whole-document scores with a fixed window search on a controlled word-pair scheme. Reusing the whole-document cut-off for the search flagged 19 of 24 human evaluation documents at 768 tokens. A separately calibrated search cut-off reduced that to 1 of 24, while detecting only 19 of 648 marked mixtures and locating six under the registered rule. The report retains the detection misses, evaluation target failures and limits of the reused corpus. Its fresh key and scoring code are separate from the frozen v1/v2 contracts.
-
-The separate [window-family experiment](experiments/window-family-v1/README.md) enumerates all 4,096 sequences in a twelve-position independent null model, using exact Bernoulli weights. The eighteen-window dyadic search gives a false document alarm probability of `909559/16777216` without correction and `12619/16777216` with Bonferroni correction. The document and nine-window sliding searches stay below the nominal five per cent under both rules. These exact model probabilities supply no human-corpus, power or provider-watermark result.
-
-## Frozen evidence and reproduction
-
-The repository is a curated public snapshot, not an export of private history.
-
-On a checkout produced by a squash merge, `python3 scripts/verify-v3-history.py` compares the current v3 registered inputs, seed and outputs with the pinned `declawd-v3-evidence-2026-11-02` history, then runs the frozen numerical reproducer. A missing or moved tag is an error. Fetch a missing tag only with the explicit `--fetch-history` option.
-
-The shared reference scorer supports both profiles, and its original 45-test suite remains in place. The `declawd-v2-r2` registration records the scorer's exact bytes, so before any change to `reference/declawd.py`, including a new domain separator, archive r2 with its own copy of the scorer, as `experiments/declawd-v2-attempt-1` does. Frozen v1 inputs and results include:
-- `fixtures/profile-v1.json`, registration, template, corpus, rewrite and
-  perturbation fixtures;
-- calibration and evaluation reports;
-- cross-runtime scoring vectors; and
-- a machine-readable report schema and normative report vector;
-- the six-substitution controlled-removal vector, including every cumulative
-  score. Its original-passage offsets are 75, 175, 295, 371, 631 and 994; the
-  final result is 358 effective contexts, 102 green and z =
-  1.5256954942433834.
-
-### Known v1 limitations
-
-The frozen `declawd-v1` registration still reproduces byte for byte. Two input
-defects are recorded in [issue #17](https://github.com/san-digital/declawd/issues/17)
-and will not be corrected in place.
-
-- Candidate slots 39 and 116 are not substitutable in their sentence frames.
-  The marked fixture selects wording that produces "due the delay" and "carry
-  with a run". A replacement profile must render and review every candidate in
-  context before registration.
-- `min_effective_tokens` is 120, but every calibration and evaluation passage
-  has at least 200 distinct pairs. At the frozen 120-pair floor, 4 of the 192
-  human passages cross the 1.80 cut-off. The highest, Benjamin Franklin at z =
-  3.16, is above the marked fixture at z = 2.99. Interfaces using v1 should
-  withhold scores and verdicts below 200 pairs.
-
-Changing either registered input would alter the registration hash. V2 therefore has its own profile identifier, registration, seed, calibration and vectors, included in the 0.3.0 minor release.
-
-### Registered v2
-
-The active profile is `declawd-v2-r2`. The first sampled v2 attempt exposed two article-agreement errors during browser inspection and is preserved with its original results in [the attempt archive](experiments/declawd-v2-attempt-1/README.md). R2 removes those slots, checks article agreement and has its own registration and fresh seed.
-
-The [v2 results](docs/V2-RESULTS.md) record the single draw and its measured outcomes: the marked example scores 0.77 against a 2.30 threshold and is missed, while 6 of 96 full human passages cross the threshold (6.25%). The [v2 plan](docs/PLAN-V2.md) fixes the candidate review, minimum length, threshold rule and seed procedure before the draw. Every candidate in `fixtures/template-v2.json` has an exact sentence and an agent review of grammar and operational meaning in `fixtures/candidate-review-v2.json`. The checker rejects incomplete or stale reviews.
-
-The minimum is 200 distinct pairs. Calibration measures full passages and prefixes at 200 and 201 pairs separately, and the 199-pair group verifies that public scores and verdicts are withheld. The threshold must meet the 2% target in each eligible calibration group. Evaluation uses the other authors after threshold selection, retaining any crossings and an undetected marked fixture. These are the historical v1 corpora, already published and examined, with a new seed and registered procedure.
-
-Reproduce the recorded v2 run and compare every output byte without drawing a seed:
-
-```sh
-python3 reference/candidate_review.py fixtures/template-v2.json fixtures/candidate-review-v2.json
-python3 reference/calibrate_v2.py reproduce
-```
-
-`calibrate_v2.py` finds `candidate_review.py` and `declawd.py` through its own folder, so run it with `PYTHONSAFEPATH` unset.
-
-`register` and `sample` are the creation commands. Registration requires committed inputs, and sampling requires the committed registration. An existing seed or output prevents another draw. `reproduce --write` restores missing outputs from the recorded seed, but a truncated calibration report prevents it from reaching the write step. For the published r2 run, restore both the seed record and calibration report from v0.3.0 before recovery, following the [recovery commands](docs/V2-RESULTS.md#recovery). The seed record documents the draw and commit, with no independent witness. V1 evidence and the historical controlled-removal result remain unchanged.
-
-### Reproducing v1
-
-Reproduction scripts are in `reference/`. Reproduce the committed run without
-choosing a new seed:
-
-```sh
-python3 reference/calibrate.py \
-  --seed-hex 3af0a69fbe7c97fb6c73d2c96d7824d26782d36b6e5b6379eb0886382ce39164
-python3 -m unittest discover -s reference -p 'test_*.py'
-```
-
-`build_corpus.py` requires separately downloaded public-domain Project
-Gutenberg source texts. The committed corpus means tests and builds need no
-network. Do not run `calibrate.py` without `--seed-hex` merely to verify this
-release: doing so intentionally creates a new experiment.
-
-## Development
-
-Rust 1.96 or newer is required. `Cargo.lock` selects the patched ZIP 9.2.2 dependency through c2pa 0.91.8.
-
-```sh
-cargo fmt -- --check
-cargo clippy --all-targets --all-features -- -D warnings
-cargo test --all-targets
-./scripts/check-c2pa-pin.sh
-./scripts/check-security-advisories.sh
-python3 scripts/install-osv-scanner.py /tmp/declawd-osv-scanner
-OSV_SCANNER=/tmp/declawd-osv-scanner python3 scripts/check-rust-osv.py --output /tmp/declawd-rust-osv.json
-./scripts/check-third-party-licences.sh
-./scripts/check-c2patool-fixtures.sh
-python3 scripts/check-python-runtime-lock.py
-./scripts/check-synthid-bundle.sh
-# With cargo-cyclonedx 0.5.9 and the exact tools in
-# reference/sbom-tool-requirements.txt installed:
-./scripts/check-sbom.sh
-./scripts/check-python-sbom.sh
-./scripts/check-sboms-clean-checkouts.sh
-```
-
-See [ETHICS.md](ETHICS.md) before using or extending the cleaner.
-
-## Release verification
-
-Release archives include SHA-256 checksum files and GitHub build-provenance
-attestations. Each release also carries two checksummed, reproducible
-CycloneDX 1.5 SBOMs: one for the Rust runtime and build graph, and one for the
-reviewed 40-package Python runner closure plus its excluded DeepMind source
-reference. Test-only Rust development dependencies are excluded. Verify them
-before running a downloaded binary:
-
-```sh
-# Linux archive
-sha256sum --check declawd-v0.3.3-<target>.tar.gz.sha256
-
-# macOS archive
-shasum -a 256 --check declawd-v0.3.3-<target>.tar.gz.sha256
-
-# Windows archive, from a shell with sha256sum
-sha256sum --check declawd-v0.3.3-<target>.zip.sha256
-
-# SBOM on Linux or Windows
-sha256sum --check declawd-v0.3.3.cdx.json.sha256
-sha256sum --check declawd-v0.3.3-python.cdx.json.sha256
-sha256sum --check declawd-v0.3.3-synthid-contracts.tar.gz.sha256
-
-# SBOM on macOS
-shasum -a 256 --check declawd-v0.3.3.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.3-python.cdx.json.sha256
-shasum -a 256 --check declawd-v0.3.3-synthid-contracts.tar.gz.sha256
-
-gh attestation verify declawd-v0.3.3-<target>.tar.gz \
-  --repo san-digital/declawd
-
-gh attestation verify declawd-v0.3.3-synthid-contracts.tar.gz \
-  --repo san-digital/declawd
-```
-
-The macOS and Windows binaries are not platform code-signed or notarised.
-GitHub provenance attests the workflow and source revision. It is not an
-operating-system signing certificate. Build from the tagged source if local
-policy cannot accept an unsigned binary.
-
-## Licensing and related work
-
-Original software, specifications and documentation are Apache-2.0. Corpus
-provenance is recorded in its fixture. See [NOTICE](NOTICE) and the generated
-[third-party notices](THIRD_PARTY_LICENSES.txt). Optional Python runner notices
-are recorded separately in
-[`SYNTHID_THIRD_PARTY_NOTICES.md`](SYNTHID_THIRD_PARTY_NOTICES.md).
-
-[demark](https://github.com/jcsuen/demark) informed the inspect-first workflow
-and candid limitations. No demark code was copied, forked or executed here. Its
-PolyForm Noncommercial licence is incompatible with reuse for this project.
-
-## Successor
-
-The [recorded v3 experiment](experiments/declawd-v3/README.md) addresses the r2 review findings in [issue 35](https://github.com/san-digital/declawd/issues/35). Its template review, profile loading, preflight and output recovery are registered separately. The root r2 implementation and website evidence retain their original bytes, with an exact payload and scorer in the [r2 archive](experiments/declawd-v2-r2/README.md). The historical corpus is reused, with its previous exposure disclosed in the v3 plan.
-
-Future experiment creation uses the [registration front door](docs/FUTURE-REGISTRATION.md), which checks coalesced literal counts and every slot boundary before binding the input set into a committed receipt. Sampling checks that receipt before entropy and publishes one attempt record before the seed. The recorded v3 template has 290 guaranteed literal contexts, above its conservative recorded bound of 286, and its original results remain unchanged. No new experiment or draw accompanies this guard.
+Original code, specifications and documentation are Apache-2.0. See [NOTICE](NOTICE), [dependency notices](THIRD_PARTY_LICENSES.txt) and the separate [SynthID notices](SYNTHID_THIRD_PARTY_NOTICES.md). Fixtures and optional models retain their own recorded licences.

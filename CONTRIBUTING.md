@@ -1,29 +1,17 @@
 # Contributing
 
-Contributions are welcome when they preserve the project's evidence and safety
-boundaries. Please include tests and explain the supported carrier precisely.
+Contributions should preserve the project's evidence and supported scope. Describe the exact carrier or contract you change, include the relevant tests and follow the [development checks](docs/DEVELOPMENT.md). The release workflow applies the full suite.
 
-Before opening a pull request, run:
+## Evidence
 
-```sh
-python3 -m unittest discover -s reference -p 'test_*.py'
-cargo fmt -- --check
-cargo clippy --all-targets --all-features -- -D warnings
-cargo test --all-targets
-./scripts/check-c2pa-pin.sh
-./scripts/check-security-advisories.sh
-./scripts/check-third-party-licences.sh
-./scripts/check-c2patool-fixtures.sh
-./scripts/check-synthid-bundle.sh
-# With cargo-cyclonedx 0.5.9 and reference/sbom-tool-requirements.txt installed:
-./scripts/check-sbom.sh
-./scripts/check-python-sbom.sh
-./scripts/check-sboms-clean-checkouts.sh
-```
+Registered inputs, seeds and outputs retain their bytes. Read the [evidence guide](docs/EVIDENCE.md#frozen-boundaries) before editing a scorer, fixture, specification or archived document. Future experiments use the [registration guard](docs/FUTURE-REGISTRATION.md).
 
-Do not add claims of compatibility with an undisclosed production watermark
-without reproducible ground truth from its provider.
+Claims about a production watermark need reproducible ground truth from its provider. A public reference implementation alone does not establish compatibility with a provider's deployed method.
 
-SynthID trace and score changes must remain integer-exact in Rust, browser
-BigInt and Python. Do not add prose input, model logits, floating-point contract
-fields, a detector threshold or an authorship verdict.
+## Exact scoring
+
+SynthID trace and score changes must agree exactly in Rust, browser BigInt and Python. Keep token-only input, integer contract fields and the existing boundary: no prose input, model logits, detector threshold or authorship verdict.
+
+## Reports
+
+Report vulnerabilities through the [private security route](SECURITY.md). Use ordinary issues for documentation errors, reproducible bugs and proposed changes, with the smallest relevant input that you are authorised to share.
