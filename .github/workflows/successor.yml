@@ -1,0 +1,25 @@
+name: Successor evidence
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  successor:
+    name: V3 and archived r2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v
+      - run: python3 experiments/declawd-v2-r2/reference/calibrate_v2.py reproduce
+      - run: python3 experiments/declawd-v3/reference/calibrate_v3.py reproduce
+      - run: python3 experiments/declawd-v3/verify.py
