@@ -32,10 +32,11 @@
     "failed seed publication blocks another attempt",
     "committed seed and first-record comparison",
     "all surviving output bindings before writes",
-    "complete atomic output publication"
+    "complete atomic output publication",
+    "tracked receipt profile reuse with an arbitrary configured filename and deleted working copy"
   ],
   "validation": {
-    "future_guard_unit_tests": 20,
+    "future_guard_unit_tests": 21,
     "existing_v3_unit_tests": 24,
     "existing_root_reference_tests": 150,
     "registered_runs_reproduced": [
@@ -45,9 +46,9 @@
     "new_draws": 0
   },
   "source_files": {
-    "scripts/future_registration.py": "4f7338dd0967de6aab5c24259f03d3c0736d14506db256879c9bc089a7da106d",
+    "scripts/future_registration.py": "38eb0f3f685b1921352316c07404461ac9d11bb72af9bcd69d92c71966bac817",
     "scripts/future_candidate_review.py": "93c89b09b0a27fbc03448e8270bf9c2e20ed34381009945e9e45a8daa9ef6c59",
-    "scripts/test_future_registration.py": "0a68ea67642f3b99462a85b686680b94a5a16f8755887211e87698efb8146ba3",
+    "scripts/test_future_registration.py": "3a63a10f46b4dcab5c21bcdc87af700fdc5f04df798bf243bc6b7ae08606b229",
     "experiments/declawd-v3/fixtures/template-v3.json": "640248f778c6dba64db89e7cc82504436cf280f331202bf1b544f380c4dd7f13",
     "experiments/declawd-v3/fixtures/registration-v3.json": "6ac84b6c39d7c1bf4d1a67b2e4184d11941e1f4a001e2c6446020f0a9fa45630"
   }

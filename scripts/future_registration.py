@@ -223,10 +223,13 @@ def register(root: Path, config_name: str) -> dict:
     refuse_existing(root, value, registration=True)
     top = repository(root)
     destination = safe_path(root, value["registration"])
-    for name in git(top, "ls-files", "-z", "*registration*.json").decode().split("\0"):
+    for name in git(top, "ls-files", "-z", "*.json").decode().split("\0"):
         if name and top / name != destination:
-            other = read_object(top / name)
-            if other.get("registration_id") == value["profile_id"] or (other.get("schema") == SCHEMA and other.get("profile_id") == value["profile_id"]):
+            try:
+                other = json.loads(git(top, "show", ":" + name))
+            except (ValueError, subprocess.CalledProcessError):
+                continue
+            if isinstance(other, dict) and (other.get("registration_id") == value["profile_id"] or (other.get("schema") == SCHEMA and other.get("profile_id") == value["profile_id"])):
                 raise ValueError("profile_id already has a tracked registration")
     receipt["inputs_commit"] = require_committed(top, list(receipt["source_files"]))
     atomic_json(destination, receipt)

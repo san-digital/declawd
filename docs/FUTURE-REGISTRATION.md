@@ -44,7 +44,7 @@ python3 scripts/future_registration.py verify experiments/future experiment.json
 
 `sample` recomputes the preflight and requires the receipt, configuration, tool sources and all declared inputs to match their committed bytes. It checks the original input commit too. An exclusive, complete attempt record is published before entropy is requested. Existing registration, seed, attempt and output paths prevent another applicable creation step. If seed publication fails after the attempt record exists, a later call stops before requesting entropy. There is no automatic retry or marker-deletion command. Retain an incomplete attempt for review.
 
-Preserve the registration, seed and output commits in an evidence branch or tag when publishing. `verify` needs the original Git objects and checks the seed against its first committed record. This is a record of the local procedure, without an independent witness or a guarantee against manual deletion and history replacement.
+Preserve the registration, seed and output commits in an evidence branch or tag when publishing. After a squash publication, check out that preserved evidence branch or tag before running `verify`. Fetching its objects while staying on squashed main does not satisfy the required input-commit ancestry. `verify` needs the original Git objects and checks the seed against its first committed record. This is a record of the local procedure, without an independent witness or a guarantee against manual deletion and history replacement.
 
 ## Outputs
 

@@ -251,6 +251,18 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "already has a tracked registration"):
             self.register()
 
+    def test_configured_receipt_name_cannot_bypass_profile_reuse(self):
+        self.configuration["registration"] = "r.json"
+        json_file(self.root / "experiment.json", self.configuration)
+        self.commit()
+        self.register()
+        self.commit()
+        self.configuration["registration"] = "fixtures/registration.json"
+        json_file(self.root / "experiment.json", self.configuration)
+        (self.root / "r.json").unlink()
+        with self.assertRaisesRegex(ValueError, "already has a tracked registration"):
+            self.register()
+
     def test_missing_fixture_and_invalid_corpus_fail_before_entropy(self):
         template_path = self.root / "fixtures/template.json"
         template = json.loads(template_path.read_bytes())

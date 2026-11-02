@@ -18,6 +18,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 -B -m unittest discover -s reference -p 'test_*.py' -v
+      - name: Verify future registration guards without drawing a seed
+        run: python3 -B -m unittest discover -s scripts -p 'test_future_registration.py' -v
       - name: Verify the recorded TrustMark experiment
         run: |
           python3 -m pip install --require-hashes --only-binary=:all: --requirement experiments/trustmark-v1/verifier-requirements.txt
