@@ -10,15 +10,17 @@ SynthID traces use the same no-follow input boundary, are limited to 8 MiB and 1
 
 ## ZIP fix
 
-On 29 October 2026, the SDK was upgraded from `c2pa 0.90.22` to `0.91.7` and the Rust minimum raised to 1.96. The lock now selects `zip 9.0.5`, the first patched release for [GHSA-m665-v7pm-7grj](https://github.com/advisories/GHSA-m665-v7pm-7grj). The advisory concerns disagreement between ZIP central-directory inspection and streaming extraction. The upgrade also resolves the three earlier RustSec ZIP advisories, so their audit exceptions were removed.
+On 29 October 2026, the SDK was upgraded from `c2pa 0.90.22` to `0.91.7` and the Rust minimum raised to 1.96. That lock selected `zip 9.0.5`, the first patched release for [GHSA-m665-v7pm-7grj](https://github.com/advisories/GHSA-m665-v7pm-7grj). The advisory concerns disagreement between ZIP central-directory inspection and streaming extraction. The upgrade also resolves the three earlier RustSec ZIP advisories, so their audit exceptions were removed.
 
 `scripts/check-security-advisories.sh` rejects every ZIP version below 9.0.5, prerelease versions and a missing ZIP dependency before invoking the audit. It checks all ZIP entries, including additional versions. This check covers the GitHub advisory while it is absent from the RustSec database. The dependency version is patched even though the CLI's PNG/JPEG operations use neither ZIP reader and provide no archive approval or extraction service.
+
+On 2 November 2026, the SDK was upgraded to `c2pa 0.91.8` and the lock updated to `zip 9.2.2` and `typed-path 0.13.0`. The exact SDK pin, SBOM validation and licence inventory use the same dependency versions. The ZIP minimum guard remains 9.0.5.
 
 The SDK upgrade also selects `crypto-bigint 0.7.10`, above the patched minimum 0.7.6 for [RUSTSEC-2026-0387](https://rustsec.org/advisories/RUSTSEC-2026-0387.html). Its exception was removed too.
 
 ## RSA exception
 
-Reassessed on 29 October 2026. `c2pa 0.91.7` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations and still has no patched release. The package remains affected. Declawd loads no private keys and does not sign or decrypt.
+Reassessed on 2 November 2026. `c2pa 0.91.8` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations and still has no patched release. The package remains affected. Declawd loads no private keys and does not sign or decrypt.
 
 `src/artifact.rs` imports the SDK error type and calls only `jumbf_io::load_jumbf_from_memory` and `jumbf_io::remove_jumbf_from_file`. Both resolve to asset I/O handlers. The input kind and temporary-file extension restrict these calls to the PNG/JPEG handlers. They read or remove the embedded store without validating signatures or loading keys. The SDK's signing code in the `jumbf_io` module is test-only. The reviewed paths use no ZIP extraction or private-key operation. Default and network features remain disabled, with only `file_io` and `rust_native_crypto` enabled.
 
@@ -32,7 +34,7 @@ The RSA advisory and its recorded aliases use the source, package and expiry gua
 
 OSV's imported record for [GHSA-qwgh-2vcv-g2f7](https://osv.dev/vulnerability/GHSA-qwgh-2vcv-g2f7) currently flags `block-buffer 0.10.4`. The [maintainer's advisory](https://github.com/RustCrypto/utils/security/advisories/GHSA-qwgh-2vcv-g2f7), updated on 27 October, specifies affected versions `>=0.11.0,<0.12.1`. Version 0.10.4 stores its cursor in a separate field, outside the block passed to the compression callback. The OSV check records this result as outside the upstream affected range only for 0.10.4 with its reviewed crates.io checksum. Other versions, checksums or advisory aliases require review. The same 28 November reassessment date applies through the shared policy guard. The lock also contains patched `block-buffer 0.12.1`.
 
-`RUSTSEC-2024-0370` is retained as an informational notice that `proc-macro-error` is unmaintained. It adds no vulnerability exception. A changed classification or another advisory against that package stops the check.
+`RUSTSEC-2024-0370` is retained as an informational notice that `proc-macro-error 1.0.4` is unmaintained. The SDK selects it through the `static-regular-grammar 2.0.2` procedural macro used by `iref-core 3.2.2`, both directly through `iref 3.2.2` and through `static-iref 3.0.0`. It executes during compilation. The selected SDK still requires this dependency path. The notice adds no vulnerability exception. A changed classification or another advisory against that package stops the check.
 
 ## Python audit
 

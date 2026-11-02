@@ -130,7 +130,7 @@ def validate(
     if not components:
         raise ValueError("SBOM has no dependency components")
     if not any(
-        item.get("name") == "c2pa" and item.get("version") == "0.91.7"
+        item.get("name") == "c2pa" and item.get("version") == "0.91.8"
         for item in components
     ):
         raise ValueError("SBOM does not contain the exact c2pa dependency")
