@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Reviewed on 29 October 2026. SECURITY.md records the RSA dependency path and unused private-key operations.
+# Reviewed on 2 November 2026. SECURITY.md records the RSA dependency path and unused private-key operations.
 exception_ids=(RUSTSEC-2023-0071)
 exception_expires=2026-11-28
 warn_days=14
@@ -31,7 +31,7 @@ for version in zip_versions:
     if not match or tuple(map(int, match.groups())) < (9, 0, 5):
         raise SystemExit(f"ZIP {version} is not a patched stable release for GHSA-m665-v7pm-7grj. Require 9.0.5 or newer")
 
-expected = {"c2pa": "0.91.7", "c2pa_raw_crypto": "0.2.1", "rsa": "0.9.10"}
+expected = {"c2pa": "0.91.8", "c2pa_raw_crypto": "0.2.1", "rsa": "0.9.10"}
 for name, version in expected.items():
     actual = {package["version"] for package in packages if package["name"] == name}
     if actual != {version}:
