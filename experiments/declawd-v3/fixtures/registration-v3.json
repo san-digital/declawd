@@ -1,0 +1,107 @@
+{
+  "analysis": {
+    "corpus_reuse": "historical corpus previously examined for v1, including its evaluation results",
+    "corpus_split": "by author, preserving the published v1 split",
+    "interval": "Wilson 95 per cent, descriptive because passages share authors and prefixes share passages",
+    "length_groups": [
+      "prefix_199",
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "prefix_rule": "shortest original-text prefix ending at a token reaching the named distinct-pair count",
+    "selection": "all eligible passages reported, unavailable lengths counted as exclusions",
+    "unit": "one verdict per source passage within each length group"
+  },
+  "canonicaliser": {
+    "confusables": {
+      "а": "a",
+      "е": "e",
+      "о": "o",
+      "р": "p",
+      "с": "c"
+    },
+    "zero_width": "U+200B"
+  },
+  "controlled_removal": {
+    "max_steps": 6,
+    "selection": "lowest resulting z among reviewed alternatives in unused slots",
+    "stop": "no strict score reduction",
+    "ties": "slot index then authored candidate order"
+  },
+  "corpus_sha256": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+  "domain_separator": "declawd/v3/green",
+  "fixture_id": "flow-meter-v3",
+  "gamma": {
+    "denominator": 4,
+    "numerator": 1
+  },
+  "marked_effective_token_lower_bound": 286,
+  "perturbations": {
+    "del": {
+      "offset": 0,
+      "word": "clock"
+    },
+    "look": {
+      "offset": 2,
+      "replace_with": "а",
+      "word": "quality"
+    },
+    "many": {
+      "every_nth_token": 10,
+      "method": "confusable substitution of the first eligible character in every tenth scored token",
+      "rationale": "A token editing rate of about 0.1, which is the rate the NDSS 2026 character-level attack paper uses. One character changes almost nothing; this is what an actual attack looks like."
+    },
+    "zw": {
+      "insert": "​",
+      "offset": 4,
+      "word": "pressure"
+    }
+  },
+  "perturbations_sha256": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+  "previous_attempt": {
+    "archive": "experiments/declawd-v2-r2",
+    "profile_id": "declawd-v2-r2",
+    "reason": "successor addresses review and draw-safety defects while preserving r2 results",
+    "source_commit": "0c1479adbd788798d5206d770ffb085e4b1e570b"
+  },
+  "registration_id": "declawd-v3",
+  "rewrite_sha256": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+  "seed_policy": "commit registration before one recorded draw, retain its outcomes, refuse a second draw",
+  "source_files": {
+    "archive-manifest-r2.json": "c24ff36bfaef404a8f043cd983894ddcb40bc1fc0e5dc71cc371aa1c1731d597",
+    "docs/PLAN-V3.md": "e68664b79c83d435e5f4e96e7c96fed3d499ad964b1f87c907655bc100c5e752",
+    "fixtures/candidate-review-v3.json": "f6b3f93eda79a35f0a4c933e3ad6ebdda99bc31918bd50a9d14aba8f0f84becc",
+    "fixtures/corpus.json": "a130254999663f085c1efb317c4ef5fbc5d25e2d7cb9c2ea10c407f3b9241339",
+    "fixtures/perturbations.json": "20504d1dd3a46adb58fc39763a750c48425fee065d95084a227cbb017ebbf8e2",
+    "fixtures/rewrite.json": "e5e672b4d230f9153f9da0a8251b64fda9b08fd26333b30ef5884a5fcf41bc7d",
+    "fixtures/template-v3.json": "640248f778c6dba64db89e7cc82504436cf280f331202bf1b544f380c4dd7f13",
+    "reference/calibrate_v3.py": "7ea02931adce5c6a6f5441e2a019ed3ab8d7ce7899a5efe08493f250ccf1b321",
+    "reference/candidate_review.py": "93c89b09b0a27fbc03448e8270bf9c2e20ed34381009945e9e45a8daa9ef6c59",
+    "reference/declawd.py": "3cbfe97bf07c3d2867a0404b3384b1eefb635ea4922185159ae72fd11cc6dc7f",
+    "reference/test_protocol.py": "d9aacb8dc462e88c38ecb0c17098f14946079cf5a41f4a730391606c77950f00",
+    "verify.py": "9e0c629a839901eecf341e645df4aa2b7631212e585929a8b1e8b0e091382849"
+  },
+  "targets": {
+    "false_positive_rate_at_or_below": 0.02,
+    "min_effective_tokens": 200
+  },
+  "template_sha256": "640248f778c6dba64db89e7cc82504436cf280f331202bf1b544f380c4dd7f13",
+  "threshold_policy": {
+    "comparison": "strict integer verdict comparison",
+    "groups": [
+      "prefix_200",
+      "prefix_201",
+      "full"
+    ],
+    "marked_fixture": "reported outcome",
+    "max_step": 399,
+    "selection": "smallest threshold meeting target separately in each eligible calibration group",
+    "step_denominator": 100,
+    "step_numerator": 5
+  },
+  "tokeniser": {
+    "folding": "ASCII A-Z to a-z",
+    "pattern": "[A-Za-z]+(?:'[A-Za-z]+)?"
+  }
+}
