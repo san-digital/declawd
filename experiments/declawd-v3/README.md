@@ -1,17 +1,27 @@
 # Third registration
 
-This directory contains the successor to the r2 experiment workflow. It addresses the review and draw-safety findings in [issue 35](https://github.com/san-digital/declawd/issues/35), while the root r2 implementation, published evidence and [separate archive](../declawd-v2-r2/README.md) retain their exact bytes. The website continues to use its recorded r2 evidence until a separate reviewed integration changes it.
+This records the separate `declawd-v3` experiment after the r2 review in [issue 35](https://github.com/san-digital/declawd/issues/35). The root r2 implementation, website evidence and [r2 archive](../declawd-v2-r2/README.md) retain their bytes. New experiments use the [current registration tool](../../docs/FUTURE-REGISTRATION.md).
 
-The [plan](docs/PLAN-V3.md) defines the `declawd-v3` profile and all decisions made before the draw. The [candidate review](fixtures/candidate-review-v3.json) includes every alternative in its sentence and full paragraph. The 192 human passages retain their published author split and their previous exposure in earlier studies, so the new evaluation is a result on a reused corpus.
+## Outcome
 
-## Procedure
+The marked fixture scored **1.90**, below the selected **3.30** cut-off. One of 96 full evaluation passages crossed. The six-edit trace starts and ends below the cut-off. The [complete results](docs/RESULTS.md) retain the miss, all length groups and exclusions.
 
-Run `python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v` and `python3 experiments/declawd-v3/reference/calibrate_v3.py reproduce` from the repository root to check this recorded experiment without writing or drawing. `python3 scripts/verify-v3-history.py` checks the preserved registration, seed and output history after the publication merge. The original registered verifier remains available as historical code. Future experiment creation uses the [separate registration front door](../../docs/FUTURE-REGISTRATION.md). The old `register` and `sample` commands describe this archived sequence and are not the route for a new run.
+The 192 human passages and author split were already public and examined. These counts describe the reused corpus and this key. They supply no measurement of unseen writing or a provider's production detector.
 
-The scorer derives the domain from the profile identifier and validates the entire profile before changing global parameters. This recorded template has a true guaranteed bound of 290 distinct contexts, above its recorded conservative count of 286. The old calculation treats literal segments separately and is not a general bound when a token crosses adjacent literal fragments. The future front door coalesces those fragments and requires safe boundaries around every slot before registration. Output recovery checks the seed binding in every surviving file before any write. Complete temporary files are published atomically so interruption can leave files absent, but cannot expose a partial replacement through this procedure.
+## Check
 
-## Scope
+Run from the repository root with Python 3.12 and `PYTHONSAFEPATH` unset:
 
-V3 records the workflow used for this historical experiment. It does not change the r2 profile or establish a rate on unseen writing. The public seed and reviewed alternatives allow deliberate editing against this teaching scheme. No provider's production text watermark or private detector is measured here.
+```sh
+python3 -B -m unittest discover -s experiments/declawd-v3/reference -p 'test_*.py' -v
+python3 experiments/declawd-v3/reference/calibrate_v3.py reproduce
+python3 scripts/verify-v3-history.py --fetch-history
+```
 
-The [recorded result](docs/RESULTS.md) retains the missed marked fixture: its score of 1.90 is below the selected 3.30 threshold. Full evaluation crossed once in 96 passages. The six-edit trace starts and ends below the threshold.
+The first two commands check the recorded numerical outputs without writing or drawing. The history checker pins the original evidence tag and verifies the committed sequence after a squash publication. The original registered verifier remains historical code. Creation commands in that frozen procedure describe its archived sequence.
+
+## Recorded method
+
+The [plan](docs/PLAN-V3.md) fixed decisions before the draw. [Candidate review](fixtures/candidate-review-v3.json) records every alternative in its sentence and paragraph. Profile loading validates parameters before changing globals, and the domain derives from the profile identifier. Recovery checks every surviving output's seed binding before atomic replacement.
+
+The committed template has 290 guaranteed contexts, above its recorded conservative bound of 286. Its old generic length helper can overcount when a token crosses adjacent literal fragments. The current registration tool coalesces those fragments and checks slot boundaries before registration. The existing fixture, seed and results remain valid.

@@ -14,6 +14,8 @@ This set adds six unmodified JPEG assets created by Adobe from [c2pa-org/public-
 | `png-bad-crc` | PNG | Refuse the malformed container and write no output |
 | `jpeg-truncated` | JPEG | Refuse the malformed container and write no output |
 
-The PNG binding case changes the first sample byte in the decoded IDAT stream of `../signed.png` with XOR `0x10`, recompresses it with zlib and recalculates the chunk CRC. The bad-CRC control changes byte 20 of `../source.png` with XOR `0x01` and leaves the CRC untouched. The truncated JPEG retains the first 32 bytes of `../source.jpg`. These controls have no dependency on the v1 or v2 text experiments. The pinned public collection's PNG directories contain no image assets, so its JPEG files are the upstream interoperability cases.
+The PNG binding case changes the first sample byte in the decoded IDAT stream of `../signed.png` with XOR `0x10`, recompresses it with zlib and recalculates the chunk CRC. The bad-CRC control changes byte 20 of `../source.png` with XOR `0x01` and leaves the CRC untouched. The truncated JPEG retains the first 32 bytes of `../source.jpg`.
+
+These controls have no dependency on the v1 or v2 text experiments. The pinned public collection's PNG directories contain no image assets, so its JPEG files are the upstream interoperability cases.
 
 `cargo test --locked --test c2pa` checks every input hash, store presence, removal or rejection, retained output bytes, input preservation and repeated cleaning. `scripts/check-c2patool-fixtures.sh` additionally runs `c2patool 0.27.12` to check the expected signature, binding and assertion results, then independently confirms claim absence after cleaning. Bad signatures and bindings remain distinct from malformed image containers. Certificate expiry and public trust-list acceptance are outside these assertions.
