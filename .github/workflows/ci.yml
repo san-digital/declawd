@@ -124,11 +124,11 @@ jobs:
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo package --locked
       - run: ./scripts/check-c2pa-pin.sh
-      - uses: taiki-e/install-action@5488ac5a951645ce95062214902ac4b6bc1a1037 # v2
+      - uses: taiki-e/install-action@cfdb7ed4ccc7c7dce37759eae89dc5674b469b39 # v2
         with:
           tool: cargo-audit@0.22.0
       - run: ./scripts/check-security-advisories.sh
-      - uses: taiki-e/install-action@5488ac5a951645ce95062214902ac4b6bc1a1037 # v2
+      - uses: taiki-e/install-action@cfdb7ed4ccc7c7dce37759eae89dc5674b469b39 # v2
         with:
           tool: cargo-about@0.8.4
       - run: ./scripts/check-third-party-licences.sh
@@ -141,7 +141,7 @@ jobs:
           python3 -m venv "$audit_environment"
           "$audit_environment/bin/python" -m pip install --requirement reference/python-audit-tool-requirements.txt
           PATH="$audit_environment/bin:$PATH" "$audit_environment/bin/python" scripts/check-python-advisories.py
-      - uses: taiki-e/install-action@5488ac5a951645ce95062214902ac4b6bc1a1037 # v2
+      - uses: taiki-e/install-action@cfdb7ed4ccc7c7dce37759eae89dc5674b469b39 # v2
         with:
           tool: cargo-cyclonedx@0.5.9
       - name: Install the pinned Python SBOM tool

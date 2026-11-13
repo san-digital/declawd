@@ -14,7 +14,7 @@ The 0.3.3 release uses c2pa 0.91.8, ZIP 9.2.2 and typed-path 0.13.0, with Rust 1
 
 `scripts/check-security-advisories.sh` rejects every ZIP version below 9.0.5, prerelease versions and a missing ZIP dependency before invoking the audit. It checks all ZIP entries, including additional versions. This check covers the GitHub advisory while it is absent from the RustSec database. The dependency version is patched even though the CLI's PNG/JPEG operations use neither ZIP reader and provide no archive approval or extraction service.
 
-The SDK pin, software inventories and dependency notices use the locked versions. The ZIP guard retains 9.0.5 as its patched minimum.
+Current source selects c2pa 0.92.1, ZIP 9.5.1 and c2pa_raw_crypto 0.3.0. Version 0.92.1 is a non-yanked crates.io release with a stable semantic version, while its GitHub release is labelled pre-release. The update tightens incomplete APP11 handling and retains the PNG/JPEG preservation tests. The SDK pin, software inventories and dependency notices use the locked versions. The ZIP guard retains 9.0.5 as its patched minimum.
 
 The SDK upgrade also selects `crypto-bigint 0.7.10`, above the patched minimum 0.7.6 for [RUSTSEC-2026-0387](https://rustsec.org/advisories/RUSTSEC-2026-0387.html). Its exception was removed too.
 
@@ -24,7 +24,7 @@ Reviewed on 13 November 2026. The lock selects `rustix 1.1.6`, which fixes [RUST
 
 ## RSA exception
 
-Reassessed on 13 November 2026. `c2pa 0.91.8` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations. The advisory was updated on 8 November and now identifies `rsa >=0.10.0` as patched. The locked 0.9.10 remains affected. Declawd loads no private keys and does not sign or decrypt.
+Reassessed on 13 November 2026. `c2pa 0.92.1` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.3.0`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations. The advisory was updated on 8 November and now identifies `rsa >=0.10.0` as patched. The locked 0.9.10 remains affected. Declawd loads no private keys and does not sign or decrypt.
 
 The reviewed call path is:
 
