@@ -65,3 +65,7 @@ R2's truncated calibration report can prevent its registered `reproduce --write`
 V3's recorded template has 290 guaranteed literal contexts, above its recorded conservative bound of 286. Its old generic helper can overcount when adjacent literal fragments split tokens. The future guard coalesces literals, checks slot boundaries and rejects the recorded counterexample before registration or entropy. No additional experimental draw accompanied that correction.
 
 The website keeps its active r2 and SynthID release pins separately from the current CLI release. An update to tool dependencies or current guides does not replace registered browser evidence. Complete misses, failed targets and invalidated attempts remain available alongside successful checks.
+
+## Null study
+
+The separate [text null study](../experiments/text-null-v1/README.md) tests CountScan trimming, BELL's token-weighted e-BH component and prevalence calibration on registered synthetic data. It retains 27 count overclaims under a deliberately invalid repeated null and ten of ten false prevalence exclusions under a misspecified null at 100,000 documents. These component checks change no existing profile or detector threshold.

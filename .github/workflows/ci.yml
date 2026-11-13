@@ -187,3 +187,16 @@ jobs:
           git -C "$upstream" fetch --depth 1 origin 8f2e2316904ea7291ac96e30eb394c453dcc577b
           git -C "$upstream" checkout --detach FETCH_HEAD
           PATH="$runner_environment/bin:$PATH" DECLAWD_SYNTHID_UPSTREAM="$upstream" ./scripts/check-synthid-gpt2.sh
+
+  text-null-evidence:
+    name: Text null frozen evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python3 -m unittest discover -s experiments/text-null-v1 -p 'test_*.py'
+      - run: python3 experiments/text-null-v1/verify.py
