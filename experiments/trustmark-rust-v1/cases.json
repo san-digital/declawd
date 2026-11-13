@@ -1,0 +1,158 @@
+[
+  {
+    "id": "gradient-png",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "00011111111001000100110011111111110111001110000110110110100100000111",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/gradient-png/source.png",
+      "bytes": 1570,
+      "sha256": "673fe071effc286d697017d4d755b5f3dbfb7582492352f11d43a651ac79ee86"
+    }
+  },
+  {
+    "id": "gradient-jpg",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "00000100101010011110000000111000000000010001101110100010011100101100",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/gradient-jpg/source.jpg",
+      "bytes": 33102,
+      "sha256": "6710bfc3291367bd5a75cd761fa7990dd9a86de59eb6fb0a2f643e55cdd57320"
+    }
+  },
+  {
+    "id": "tiles-png",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "01101011100111101111110000101100000100011000001111101010100101000000",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/tiles-png/source.png",
+      "bytes": 27196,
+      "sha256": "666712bcb168a8e2224a6a1b22a221e3aa2b4f702b12551bad40c46309d17308"
+    }
+  },
+  {
+    "id": "tiles-jpg",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "00111100101101110001000110001000100101101011000010010000110111000100",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/tiles-jpg/source.jpg",
+      "bytes": 185304,
+      "sha256": "79560ea72612fbf6d1a55c4faf1cf005204b484b5df9c680fedb2deee7f1dde8"
+    }
+  },
+  {
+    "id": "noise-png",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "10010101001011111111100100100100010010101001011001101010010001101000",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/noise-png/source.png",
+      "bytes": 788083,
+      "sha256": "d4e604afb6b63431e2a62b1f5b45ed9dfe3d3b0686dc888fd3dda324fb22aaaf"
+    }
+  },
+  {
+    "id": "noise-jpg",
+    "size": [
+      512,
+      512
+    ],
+    "payload": "00000000000001110001010111100100010111100011001110110111010000110010",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/noise-jpg/source.jpg",
+      "bytes": 634619,
+      "sha256": "85d011405d0f3fff784fd3d361ba27cad86ad986b5978303fda71eb0308e90df"
+    }
+  },
+  {
+    "id": "landscape-png",
+    "size": [
+      768,
+      384
+    ],
+    "payload": "01011010000000100000110101011001101101000111000010010010010101101110",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/landscape-png/source.png",
+      "bytes": 6116,
+      "sha256": "d4a0f2863d3476c877f5b36e9abc440f0498ae3be111264fd2322a8206ada819"
+    }
+  },
+  {
+    "id": "landscape-jpg",
+    "size": [
+      768,
+      384
+    ],
+    "payload": "00101011100111010100010100010010111000110001100000100111010100111001",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/landscape-jpg/source.jpg",
+      "bytes": 37737,
+      "sha256": "bfa7bcd68d7281e866a6419a8f557dcb92267c65e34eb3ab5eda42940c48128f"
+    }
+  },
+  {
+    "id": "portrait-png",
+    "size": [
+      384,
+      768
+    ],
+    "payload": "01000000000100100000101001000000010000011110001010000101111010011000",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/portrait-png/source.png",
+      "bytes": 6129,
+      "sha256": "4ce4c75c8b12ab820f5b2df355bf27710463f5ee030885d70c93e08c9251a15d"
+    }
+  },
+  {
+    "id": "portrait-jpg",
+    "size": [
+      384,
+      768
+    ],
+    "payload": "11100101110101110011010011110001111110110111001010111011010100010111",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/portrait-jpg/source.jpg",
+      "bytes": 51729,
+      "sha256": "6a6a0c2253d1d16906599d1e4a1b0575e001f1c543700466fd45dcf20a297f7d"
+    }
+  },
+  {
+    "id": "texture-png",
+    "size": [
+      640,
+      480
+    ],
+    "payload": "01001100111100000010111001101101101101000000010010000100011101110110",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/texture-png/source.png",
+      "bytes": 34394,
+      "sha256": "bc3832297ff459dd3287b9a664d99eec58db6ee7fff4bcbb0af6ef6a2c70a4a0"
+    }
+  },
+  {
+    "id": "texture-jpg",
+    "size": [
+      640,
+      480
+    ],
+    "payload": "01101110001101101110001111001101011100011011101111110000010001001001",
+    "source": {
+      "path": "experiments/trustmark-v1/assets/texture-jpg/source.jpg",
+      "bytes": 253466,
+      "sha256": "a3f98a9af6ca3377de69ac74c646ac72ac3ea1aed38a486190e4095d7b148025"
+    }
+  }
+]

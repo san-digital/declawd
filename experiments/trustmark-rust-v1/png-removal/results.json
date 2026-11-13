@@ -1,0 +1,1051 @@
+{
+  "schema": "declawd.trustmark-png-continuation/v1",
+  "registration_sha256": "8b9f6c73e0fde2d05973c067216fe7ebad497c5d1cbf9fecca7e97ae470a5717",
+  "cases": [
+    {
+      "id": "gradient-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/gradient-png/source.png",
+      "sha256": "673fe071effc286d697017d4d755b5f3dbfb7582492352f11d43a651ac79ee86",
+      "expected_payload": "00011111111001000100110011111111110111001110000110110110100100000111",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/gradient-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/gradient-png-source.png",
+      "output_sha256": "306a2dfe2f4da3418d1b7a7a2d959223be2cfdac4a69d0db9d2ed340fd195032",
+      "bytes": 39447,
+      "rgb_sha256": "9298a2db0e1866ff883176665d7b41982c235718494c436ccb4ab67225f50c9c",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 0.8695030212402344,
+      "psnr": 48.73809265494466,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "tiles-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/tiles-png/source.png",
+      "sha256": "666712bcb168a8e2224a6a1b22a221e3aa2b4f702b12551bad40c46309d17308",
+      "expected_payload": "01101011100111101111110000101100000100011000001111101010100101000000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/tiles-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/tiles-png-source.png",
+      "output_sha256": "2cd254f13f077157cbf0c6f25711442d2a62f5907c4c728ed2a84e001d840749",
+      "bytes": 404896,
+      "rgb_sha256": "b67cd43182f0755bc924d6327f91cab0d6f6ac5ff6a352aae1fcaac7309432f4",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 1.0179964701334636,
+      "psnr": 48.05334088765222,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "noise-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/noise-png/source.png",
+      "sha256": "d4e604afb6b63431e2a62b1f5b45ed9dfe3d3b0686dc888fd3dda324fb22aaaf",
+      "expected_payload": "10010101001011111111100100100100010010101001011001101010010001101000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/noise-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/noise-png-source.png",
+      "output_sha256": "9d4f3d54a7f50bb7c7d5903fe6543ced93866f310d20ecc1ae6319b6b6386d5f",
+      "bytes": 787072,
+      "rgb_sha256": "90779f173951fa9c38f4c7ef83d18f41ef06fc3a415ed42fd01781dc004bd0b3",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 2.9236780802408853,
+      "psnr": 43.47150809159273,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "landscape-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/landscape-png/source.png",
+      "sha256": "d4a0f2863d3476c877f5b36e9abc440f0498ae3be111264fd2322a8206ada819",
+      "expected_payload": "01011010000000100000110101011001101101000111000010010010010101101110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/landscape-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/landscape-png-source.png",
+      "output_sha256": "ab09265983836479717dedc57b95ad778ef2b00e15dd7e8913bb34c49dd35487",
+      "bytes": 110813,
+      "rgb_sha256": "b14e30ded25168c100f7d291d9fbb17cdbe310385edbba14cbc87df450ead11d",
+      "size": [
+        768,
+        384
+      ],
+      "alpha": false,
+      "mse": 0.46871044017650465,
+      "psnr": 51.421757336533354,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "portrait-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/portrait-png/source.png",
+      "sha256": "4ce4c75c8b12ab820f5b2df355bf27710463f5ee030885d70c93e08c9251a15d",
+      "expected_payload": "01000000000100100000101001000000010000011110001010000101111010011000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/portrait-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/portrait-png-source.png",
+      "output_sha256": "51e7783e3b8f999326fdfb8cb4994929a4fefaa9aa7e6d4edc10899156b93b0f",
+      "bytes": 117400,
+      "rgb_sha256": "c601a77c2ee1a88fba4c2f8d683f6c43c75f4c40cb30a5b2e08c86cbc988494b",
+      "size": [
+        384,
+        768
+      ],
+      "alpha": false,
+      "mse": 0.5254087094907407,
+      "psnr": 50.925830932316806,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "texture-png",
+      "encoder": "source",
+      "path": "experiments/trustmark-rust-v1/run/texture-png/source.png",
+      "sha256": "bc3832297ff459dd3287b9a664d99eec58db6ee7fff4bcbb0af6ef6a2c70a4a0",
+      "expected_payload": "01001100111100000010111001101101101101000000010010000100011101110110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/texture-png/source.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/texture-png-source.png",
+      "output_sha256": "c565aacdb372095988533f45ef98747239609714502d018b263a98e0c43eb027",
+      "bytes": 400470,
+      "rgb_sha256": "3bfc72bd4268dbaf1b8ee70526a6c7af905b0ffb64b24bc11bfa60260b693e23",
+      "size": [
+        640,
+        480
+      ],
+      "alpha": false,
+      "mse": 1.6553135850694445,
+      "psnr": 45.942000815691046,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-source.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "gradient-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/gradient-png/python-marked.png",
+      "sha256": "4161016209d0e34dab0ecf7f9829781453b593bd4a0f036270968e597da08226",
+      "expected_payload": "00011111111001000100110011111111110111001110000110110110100100000111",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/gradient-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/gradient-png-python.png",
+      "output_sha256": "3396114667e4058925ee6c3992e6ae6a9927c05f5d2582c8f5efc1cbde77b6a4",
+      "bytes": 134948,
+      "rgb_sha256": "ed291ca42597ab85fd9ec4bb6af5b18b6918b3fe9bfc8497dcd2437cfaa826d2",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 0.4421539306640625,
+      "psnr": 51.67506870704535,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "gradient-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/gradient-png/rust-marked.png",
+      "sha256": "b4e77bec62b12c9d82b66ffe92c4f5021dbd6f7c1c581908f500dbf57f7e5813",
+      "expected_payload": "00011111111001000100110011111111110111001110000110110110100100000111",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/gradient-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/gradient-png-rust.png",
+      "output_sha256": "50b647a86a2d479694035c4b910709c05f793741bde401f37d3ac4965febe597",
+      "bytes": 136788,
+      "rgb_sha256": "583fb3b229e4aa172b081aa8d0c9d9a83ce0f22a9021338f85ac0efbbec27131",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 0.4487953186035156,
+      "psnr": 51.61032042734031,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/gradient-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "tiles-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/tiles-png/python-marked.png",
+      "sha256": "208544ed0ef0b45c6b4ff357b3da3369e6961d59fabc9b926755ea4e0b24241c",
+      "expected_payload": "01101011100111101111110000101100000100011000001111101010100101000000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/tiles-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/tiles-png-python.png",
+      "output_sha256": "cd59032e3805549fa372f3a8bb8a295ca37c28757df726669f80ac3cef9b316e",
+      "bytes": 419071,
+      "rgb_sha256": "dc8d49b9719a00bd9482ec0b19c1be6d8d2887089f7ea3cead37089088a11b8e",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 2.8566385904947915,
+      "psnr": 43.57225062061027,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "tiles-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/tiles-png/rust-marked.png",
+      "sha256": "b7a0a84364e25016267a4f08ebcdca676b77428f45c944b37fde22aa79cbf602",
+      "expected_payload": "01101011100111101111110000101100000100011000001111101010100101000000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/tiles-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/tiles-png-rust.png",
+      "output_sha256": "103f26aef56a482f5d68a500a92e9e8757521ddb3f28715dc4176639df327469",
+      "bytes": 425147,
+      "rgb_sha256": "6def6f93c7c794d587828c86ee9caed5341ece88c396f035855fd81a2ad89fc4",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 3.0179901123046875,
+      "psnr": 43.33362548284054,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/tiles-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "noise-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/noise-png/python-marked.png",
+      "sha256": "d99e64576a6a226041f2402096f4e0f7c051f3ee28f5b1761a4303dbe05c405d",
+      "expected_payload": "10010101001011111111100100100100010010101001011001101010010001101000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/noise-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/noise-png-python.png",
+      "output_sha256": "28b74e6dd9c8560fded9f7aa47b2cbaa7cab1f91e3b67d597bdcf875dbbd3114",
+      "bytes": 787072,
+      "rgb_sha256": "6d4a3789b5bd80c86bf1f6847ca966590a7ee8586a762a8420c8265915643c7b",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 3.0714569091796875,
+      "psnr": 43.2573593407795,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "noise-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/noise-png/rust-marked.png",
+      "sha256": "8aa0300c11cb4a800b996804759f0402bf6549f44ca6c4d77be09fb4f286c919",
+      "expected_payload": "10010101001011111111100100100100010010101001011001101010010001101000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/noise-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/noise-png-rust.png",
+      "output_sha256": "c34c1b37184e9e262e9b9ccd90e9708954e5ed84849d6e1eab3b36c6ffa5d8b5",
+      "bytes": 787072,
+      "rgb_sha256": "48674c2b2d1c076c6e1f837c86abd1ba8f8dea8377e5d2011838e85cf562ad93",
+      "size": [
+        512,
+        512
+      ],
+      "alpha": false,
+      "mse": 3.111466725667318,
+      "psnr": 43.201151999107,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/noise-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "landscape-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/landscape-png/python-marked.png",
+      "sha256": "68ddef41afc3821c9482771fac40e563fcc29a115b87d98767ed869717fba1f4",
+      "expected_payload": "01011010000000100000110101011001101101000111000010010010010101101110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/landscape-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/landscape-png-python.png",
+      "output_sha256": "c92710f02d913bf72176f2c9744bbdd0c66834378b2216077bfc390aa1dfbedc",
+      "bytes": 166483,
+      "rgb_sha256": "701bc2e2b2b884608a702ce29d69e05120bba347faf8a1c23b764e0569b6e661",
+      "size": [
+        768,
+        384
+      ],
+      "alpha": false,
+      "mse": 0.7634774667245371,
+      "psnr": 49.3028413705452,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "landscape-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/landscape-png/rust-marked.png",
+      "sha256": "0962b5ae328ee326d7278a0b986a4a84d4a254288d2e2fc8de962844cfc7184a",
+      "expected_payload": "01011010000000100000110101011001101101000111000010010010010101101110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/landscape-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/landscape-png-rust.png",
+      "output_sha256": "f78c7cdd48713a16d4a920411ccefbfee8f705e115efcfba155a0208d474a7b6",
+      "bytes": 165419,
+      "rgb_sha256": "513416eca91674128e143fd25ca62e84d0127a37e08f98b49048866ada25fe8d",
+      "size": [
+        768,
+        384
+      ],
+      "alpha": false,
+      "mse": 0.8208979853877315,
+      "psnr": 48.98791171027354,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/landscape-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "portrait-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/portrait-png/python-marked.png",
+      "sha256": "ae8610831ff7ca31a642a8eeb21930d22731b82c7926efa0c0a774d222e85fa2",
+      "expected_payload": "01000000000100100000101001000000010000011110001010000101111010011000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/portrait-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/portrait-png-python.png",
+      "output_sha256": "5b71f5fd91baac6258028ba56c6c634a5609d8df53c028ec26e320aa36513dc5",
+      "bytes": 175592,
+      "rgb_sha256": "195e7bdfa776941bed4fe3b9b23ace813840d415efb142e2d5d988f8123b2171",
+      "size": [
+        384,
+        768
+      ],
+      "alpha": false,
+      "mse": 0.8313655146846065,
+      "psnr": 48.932883550022595,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "portrait-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/portrait-png/rust-marked.png",
+      "sha256": "ce938eecb055a3bc88c70a2dda66c6af3ce241d3b5af9502124cf68ea3369325",
+      "expected_payload": "01000000000100100000101001000000010000011110001010000101111010011000",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/portrait-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/portrait-png-rust.png",
+      "output_sha256": "65d3cb30a09eeccd99f83ceb84737db42e03240ae49535413f75c495b41ea048",
+      "bytes": 177836,
+      "rgb_sha256": "d770f803fa3f8844f00faf081437b1d8fd8605c2d06a39e06c436878065b2e09",
+      "size": [
+        384,
+        768
+      ],
+      "alpha": false,
+      "mse": 0.8478337040653935,
+      "psnr": 48.847696837163035,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/portrait-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "texture-png",
+      "encoder": "python",
+      "path": "experiments/trustmark-rust-v1/run/texture-png/python-marked.png",
+      "sha256": "ec183d3ee356efae196bedae387422e11a4503ac87b7fe29ca2066d2bf393331",
+      "expected_payload": "01001100111100000010111001101101101101000000010010000100011101110110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/texture-png/python-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/texture-png-python.png",
+      "output_sha256": "202795836951c6163761bf13403576acd078720ba5aa80d4379cc3171872ed21",
+      "bytes": 407532,
+      "rgb_sha256": "5772ee2f1b8a5dd041eca3b5e06c40aa4151566022bc3aaf7ad8f273d64ed7b4",
+      "size": [
+        640,
+        480
+      ],
+      "alpha": false,
+      "mse": 3.199526909722222,
+      "psnr": 43.0799459369997,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-python.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Corrupt or missing watermark\n",
+        "stderr": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "texture-png",
+      "encoder": "rust",
+      "path": "experiments/trustmark-rust-v1/run/texture-png/rust-marked.png",
+      "sha256": "2d412007cab766372ee9b852cf8154845e5da601737a1a02036b4af30f7c7167",
+      "expected_payload": "01001100111100000010111001101101101101000000010010000100011101110110",
+      "errors": [],
+      "removal": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "remove",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/run/texture-png/rust-marked.png",
+          "-o",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output": "png-removal/texture-png-rust.png",
+      "output_sha256": "74db70ef21e2b7f5298e837c278be681cc5ea15f2e7118bd65edb555a2421a19",
+      "bytes": 412123,
+      "rgb_sha256": "2ea7eb36f88a771d07117d75f7b30962a0eea37906cc77301d8520c0d6f4ea4f",
+      "size": [
+        640,
+        480
+      ],
+      "alpha": false,
+      "mse": 3.2543489583333334,
+      "psnr": 43.00616241107566,
+      "python": {
+        "payload": "",
+        "detected": false,
+        "schema": -1,
+        "exact": false
+      },
+      "rust": {
+        "arguments": [
+          "/tmp/declawd-trustmark-target/debug/trustmark",
+          "-m",
+          "/tmp/declawd-trustmark-models-20261113",
+          "decode",
+          "-i",
+          "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/png-removal/texture-png-rust.png",
+          "--variant",
+          "Q"
+        ],
+        "returncode": 0,
+        "stdout": "Found watermark: 0100111011011000001111100110011111110100001100011101010101110\n",
+        "stderr": "",
+        "exact": false
+      }
+    }
+  ],
+  "errors": []
+}
