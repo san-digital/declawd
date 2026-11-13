@@ -1,0 +1,20 @@
+{
+  "claim_generator": "declawd-trustmark-rust/1",
+  "title": "Owned TrustMark comparison",
+  "alg": "es256",
+  "sign_cert": "/private/tmp/declawd-trustmark-20261113/experiments/trustmark-rust-v1/test-cert.pem",
+  "private_key": "/tmp/declawd-purpose-fixture/key.pem",
+  "assertions": [
+    {
+      "label": "c2pa.actions",
+      "data": {
+        "actions": [
+          {
+            "action": "c2pa.created",
+            "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/softwareImage"
+          }
+        ]
+      }
+    }
+  ]
+}
