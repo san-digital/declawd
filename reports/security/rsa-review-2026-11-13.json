@@ -1,0 +1,47 @@
+{
+  "schema": "declawd.rsa-reassessment/v1",
+  "reviewed_at": "2026-11-13T18:42:17.254080+00:00",
+  "advisory": "https://rustsec.org/advisories/RUSTSEC-2023-0071.html",
+  "advisory_modified": "2026-11-08",
+  "patched_range": ">=0.10.0",
+  "locked_rsa": "0.9.10",
+  "locked_sdk": "0.91.8",
+  "locked_crypto": "0.2.1",
+  "latest_sdk_evaluated": "0.92.1",
+  "latest_crypto_evaluated": "0.3.0",
+  "latest_crypto_rsa_requirement": "^0.9.10, optional",
+  "migration": "The latest C2PA crypto package has not migrated to RSA 0.10. A semver override cannot satisfy its current requirement.",
+  "reviewed_operations": [
+    "load_jumbf_from_memory dispatches to PNG/JPEG asset readers",
+    "remove_jumbf_from_file dispatches by a temporary PNG/JPEG extension to store removal",
+    "No private-key load, signing or decryption is called by Declawd",
+    "Default and network features remain disabled"
+  ],
+  "decision": "Retain the source and exact-package guarded exception through 2026-11-28. The expiry is unchanged.",
+  "source_files": [
+    {
+      "path": "src/artifact.rs",
+      "sha256": "02f684f8974a7ee5700082b2226d51d90680160c6358e5705c0e5dc8b48b91a7"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "266b9cedc63977943b16bc909d55517b7b52e12fe374655b37ec7901d29c18c1"
+    },
+    {
+      "path": "c2pa-0.91.8/src/jumbf_io.rs",
+      "sha256": "59fd37d8f78246e8e12f98f026fd9cdc137035c0e21294478feac1fb8b1651cc"
+    },
+    {
+      "path": "c2pa-0.91.8/src/asset_handlers/png_io.rs",
+      "sha256": "f5ea2029e8064e028acd6b40dfa39806f3a69b4644e3f02011818cda27925743"
+    },
+    {
+      "path": "c2pa-0.91.8/src/asset_handlers/jpeg_io.rs",
+      "sha256": "338660924a63cee76b7ae11c68350bddb3b0048a5d541ffae6548c67c39c658c"
+    },
+    {
+      "path": "c2pa_raw_crypto-0.3.0/Cargo.toml",
+      "sha256": "ad3e370765f4d61d74aa83e73ede62444aa5f7db2438dce375776dce6f307602"
+    }
+  ]
+}
