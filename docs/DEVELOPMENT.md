@@ -48,24 +48,26 @@ The Rust inventory covers runtime and build dependencies, excluding test-only de
 
 ## Release checks
 
-[Release 0.3.3](https://github.com/san-digital/declawd/releases/tag/v0.3.3) has four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle. Each of the eight payloads has a checksum file. GitHub build provenance covers all sixteen assets.
+The 0.3.4 release candidate uses the patched Rustix and C2PA dependencies. Publish only after the exact candidate commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. The published 0.3.3 assets retain their original bytes.
+
+After publishing, verify the crate version and every release payload before updating the site's pinned download record. The public site continues to point at the verified 0.3.3 assets until the replacement assets exist and pass verification.
 
 Download a payload and its checksum together. Verify using the tool available on your platform:
 
 ```sh
 # Linux, or another shell with sha256sum
-sha256sum --check declawd-v0.3.3-<target>.tar.gz.sha256
-sha256sum --check declawd-v0.3.3-x86_64-pc-windows-msvc.zip.sha256
+sha256sum --check declawd-v0.3.4-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.3.4-x86_64-pc-windows-msvc.zip.sha256
 
 # macOS
-shasum -a 256 --check declawd-v0.3.3-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.4-<target>.tar.gz.sha256
 
 # The same check applies to inventories and the teaching bundle
-sha256sum --check declawd-v0.3.3.cdx.json.sha256
-sha256sum --check declawd-v0.3.3-python.cdx.json.sha256
-sha256sum --check declawd-v0.3.3-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.3.4.cdx.json.sha256
+sha256sum --check declawd-v0.3.4-python.cdx.json.sha256
+sha256sum --check declawd-v0.3.4-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.3.3-<target>.tar.gz --repo san-digital/declawd
+gh attestation verify declawd-v0.3.4-<target>.tar.gz --repo san-digital/declawd
 ```
 
 Replace `<target>` with the archive's actual target. For an inventory, source contract, teaching bundle or Windows ZIP, give `gh attestation verify` that filename instead. The source contract embedded in every platform archive should match the standalone contract.
