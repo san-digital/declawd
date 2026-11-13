@@ -1,0 +1,38 @@
+[
+  {
+    "name": "encoder_Q.onnx",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/encoder_Q.onnx",
+    "bytes": 17312208,
+    "sha256": "19b3d1b25836130ffd78775a8f61539f993375d1823ef0e59ba5b8dffb4f892d"
+  },
+  {
+    "name": "decoder_Q.onnx",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/decoder_Q.onnx",
+    "bytes": 47401222,
+    "sha256": "ee3268f057c9dabef680e169302f5973d0589feea86189ed229a896cc3aa88df"
+  },
+  {
+    "name": "remover_Q.onnx",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/remover_Q.onnx",
+    "bytes": 154859578,
+    "sha256": "f29959d22624035dd83a25cd0e6c744cb1b0d02c18d8e7757fef1362cc264505"
+  },
+  {
+    "name": "trustmark_Q.yaml",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/trustmark_Q.yaml",
+    "bytes": 2009,
+    "sha256": "43f37103f92efa8bd6b1c5902bb537cc12a981dc699fca19d9bb7de8c62d03d9"
+  },
+  {
+    "name": "decoder_Q.ckpt",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/decoder_Q.ckpt",
+    "bytes": 47652460,
+    "sha256": "e3d9cea5406a26590735719f8f15cb10802b11852ae69047eaf4cf17214df781"
+  },
+  {
+    "name": "encoder_Q.ckpt",
+    "url": "https://cai-watermark.adobe.net/watermarking/trustmark-models/encoder_Q.ckpt",
+    "bytes": 17302074,
+    "sha256": "dc382c3f6b4fd568b27d6fbb763d6ffc2d2587126d84afe9d5ee95b4c5d99826"
+  }
+]
