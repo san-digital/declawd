@@ -50,9 +50,9 @@ Package inventory
 - byteorder 1.5.0 | Unlicense OR MIT | https://github.com/BurntSushi/byteorder
 - byteordered 0.6.0 | MIT OR Apache-2.0 | https://github.com/Enet4/byteordered
 - bytes 1.12.1 | MIT | https://github.com/tokio-rs/bytes
-- c2pa 0.91.8 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-rs
+- c2pa 0.92.1 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-rs
 - c2pa_cbor 0.78.2 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa-cbor
-- c2pa_raw_crypto 0.2.1 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa_raw_crypto
+- c2pa_raw_crypto 0.3.0 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa_raw_crypto
 - cc 1.4.4 | MIT OR Apache-2.0 | https://github.com/rust-lang/cc-rs
 - cc-traits 2.0.0 | MIT OR Apache-2.0 | https://github.com/timothee-haudebourg/cc-traits
 - cfg-if 1.0.4 | MIT OR Apache-2.0 | https://github.com/rust-lang/cfg-if
@@ -72,6 +72,7 @@ Package inventory
 - const-hex 1.19.1 | MIT OR Apache-2.0 | https://github.com/danipopes/const-hex
 - const-oid 0.10.2 | Apache-2.0 OR MIT | https://github.com/RustCrypto/formats
 - const-oid 0.9.6 | Apache-2.0 OR MIT | https://github.com/RustCrypto/formats/tree/master/const-oid
+- constant_time_eq 0.6.1 | CC0-1.0 OR MIT-0 OR Apache-2.0 | https://codeberg.org/cesarb/constant_time_eq
 - core-foundation-sys 0.8.7 | MIT OR Apache-2.0 | https://github.com/servo/core-foundation-rs
 - coset 0.4.2 | Apache-2.0 | https://github.com/google/coset
 - cpubits 0.1.1 | MIT OR Apache-2.0 | https://github.com/RustCrypto/utils
@@ -360,7 +361,7 @@ Package inventory
 - zerotrie 0.2.5 | Unicode-3.0 | https://github.com/unicode-org/icu4x
 - zerovec 0.11.8 | Unicode-3.0 | https://github.com/unicode-org/icu4x
 - zerovec-derive 0.11.6 | Unicode-3.0 | https://github.com/unicode-org/icu4x
-- zip 9.2.2 | MIT | https://github.com/zip-rs/zip2
+- zip 9.5.1 | MIT | https://github.com/zip-rs/zip2
 - zmij 1.0.23 | MIT | https://github.com/dtolnay/zmij
 
 Licence texts

@@ -11,9 +11,9 @@ const JPEG: &str = "/9j/4AAQSkZJRgABAQAAAQABAAD/4QBERXhpZgAATU0AKgAAAAgAAgESAAMA
 
 fn minimal_c2pa_jumbf() -> Vec<u8> {
     let mut store = Vec::new();
-    store.extend_from_slice(&37u32.to_be_bytes());
+    store.extend_from_slice(&33u32.to_be_bytes());
     store.extend_from_slice(b"jumb");
-    store.extend_from_slice(&29u32.to_be_bytes());
+    store.extend_from_slice(&25u32.to_be_bytes());
     store.extend_from_slice(b"jumd");
     store.extend_from_slice(b"c2pa");
     store.extend_from_slice(&[0u8; 12]);

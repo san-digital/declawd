@@ -31,7 +31,7 @@ for version in zip_versions:
     if not match or tuple(map(int, match.groups())) < (9, 0, 5):
         raise SystemExit(f"ZIP {version} is not a patched stable release for GHSA-m665-v7pm-7grj. Require 9.0.5 or newer")
 
-expected = {"c2pa": "0.91.8", "c2pa_raw_crypto": "0.2.1", "rsa": "0.9.10"}
+expected = {"c2pa": "0.92.1", "c2pa_raw_crypto": "0.3.0", "rsa": "0.9.10"}
 for name, version in expected.items():
     actual = {package["version"] for package in packages if package["name"] == name}
     if actual != {version}:
