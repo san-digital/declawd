@@ -187,3 +187,21 @@ jobs:
           git -C "$upstream" fetch --depth 1 origin 8f2e2316904ea7291ac96e30eb394c453dcc577b
           git -C "$upstream" checkout --detach FETCH_HEAD
           PATH="$runner_environment/bin:$PATH" DECLAWD_SYNTHID_UPSTREAM="$upstream" ./scripts/check-synthid-gpt2.sh
+
+  text-null-evidence:
+    name: Text null frozen evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - run: python3 -m unittest discover -s experiments/text-null-v1 -p 'test_*.py'
+      - name: Verify preserved evidence
+        run: |
+          git fetch origin refs/tags/declawd-text-null-v1-20261113:refs/tags/declawd-text-null-v1-20261113
+          git diff --exit-code declawd-text-null-v1-20261113 -- experiments/text-null-v1/PLAN.md experiments/text-null-v1/study.py experiments/text-null-v1/test_study.py experiments/text-null-v1/registration.json experiments/text-null-v1/results.json.gz
+          git worktree add --detach "$RUNNER_TEMP/text-null-evidence" declawd-text-null-v1-20261113
+          python3 "$RUNNER_TEMP/text-null-evidence/experiments/text-null-v1/verify.py"
