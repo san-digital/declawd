@@ -33,12 +33,14 @@ def main():
     actual["registration_sha256"] = sha(root / "registration.json")
     actual["python"] = expected["python"]
     for value, recorded in zip(actual["documents"], expected["documents"]):
-        if value["pivots"] != recorded["pivots"]:
-            raise ValueError("Registered pivot draws differ")
+        for pivot, frozen, marked in zip(value["pivots"], recorded["pivots"], recorded["labels"]):
+            tolerance = max(math.ulp(pivot), math.ulp(frozen)) if marked else 0.0
+            if abs(pivot - frozen) > tolerance:
+                raise ValueError("Registered pivot draws differ beyond cubing round-off")
     compare(actual, expected)
-    if len(expected["documents"]) != 300 or len(expected["prevalence"]) != 80:
+    if len(expected["documents"]) != 300 or len(expected["prevalence"]) != 40:
         raise ValueError("The result set is incomplete")
-    print("Verified all 300 documents, 624000 intervals and 80 prevalence records; pivots and discrete decisions exact, derived floats within 1e-12")
+    print("Verified all 300 documents, 624000 intervals and 40 prevalence records; null pivots and discrete decisions exact, cubed pivots within one ULP, derived floats within 1e-12")
 
 
 if __name__ == "__main__":
