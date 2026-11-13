@@ -230,3 +230,36 @@ fn public_and_derived_c2pa_cases_preserve_every_retained_byte() {
         assert_eq!(fs::read(&input).unwrap(), original, "{id}");
     }
 }
+
+#[test]
+fn incomplete_app11_store_is_rejected_without_output() {
+    let directory = tempdir().unwrap();
+    let input = directory.path().join("original.jpg");
+    let marked = directory.path().join("truncated-store.jpg");
+    let output = directory.path().join("cleaned.jpg");
+    fs::write(&input, STANDARD.decode(JPEG).unwrap()).unwrap();
+    let mut store = minimal_c2pa_jumbf();
+    store[..4].copy_from_slice(&37u32.to_be_bytes());
+    store[8..12].copy_from_slice(&29u32.to_be_bytes());
+    c2pa::jumbf_io::save_jumbf_to_file(&store, &input, Some(&marked)).unwrap();
+    let before = fs::read(&marked).unwrap();
+    assert!(inspect_file(&marked, false).is_err());
+    assert!(clean_c2pa_file(&marked, &output, true).is_err());
+    assert!(!output.exists());
+    assert_eq!(fs::read(marked).unwrap(), before);
+}
+
+#[test]
+fn oversized_app11_declaration_is_rejected_without_output() {
+    let directory = tempdir().unwrap();
+    let input = directory.path().join("original.jpg");
+    let marked = directory.path().join("oversized-store.jpg");
+    let output = directory.path().join("cleaned.jpg");
+    fs::write(&input, STANDARD.decode(JPEG).unwrap()).unwrap();
+    let mut store = minimal_c2pa_jumbf();
+    store[..4].copy_from_slice(&u32::MAX.to_be_bytes());
+    c2pa::jumbf_io::save_jumbf_to_file(&store, &input, Some(&marked)).unwrap();
+    assert!(inspect_file(&marked, false).is_err());
+    assert!(clean_c2pa_file(&marked, &output, false).is_err());
+    assert!(!output.exists());
+}
