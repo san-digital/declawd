@@ -66,6 +66,10 @@ V3's recorded template has 290 guaranteed literal contexts, above its recorded c
 
 The website keeps its active r2 and SynthID release pins separately from the current CLI release. An update to tool dependencies or current guides does not replace registered browser evidence. Complete misses, failed targets and invalidated attempts remain available alongside successful checks.
 
+## Null study
+
+The separate [text null study](../experiments/text-null-v1/README.md) tests CountScan trimming, BELL's token-weighted e-BH component and prevalence calibration on registered synthetic data. It retains 27 count overclaims under a deliberately invalid repeated null and ten of ten false prevalence exclusions under a misspecified null at 100,000 documents. These component checks change no existing profile or detector threshold.
+
 ## Rust comparison
 
 The separate [TrustMark Rust comparison](../experiments/trustmark-rust-v1/README.md) retains Rust/Python decoder differences, one unmarked Rust positive and eighteen initial PNG removal command errors. Its registered continuation uses the existing PNG files without re-encoding. C2PA removal preserved all 24 marked files, while pixel removal left zero exact recoveries for either decoder on those outputs. These matching-Q-model results supply no production-provider guarantee.

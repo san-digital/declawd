@@ -1,0 +1,10 @@
+{
+  "input_commit": "03c77ea05ea39515390694389f2d67f33f69dec1",
+  "inputs": {
+    "PLAN.md": "2c8aca430483b6fcc4068d562bc3b7457756e313f2cf815434c193826310fb6f",
+    "study.py": "52f9381b49779ca9b1513ce7e55a73dd36408b21f077fc49073c91fb7457e40b",
+    "test_study.py": "aa5e9ae50bbcfed842e86e55bd459bef8c54d00aaa78e4abffd3ced6a07b9cf9"
+  },
+  "schema": "declawd.text-null-registration/v1",
+  "seed": 20261113
+}
