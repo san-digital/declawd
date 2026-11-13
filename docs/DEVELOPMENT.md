@@ -48,9 +48,9 @@ The Rust inventory covers runtime and build dependencies, excluding test-only de
 
 ## Release checks
 
-The 0.3.4 release candidate uses the patched Rustix and C2PA dependencies. Publish only after the exact candidate commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. The published 0.3.3 assets retain their original bytes.
+The 0.3.4 release uses the patched Rustix and C2PA dependencies. Publish only after the exact release commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. The published 0.3.3 assets retain their original bytes.
 
-After publishing, verify the crate version and every release payload before updating the site's pinned download record. The public site continues to point at the verified 0.3.3 assets until the replacement assets exist and pass verification.
+After publishing, verify the crate version and every release payload before updating the site's pinned download record. Historical experiment pins retain their original release identities.
 
 Download a payload and its checksum together. Verify using the tool available on your platform:
 

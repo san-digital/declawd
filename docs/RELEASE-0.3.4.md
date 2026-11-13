@@ -1,6 +1,6 @@
 # Release 0.3.4
 
-This candidate patches Rustix to 1.1.6 and updates C2PA to 0.92.1 with ZIP 9.5.1. It adds regression checks for truncated and oversized APP11 stores and updates crc32fast, img-parts and the release actions. The CLI command and report contracts remain unchanged.
+This release patches Rustix to 1.1.6 and updates C2PA to 0.92.1 with ZIP 9.5.1. It adds regression checks for truncated and oversized APP11 stores and updates crc32fast, img-parts and the release actions. The CLI command and report contracts remain unchanged.
 
 ## Security
 
@@ -8,7 +8,7 @@ Rustix no longer needs an advisory exception. The C2PA crypto dependency still s
 
 ## Publication
 
-Build and test the exact candidate commit with Rust 1.96. Verify the crate package, regenerated notices and both CycloneDX inventories. Publish the crate from the owner account, then create the matching v0.3.4 tag and verify all four platform archives, eight payload checksums and build attestations. Update the site download record only from those observed release assets. Candidate notes do not establish that publication has happened.
+Build and test the exact release commit with Rust 1.96. Verify the crate package, regenerated notices and both CycloneDX inventories. Publish the crate from the owner account, then create the matching v0.3.4 tag and verify all four platform archives, eight payload checksums and build attestations. Update the site download record only from those observed release assets. The registry and release assets must agree on their source commit.
 
 ## Evidence
 
