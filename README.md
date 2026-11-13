@@ -6,10 +6,10 @@ The [website](https://declawd.com) explains the experiments and provides browser
 
 ## Install
 
-[Download 0.3.3 binaries](https://declawd.com/downloads) for Apple Silicon, Intel Mac, Linux or Windows, or install the [crate](https://crates.io/crates/declawd/0.3.3) with Rust 1.96 or newer:
+[Download 0.3.4 binaries](https://declawd.com/downloads) for Apple Silicon, Intel Mac, Linux or Windows, or install the [crate](https://crates.io/crates/declawd/0.3.4) with Rust 1.96 or newer:
 
 ```sh
-cargo install declawd --locked --version 0.3.3
+cargo install declawd --locked --version 0.3.4
 ```
 
 Archives have SHA-256 checksums and GitHub build attestations. Mac and Windows binaries are unsigned by operating-system signing services. The [verification guide](docs/DEVELOPMENT.md#release-checks) explains what to check before running them.

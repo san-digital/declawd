@@ -1,6 +1,6 @@
 [package]
 name = "declawd"
-version = "0.3.3"
+version = "0.3.4"
 edition = "2024"
 rust-version = "1.96"
 description = "Inspect known carriers and reproduce public watermark scoring for education"
@@ -20,6 +20,8 @@ include = [
   "/evidence/**",
   "/experiments/**",
   "!/experiments/trustmark-v1/**",
+  "!/experiments/trustmark-rust-v1/**",
+  "!/experiments/text-null-v1/results.json",
   "/reports/**",
   "/docs/FUTURE-REGISTRATION.md",
   "/docs/CLI.md",
