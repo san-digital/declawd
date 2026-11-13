@@ -1,0 +1,31 @@
+{
+  "schema": "declawd.trustmark-rust-registration/v1",
+  "registered_at": "2026-11-13T19:23:38.878515+00:00",
+  "input_commit": "1404b45e63f7739f53cc85fef4a2cb9c996b6f55",
+  "files": {
+    "experiments/trustmark-rust-v1/PLAN.md": "a8b5d128578527b4042a16dae7004f9690530511cc16e4898a7275ed7e192897",
+    "experiments/trustmark-rust-v1/TRUSTMARK-LICENSE.txt": "58d47a5cdfaaceda98925d845e8207d90336c62347a2383f95962b667b1cdaf5",
+    "experiments/trustmark-rust-v1/cases.json": "1b8b738452e8c972e7762da3e408f1933c55fa557eadfa92d620dec19fb74bae",
+    "experiments/trustmark-rust-v1/experiment.py": "6d540b6b445e1bc59402e2e2e96736e175ef26c43ebcbf84ae353291c315fad9",
+    "experiments/trustmark-rust-v1/models.json": "11f6aa3820e999b79618595389ce524432526a0542a9692fb93b225ec5f0e443",
+    "experiments/trustmark-rust-v1/requirements-macos-arm64.lock": "87f285e56f7f8150fdaa4969774659499b05471f8819cd366503a453a7f50da1",
+    "experiments/trustmark-rust-v1/runtime-advisories.json": "d5a38edd4e8f0ae42df506b01cb8527b9628abb79940c08ba985ec04a3bd16c0",
+    "experiments/trustmark-rust-v1/runtime.json": "ee6e37b39874823cb14f10d2348e3d4118b9c9bb0e0f50e5f3a5293bf048f3b0",
+    "experiments/trustmark-rust-v1/rust-Cargo.lock": "4f45726a4465d900720a6a4857848e3d7f0ac12c51567cead08448d5733fe630",
+    "experiments/trustmark-rust-v1/test-cert.pem": "eca8b32ef838f577f25c035e07eb132d6da31546aae5ec3ee41820a36b68a36f",
+    "experiments/trustmark-rust-v1/upstream-Cargo.lock": "ec29bf996b20b0a5df765b9da6ff5c73b5166cabb3b5db38347c1ae13f888794",
+    "experiments/trustmark-rust-v1/upstream-advisories.json": "69e6165cfd8ee2616694c6151a2a85e65bb2bd47d04b045efbcef722349c537c",
+    "experiments/trustmark-v1/assets/gradient-png/source.png": "673fe071effc286d697017d4d755b5f3dbfb7582492352f11d43a651ac79ee86",
+    "experiments/trustmark-v1/assets/gradient-jpg/source.jpg": "6710bfc3291367bd5a75cd761fa7990dd9a86de59eb6fb0a2f643e55cdd57320",
+    "experiments/trustmark-v1/assets/tiles-png/source.png": "666712bcb168a8e2224a6a1b22a221e3aa2b4f702b12551bad40c46309d17308",
+    "experiments/trustmark-v1/assets/tiles-jpg/source.jpg": "79560ea72612fbf6d1a55c4faf1cf005204b484b5df9c680fedb2deee7f1dde8",
+    "experiments/trustmark-v1/assets/noise-png/source.png": "d4e604afb6b63431e2a62b1f5b45ed9dfe3d3b0686dc888fd3dda324fb22aaaf",
+    "experiments/trustmark-v1/assets/noise-jpg/source.jpg": "85d011405d0f3fff784fd3d361ba27cad86ad986b5978303fda71eb0308e90df",
+    "experiments/trustmark-v1/assets/landscape-png/source.png": "d4a0f2863d3476c877f5b36e9abc440f0498ae3be111264fd2322a8206ada819",
+    "experiments/trustmark-v1/assets/landscape-jpg/source.jpg": "bfa7bcd68d7281e866a6419a8f557dcb92267c65e34eb3ab5eda42940c48128f",
+    "experiments/trustmark-v1/assets/portrait-png/source.png": "4ce4c75c8b12ab820f5b2df355bf27710463f5ee030885d70c93e08c9251a15d",
+    "experiments/trustmark-v1/assets/portrait-jpg/source.jpg": "6a6a0c2253d1d16906599d1e4a1b0575e001f1c543700466fd45dcf20a297f7d",
+    "experiments/trustmark-v1/assets/texture-png/source.png": "bc3832297ff459dd3287b9a664d99eec58db6ee7fff4bcbb0af6ef6a2c70a4a0",
+    "experiments/trustmark-v1/assets/texture-jpg/source.jpg": "a3f98a9af6ca3377de69ac74c646ac72ac3ea1aed38a486190e4095d7b148025"
+  }
+}

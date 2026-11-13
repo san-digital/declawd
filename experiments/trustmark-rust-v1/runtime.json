@@ -1,0 +1,24 @@
+{
+  "upstream_revision": "4c60b9fdb4125fca3001f0803e6890a6b55371ac",
+  "declawd_revision": "cca6f0b",
+  "rust_toolchain": "1.96.0",
+  "python": "3.12.8",
+  "seed": 20261113,
+  "binaries": {
+    "rust": "8b8a3046e910d1686b9d7350bba66fa47ac9091e88ca49248b1e9f9ca8fc3241",
+    "declawd": "02ee53504549da640383500e95c280cec0e03da72ae1e75afb83fb95783f48ca",
+    "c2patool": "7777d3681f8fbc6b553a2a5e4d89c4af7fbc3b474132441433fd301b38df3170"
+  },
+  "source_files": {
+    "rust/crates/xtask/Cargo.toml": "11dfe66058b70f94a657d4a05ecee4a5064061b2be52c0300f9c5d346371a4a2",
+    "rust/crates/xtask/src/main.rs": "4ae8a0ce8b6a271355730ed7111eb75d05279c931515985b34f3ab19e067ff7d",
+    "rust/crates/trustmark-cli/Cargo.toml": "24824f078ca377301ee92c61eca6f824caa4f322303869ec50476e436802a760",
+    "rust/crates/trustmark-cli/src/main.rs": "470601e2b4d28f9fb848562a648401caf2d0aaf2a2994b552ccd0b8a1015d0d1",
+    "rust/src/lib.rs": "4e000270a103bfde9a2f238dbdb6e3c3d1cb9fe7c34984fa8433f0cf4e9d8fde",
+    "rust/src/bits.rs": "b136d5eee01b4958e2060692e57688c19733d49d56b1544e1f89ca58c621554e",
+    "rust/src/image_processing.rs": "20d8ab5292d9868cda926c7565d43e22f73e6aa4c516d854cb7c32db6e5895b8",
+    "rust/src/remover.rs": "8f90adf207a5bdf3946cd451e624abad9675eba6717d869d4b6d5963ff214100",
+    "rust/src/model.rs": "1184cb9f8b9196186c44bb6daba65e3c612a1181c2a38678b9ab9661a78eedce",
+    "rust/src/bits/bch.rs": "bdd881ab99f1b40cacb0c2929dc992f09e0c8d7776e6bfa5feedfe28f09aa3b7"
+  }
+}

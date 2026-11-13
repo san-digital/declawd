@@ -1,0 +1,2339 @@
+{
+  "schema": "declawd.trustmark-advisories/v1",
+  "observed_at": "2026-11-13T19:16:42.529576+00:00",
+  "endpoint": "https://api.osv.dev/v1/querybatch",
+  "packages": [
+    {
+      "package": {
+        "name": "adler2",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.1"
+    },
+    {
+      "package": {
+        "name": "aho-corasick",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.5"
+    },
+    {
+      "package": {
+        "name": "aligned",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.3"
+    },
+    {
+      "package": {
+        "name": "aligned-vec",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.6.4"
+    },
+    {
+      "package": {
+        "name": "anes",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.6"
+    },
+    {
+      "package": {
+        "name": "anstream",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "package": {
+        "name": "anstyle",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.14"
+    },
+    {
+      "package": {
+        "name": "anstyle-parse",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "package": {
+        "name": "anstyle-query",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.5"
+    },
+    {
+      "package": {
+        "name": "anstyle-wincon",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.0.11"
+    },
+    {
+      "package": {
+        "name": "anyhow",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.104"
+    },
+    {
+      "package": {
+        "name": "arbitrary",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.4.2"
+    },
+    {
+      "package": {
+        "name": "arg_enum_proc_macro",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.4"
+    },
+    {
+      "package": {
+        "name": "arrayvec",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.7.8"
+    },
+    {
+      "package": {
+        "name": "as-slice",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "package": {
+        "name": "autocfg",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.5.1"
+    },
+    {
+      "package": {
+        "name": "av-scenechange",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.14.1"
+    },
+    {
+      "package": {
+        "name": "av1-grain",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.5"
+    },
+    {
+      "package": {
+        "name": "avif-serialize",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.9"
+    },
+    {
+      "package": {
+        "name": "base64",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.22.1"
+    },
+    {
+      "package": {
+        "name": "base64",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.23.1"
+    },
+    {
+      "package": {
+        "name": "base64ct",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.8.3"
+    },
+    {
+      "package": {
+        "name": "bit_field",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.3"
+    },
+    {
+      "package": {
+        "name": "bitflags",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.13.2"
+    },
+    {
+      "package": {
+        "name": "bitstream-io",
+        "ecosystem": "crates.io"
+      },
+      "version": "4.10.0"
+    },
+    {
+      "package": {
+        "name": "block-buffer",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.4"
+    },
+    {
+      "package": {
+        "name": "built",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.1"
+    },
+    {
+      "package": {
+        "name": "bumpalo",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.20.3"
+    },
+    {
+      "package": {
+        "name": "bytemuck",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.25.2"
+    },
+    {
+      "package": {
+        "name": "byteorder",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.5.0"
+    },
+    {
+      "package": {
+        "name": "byteorder-lite",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "package": {
+        "name": "bytes",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.12.1"
+    },
+    {
+      "package": {
+        "name": "cast",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.0"
+    },
+    {
+      "package": {
+        "name": "cc",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.5.1"
+    },
+    {
+      "package": {
+        "name": "cfg-if",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.5"
+    },
+    {
+      "package": {
+        "name": "ciborium",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.2"
+    },
+    {
+      "package": {
+        "name": "ciborium-io",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.2"
+    },
+    {
+      "package": {
+        "name": "ciborium-ll",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.2"
+    },
+    {
+      "package": {
+        "name": "clap",
+        "ecosystem": "crates.io"
+      },
+      "version": "4.6.7"
+    },
+    {
+      "package": {
+        "name": "clap_builder",
+        "ecosystem": "crates.io"
+      },
+      "version": "4.6.7"
+    },
+    {
+      "package": {
+        "name": "clap_derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "4.6.7"
+    },
+    {
+      "package": {
+        "name": "clap_lex",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.1"
+    },
+    {
+      "package": {
+        "name": "color_quant",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "package": {
+        "name": "colorchoice",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.5"
+    },
+    {
+      "package": {
+        "name": "core-foundation",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.1"
+    },
+    {
+      "package": {
+        "name": "core-foundation-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.7"
+    },
+    {
+      "package": {
+        "name": "cpufeatures",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.17"
+    },
+    {
+      "package": {
+        "name": "crc32fast",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.5.2"
+    },
+    {
+      "package": {
+        "name": "criterion",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.1"
+    },
+    {
+      "package": {
+        "name": "criterion-plot",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.0"
+    },
+    {
+      "package": {
+        "name": "crossbeam-deque",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.8"
+    },
+    {
+      "package": {
+        "name": "crossbeam-epoch",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.21"
+    },
+    {
+      "package": {
+        "name": "crossbeam-utils",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.23"
+    },
+    {
+      "package": {
+        "name": "crunchy",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.4"
+    },
+    {
+      "package": {
+        "name": "crypto-common",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.7"
+    },
+    {
+      "package": {
+        "name": "der",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.2"
+    },
+    {
+      "package": {
+        "name": "digest",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.7"
+    },
+    {
+      "package": {
+        "name": "displaydoc",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.7"
+    },
+    {
+      "package": {
+        "name": "document-features",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.12"
+    },
+    {
+      "package": {
+        "name": "either",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.18.0"
+    },
+    {
+      "package": {
+        "name": "equator",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.2"
+    },
+    {
+      "package": {
+        "name": "equator-macro",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.2"
+    },
+    {
+      "package": {
+        "name": "errno",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.14"
+    },
+    {
+      "package": {
+        "name": "exr",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.74.2"
+    },
+    {
+      "package": {
+        "name": "fast_image_resize",
+        "ecosystem": "crates.io"
+      },
+      "version": "5.5.0"
+    },
+    {
+      "package": {
+        "name": "fastrand",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.5.0"
+    },
+    {
+      "package": {
+        "name": "fax",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.7"
+    },
+    {
+      "package": {
+        "name": "fdeflate",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.7"
+    },
+    {
+      "package": {
+        "name": "filetime",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.29"
+    },
+    {
+      "package": {
+        "name": "find-msvc-tools",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.14"
+    },
+    {
+      "package": {
+        "name": "flate2",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.10"
+    },
+    {
+      "package": {
+        "name": "foreign-types",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.2"
+    },
+    {
+      "package": {
+        "name": "foreign-types-shared",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "package": {
+        "name": "form_urlencoded",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.2.2"
+    },
+    {
+      "package": {
+        "name": "futures-core",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.34"
+    },
+    {
+      "package": {
+        "name": "futures-task",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.34"
+    },
+    {
+      "package": {
+        "name": "futures-util",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.34"
+    },
+    {
+      "package": {
+        "name": "generic-array",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.14.7"
+    },
+    {
+      "package": {
+        "name": "getrandom",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.17"
+    },
+    {
+      "package": {
+        "name": "getrandom",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.4"
+    },
+    {
+      "package": {
+        "name": "getrandom",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.3"
+    },
+    {
+      "package": {
+        "name": "gif",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.14.2"
+    },
+    {
+      "package": {
+        "name": "half",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.7.1"
+    },
+    {
+      "package": {
+        "name": "heck",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.0"
+    },
+    {
+      "package": {
+        "name": "hermit-abi",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.3"
+    },
+    {
+      "package": {
+        "name": "http",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.5.0"
+    },
+    {
+      "package": {
+        "name": "httparse",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.10.1"
+    },
+    {
+      "package": {
+        "name": "icu_collections",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_locale_core",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_normalizer",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_normalizer_data",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_properties",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_properties_data",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "package": {
+        "name": "icu_provider",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.1"
+    },
+    {
+      "package": {
+        "name": "idna",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "package": {
+        "name": "idna_adapter",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.2.2"
+    },
+    {
+      "package": {
+        "name": "image",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.25.10"
+    },
+    {
+      "package": {
+        "name": "image-webp",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.4"
+    },
+    {
+      "package": {
+        "name": "imgref",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.12.3"
+    },
+    {
+      "package": {
+        "name": "interpolate_name",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.4"
+    },
+    {
+      "package": {
+        "name": "is-terminal",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.17"
+    },
+    {
+      "package": {
+        "name": "is_terminal_polyfill",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.70.2"
+    },
+    {
+      "package": {
+        "name": "itertools",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.5"
+    },
+    {
+      "package": {
+        "name": "itertools",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.14.0"
+    },
+    {
+      "package": {
+        "name": "itoa",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.18"
+    },
+    {
+      "package": {
+        "name": "jobserver",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.35"
+    },
+    {
+      "package": {
+        "name": "js-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.106"
+    },
+    {
+      "package": {
+        "name": "lebe",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.3"
+    },
+    {
+      "package": {
+        "name": "libc",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.189"
+    },
+    {
+      "package": {
+        "name": "libfuzzer-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.13"
+    },
+    {
+      "package": {
+        "name": "libm",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.16"
+    },
+    {
+      "package": {
+        "name": "linux-raw-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.12.1"
+    },
+    {
+      "package": {
+        "name": "litemap",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.3"
+    },
+    {
+      "package": {
+        "name": "litrs",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "package": {
+        "name": "log",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.34"
+    },
+    {
+      "package": {
+        "name": "loop9",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.5"
+    },
+    {
+      "package": {
+        "name": "matrixmultiply",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.11"
+    },
+    {
+      "package": {
+        "name": "maybe-rayon",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "package": {
+        "name": "memchr",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.8.3"
+    },
+    {
+      "package": {
+        "name": "miniz_oxide",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.9"
+    },
+    {
+      "package": {
+        "name": "miniz_oxide",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.1"
+    },
+    {
+      "package": {
+        "name": "moxcms",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.1"
+    },
+    {
+      "package": {
+        "name": "native-tls",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.18"
+    },
+    {
+      "package": {
+        "name": "ndarray",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.16.1"
+    },
+    {
+      "package": {
+        "name": "new_debug_unreachable",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.6"
+    },
+    {
+      "package": {
+        "name": "no_std_io2",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.4"
+    },
+    {
+      "package": {
+        "name": "nom",
+        "ecosystem": "crates.io"
+      },
+      "version": "8.0.0"
+    },
+    {
+      "package": {
+        "name": "noop_proc_macro",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.0"
+    },
+    {
+      "package": {
+        "name": "num-bigint",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.8"
+    },
+    {
+      "package": {
+        "name": "num-complex",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.6"
+    },
+    {
+      "package": {
+        "name": "num-derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.2"
+    },
+    {
+      "package": {
+        "name": "num-integer",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.47"
+    },
+    {
+      "package": {
+        "name": "num-rational",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.2"
+    },
+    {
+      "package": {
+        "name": "num-traits",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.19"
+    },
+    {
+      "package": {
+        "name": "once_cell",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.21.4"
+    },
+    {
+      "package": {
+        "name": "once_cell_polyfill",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.70.2"
+    },
+    {
+      "package": {
+        "name": "oorandom",
+        "ecosystem": "crates.io"
+      },
+      "version": "11.1.5"
+    },
+    {
+      "package": {
+        "name": "openssl",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.81"
+    },
+    {
+      "package": {
+        "name": "openssl-macros",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "package": {
+        "name": "openssl-probe",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "package": {
+        "name": "openssl-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.117"
+    },
+    {
+      "package": {
+        "name": "ort",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.0-rc.10"
+    },
+    {
+      "package": {
+        "name": "ort-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.0-rc.10"
+    },
+    {
+      "package": {
+        "name": "paste",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.15"
+    },
+    {
+      "package": {
+        "name": "pastey",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "package": {
+        "name": "pem-rfc7468",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "package": {
+        "name": "percent-encoding",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.3.2"
+    },
+    {
+      "package": {
+        "name": "pin-project-lite",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.17"
+    },
+    {
+      "package": {
+        "name": "pkg-config",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.34"
+    },
+    {
+      "package": {
+        "name": "plotters",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.7"
+    },
+    {
+      "package": {
+        "name": "plotters-backend",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.7"
+    },
+    {
+      "package": {
+        "name": "plotters-svg",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.7"
+    },
+    {
+      "package": {
+        "name": "png",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.18.1"
+    },
+    {
+      "package": {
+        "name": "portable-atomic",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.15.0"
+    },
+    {
+      "package": {
+        "name": "portable-atomic-util",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.8"
+    },
+    {
+      "package": {
+        "name": "potential_utf",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.6"
+    },
+    {
+      "package": {
+        "name": "ppv-lite86",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.21"
+    },
+    {
+      "package": {
+        "name": "proc-macro2",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.107"
+    },
+    {
+      "package": {
+        "name": "profiling",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.18"
+    },
+    {
+      "package": {
+        "name": "profiling-procmacros",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.18"
+    },
+    {
+      "package": {
+        "name": "pulp",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.22.3"
+    },
+    {
+      "package": {
+        "name": "pulp-wasm-simd-flag",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "package": {
+        "name": "pxfm",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.30"
+    },
+    {
+      "package": {
+        "name": "qoi",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.1"
+    },
+    {
+      "package": {
+        "name": "quick-error",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.1"
+    },
+    {
+      "package": {
+        "name": "quote",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.47"
+    },
+    {
+      "package": {
+        "name": "r-efi",
+        "ecosystem": "crates.io"
+      },
+      "version": "5.3.0"
+    },
+    {
+      "package": {
+        "name": "r-efi",
+        "ecosystem": "crates.io"
+      },
+      "version": "6.0.0"
+    },
+    {
+      "package": {
+        "name": "rand",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.8"
+    },
+    {
+      "package": {
+        "name": "rand",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.5"
+    },
+    {
+      "package": {
+        "name": "rand_chacha",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.1"
+    },
+    {
+      "package": {
+        "name": "rand_chacha",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.0"
+    },
+    {
+      "package": {
+        "name": "rand_core",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.6.4"
+    },
+    {
+      "package": {
+        "name": "rand_core",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.5"
+    },
+    {
+      "package": {
+        "name": "rav1e",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.1"
+    },
+    {
+      "package": {
+        "name": "ravif",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.13.0"
+    },
+    {
+      "package": {
+        "name": "raw-cpuid",
+        "ecosystem": "crates.io"
+      },
+      "version": "11.6.0"
+    },
+    {
+      "package": {
+        "name": "rawpointer",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "package": {
+        "name": "rayon",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.12.0"
+    },
+    {
+      "package": {
+        "name": "rayon-core",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.13.0"
+    },
+    {
+      "package": {
+        "name": "reborrow",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.5"
+    },
+    {
+      "package": {
+        "name": "regex",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.13.1"
+    },
+    {
+      "package": {
+        "name": "regex-automata",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.18"
+    },
+    {
+      "package": {
+        "name": "regex-syntax",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.11"
+    },
+    {
+      "package": {
+        "name": "rgb",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.53"
+    },
+    {
+      "package": {
+        "name": "ring",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.17.14"
+    },
+    {
+      "package": {
+        "name": "rustix",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.1.5"
+    },
+    {
+      "package": {
+        "name": "rustls",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.23.45"
+    },
+    {
+      "package": {
+        "name": "rustls-pki-types",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.15.1"
+    },
+    {
+      "package": {
+        "name": "rustls-webpki",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.103.15"
+    },
+    {
+      "package": {
+        "name": "rustversion",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.23"
+    },
+    {
+      "package": {
+        "name": "same-file",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.6"
+    },
+    {
+      "package": {
+        "name": "schannel",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.29"
+    },
+    {
+      "package": {
+        "name": "security-framework",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.7.0"
+    },
+    {
+      "package": {
+        "name": "security-framework-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.17.0"
+    },
+    {
+      "package": {
+        "name": "serde",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.229"
+    },
+    {
+      "package": {
+        "name": "serde_core",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.229"
+    },
+    {
+      "package": {
+        "name": "serde_derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.229"
+    },
+    {
+      "package": {
+        "name": "serde_json",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.151"
+    },
+    {
+      "package": {
+        "name": "sha2",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.10.9"
+    },
+    {
+      "package": {
+        "name": "shlex",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.1"
+    },
+    {
+      "package": {
+        "name": "simd-adler32",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.10"
+    },
+    {
+      "package": {
+        "name": "simd_helpers",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "package": {
+        "name": "slab",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.12"
+    },
+    {
+      "package": {
+        "name": "smallvec",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.16.2"
+    },
+    {
+      "package": {
+        "name": "smallvec",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.0-alpha.10"
+    },
+    {
+      "package": {
+        "name": "socks",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.4"
+    },
+    {
+      "package": {
+        "name": "stable_deref_trait",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.2.1"
+    },
+    {
+      "package": {
+        "name": "strsim",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.11.1"
+    },
+    {
+      "package": {
+        "name": "subtle",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.6.1"
+    },
+    {
+      "package": {
+        "name": "syn",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.119"
+    },
+    {
+      "package": {
+        "name": "syn",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.0.6"
+    },
+    {
+      "package": {
+        "name": "synstructure",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.14.0"
+    },
+    {
+      "package": {
+        "name": "tar",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.46"
+    },
+    {
+      "package": {
+        "name": "tempfile",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.27.0"
+    },
+    {
+      "package": {
+        "name": "thiserror",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.69"
+    },
+    {
+      "package": {
+        "name": "thiserror",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.21"
+    },
+    {
+      "package": {
+        "name": "thiserror-impl",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.69"
+    },
+    {
+      "package": {
+        "name": "thiserror-impl",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.0.21"
+    },
+    {
+      "package": {
+        "name": "tiff",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.11.3"
+    },
+    {
+      "package": {
+        "name": "tinystr",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.4"
+    },
+    {
+      "package": {
+        "name": "tinytemplate",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.2.1"
+    },
+    {
+      "package": {
+        "name": "tracing",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.44"
+    },
+    {
+      "package": {
+        "name": "tracing-core",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.36"
+    },
+    {
+      "package": {
+        "name": "typenum",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.20.1"
+    },
+    {
+      "package": {
+        "name": "unicode-ident",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.26"
+    },
+    {
+      "package": {
+        "name": "untrusted",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.0"
+    },
+    {
+      "package": {
+        "name": "ureq",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.12.1"
+    },
+    {
+      "package": {
+        "name": "ureq",
+        "ecosystem": "crates.io"
+      },
+      "version": "3.4.2"
+    },
+    {
+      "package": {
+        "name": "ureq-proto",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.6.4"
+    },
+    {
+      "package": {
+        "name": "url",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.5.8"
+    },
+    {
+      "package": {
+        "name": "utf8-zero",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.1"
+    },
+    {
+      "package": {
+        "name": "utf8_iter",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.4"
+    },
+    {
+      "package": {
+        "name": "utf8parse",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.2"
+    },
+    {
+      "package": {
+        "name": "v_frame",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.9"
+    },
+    {
+      "package": {
+        "name": "vcpkg",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.15"
+    },
+    {
+      "package": {
+        "name": "version_check",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.9.5"
+    },
+    {
+      "package": {
+        "name": "walkdir",
+        "ecosystem": "crates.io"
+      },
+      "version": "2.5.0"
+    },
+    {
+      "package": {
+        "name": "wasi",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.11.1+wasi-snapshot-preview1"
+    },
+    {
+      "package": {
+        "name": "wasip2",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.4+wasi-0.2.12"
+    },
+    {
+      "package": {
+        "name": "wasm-bindgen",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.129"
+    },
+    {
+      "package": {
+        "name": "wasm-bindgen-macro",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.129"
+    },
+    {
+      "package": {
+        "name": "wasm-bindgen-macro-support",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.129"
+    },
+    {
+      "package": {
+        "name": "wasm-bindgen-shared",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.129"
+    },
+    {
+      "package": {
+        "name": "web-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.106"
+    },
+    {
+      "package": {
+        "name": "webpki-root-certs",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.9"
+    },
+    {
+      "package": {
+        "name": "webpki-roots",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.26.11"
+    },
+    {
+      "package": {
+        "name": "webpki-roots",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.9"
+    },
+    {
+      "package": {
+        "name": "weezl",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.12"
+    },
+    {
+      "package": {
+        "name": "winapi",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.3.9"
+    },
+    {
+      "package": {
+        "name": "winapi-i686-pc-windows-gnu",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.0"
+    },
+    {
+      "package": {
+        "name": "winapi-util",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.11"
+    },
+    {
+      "package": {
+        "name": "winapi-x86_64-pc-windows-gnu",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.4.0"
+    },
+    {
+      "package": {
+        "name": "windows-link",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "package": {
+        "name": "windows-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.0"
+    },
+    {
+      "package": {
+        "name": "windows-sys",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.61.2"
+    },
+    {
+      "package": {
+        "name": "windows-targets",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_aarch64_gnullvm",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_aarch64_msvc",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_i686_gnu",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_i686_gnullvm",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_i686_msvc",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_x86_64_gnu",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_x86_64_gnullvm",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "windows_x86_64_msvc",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.52.6"
+    },
+    {
+      "package": {
+        "name": "wit-bindgen",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.57.1"
+    },
+    {
+      "package": {
+        "name": "writeable",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.6.4"
+    },
+    {
+      "package": {
+        "name": "xattr",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.6.1"
+    },
+    {
+      "package": {
+        "name": "y4m",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.0"
+    },
+    {
+      "package": {
+        "name": "yoke",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.3"
+    },
+    {
+      "package": {
+        "name": "yoke-derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.3"
+    },
+    {
+      "package": {
+        "name": "zerocopy",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.59"
+    },
+    {
+      "package": {
+        "name": "zerocopy-derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.8.59"
+    },
+    {
+      "package": {
+        "name": "zerofrom",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.8"
+    },
+    {
+      "package": {
+        "name": "zerofrom-derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.1.8"
+    },
+    {
+      "package": {
+        "name": "zeroize",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.9.0"
+    },
+    {
+      "package": {
+        "name": "zerotrie",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.5"
+    },
+    {
+      "package": {
+        "name": "zerovec",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.11.8"
+    },
+    {
+      "package": {
+        "name": "zerovec-derive",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.11.6"
+    },
+    {
+      "package": {
+        "name": "zlib-rs",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.6.8"
+    },
+    {
+      "package": {
+        "name": "zmij",
+        "ecosystem": "crates.io"
+      },
+      "version": "1.0.23"
+    },
+    {
+      "package": {
+        "name": "zune-core",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.3"
+    },
+    {
+      "package": {
+        "name": "zune-inflate",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.2.54"
+    },
+    {
+      "package": {
+        "name": "zune-jpeg",
+        "ecosystem": "crates.io"
+      },
+      "version": "0.5.15"
+    },
+    {
+      "package": {
+        "name": "aiohappyeyeballs",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.7.1"
+    },
+    {
+      "package": {
+        "name": "aiohttp",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.14.5"
+    },
+    {
+      "package": {
+        "name": "aiosignal",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.4.0"
+    },
+    {
+      "package": {
+        "name": "attrs",
+        "ecosystem": "PyPI"
+      },
+      "version": "26.1.0"
+    },
+    {
+      "package": {
+        "name": "einops",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.8.2"
+    },
+    {
+      "package": {
+        "name": "filelock",
+        "ecosystem": "PyPI"
+      },
+      "version": "4.2.4"
+    },
+    {
+      "package": {
+        "name": "frozenlist",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.8.0"
+    },
+    {
+      "package": {
+        "name": "fsspec",
+        "ecosystem": "PyPI"
+      },
+      "version": "2026.9.0"
+    },
+    {
+      "package": {
+        "name": "idna",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.20"
+    },
+    {
+      "package": {
+        "name": "Jinja2",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.1.6"
+    },
+    {
+      "package": {
+        "name": "lightning",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.6.6"
+    },
+    {
+      "package": {
+        "name": "lightning-utilities",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.15.3"
+    },
+    {
+      "package": {
+        "name": "MarkupSafe",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.0.4"
+    },
+    {
+      "package": {
+        "name": "mpmath",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.3.0"
+    },
+    {
+      "package": {
+        "name": "multidict",
+        "ecosystem": "PyPI"
+      },
+      "version": "7.2.1"
+    },
+    {
+      "package": {
+        "name": "networkx",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.7"
+    },
+    {
+      "package": {
+        "name": "numpy",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.5.4"
+    },
+    {
+      "package": {
+        "name": "omegaconf",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.4.0"
+    },
+    {
+      "package": {
+        "name": "packaging",
+        "ecosystem": "PyPI"
+      },
+      "version": "26.3"
+    },
+    {
+      "package": {
+        "name": "pillow",
+        "ecosystem": "PyPI"
+      },
+      "version": "13.0.0"
+    },
+    {
+      "package": {
+        "name": "propcache",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.5.4"
+    },
+    {
+      "package": {
+        "name": "pytorch-lightning",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.6.6"
+    },
+    {
+      "package": {
+        "name": "PyYAML",
+        "ecosystem": "PyPI"
+      },
+      "version": "6.0.3"
+    },
+    {
+      "package": {
+        "name": "setuptools",
+        "ecosystem": "PyPI"
+      },
+      "version": "84.2.1"
+    },
+    {
+      "package": {
+        "name": "six",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.17.0"
+    },
+    {
+      "package": {
+        "name": "sympy",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.14.0"
+    },
+    {
+      "package": {
+        "name": "torch",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.15.0"
+    },
+    {
+      "package": {
+        "name": "torchmetrics",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.9.0"
+    },
+    {
+      "package": {
+        "name": "torchvision",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.29.2"
+    },
+    {
+      "package": {
+        "name": "tqdm",
+        "ecosystem": "PyPI"
+      },
+      "version": "4.70.1"
+    },
+    {
+      "package": {
+        "name": "typing_extensions",
+        "ecosystem": "PyPI"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "package": {
+        "name": "yarl",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.25.1"
+    }
+  ],
+  "findings": [
+    {
+      "query": {
+        "package": {
+          "name": "paste",
+          "ecosystem": "crates.io"
+        },
+        "version": "1.0.15"
+      },
+      "findings": [
+        {
+          "id": "RUSTSEC-2024-0436",
+          "modified": "2026-01-27T22:03:15.694766Z"
+        }
+      ]
+    },
+    {
+      "query": {
+        "package": {
+          "name": "rustix",
+          "ecosystem": "crates.io"
+        },
+        "version": "1.1.5"
+      },
+      "findings": [
+        {
+          "id": "RUSTSEC-2026-0486",
+          "modified": "2026-11-11T08:45:02.466292Z"
+        }
+      ]
+    },
+    {
+      "query": {
+        "package": {
+          "name": "rustls",
+          "ecosystem": "crates.io"
+        },
+        "version": "0.23.45"
+      },
+      "findings": [
+        {
+          "id": "GHSA-c8m5-c952-6cm4",
+          "modified": "2026-11-08T10:55:36.514447Z"
+        },
+        {
+          "id": "GHSA-h2v8-394m-p7vv",
+          "modified": "2026-11-08T10:55:59.261359Z"
+        },
+        {
+          "id": "GHSA-vp88-798v-h67f",
+          "modified": "2026-11-08T10:55:39.094187Z"
+        },
+        {
+          "id": "GHSA-w44r-93j7-qv28",
+          "modified": "2026-11-08T10:55:46.312019Z"
+        },
+        {
+          "id": "RUSTSEC-2026-0346",
+          "modified": "2026-11-09T09:21:20Z"
+        },
+        {
+          "id": "RUSTSEC-2026-0347",
+          "modified": "2026-11-09T09:21:20Z"
+        },
+        {
+          "id": "RUSTSEC-2026-0348",
+          "modified": "2026-11-09T09:21:20Z"
+        },
+        {
+          "id": "RUSTSEC-2026-0349",
+          "modified": "2026-11-09T09:21:20Z"
+        }
+      ]
+    },
+    {
+      "query": {
+        "package": {
+          "name": "rustls-webpki",
+          "ecosystem": "crates.io"
+        },
+        "version": "0.103.15"
+      },
+      "findings": [
+        {
+          "id": "RUSTSEC-2026-0382",
+          "modified": "2026-10-29T10:55:54.096394Z"
+        }
+      ]
+    },
+    {
+      "query": {
+        "package": {
+          "name": "webpki-root-certs",
+          "ecosystem": "crates.io"
+        },
+        "version": "1.0.9"
+      },
+      "findings": [
+        {
+          "id": "RUSTSEC-2026-0383",
+          "modified": "2026-10-29T10:55:54.096394Z"
+        }
+      ]
+    },
+    {
+      "query": {
+        "package": {
+          "name": "webpki-roots",
+          "ecosystem": "crates.io"
+        },
+        "version": "1.0.9"
+      },
+      "findings": [
+        {
+          "id": "RUSTSEC-2026-0381",
+          "modified": "2026-10-29T10:55:54.096394Z"
+        }
+      ]
+    }
+  ]
+}
