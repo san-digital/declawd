@@ -187,3 +187,22 @@ jobs:
           git -C "$upstream" fetch --depth 1 origin 8f2e2316904ea7291ac96e30eb394c453dcc577b
           git -C "$upstream" checkout --detach FETCH_HEAD
           PATH="$runner_environment/bin:$PATH" DECLAWD_SYNTHID_UPSTREAM="$upstream" ./scripts/check-synthid-gpt2.sh
+
+  trustmark-rust-evidence:
+    name: TrustMark Rust frozen evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - run: python3 -m unittest discover -s experiments/trustmark-rust-v1 -p 'test_png*.py'
+      - name: Verify preserved comparison
+        run: |
+          git fetch origin refs/tags/declawd-trustmark-rust-v1-20261113:refs/tags/declawd-trustmark-rust-v1-20261113
+          git diff --exit-code declawd-trustmark-rust-v1-20261113 -- experiments/trustmark-rust-v1
+          git worktree add --detach "$RUNNER_TEMP/trustmark-rust-evidence" declawd-trustmark-rust-v1-20261113
+          python3 -m pip install -r "$RUNNER_TEMP/trustmark-rust-evidence/experiments/trustmark-rust-v1/verifier-requirements.txt"
+          python3 "$RUNNER_TEMP/trustmark-rust-evidence/experiments/trustmark-rust-v1/verify.py"

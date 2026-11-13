@@ -1,0 +1,61 @@
+{
+  "schema": "declawd.trustmark-rust-summary/v1",
+  "reviewed_on": "2026-11-13",
+  "original_registration_sha256": "49322a4c207a71b7c5e26ae8e1fc6939196174da97126b81c06ffa8af3bff55c",
+  "png_registration_sha256": "8b9f6c73e0fde2d05973c067216fe7ebad497c5d1cbf9fecca7e97ae470a5717",
+  "controls": 12,
+  "encoder_trials": 24,
+  "first_run_png_control_errors": 6,
+  "first_run_png_trial_errors": 12,
+  "png_continuation_inputs": 18,
+  "png_continuation_errors": 0,
+  "source_control_positive_flags": {
+    "python": 0,
+    "rust": 1
+  },
+  "cleaned_byte_matches": 24,
+  "metadata_pixel_preservation_trials": 24,
+  "recovery": [
+    {
+      "encoder": "python",
+      "decoder": "python",
+      "trials": 12,
+      "marked_exact": 11,
+      "signed_exact": 11,
+      "cleaned_exact": 11,
+      "pixel_removed_exact": 0
+    },
+    {
+      "encoder": "python",
+      "decoder": "rust",
+      "trials": 12,
+      "marked_exact": 10,
+      "signed_exact": 10,
+      "cleaned_exact": 10,
+      "pixel_removed_exact": 0
+    },
+    {
+      "encoder": "rust",
+      "decoder": "python",
+      "trials": 12,
+      "marked_exact": 10,
+      "signed_exact": 10,
+      "cleaned_exact": 10,
+      "pixel_removed_exact": 0
+    },
+    {
+      "encoder": "rust",
+      "decoder": "rust",
+      "trials": 12,
+      "marked_exact": 10,
+      "signed_exact": 10,
+      "cleaned_exact": 10,
+      "pixel_removed_exact": 0
+    }
+  ],
+  "removed_psnr_db_range": [
+    42.57759671174499,
+    51.67506870704535
+  ],
+  "scope": "Generated owned images, matching Q decoders and pinned runtimes. Exact-payload outcomes do not establish absence of arbitrary watermarks or a population false-positive rate."
+}
