@@ -1,0 +1,50 @@
+{
+  "schema": "declawd.rust-osv-review/v1",
+  "observed_at": "2026-11-13T18:31:22.443091+00:00",
+  "scanner_version": "2.7.0",
+  "cargo_lock_sha256": "b1cd0888cd444f3425862a1a333d1ba3e0a77c02f2322711ca53059e9ca8131d",
+  "audited_packages": 382,
+  "findings": [
+    {
+      "package": {
+        "name": "proc-macro-error",
+        "version": "1.0.4",
+        "ecosystem": "crates.io",
+        "purl": "pkg:cargo/proc-macro-error@1.0.4"
+      },
+      "id": "RUSTSEC-2024-0370",
+      "aliases": [],
+      "decision": "informational_unmaintained"
+    },
+    {
+      "package": {
+        "name": "rsa",
+        "version": "0.9.10",
+        "ecosystem": "crates.io",
+        "purl": "pkg:cargo/rsa@0.9.10"
+      },
+      "id": "RUSTSEC-2023-0071",
+      "aliases": [
+        "CVE-2023-49092",
+        "GHSA-4grx-2x9w-596c",
+        "GHSA-c38w-74pg-36hr"
+      ],
+      "decision": "reviewed_rsa_exception_until_2026-11-28"
+    }
+  ],
+  "scope": "Fresh full-lock OSV scan after updating rustix1.1.4 to1.1.6. Existing RSA and maintenance decisions retain their recorded scope.",
+  "advisory": "https://rustsec.org/advisories/RUSTSEC-2026-0486.html",
+  "updated_package": {
+    "name": "rustix",
+    "from": "1.1.4",
+    "to": "1.1.6",
+    "runtime_reachability": "not established"
+  },
+  "validation": [
+    "Rust1.96 all-target tests passed",
+    "150 Python reference tests passed",
+    "Clippy all targets and features passed",
+    "CycloneDX1.5 SBOM generated and validated",
+    "Dependency licence notices regenerated"
+  ]
+}

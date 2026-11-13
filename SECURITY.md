@@ -18,6 +18,10 @@ The SDK pin, software inventories and dependency notices use the locked versions
 
 The SDK upgrade also selects `crypto-bigint 0.7.10`, above the patched minimum 0.7.6 for [RUSTSEC-2026-0387](https://rustsec.org/advisories/RUSTSEC-2026-0387.html). Its exception was removed too.
 
+## Rustix update
+
+Reviewed on 13 November 2026. The lock selects `rustix 1.1.6`, which fixes [RUSTSEC-2026-0486](https://rustsec.org/advisories/RUSTSEC-2026-0486.html). Earlier 1.x releases can mark unwritten extended-attribute buffer bytes as initialised when the caller supplies a zero-length buffer. The affected API has not been shown to be reachable through Declawd. The package is updated without an advisory exception, and the dependency notices are regenerated from the lock.
+
 ## RSA exception
 
 Reassessed on 2 November 2026. `c2pa 0.91.8` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations and still has no patched release. The package remains affected. Declawd loads no private keys and does not sign or decrypt.
