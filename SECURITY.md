@@ -24,7 +24,7 @@ Reviewed on 13 November 2026. The lock selects `rustix 1.1.6`, which fixes [RUST
 
 ## RSA exception
 
-Reassessed on 2 November 2026. `c2pa 0.91.8` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations and still has no patched release. The package remains affected. Declawd loads no private keys and does not sign or decrypt.
+Reassessed on 13 November 2026. `c2pa 0.91.8` selects `rsa 0.9.10` through `c2pa_raw_crypto 0.2.1`. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) concerns timing leakage from RSA private-key operations. The advisory was updated on 8 November and now identifies `rsa >=0.10.0` as patched. The locked 0.9.10 remains affected. Declawd loads no private keys and does not sign or decrypt.
 
 The reviewed call path is:
 
@@ -32,6 +32,8 @@ The reviewed call path is:
 - Both resolve to asset I/O handlers. The input kind and temporary-file extension restrict them to PNG/JPEG.
 - Those handlers read or remove the embedded store without signature validation, ZIP extraction or private-key operations. The module's signing code is test-only.
 - Default and network features are disabled. The enabled features are `file_io` and `rust_native_crypto`.
+
+The latest `c2pa_raw_crypto 0.3.0`, selected by `c2pa 0.92.1`, still requests optional `rsa ^0.9.10`. Cargo cannot satisfy that range with 0.10.0. Moving to the new RSA API requires an upstream crypto migration or a separately reviewed implementation change. The current review retains the bounded exception for the PNG/JPEG I/O path.
 
 The exception expires on **28 November 2026**. Before applying it, the audit script checks the three reviewed SDK/RSA package versions and a SHA-256 digest of every Rust file under `src/`. Source or package changes require reassessment.
 

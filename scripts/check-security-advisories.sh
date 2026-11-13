@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Reviewed on 2 November 2026. SECURITY.md records the RSA dependency path and unused private-key operations.
+# Reviewed on 13 November 2026. SECURITY.md records the RSA dependency path and unused private-key operations.
 exception_ids=(RUSTSEC-2023-0071)
 exception_expires=2026-11-28
 warn_days=14
