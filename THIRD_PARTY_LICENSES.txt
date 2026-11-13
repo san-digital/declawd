@@ -257,7 +257,7 @@ Package inventory
 - rsa 0.9.10 | MIT OR Apache-2.0 | https://github.com/RustCrypto/RSA
 - rustc_version 0.4.1 | MIT OR Apache-2.0 | https://github.com/djc/rustc-version-rs
 - rusticata-macros 4.1.0 | MIT OR Apache-2.0 | https://github.com/rusticata/rusticata-macros.git
-- rustix 1.1.4 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | https://github.com/bytecodealliance/rustix
+- rustix 1.1.6 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | https://github.com/bytecodealliance/rustix
 - rustversion 1.0.23 | MIT OR Apache-2.0 | https://github.com/dtolnay/rustversion
 - scopeguard 1.2.0 | MIT OR Apache-2.0 | https://github.com/bluss/scopeguard
 - sec1 0.8.1 | Apache-2.0 OR MIT | https://github.com/RustCrypto/formats
