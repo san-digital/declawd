@@ -54,7 +54,7 @@ The [evidence guide](docs/EVIDENCE.md) links the plans, registrations, complete 
 
 Use the tools on content you own or are authorised to change. Findings must not support employment, education, disciplinary, legal, forensic or authorship decisions. Read [responsible use](ETHICS.md) before extending or applying the cleaner.
 
-The CLI makes no network requests. Current source uses `c2pa 0.92.1` and `ZIP 9.5.1`. Release 0.3.3 retains its original SDK and dependency lock. The [security policy](SECURITY.md) records the scoped RSA exception, its 28 November 2026 expiry and the checks required for reassessment.
+The CLI makes no network requests. Current source uses `c2pa 0.92.1`, `ZIP 9.5.1` and vendored OpenSSL, with no Rust RSA dependency or RSA advisory exclusion. Published 0.3.4 retains its original dependency lock. The [security policy](SECURITY.md) distinguishes current source from released artefacts and records the dependency guards.
 
 ## Licence
 

@@ -1,0 +1,59 @@
+{
+  "schema": "declawd.rsa-removal/v1",
+  "observed_at": "2026-11-14T22:31:39.195345+00:00",
+  "scope": "Current native source. Published 0.3.4 artefacts retain their original dependencies.",
+  "backend": "c2pa vendored OpenSSL",
+  "lock_sha256": "31633729812b4697ab5ea352e8e4a6389d1fea993a5fa0d4c65400da1b3aefa1",
+  "locked_package_count": 359,
+  "rsa_packages": [],
+  "openssl_packages": [
+    {
+      "name": "openssl",
+      "version": "0.10.82",
+      "checksum": "4de8111e94a56adca7ebfe6c365b6d42f99deb69b74b6becacd4204e2f193aa2"
+    },
+    {
+      "name": "openssl-macros",
+      "version": "0.1.1",
+      "checksum": "a948666b637a0f465e8564c73e89d4dde00d72d4d473cc972f390fc3dcee7d9c"
+    },
+    {
+      "name": "openssl-src",
+      "version": "300.6.1+3.6.3",
+      "checksum": "46eb8fb9fb3b61ce1c0f8a026c4c1a0714d3a9e138e7fbde78753ce2babc3846"
+    },
+    {
+      "name": "openssl-sys",
+      "version": "0.9.118",
+      "checksum": "19c413d6ec9ebaf5e1c829d355cb3e9f783778d700f135be0921d52fce3c60ae"
+    }
+  ],
+  "rustsec_exclusions": [],
+  "osv_review": {
+    "schema": "declawd.rust-osv-review/v1",
+    "observed_at": "2026-11-14T22:18:43.873678+00:00",
+    "scanner_version": "2.7.0",
+    "cargo_lock_sha256": "31633729812b4697ab5ea352e8e4a6389d1fea993a5fa0d4c65400da1b3aefa1",
+    "audited_packages": 359,
+    "findings": [
+      {
+        "package": {
+          "name": "proc-macro-error",
+          "version": "1.0.4",
+          "ecosystem": "crates.io",
+          "purl": "pkg:cargo/proc-macro-error@1.0.4"
+        },
+        "id": "RUSTSEC-2024-0370",
+        "aliases": [],
+        "decision": "informational_unmaintained"
+      }
+    ]
+  },
+  "validation": {
+    "rust": "all targets passed on macOS with Rust 1.96",
+    "clippy": "all targets and features passed with warnings denied",
+    "python": "152 tests passed",
+    "c2patool": "PNG and JPEG signed fixture and cleaned output controls passed against 0.27.12",
+    "licences": "regenerated and verified"
+  }
+}

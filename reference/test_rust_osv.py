@@ -62,17 +62,26 @@ class RustOsvTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 POLICY.review(report, self.lock)
 
-    def test_rsa_aliases_share_the_reviewed_exception(self):
-        for identifier in POLICY.RSA_IDS:
-            self.entry("rsa")["vulnerabilities"] = [{"id": identifier, "aliases": sorted(POLICY.RSA_IDS - {identifier})}]
-            self.assertEqual(self.review()[0]["decision"], "reviewed_rsa_exception_until_2026-11-28")
+    def add_rsa(self):
+        with self.lock.open("a") as lock:
+            lock.write('\n[[package]]\nname = "rsa"\nversion = "0.9.10"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\n')
+        self.entries.append({"package": {"ecosystem": "crates.io", "name": "rsa", "version": "0.9.10"}})
+
+    def test_rsa_advisory_and_every_recorded_alias_are_blocked(self):
+        self.add_rsa()
+        identifiers = {"RUSTSEC-2023-0071", "CVE-2023-49092", "GHSA-4grx-2x9w-596c", "GHSA-c38w-74pg-36hr"}
+        for identifier in identifiers:
+            self.entry("rsa")["vulnerabilities"] = [{"id": identifier, "aliases": sorted(identifiers - {identifier})}]
+            self.assertEqual(self.review()[0]["decision"], "blocked")
 
     def test_new_rsa_advisory_and_wrong_package_are_blocked(self):
+        self.add_rsa()
         self.entry("rsa")["vulnerabilities"] = [{"id": "GHSA-new-advisory"}]
         self.entry("zip")["vulnerabilities"] = [{"id": "RUSTSEC-2023-0071"}]
         self.assertTrue(all(row["decision"] == "blocked" for row in self.review()))
 
     def test_unknown_rsa_alias_is_blocked(self):
+        self.add_rsa()
         self.entry("rsa")["vulnerabilities"] = [{"id": "RUSTSEC-2023-0071", "aliases": ["CVE-unknown"]}]
         self.assertEqual(self.review()[0]["decision"], "blocked")
 
@@ -81,6 +90,11 @@ class RustOsvTests(unittest.TestCase):
         self.assertEqual(self.review()[0]["decision"], "outside_upstream_affected_range_0.11.0_to_0.12.1")
         self.entry("block-buffer", "0.12.1")["vulnerabilities"] = [{"id": "GHSA-qwgh-2vcv-g2f7"}]
         self.assertIn("blocked", [row["decision"] for row in self.review()])
+
+    def test_block_buffer_range_review_expires_independently(self):
+        self.entry("block-buffer", "0.10.4")["vulnerabilities"] = [{"id": "GHSA-qwgh-2vcv-g2f7"}]
+        with patch.object(POLICY, "BLOCK_BUFFER_REVIEW_BY", POLICY.date(2000, 1, 1)):
+            self.assertEqual(self.review()[0]["decision"], "blocked")
 
     def test_block_buffer_checksum_changes_require_review(self):
         self.entry("block-buffer", "0.10.4")["vulnerabilities"] = [{"id": "GHSA-qwgh-2vcv-g2f7"}]
@@ -107,7 +121,7 @@ class RustOsvTests(unittest.TestCase):
             self.review()
 
     def test_malformed_scan_is_rejected(self):
-        self.entry("rsa")["vulnerabilities"] = "not a list"
+        self.entry("zip")["vulnerabilities"] = "not a list"
         with self.assertRaises(ValueError):
             self.review()
 
