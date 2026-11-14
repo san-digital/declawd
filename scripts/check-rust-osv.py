@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 import hashlib
 import json
 import os
@@ -13,10 +13,7 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "2.7.0"
-RSA_IDS = {
-    "RUSTSEC-2023-0071", "CVE-2023-49092",
-    "GHSA-4grx-2x9w-596c", "GHSA-c38w-74pg-36hr",
-}
+BLOCK_BUFFER_REVIEW_BY = date(2026, 11, 28)
 BLOCK_BUFFER_CHECKSUM = "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71"
 
 
@@ -63,14 +60,12 @@ def review(report, lock):
             aliases = vulnerability.get("aliases", [])
             if not isinstance(identifier, str) or not isinstance(aliases, list):
                 raise ValueError("OSV returned invalid advisory identifiers")
-            identifiers = {identifier, *aliases}
             decision = "blocked"
-            if key == ("crates.io", "rsa", "0.9.10") and identifiers <= RSA_IDS:
-                decision = "reviewed_rsa_exception_until_2026-11-28"
-            elif (
+            if (
                 key == ("crates.io", "block-buffer", "0.10.4")
                 and identifier == "GHSA-qwgh-2vcv-g2f7"
                 and not aliases
+                and datetime.now(timezone.utc).date() <= BLOCK_BUFFER_REVIEW_BY
                 and checksums.get(key) == BLOCK_BUFFER_CHECKSUM
             ):
                 decision = "outside_upstream_affected_range_0.11.0_to_0.12.1"

@@ -17,7 +17,6 @@ class SecurityPolicyTests(unittest.TestCase):
         self.addCleanup(self.directory.cleanup)
         self.root = Path(self.directory.name)
         shutil.copy(ROOT / "Cargo.lock", self.root / "Cargo.lock")
-        shutil.copytree(ROOT / "src", self.root / "src")
         cargo = self.root / "cargo"
         cargo.write_text(
             "#!/usr/bin/env python3\n"
@@ -29,7 +28,6 @@ class SecurityPolicyTests(unittest.TestCase):
         self.env = {
             **os.environ,
             "PATH": str(self.root) + os.pathsep + os.environ["PATH"],
-            "DECLAWD_AUDIT_DATE": "2026-10-29",
         }
 
     def run_policy(self):
@@ -51,7 +49,7 @@ class SecurityPolicyTests(unittest.TestCase):
         self.assertEqual(count, 1)
         lock.write_text(text)
 
-    def test_patched_zip_forwards_only_the_rsa_exception(self):
+    def test_patched_zip_forwards_an_audit_without_exclusions(self):
         for version in ["9.0.5", "9.1.3"]:
             with self.subTest(version=version):
                 self.set_version("zip", version)
@@ -59,7 +57,7 @@ class SecurityPolicyTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual(
                     json.loads(result.stdout.splitlines()[-1]),
-                    ["audit", "--ignore", "RUSTSEC-2023-0071", "--json"],
+                    ["audit", "--json"],
                 )
 
     def test_vulnerable_and_prerelease_zip_are_rejected_before_audit(self):
@@ -92,31 +90,37 @@ class SecurityPolicyTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("dependency missing", result.stderr)
 
-    def test_expiry_warning_and_invalid_date(self):
-        self.env["DECLAWD_AUDIT_DATE"] = "2026-11-28"
-        result = self.run_policy()
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("::warning", result.stdout)
-        self.env["DECLAWD_AUDIT_DATE"] = "2026-11-29"
-        self.assertIn("expired", self.run_policy().stderr)
-        self.env["DECLAWD_AUDIT_DATE"] = "invalid"
-        self.assertIn("invalid audit date", self.run_policy().stderr)
+    def add_rsa(self, version):
+        with (self.root / "Cargo.lock").open("a") as lock:
+            lock.write(f'\n[[package]]\nname = "rsa"\nversion = "{version}"\n')
 
-    def test_source_changes_require_reassessment(self):
-        with (self.root / "src/lib.rs").open("a") as source:
-            source.write("\n")
-        result = self.run_policy()
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn("reviewed Rust source changed", result.stderr)
-
-    def test_rsa_dependency_changes_require_reassessment(self):
-        for package in ["c2pa", "c2pa_raw_crypto", "rsa"]:
-            with self.subTest(package=package):
+    def test_affected_and_prerelease_rsa_are_rejected(self):
+        for version in ["0.9.10", "0.9.99", "0.10.0-rc.22"]:
+            with self.subTest(version=version):
                 shutil.copy(ROOT / "Cargo.lock", self.root / "Cargo.lock")
-                self.set_version(package, "99.0.0")
+                self.add_rsa(version)
                 result = self.run_policy()
                 self.assertNotEqual(result.returncode, 0)
-                self.assertIn(package + " versions changed", result.stderr)
+                self.assertIn("RUSTSEC-2023-0071", result.stderr)
+                self.assertNotIn('["audit"', result.stdout)
+
+    def test_an_additional_affected_rsa_is_rejected(self):
+        self.add_rsa("0.10.0")
+        self.add_rsa("0.9.10")
+        self.assertIn("RSA 0.9.10", self.run_policy().stderr)
+
+    def test_patched_rsa_needs_no_exception(self):
+        self.add_rsa("0.10.0")
+        result = self.run_policy()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout.splitlines()[-1]), ["audit", "--json"])
+
+    def test_retired_exception_dates_do_not_change_the_audit(self):
+        for date in ["2026-11-29", "invalid"]:
+            self.env["DECLAWD_AUDIT_DATE"] = date
+            result = self.run_policy()
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout.splitlines()[-1]), ["audit", "--json"])
 
     def test_audit_failures_are_preserved(self):
         self.env["DECLAWD_TEST_AUDIT_EXIT"] = "17"
@@ -128,7 +132,7 @@ class SecurityPolicyTests(unittest.TestCase):
         result = subprocess.run(command, cwd=self.root, env=self.env, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertNotIn('["audit"', result.stdout)
-        self.env["DECLAWD_AUDIT_DATE"] = "2026-11-29"
+        self.add_rsa("0.9.10")
         result = subprocess.run(command, cwd=self.root, env=self.env, capture_output=True, text=True)
         self.assertNotEqual(result.returncode, 0)
 

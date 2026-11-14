@@ -1,6 +1,6 @@
 # Development
 
-Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
+Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Source builds also need a C compiler, make and Perl for vendored OpenSSL. Windows builds need Visual Studio C++ and Perl. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
 
 ## Local checks
 
@@ -30,7 +30,7 @@ python3 scripts/install-osv-scanner.py /tmp/declawd-osv-scanner
 OSV_SCANNER=/tmp/declawd-osv-scanner python3 scripts/check-rust-osv.py --output /tmp/declawd-rust-osv.json
 ```
 
-The scanner receives locked package names and versions. [SECURITY.md](../SECURITY.md) explains the guarded RSA exception, the upstream affected-range review and the informational unmaintained dependency. Scanner failures and unreviewed advisories stop the check.
+The scanner receives locked package names and versions. [SECURITY.md](../SECURITY.md) explains RSA removal, the upstream affected-range review and the informational unmaintained dependency. Scanner failures and unreviewed advisories stop the check.
 
 The Python audit covers the complete frozen 40-package runner closure, with no vulnerability exclusions. Install [the pinned audit tool](../reference/python-audit-tool-requirements.txt) in a separate environment, then run `python3 scripts/check-python-advisories.py` with that environment on PATH. Run `check-python-runtime-lock.py` after any lock change.
 
