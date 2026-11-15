@@ -75,12 +75,25 @@ def normalise(document: dict, version: str, source_revision: str) -> None:
 
     properties = metadata.setdefault("properties", [])
     properties.append({"name": "declawd:source_revision", "value": source_revision})
-    properties.append({"name": "declawd:crypto_backend", "value": "aws-lc"})
+    properties.append({"name": "declawd:crypto_backend", "value": "openssl-lts"})
+    pin = json.loads((ROOT / "native/openssl-lts.json").read_text())
+    native_ref = f'openssl:{pin["source_revision"]}'
+    document["components"].append({
+        "type": "library", "name": "OpenSSL", "version": pin["version"], "bom-ref": native_ref,
+        "licenses": [{"license": {"id": "Apache-2.0"}}],
+        "hashes": [{"alg": "SHA-256", "content": pin["sha256"]}],
+        "externalReferences": [{"type": "vcs", "url": f'https://github.com/openssl/openssl/commit/{pin["source_revision"]}'}],
+        "properties": [{"name": "declawd:native_source_revision", "value": pin["source_revision"]}],
+    })
+    document["dependencies"].append({"ref": native_ref, "dependsOn": []})
+    for dependency in document["dependencies"]:
+        if dependency["ref"] == stable_root_ref:
+            dependency["dependsOn"].append(native_ref)
     for component in document.get("components", []):
         if component.get("name") == "openssl-src":
             component.setdefault("properties", []).append({
                 "name": "declawd:native_library_usage",
-                "value": "Rust build helper only. The OpenSSL native source is not built or linked because openssl-sys selects AWS-LC.",
+                "value": "Rust build helper only. OPENSSL_NO_VENDOR=1 bypasses its native OpenSSL 3.6 source. Release binaries use the separately pinned OpenSSL LTS build.",
             })
 
 
@@ -132,14 +145,18 @@ def validate(
         raise ValueError("SBOM does not cover all declared build targets")
     if properties.get("declawd:source_revision") != source_revision:
         raise ValueError("SBOM source revision does not match the release commit")
-    if properties.get("declawd:crypto_backend") != "aws-lc":
-        raise ValueError("SBOM does not identify the selected AWS-LC backend")
+    if properties.get("declawd:crypto_backend") != "openssl-lts":
+        raise ValueError("SBOM does not identify the selected OpenSSL LTS backend")
 
     components = document.get("components", [])
     if not components:
         raise ValueError("SBOM has no dependency components")
-    if not any(item.get("name") == "aws-lc-sys" and item.get("version") == "0.41.0" for item in components):
-        raise ValueError("SBOM does not contain the reviewed AWS-LC dependency")
+    pin = json.loads((ROOT / "native/openssl-lts.json").read_text())
+    native = [item for item in components if item.get("name") == "OpenSSL"]
+    if len(native) != 1 or native[0].get("version") != pin["version"] or native[0].get("hashes") != [{"alg": "SHA-256", "content": pin["sha256"]}]:
+        raise ValueError("SBOM does not contain the reviewed OpenSSL LTS source")
+    if any(item.get("name") in {"aws-lc-sys", "rsa"} for item in components):
+        raise ValueError("SBOM contains a replaced crypto backend")
     if not any(
         item.get("name") == "c2pa" and item.get("version") == "0.92.1"
         for item in components
