@@ -113,10 +113,10 @@ jobs:
         with:
           target: ${{ runner.os == 'macOS' && 'x86_64-apple-darwin' || '' }}
       - run: cargo test --all-targets --locked
+      - run: cargo build --locked
       - name: Verify host static linkage
         shell: bash
         run: |
-          cargo build --locked
           host=$(rustc -vV | sed -n 's/^host: //p')
           binary="target/debug/declawd"
           if [ "$RUNNER_OS" = "Windows" ]; then binary="$binary.exe"; fi
