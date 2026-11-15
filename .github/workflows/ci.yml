@@ -109,7 +109,24 @@ jobs:
           if (-not [Linq.Enumerable]::SequenceEqual($expectedBytes, $generatedBytes)) {
             throw "Windows release manifest bytes differ from the committed contract"
           }
+      - uses: ./.github/actions/openssl-lts
+        with:
+          target: ${{ runner.os == 'macOS' && 'x86_64-apple-darwin' || '' }}
       - run: cargo test --all-targets --locked
+      - name: Verify host static linkage
+        shell: bash
+        run: |
+          cargo build --locked
+          host=$(rustc -vV | sed -n 's/^host: //p')
+          binary="target/debug/declawd"
+          if [ "$RUNNER_OS" = "Windows" ]; then binary="$binary.exe"; fi
+          python scripts/check-native-linkage.py "$binary" --target "$host"
+      - name: Verify Intel Mac compilation
+        if: runner.os == 'macOS'
+        run: |
+          rustup target add x86_64-apple-darwin
+          cargo build --locked --release --target x86_64-apple-darwin
+          python scripts/check-native-linkage.py target/x86_64-apple-darwin/release/declawd --target x86_64-apple-darwin
 
   quality:
     name: Format, lint, pins and licences
@@ -119,6 +136,7 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
+      - uses: ./.github/actions/openssl-lts
       - run: cargo fmt -- --check
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo package --locked
@@ -159,6 +177,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/openssl-lts
       - run: cargo build --locked
       - name: Install pinned oracle
         run: cargo install c2patool --version 0.27.12 --locked

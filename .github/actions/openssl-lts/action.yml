@@ -1,0 +1,28 @@
+name: OpenSSL LTS
+description: Build pinned static OpenSSL LTS libraries for the host and optional target
+inputs:
+  target:
+    description: Optional Rust compilation target
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12'
+    - uses: ilammy/msvc-dev-cmd@0b201ec74fa43914dc39ae48a89fd1d8cb592756 # v1
+      if: runner.os == 'Windows'
+    - name: Build host OpenSSL LTS
+      shell: bash
+      run: python scripts/build-openssl-lts.py --prefix "$RUNNER_TEMP/openssl-host" --github-env
+    - name: Build target OpenSSL LTS
+      if: inputs.target != ''
+      shell: bash
+      env:
+        SSL_TARGET: ${{ inputs.target }}
+      run: |
+        host=$(rustc -vV | sed -n 's/^host: //p')
+        if [ "$SSL_TARGET" != "$host" ]; then
+          python scripts/build-openssl-lts.py --prefix "$RUNNER_TEMP/openssl-target" --target "$SSL_TARGET" --github-env
+        fi

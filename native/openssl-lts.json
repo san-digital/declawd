@@ -1,0 +1,19 @@
+{
+  "schema": "declawd.openssl-lts/v1",
+  "backend": "openssl-lts",
+  "version": "3.5.10-dev",
+  "branch": "openssl-3.5",
+  "source_revision": "84dda7853c130429210b37bee9e5b62366ca8bce",
+  "source_url": "https://codeload.github.com/openssl/openssl/tar.gz/84dda7853c130429210b37bee9e5b62366ca8bce",
+  "sha256": "a4e96ee24c017cf377116167bb49297c07567a020b923bb66f620403548f3d9e",
+  "reviewed_on": "2026-11-15",
+  "lts_until": "2030-04-08",
+  "advisory": "https://openssl-library.org/news/secadv/20261110.txt",
+  "fixes": {
+    "CVE-2026-88823": "159e1de0c448d7b9f09ad768c8e141def4aa1eb4",
+    "CVE-2026-107496": "a0051cfe699bf5a047bc1c4faef65f80f7987366",
+    "CVE-2026-88822": "1a73dc590cbad62d6f0329ea4779eadaa8d8fd75",
+    "CVE-2026-95691": "f6244675833e097c2429a40d1b206d95385bd42f",
+    "CVE-2026-95692": "257a3427aa0ef8d9dd2ef5b3e2d1c021a221b116"
+  }
+}

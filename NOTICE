@@ -3,7 +3,7 @@ Copyright 2026 San Digital
 
 Licensed under the Apache License, Version 2.0.
 
-This distribution uses c2pa-rs 0.91.7, which declares the licence expression MIT OR Apache-2.0. San Digital elects the Apache-2.0 option for its use in this project. Complete generated dependency notices are in THIRD_PARTY_LICENSES.txt.
+This distribution uses c2pa-rs 0.92.1, which declares the licence expression MIT OR Apache-2.0. San Digital elects the Apache-2.0 option for its use in this project. Complete generated dependency notices are in THIRD_PARTY_LICENSES.txt.
 
 The human-text fixture corpus contains public-domain works. Its provenance and
 terms are recorded in fixtures/corpus.json.
@@ -15,3 +15,5 @@ International. The unmodified version-of-record PDF, DOI and licence link are
 recorded in evidence/synthid/README.md.
 
 The six unmodified Adobe JPEG fixtures under fixtures/c2pa/public come from c2pa-org/public-testfiles at revision 22beccc075707475b038d8789d0136c009e43143. Those assets remain licensed under Creative Commons Attribution-ShareAlike 4.0 International. Their original paths, hashes, creator attribution and licence are recorded in fixtures/c2pa/public-fixture-manifest.json and fixtures/c2pa/public/README.md.
+
+Release binaries include static OpenSSL libraries from the pinned 3.5 LTS source recorded in native/openssl-lts.json. OpenSSL is licensed under Apache-2.0. Its complete licence is in native/OPENSSL-LICENSE.txt and the binary archives.

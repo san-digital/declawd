@@ -42,6 +42,7 @@ jobs:
           python3 -B -m unittest discover -s experiments/window-family-v1 -p 'test_*.py' -v
           python3 experiments/window-family-v1/experiment.py verify
           python3 experiments/window-family-v1/verify.py --fetch-history
+      - uses: ./.github/actions/openssl-lts
       - run: cargo fmt -- --check
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo test --all-targets --locked
@@ -125,9 +126,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/openssl-lts
+        with:
+          target: ${{ matrix.target }}
       - run: rustup target add ${{ matrix.target }}
       - run: cargo test --locked --all-targets
       - run: cargo build --locked --release --target ${{ matrix.target }}
+      - name: Verify static OpenSSL linkage
+        shell: bash
+        env:
+          SSL_TARGET: ${{ matrix.target }}
+        run: |
+          binary="target/$SSL_TARGET/release/declawd"
+          if [ "$RUNNER_OS" = "Windows" ]; then binary="$binary.exe"; fi
+          python scripts/check-native-linkage.py "$binary" --target "$SSL_TARGET"
       - name: Package Unix binary
         if: runner.os != 'Windows'
         env:
@@ -136,7 +148,10 @@ jobs:
         run: |
           mkdir stage
           cp "target/${TARGET}/release/declawd" stage/
-          cp LICENSE NOTICE THIRD_PARTY_LICENSES.txt SYNTHID_THIRD_PARTY_NOTICES.md stage/
+          cp LICENSE NOTICE THIRD_PARTY_LICENSES.txt SYNTHID_THIRD_PARTY_NOTICES.md native/OPENSSL-LICENSE.txt stage/
+          openssl_prefix="$RUNNER_TEMP/openssl-host"
+          if [ -d "$RUNNER_TEMP/openssl-target" ]; then openssl_prefix="$RUNNER_TEMP/openssl-target"; fi
+          cp "$openssl_prefix/openssl-build.json" stage/
           python3 scripts/generate-release-manifest.py --release "$RELEASE_NAME" --source-revision "$(git rev-parse HEAD)" --output stage/release-manifest-v1.json
           archive="declawd-${RELEASE_NAME}-${TARGET}.tar.gz"
           tar -czf "$archive" -C stage .
@@ -150,7 +165,8 @@ jobs:
         run: |
           New-Item -ItemType Directory stage
           Copy-Item "target/$env:TARGET/release/declawd.exe" stage/
-          Copy-Item LICENSE,NOTICE,THIRD_PARTY_LICENSES.txt,SYNTHID_THIRD_PARTY_NOTICES.md stage/
+          Copy-Item LICENSE,NOTICE,THIRD_PARTY_LICENSES.txt,SYNTHID_THIRD_PARTY_NOTICES.md,native/OPENSSL-LICENSE.txt stage/
+          Copy-Item "$env:RUNNER_TEMP/openssl-host/openssl-build.json" stage/
           $sourceRevision = git rev-parse HEAD
           python scripts/generate-release-manifest.py --release $env:RELEASE_NAME --source-revision $sourceRevision --output stage/release-manifest-v1.json
           $archive = "declawd-$env:RELEASE_NAME-$env:TARGET.zip"

@@ -48,6 +48,8 @@ def render(document: dict) -> str:
     for name, version, licence, link in sorted(packages, key=lambda row: (row[0], row[1])):
         lines.append(f"- {name} {version} | {licence} | {link}")
 
+    pin = json.loads((ROOT / "native/openssl-lts.json").read_text())
+    lines.append(f'- OpenSSL {pin["version"]} | Apache-2.0 | https://github.com/openssl/openssl/commit/{pin["source_revision"]}')
     lines.extend(["", "Licence texts", "-------------", ""])
     unique = {}
     for licence in document["licenses"]:
