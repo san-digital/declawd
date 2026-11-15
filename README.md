@@ -6,10 +6,10 @@ The [website](https://declawd.com) explains the experiments and provides browser
 
 ## Install
 
-[Download 0.3.4 binaries](https://declawd.com/downloads) for Apple Silicon, Intel Mac, Linux or Windows, or install the [crate](https://crates.io/crates/declawd/0.3.4) with Rust 1.96 or newer:
+[Download 0.3.5 binaries](https://declawd.com/downloads) for Apple Silicon, Intel Mac, Linux or Windows, or install the [crate](https://crates.io/crates/declawd/0.3.5) with Rust 1.96 or newer:
 
 ```sh
-cargo install declawd --locked --version 0.3.4
+cargo install declawd --locked --version 0.3.5
 ```
 
 Archives have SHA-256 checksums and GitHub build attestations. Mac and Windows binaries are unsigned by operating-system signing services. The [verification guide](docs/DEVELOPMENT.md#release-checks) explains what to check before running them.
@@ -54,7 +54,7 @@ The [evidence guide](docs/EVIDENCE.md) links the plans, registrations, complete 
 
 Use the tools on content you own or are authorised to change. Findings must not support employment, education, disciplinary, legal, forensic or authorship decisions. Read [responsible use](ETHICS.md) before extending or applying the cleaner.
 
-The CLI makes no network requests. Current source uses `c2pa 0.92.1`, `ZIP 9.5.1` and vendored OpenSSL, with no Rust RSA dependency or RSA advisory exclusion. Published 0.3.4 retains its original dependency lock. The [security policy](SECURITY.md) distinguishes current source from released artefacts and records the dependency guards.
+The CLI makes no network requests. Current source uses `c2pa 0.92.1`, `ZIP 9.5.1` and vendored OpenSSL, with no Rust RSA dependency or RSA advisory exclusion. Release 0.3.5 removes that dependency from the crate and binaries. Earlier releases retain their original dependency locks. The [security policy](SECURITY.md) distinguishes current source from released artefacts and records the dependency guards.
 
 ## Licence
 

@@ -26,7 +26,7 @@ Reviewed on 13 November 2026. The lock selects `rustix 1.1.6`, which fixes [RUST
 
 `c2pa 0.92.1` selects its supported vendored OpenSSL backend in current source. It contains no `rsa` crate. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) identifies RSA 0.10.0 as patched, but the published C2PA Rust-crypto backend still requires 0.9.10. Selecting OpenSSL removes that dependency without changing the CLI's PNG/JPEG inspection and removal operations.
 
-The RustSec audit and GitHub dependency review have no RSA exclusions. The OSV reviewer blocks the advisory and every alias. The dependency guard rejects any reintroduced RSA version below 0.10.0, including prereleases, before invoking the audit.
+Version 0.3.5 includes this backend change in the crate and platform binaries. The RustSec audit and GitHub dependency review have no RSA exclusions. The OSV reviewer blocks the advisory and every alias. The dependency guard rejects any reintroduced RSA version below 0.10.0, including prereleases, before invoking the audit.
 
 Published release 0.3.4 retains its original Rust-crypto dependency and historical exception. A source merge does not change that crate or its binary archives. Its immutable release notes and dependency inventory remain the record for that version.
 
