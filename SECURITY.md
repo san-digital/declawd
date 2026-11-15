@@ -24,11 +24,17 @@ Reviewed on 13 November 2026. The lock selects `rustix 1.1.6`, which fixes [RUST
 
 ## RSA removal
 
-`c2pa 0.92.1` selects its supported vendored OpenSSL backend in current source. It contains no `rsa` crate. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) identifies RSA 0.10.0 as patched, but the published C2PA Rust-crypto backend still requires 0.9.10. Selecting OpenSSL removes that dependency without changing the CLI's PNG/JPEG inspection and removal operations.
+`c2pa 0.92.1` selects its OpenSSL API backend, with Rust OpenSSL configured to use AWS-LC 0.41.0. It contains no `rsa` crate. [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html) identifies RSA 0.10.0 as patched, but the published C2PA Rust-crypto backend still requires 0.9.10. Selecting this backend removes that dependency without changing the CLI's PNG/JPEG inspection and removal operations.
 
-Version 0.3.5 includes this backend change in the crate and platform binaries. The RustSec audit and GitHub dependency review have no RSA exclusions. The OSV reviewer blocks the advisory and every alias. The dependency guard rejects any reintroduced RSA version below 0.10.0, including prereleases, before invoking the audit.
+Version 0.3.5 includes this backend change in the crate and platform binaries. A build check requires the AWS-LC metadata from openssl-sys, rejecting an OpenSSL fallback or an unreviewed FIPS variant. The RustSec audit and GitHub dependency review have no RSA exclusions. The OSV reviewer blocks the advisory and every alias. The dependency guard rejects any reintroduced RSA version below 0.10.0, including prereleases, before invoking the audit.
 
 Published release 0.3.4 retains its original Rust-crypto dependency and historical exception. A source merge does not change that crate or its binary archives. Its immutable release notes and dependency inventory remain the record for that version.
+
+## Native backend
+
+Rust OpenSSL 0.10.82 supports AWS-LC through openssl-sys 0.9.118. C2PA still enables the vendored OpenSSL feature, which leaves the openssl-src 300.6.1+3.6.3 Rust build helper in Cargo.lock. The AWS-LC branch exits before that helper builds OpenSSL. The native OpenSSL 3.6.3 library is neither built nor linked. The software inventory distinguishes this unused native source from the selected AWS-LC implementation.
+
+This avoids OpenSSL 3.6, which its [release policy](https://openssl-library.org/policies/releasestrat/) now lists as unsupported. Its [3.6 advisory history](https://openssl-library.org/news/vulnerabilities-3.6/) includes fixes newer than 3.6.3. The [10 November advisory](https://openssl-library.org/news/secadv/20261110.txt) schedules further supported-branch releases for 1 December. Those future versions are not treated as available releases.
 
 ## OSV check
 

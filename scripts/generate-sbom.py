@@ -75,6 +75,13 @@ def normalise(document: dict, version: str, source_revision: str) -> None:
 
     properties = metadata.setdefault("properties", [])
     properties.append({"name": "declawd:source_revision", "value": source_revision})
+    properties.append({"name": "declawd:crypto_backend", "value": "aws-lc"})
+    for component in document.get("components", []):
+        if component.get("name") == "openssl-src":
+            component.setdefault("properties", []).append({
+                "name": "declawd:native_library_usage",
+                "value": "Rust build helper only. The OpenSSL native source is not built or linked because openssl-sys selects AWS-LC.",
+            })
 
 
 def component_refs(component: dict) -> list[str]:
@@ -125,10 +132,14 @@ def validate(
         raise ValueError("SBOM does not cover all declared build targets")
     if properties.get("declawd:source_revision") != source_revision:
         raise ValueError("SBOM source revision does not match the release commit")
+    if properties.get("declawd:crypto_backend") != "aws-lc":
+        raise ValueError("SBOM does not identify the selected AWS-LC backend")
 
     components = document.get("components", [])
     if not components:
         raise ValueError("SBOM has no dependency components")
+    if not any(item.get("name") == "aws-lc-sys" and item.get("version") == "0.41.0" for item in components):
+        raise ValueError("SBOM does not contain the reviewed AWS-LC dependency")
     if not any(
         item.get("name") == "c2pa" and item.get("version") == "0.92.1"
         for item in components

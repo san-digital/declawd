@@ -10,6 +10,7 @@ readme = "README.md"
 keywords = ["c2pa", "unicode", "provenance", "watermark"]
 categories = ["command-line-utilities", "multimedia::images"]
 include = [
+  "/build.rs",
   "/src/**",
   "/tests/**",
   "/reference/*.py",
@@ -54,6 +55,7 @@ include = [
 [dependencies]
 clap = { version = "4.5.45", features = ["derive"] }
 c2pa = { version = "=0.92.1", default-features = false, features = ["file_io", "openssl"] }
+openssl-sys = { version = "=0.9.118", features = ["aws-lc"] }
 crc32fast = "1.5.0"
 hex = "0.4.3"
 img-parts = "0.4.0"

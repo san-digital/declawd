@@ -1,6 +1,6 @@
 # Development
 
-Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Source builds also need a C compiler, make and Perl for vendored OpenSSL. Windows builds need Visual Studio C++ and Perl. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
+Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Source builds also need a C/C++ compiler and CMake for AWS-LC. Windows builds need Visual Studio C++. No external OpenSSL installation is required. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
 
 ## Local checks
 
@@ -48,7 +48,7 @@ The Rust inventory covers runtime and build dependencies, excluding test-only de
 
 ## Release checks
 
-The 0.3.5 release removes the vulnerable Rust RSA dependency by selecting C2PA's vendored OpenSSL backend. Publish only after the exact release commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. Published 0.3.4 and earlier assets retain their original bytes.
+The 0.3.5 release removes the vulnerable Rust RSA dependency by selecting C2PA's OpenSSL API backed by AWS-LC. Publish only after the exact release commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. Published 0.3.4 and earlier assets retain their original bytes.
 
 After publishing, verify the crate version and every release payload before updating the site's pinned download record. Historical experiment pins retain their original release identities.
 

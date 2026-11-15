@@ -28,9 +28,11 @@ Package inventory
 - async-trait 0.1.92 | MIT OR Apache-2.0 | https://github.com/dtolnay/async-trait
 - atree 0.5.4 | MIT | https://github.com/macthecadillac/atree
 - autocfg 1.5.1 | Apache-2.0 OR MIT | https://github.com/cuviper/autocfg
+- aws-lc-sys 0.41.0 | ISC AND (Apache-2.0 OR ISC) AND Apache-2.0 AND MIT AND BSD-3-Clause AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR ISC OR MIT-0) | https://github.com/aws/aws-lc-rs
 - base64 0.23.1 | MIT OR Apache-2.0 | https://github.com/marshallpierce/rust-base64
 - base64ct 1.8.3 | Apache-2.0 OR MIT | https://github.com/RustCrypto/formats
 - bcder 0.7.7 | BSD-3-Clause | https://github.com/nlnetlabs/bcder
+- bindgen 0.72.1 | BSD-3-Clause | https://github.com/rust-lang/rust-bindgen
 - bit-set 0.8.0 | Apache-2.0 OR MIT | https://github.com/contain-rs/bit-set
 - bit-vec 0.8.0 | Apache-2.0 OR MIT | https://github.com/contain-rs/bit-vec
 - bitflags 2.13.1 | MIT OR Apache-2.0 | https://github.com/bitflags/bitflags
@@ -54,6 +56,7 @@ Package inventory
 - c2pa_raw_crypto 0.3.0 | MIT OR Apache-2.0 | https://github.com/contentauth/c2pa_raw_crypto
 - cc 1.4.4 | MIT OR Apache-2.0 | https://github.com/rust-lang/cc-rs
 - cc-traits 2.0.0 | MIT OR Apache-2.0 | https://github.com/timothee-haudebourg/cc-traits
+- cexpr 0.6.0 | Apache-2.0 OR MIT | https://github.com/jethrogb/rust-cexpr
 - cfg-if 1.0.4 | MIT OR Apache-2.0 | https://github.com/rust-lang/cfg-if
 - cfg_aliases 0.2.2 | MIT | https://github.com/katharostech/cfg_aliases
 - chacha20 0.10.2 | MIT OR Apache-2.0 | https://github.com/RustCrypto/stream-ciphers
@@ -61,10 +64,12 @@ Package inventory
 - ciborium 0.2.2 | Apache-2.0 | https://github.com/enarx/ciborium
 - ciborium-io 0.2.2 | Apache-2.0 | https://github.com/enarx/ciborium
 - ciborium-ll 0.2.2 | Apache-2.0 | https://github.com/enarx/ciborium
+- clang-sys 1.9.1 | Apache-2.0 | https://github.com/KyleMayes/clang-sys
 - clap 4.6.7 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap
 - clap_builder 4.6.7 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap
 - clap_derive 4.6.7 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap
 - clap_lex 1.1.0 | MIT OR Apache-2.0 | https://github.com/clap-rs/clap
+- cmake 0.1.58 | MIT OR Apache-2.0 | https://github.com/rust-lang/cmake-rs
 - colorchoice 1.0.5 | MIT OR Apache-2.0 | https://github.com/rust-cli/anstyle.git
 - console_log 1.1.0 | MIT OR Apache-2.0 | https://github.com/iamcodemaker/console_log
 - const-hex 1.19.1 | MIT OR Apache-2.0 | https://github.com/danipopes/const-hex
@@ -95,6 +100,7 @@ Package inventory
 - digest 0.10.7 | MIT OR Apache-2.0 | https://github.com/RustCrypto/traits
 - digest 0.11.3 | MIT OR Apache-2.0 | https://github.com/RustCrypto/traits
 - displaydoc 0.2.7 | MIT OR Apache-2.0 | https://github.com/yaahc/displaydoc
+- dunce 1.0.5 | CC0-1.0 OR MIT-0 OR Apache-2.0 | https://gitlab.com/kornelski/dunce
 - ed25519 2.2.3 | Apache-2.0 OR MIT | https://github.com/RustCrypto/signatures/tree/master/ed25519
 - ed25519-dalek 2.2.0 | BSD-3-Clause | https://github.com/dalek-cryptography/curve25519-dalek/tree/main/ed25519-dalek
 - either 1.18.0 | MIT OR Apache-2.0 | https://github.com/rayon-rs/either
@@ -115,6 +121,7 @@ Package inventory
 - foreign-types-shared 0.1.1 | MIT OR Apache-2.0 | https://github.com/sfackler/foreign-types
 - form_urlencoded 1.2.2 | MIT OR Apache-2.0 | https://github.com/servo/rust-url
 - fraction 0.17.0 | MIT OR Apache-2.0 | https://github.com/dnsl48/fraction.git
+- fs_extra 1.3.0 | MIT | https://github.com/webdesus/fs_extra
 - funty 2.0.0 | MIT | https://github.com/myrrlyn/funty
 - futures-core 0.3.34 | MIT OR Apache-2.0 | https://github.com/rust-lang/futures-rs
 - futures-task 0.3.34 | MIT OR Apache-2.0 | https://github.com/rust-lang/futures-rs
@@ -153,12 +160,14 @@ Package inventory
 - itertools 0.13.0 | MIT OR Apache-2.0 | https://github.com/rust-itertools/itertools
 - itoa 1.0.18 | MIT OR Apache-2.0 | https://github.com/dtolnay/itoa
 - jfifdump 0.6.0 | MIT OR Apache-2.0 | https://github.com/vstroebel/jfifdump.git
+- jobserver 0.1.35 | MIT OR Apache-2.0 | https://github.com/rust-lang/jobserver-rs
 - js-sys 0.3.104 | MIT OR Apache-2.0 | https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/js-sys
 - jsonschema 0.60.2 | MIT | https://github.com/Stranger6667/jsonschema
 - jsonschema-regex 0.60.2 | MIT | https://github.com/Stranger6667/jsonschema
 - jsonschema-value 0.60.2 | MIT | https://github.com/Stranger6667/jsonschema
 - lazy_static 1.5.0 | MIT OR Apache-2.0 | https://github.com/rust-lang-nursery/lazy-static.rs
 - libc 0.2.191 | MIT OR Apache-2.0 | https://github.com/rust-lang/libc
+- libloading 0.8.9 | ISC | https://github.com/nagisa/rust_libloading/
 - linux-raw-sys 0.12.1 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | https://github.com/sunfishcode/linux-raw-sys
 - litemap 0.8.3 | Unicode-3.0 | https://github.com/unicode-org/icu4x
 - lock_api 0.4.14 | MIT OR Apache-2.0 | https://github.com/Amanieu/parking_lot
@@ -208,6 +217,7 @@ Package inventory
 - predicates 3.1.4 | MIT OR Apache-2.0 | https://github.com/assert-rs/predicates-rs
 - predicates-core 1.0.10 | MIT OR Apache-2.0 | https://github.com/assert-rs/predicates-rs
 - predicates-tree 1.0.13 | MIT OR Apache-2.0 | https://github.com/assert-rs/predicates-rs
+- prettyplease 0.2.37 | MIT OR Apache-2.0 | https://github.com/dtolnay/prettyplease
 - proc-macro-error 1.0.4 | MIT OR Apache-2.0 | https://gitlab.com/CreepySkeleton/proc-macro-error
 - proc-macro-error-attr 1.0.4 | MIT OR Apache-2.0 | https://gitlab.com/CreepySkeleton/proc-macro-error
 - proc-macro2 1.0.107 | MIT OR Apache-2.0 | https://github.com/dtolnay/proc-macro2
@@ -237,6 +247,7 @@ Package inventory
 - regex-automata 0.4.18 | MIT OR Apache-2.0 | https://github.com/rust-lang/regex
 - regex-syntax 0.8.11 | MIT OR Apache-2.0 | https://github.com/rust-lang/regex
 - riff 2.0.0 | MIT | https://github.com/frabert/riff
+- rustc-hash 2.1.3 | Apache-2.0 OR MIT | https://github.com/rust-lang/rustc-hash
 - rustc_version 0.4.1 | MIT OR Apache-2.0 | https://github.com/djc/rustc-version-rs
 - rusticata-macros 4.1.0 | MIT OR Apache-2.0 | https://github.com/rusticata/rusticata-macros.git
 - rustix 1.1.6 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | https://github.com/bytecodealliance/rustix
@@ -256,6 +267,7 @@ Package inventory
 - sha1 0.11.0 | MIT OR Apache-2.0 | https://github.com/RustCrypto/hashes
 - sha2 0.10.9 | MIT OR Apache-2.0 | https://github.com/RustCrypto/hashes
 - sha2 0.11.1 | MIT OR Apache-2.0 | https://github.com/RustCrypto/hashes
+- shlex 1.3.0 | MIT OR Apache-2.0 | https://github.com/comex/rust-shlex
 - shlex 2.0.1 | MIT OR Apache-2.0 | https://github.com/comex/rust-shlex
 - signature 2.2.0 | Apache-2.0 OR MIT | https://github.com/RustCrypto/traits/tree/master/signature
 - simd-adler32 0.3.10 | MIT | https://github.com/mcountryman/simd-adler32
@@ -6010,6 +6022,40 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ===============================================================================
+BSD 3-Clause "New" or "Revised" License (BSD-3-Clause; text SHA-256 0f3a69e2be47d58b2eb5e6e5d27a8e7ce05d9bc6d2f9d7a7723ae3bde8ebcd02)
+===============================================================================
+
+BSD 3-Clause License
+
+Copyright (c) 2013, Jyun-Yan You
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+===============================================================================
 BSD 3-Clause "New" or "Revised" License (BSD-3-Clause; text SHA-256 24fa06d8eae3c3ba93e1f863f0640ef57c8996f4bece3e14c3d29c5efb7c0089)
 ===============================================================================
 
@@ -6177,6 +6223,36 @@ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+===============================================================================
+ISC License (ISC; text SHA-256 bbf1ea3140c4d068c74adfcd77c4a8538d51b5027b5cd246896511d2314c12a6)
+===============================================================================
+
+Copyright © 2015, Simonas Kazlauskas
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without
+fee is hereby granted, provided that the above copyright notice and this permission notice appear
+in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS
+SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
+NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+
+===============================================================================
+ISC License (ISC; text SHA-256 f2ff9e66e9a9acdbffbcbf2ae4ff184d923325ce1a98d20ac64f3dd450263f3a)
+===============================================================================
+
+ISC License:
+
+Copyright (c) 2004-2010 by Internet Systems Consortium, Inc. ("ISC")
+Copyright (c) 1995-2003 by Internet Software Consortium
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ===============================================================================
 MIT License (MIT; text SHA-256 06250c7066bcd3f947667887383bf797d5c128d53e27d140fadc461adacdadf1)
@@ -6412,6 +6488,32 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+===============================================================================
+MIT License (MIT; text SHA-256 30158cc81738e8c8772149fd1348dfca17d097278678ea0fdc37ec3f3890fd7d)
+===============================================================================
+
+MIT License
+
+Copyright (c) 2017 Denis Kurilenko
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ===============================================================================
 MIT License (MIT; text SHA-256 30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652)
@@ -6961,6 +7063,33 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+===============================================================================
+MIT License (MIT; text SHA-256 c86c0f590ac954babf892ba6b03c50c00cdf326ddfd0ad31ed0ec16abdaada52)
+===============================================================================
+
+The MIT License (MIT)
+
+Copyright (c) 2015-2020 the fiat-crypto authors (see
+https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ===============================================================================
 MIT License (MIT; text SHA-256 cc8f3c8ab396de7fa549e3907319281cf13d0a4a456a2b0695c5b61d877dba68)
