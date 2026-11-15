@@ -12,7 +12,7 @@ The [website](https://declawd.com) explains the experiments and provides browser
 OPENSSL_NO_VENDOR=1 OPENSSL_DIR=/path/to/patched-openssl cargo install declawd --locked --version 0.3.6
 ```
 
-The binaries include static OpenSSL libraries. Cargo source builds require a C compiler and a patched OpenSSL 3.5 installation (3.5.10-dev or newer in that series). The [build guide](docs/DEVELOPMENT.md#openssl-setup) provides the pinned LTS source builder and Windows commands. Archives have SHA-256 checksums and GitHub build attestations. Mac and Windows binaries are unsigned by operating-system signing services. The [verification guide](docs/DEVELOPMENT.md#release-checks) explains what to check before running them.
+The binaries include static OpenSSL libraries. Cargo source builds require a C compiler and the pinned 3.5.10-dev build or a stable OpenSSL 3.5 release from 3.5.10 onwards. The [build guide](docs/DEVELOPMENT.md#openssl-setup) provides the pinned LTS source builder and Windows commands. Archives have SHA-256 checksums and GitHub build attestations. Mac and Windows binaries are unsigned by operating-system signing services. The [verification guide](docs/DEVELOPMENT.md#release-checks) explains what to check before running them.
 
 ## First checks
 

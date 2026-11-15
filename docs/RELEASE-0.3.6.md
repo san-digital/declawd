@@ -10,7 +10,7 @@ Each archive includes `openssl-build.json`, identifying the source archive check
 
 ## Source installs
 
-Cargo installs now require an explicit patched OpenSSL 3.5 setup. Set `OPENSSL_NO_VENDOR=1` and `OPENSSL_DIR` to that installation. Set `OPENSSL_STATIC=1` for static linking. The [development guide](DEVELOPMENT.md#openssl-setup) has Unix and Windows commands and the pinned source builder. A build guard rejects older OpenSSL versions, other series and AWS-LC.
+Cargo installs now require an explicit patched OpenSSL 3.5 setup. Set `OPENSSL_NO_VENDOR=1` and `OPENSSL_DIR` to that installation. Set `OPENSSL_STATIC=1` for static linking. The [development guide](DEVELOPMENT.md#openssl-setup) has Unix and Windows commands and the pinned source builder. A build guard verifies the pinned development build against its receipt and library hashes. It also accepts stable 3.5 releases from 3.5.10 onwards, rejecting older versions, other series and AWS-LC.
 
 ## Checks
 

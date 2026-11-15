@@ -24,7 +24,7 @@ $env:OPENSSL_DIR = "C:/declawd-openssl"
 cargo install --path . --locked
 ```
 
-For a registry install, use `cargo install declawd --locked --version 0.3.6` after the same setup. An existing patched OpenSSL 3.5 installation can be selected with these variables. The build guard rejects versions below 3.5.10-dev and other series. The builder requires a fresh prefix and supports the four published targets. Cross compilation on macOS needs a separate target prefix, selected with the target-specific OpenSSL environment variable.
+For a registry install, use `cargo install declawd --locked --version 0.3.6` after the same setup. An existing patched OpenSSL 3.5 installation can be selected with these variables. The build guard accepts the pinned development build only when its receipt, target and static library hashes match. Stable 3.5 releases from 3.5.10 onwards can use another installation. Other development builds, older versions and other series are rejected. The builder requires a fresh prefix and supports the four published targets. Cross compilation on macOS needs a separate target prefix, selected with the target-specific OpenSSL environment variable.
 
 ## Local checks
 
