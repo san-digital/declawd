@@ -1,6 +1,6 @@
 # Development
 
-Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Source builds also need a C compiler, make and Perl for vendored OpenSSL. Windows builds need Visual Studio C++ and Perl. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
+Use Rust 1.96 or newer, Python 3.12 and the committed dependency locks. Source builds also need a C/C++ compiler and CMake for AWS-LC. Windows builds need Visual Studio C++. No external OpenSSL installation is required. Start with [contribution rules](../CONTRIBUTING.md), [responsible use](../ETHICS.md) and the [security policy](../SECURITY.md). Recorded experiments have additional [frozen boundaries](EVIDENCE.md#frozen-boundaries).
 
 ## Local checks
 
@@ -48,7 +48,7 @@ The Rust inventory covers runtime and build dependencies, excluding test-only de
 
 ## Release checks
 
-The 0.3.4 release uses the patched Rustix and C2PA dependencies. Publish only after the exact release commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. The published 0.3.3 assets retain their original bytes.
+The 0.3.5 release removes the vulnerable Rust RSA dependency by selecting C2PA's OpenSSL API backed by AWS-LC. Publish only after the exact release commit passes CI, the crate package is verified and the version tag matches Cargo.toml. The tagged workflow builds four platform archives, a source contract, two CycloneDX 1.5 inventories and the deterministic SynthID teaching bundle, each with a checksum and GitHub provenance. Published 0.3.4 and earlier assets retain their original bytes.
 
 After publishing, verify the crate version and every release payload before updating the site's pinned download record. Historical experiment pins retain their original release identities.
 
@@ -56,18 +56,18 @@ Download a payload and its checksum together. Verify using the tool available on
 
 ```sh
 # Linux, or another shell with sha256sum
-sha256sum --check declawd-v0.3.4-<target>.tar.gz.sha256
-sha256sum --check declawd-v0.3.4-x86_64-pc-windows-msvc.zip.sha256
+sha256sum --check declawd-v0.3.5-<target>.tar.gz.sha256
+sha256sum --check declawd-v0.3.5-x86_64-pc-windows-msvc.zip.sha256
 
 # macOS
-shasum -a 256 --check declawd-v0.3.4-<target>.tar.gz.sha256
+shasum -a 256 --check declawd-v0.3.5-<target>.tar.gz.sha256
 
 # The same check applies to inventories and the teaching bundle
-sha256sum --check declawd-v0.3.4.cdx.json.sha256
-sha256sum --check declawd-v0.3.4-python.cdx.json.sha256
-sha256sum --check declawd-v0.3.4-synthid-contracts.tar.gz.sha256
+sha256sum --check declawd-v0.3.5.cdx.json.sha256
+sha256sum --check declawd-v0.3.5-python.cdx.json.sha256
+sha256sum --check declawd-v0.3.5-synthid-contracts.tar.gz.sha256
 
-gh attestation verify declawd-v0.3.4-<target>.tar.gz --repo san-digital/declawd
+gh attestation verify declawd-v0.3.5-<target>.tar.gz --repo san-digital/declawd
 ```
 
 Replace `<target>` with the archive's actual target. For an inventory, source contract, teaching bundle or Windows ZIP, give `gh attestation verify` that filename instead. The source contract embedded in every platform archive should match the standalone contract.
