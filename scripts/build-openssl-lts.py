@@ -55,7 +55,9 @@ def main() -> None:
         if actual != pin["version"]:
             raise ValueError(f"unexpected OpenSSL source version: {actual}")
         flags = ["no-shared", "no-module", "no-tests", "no-legacy", "--libdir=lib", f"--prefix={prefix.as_posix()}"]
-        subprocess.run(["perl", "Configure", TARGETS[target], *flags], cwd=source, check=True)
+        if target.endswith("windows-msvc"):
+            flags.insert(0, "no-asm")
+        subprocess.run([os.environ.get("PERL", "perl"), "Configure", TARGETS[target], *flags], cwd=source, check=True)
         make = ["nmake"] if target.endswith("windows-msvc") else ["make", "-j4"]
         subprocess.run([*make, "build_libs"], cwd=source, check=True)
         subprocess.run([*make, "install_dev"], cwd=source, check=True)

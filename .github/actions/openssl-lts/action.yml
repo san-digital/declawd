@@ -15,12 +15,15 @@ runs:
       if: runner.os == 'Windows'
     - name: Build host OpenSSL LTS
       shell: bash
+      env:
+        PERL: ${{ runner.os == 'Windows' && 'C:/Strawberry/perl/bin/perl.exe' || 'perl' }}
       run: python scripts/build-openssl-lts.py --prefix "$RUNNER_TEMP/openssl-host" --github-env
     - name: Build target OpenSSL LTS
       if: inputs.target != ''
       shell: bash
       env:
         SSL_TARGET: ${{ inputs.target }}
+        PERL: ${{ runner.os == 'Windows' && 'C:/Strawberry/perl/bin/perl.exe' || 'perl' }}
       run: |
         host=$(rustc -vV | sed -n 's/^host: //p')
         if [ "$SSL_TARGET" != "$host" ]; then
